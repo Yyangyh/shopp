@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "限时抢购",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

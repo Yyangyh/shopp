@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "反馈",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

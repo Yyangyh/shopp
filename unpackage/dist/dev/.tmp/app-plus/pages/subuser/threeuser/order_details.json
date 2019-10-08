@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "订单详情",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

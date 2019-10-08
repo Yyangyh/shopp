@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "版通专享",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

@@ -1,0 +1,39 @@
+
+.mo_name.data-v-95d9da86{
+	padding: 0 20rpx;
+	margin-top: 30rpx;
+}
+.mo_name .name_top.data-v-95d9da86{
+	height: 88rpx;
+	line-height: 88rpx;
+	background: #F1F1F1;
+	margin-bottom: 30rpx;
+	padding: 0 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	border-radius: 10rpx;
+}
+.mo_name .name_top input.data-v-95d9da86{
+	width: 100%;
+	font-size: 32rpx;
+}
+.mo_name .name_bottom.data-v-95d9da86{
+	color: #666666;
+	font-size: 28rpx;
+}
+button.data-v-95d9da86{
+	margin: 64rpx 20rpx;
+	color: #fff;
+	background: #1D74FF;
+	height: 80rpx;
+	line-height: 80rpx;
+	border-radius: 80rpx;
+	font-size: 32rpx;
+}
+

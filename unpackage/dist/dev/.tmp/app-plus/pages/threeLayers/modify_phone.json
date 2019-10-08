@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "修改手机号",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

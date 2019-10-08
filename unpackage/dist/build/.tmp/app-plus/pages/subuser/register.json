@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "签到",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

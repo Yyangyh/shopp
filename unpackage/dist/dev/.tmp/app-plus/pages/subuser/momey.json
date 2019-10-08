@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "钱包",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "拼团操作",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

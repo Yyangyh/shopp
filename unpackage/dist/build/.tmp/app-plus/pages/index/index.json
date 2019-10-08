@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "首页",
+  "titleNView": false,
+  "usingComponents": {
+    "bw-swiper": "/components/wxcomponents/bw-swiper/bw-swiper"
+  }
+}

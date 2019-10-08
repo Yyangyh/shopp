@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "佣金",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

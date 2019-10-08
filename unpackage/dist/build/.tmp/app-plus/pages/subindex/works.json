@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "文创产品",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

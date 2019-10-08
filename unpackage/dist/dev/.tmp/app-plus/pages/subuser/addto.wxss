@@ -1,0 +1,106 @@
+
+.content.data-v-e3c70d84{
+	width: 100%;
+	height: 99.9%;
+	background: #FFFFFF;
+	border-top: 1rpx solid #FFFFFF;
+}
+.list_city.data-v-e3c70d84{
+	width: 90%;
+	/* height: 90rpx; */
+	font-size: 28rpx;
+	color: #999999;
+	margin: 30rpx auto;
+	padding-bottom: 30rpx;
+	border-bottom: 1rpx solid #999999;
+}
+.list.data-v-e3c70d84{
+	width: 90%;
+	height: 90rpx;
+	font-size: 28rpx;
+	color: #999999;
+	margin: 30rpx auto;
+	border-bottom: 1rpx solid #999999;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	/* justify-content: center; */
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.list text.data-v-e3c70d84{
+	margin-right: 16rpx;
+}
+.list input.data-v-e3c70d84{
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	    -ms-flex-positive: 2;
+	        flex-grow: 2;
+}
+.checkbox.data-v-e3c70d84{
+	width: 90%;
+	font-size: 28rpx;
+	color: #999999;
+	margin: 30rpx 5%;
+}
+button.data-v-e3c70d84{
+	width: 90%;
+	margin-top: 30rpx;
+	border-radius: 45rpx;
+}
+.mask.data-v-e3c70d84{
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	background:rgba(0,0,0,1);
+	opacity:0.3;
+	left: 0;
+	top: 0;
+	z-index: 998;
+}
+.choice_city.data-v-e3c70d84{
+	background: #fff;
+	position: fixed;
+	height: 884rpx;
+	width: 100%;
+	left: 0;
+	bottom: 0;
+	z-index: 999;
+}
+.choice_city image.data-v-e3c70d84{
+	position: absolute !important;
+	width: 40rpx;
+	height: 40rpx;
+	right: 20rpx;
+	top: 20rpx;
+}
+.choice_city .ci_test1.data-v-e3c70d84{
+	text-align: center;
+	padding: 10rpx;
+	color: #999;
+	font-size: 30rpx;
+}
+.choice_city .ci_test.data-v-e3c70d84{
+	height: 144rpx;
+	font-size: 30rpx;
+	padding: 20rpx;
+}
+.choice_city .ci_test text.data-v-e3c70d84{
+}
+.choice_city .ci_box.data-v-e3c70d84{
+	height: 700rpx;
+}
+.choice_city .ci_box .box_H.data-v-e3c70d84{
+	height: 700rpx;
+	font-size: 30rpx;
+}
+.choice_city .ci_box .box_H view.data-v-e3c70d84{
+	padding: 10rpx;
+}
+.choice_city .ci_box .box_H .H_city_test.data-v-e3c70d84{
+	color: #999;
+}
+

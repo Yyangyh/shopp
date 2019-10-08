@@ -1,0 +1,560 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/login/login",
+			"style" : {
+				"navigationBarTitleText" : "登录",
+				"app-plus" : {
+					"titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/index/integral",
+			"style": {
+				"navigationBarTitleText": "积分商城",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/index/touristCard",
+			"style": {
+				"navigationBarTitleText": "旅游卡",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/index/strategy",
+			"style": {
+				"navigationBarTitleText": "攻略游记",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/index/user",
+			"style": {
+				"navigationBarTitleText": "我的",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/product",
+			"style": {
+				"navigationBarTitleText": "特色产品",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/edition",
+			"style": {
+				"navigationBarTitleText": "版通专享",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/shop",
+			"style": {
+				"navigationBarTitleText": "店铺",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/scenicSpot",
+			"style": {
+				"navigationBarTitleText": "景点门票",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subindex/scenery_detailed",
+			"style": {
+				"navigationBarTitleText": "景点详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subindex/product_detailed",
+			"style": {
+				"navigationBarTitleText": "产品详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/index_location",
+			"style": {
+				"navigationBarTitleText": "定位",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/group_products",
+			"style": {
+				"navigationBarTitleText": "拼团产品详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/assemble",
+			"style": {
+				"navigationBarTitleText": "拼团",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/seckill",
+			"style": {
+				"navigationBarTitleText": "限时抢购",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/works",
+			"style": {
+				"navigationBarTitleText": "文创产品",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/seckill_detailed",
+			"style": {
+				"navigationBarTitleText": "限时抢购详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/edition_details",
+			"style": {
+				"navigationBarTitleText": "商品详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/threeindex/group_order",
+			"style": {
+				"navigationBarTitleText": "确认订单",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/threeindex/group_details",
+			"style": {
+				"navigationBarTitleText": "团详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/threeindex/my_group",
+			"style": {
+				"navigationBarTitleText": "我的团",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/threeindex/operation",
+			"style": {
+				"navigationBarTitleText": "拼团操作",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subindex/threeindex/works_detailed",
+			"style": {
+				"navigationBarTitleText": "文创产品分类",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subuser/set",
+			"style": {
+				"navigationBarTitleText": "设置",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/feedback",
+			"style": {
+				"navigationBarTitleText": "反馈",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/notice",
+			"style": {
+				"navigationBarTitleText": "系统通知",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/profile",
+			"style": {
+				"navigationBarTitleText": "个人资料",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/member",
+			"style": {
+				"navigationBarTitleText": "会员中心",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/register",
+			"style": {
+				"navigationBarTitleText": "签到",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/integral",
+			"style": {
+				"navigationBarTitleText": "积分",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/coupon",
+			"style": {
+				"navigationBarTitleText": "优惠券",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subuser/mall_order",
+			"style": {
+				"navigationBarTitleText": "商城订单",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/address",
+			"style": {
+				"navigationBarTitleText": "收货地址",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subuser/addto",
+			"style": {
+				"navigationBarTitleText": "新增收货地址",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/momey",
+			"style": {
+				"navigationBarTitleText": "钱包",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subuser/distribution",
+			"style": {
+				"navigationBarTitleText": "我的分销",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/commission",
+			"style": {
+				"navigationBarTitleText": "佣金",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/user_edition",
+			"style": {
+				"navigationBarTitleText": "版通",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/assemble_order",
+			"style": {
+				"navigationBarTitleText": "拼团订单",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/modify_name",
+			"style": {
+				"navigationBarTitleText": "修改昵称",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/order_details",
+			"style": {
+				"navigationBarTitleText": "订单详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/assembleDetails",
+			"style": {
+				"navigationBarTitleText": "拼团订单详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/dis_commision",
+			"style": {
+				"navigationBarTitleText": "分销佣金",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/classification",
+			"style": {
+				"navigationBarTitleText": "分类列表",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/order",
+			"style": {
+				"navigationBarTitleText": "确认订单",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/policy_facilities",
+			"style": {
+				"navigationBarTitleText": "政策设施",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/allclass",
+			"style": {
+				"navigationBarTitleText": "全部分类",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/shoppingCart",
+			"style": {
+				"navigationBarTitleText": "购物车",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/modify_phone",
+			"style": {
+				"navigationBarTitleText": "修改手机号",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/threeLayers/resetSecond",
+			"style": {
+				"navigationBarTitleText": "重置二级密码",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/setSecond",
+			"style": {
+				"navigationBarTitleText": "二级密码",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/modifyPwd",
+			"style": {
+				"navigationBarTitleText": "修改密码",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		
+		{
+			"path": "pages/login/message_login",
+			"style" : {
+			    "navigationBarTitleText" : "短信验证码登录"
+			    // "app-plus" : {
+			    //     "titleNView" : false
+			    // }
+			}
+		},
+		{
+			"path": "pages/reg/reg",
+			"style" : {
+			    "navigationBarTitleText" : "注册"
+			    // "app-plus" : {
+			    //     "titleNView" : false
+			    // }
+			}
+		},
+		
+		{
+			"path": "pages/reg/forget",
+			"style" : {
+			    "navigationBarTitleText" : "忘记密码"
+			    // "app-plus" : {
+			    //     "titleNView" : false
+			    // }
+			}
+		}
+		
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+	    "color": "#999999",
+	    "selectedColor": "#1D9DFF",
+	    "borderStyle": "black",
+	    "backgroundColor": "#ffffff",
+	    "list": [{
+	        "pagePath": "pages/index/index",
+	        "iconPath": "static/image/index.png",
+	        "selectedIconPath": "static/image/indexHL.png",
+	        "text": "首页"
+	    }, {
+	        "pagePath": "pages/index/integral",
+	        "iconPath": "static/image/integral.png",
+	        "selectedIconPath": "static/image/integralHL.png",
+	        "text": "积分商城"
+	    },
+		{
+		    "pagePath": "pages/index/touristCard",
+		    "iconPath": "static/image/touristCard.png",
+		    "selectedIconPath": "static/image/touristCardHL.png",
+		    "text": "旅游卡"
+		},
+		{
+		    "pagePath": "pages/index/strategy",
+		    "iconPath": "static/image/strategy.png",
+		    "selectedIconPath": "static/image/strategyHL.png",
+		    "text": "攻略游记"
+		},
+		{
+		    "pagePath": "pages/index/user",
+		    "iconPath": "static/image/my.png",
+		    "selectedIconPath": "static/image/myHL.png",
+		    "text": "我的"
+		}]
+	}
+}

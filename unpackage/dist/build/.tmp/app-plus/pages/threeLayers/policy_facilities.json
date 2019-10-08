@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "政策设施",
+  "titleNView": false,
+  "usingComponents": {
+    "policy-details": "/pages/assembly/policy_details",
+    "list": "/pages/assembly/policy_list"
+  }
+}

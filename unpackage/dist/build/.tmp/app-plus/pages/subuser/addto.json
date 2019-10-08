@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "新增收货地址",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}
