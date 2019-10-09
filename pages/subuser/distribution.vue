@@ -22,7 +22,7 @@
 				<image src="../../static/image/secondary/my_invitation.png" mode="widthFix"></image>
 				<text>我的邀请码:72</text>
 			</view>
-			<view class="qb">
+			<view class="qb"  @click="jump('threeuser/mycode')">
 				<image src="../../static/image/secondary/qb.png" mode="widthFix"></image>
 			</view>
 		</view>
@@ -37,7 +37,7 @@
 					<text class="h3">234.23</text>
 					<text class="h4">成功提现佣金(元)</text>
 				</view>
-				<view class="btn">
+				<view class="btn" @click="jump('threeuser/withdrawal')">
 					佣金提现
 				</view>
 			</view>
@@ -51,21 +51,21 @@
 					<text class="h5">0.00 元</text>
 				</view>
 			</view>
-			<view class="list">
+			<view class="list" >
 				<image src="../../static/image/secondary/order2.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>分销订单</text>
 					<text class="h5">0 笔</text>
 				</view>
 			</view>
-			<view class="list">
+			<view class="list" @click="jump('threeuser/presentation')">
 				<image src="../../static/image/secondary/withdraw.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>提现明细</text>
 					<text class="h5">0 笔</text>
 				</view>
 			</view>
-			<view class="list">
+			<view class="list"  @click="jump('threeuser/team')">
 				<image src="../../static/image/secondary/my_team.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>我的团队</text>

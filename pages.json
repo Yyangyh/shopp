@@ -403,6 +403,42 @@
 			}
 		},
 		{
+			"path": "pages/subuser/threeuser/presentation",
+			"style": {
+				"navigationBarTitleText": "提现明细",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/team",
+			"style": {
+				"navigationBarTitleText": "我的团队",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/mycode",
+			"style": {
+				"navigationBarTitleText": "我的邀请码",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/withdrawal",
+			"style": {
+				"navigationBarTitleText": "佣金提现",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/threeLayers/classification",
 			"style": {
 				"navigationBarTitleText": "分类列表",
