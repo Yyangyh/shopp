@@ -57,12 +57,17 @@ const api_root = {
 			my_pay:api+'/api/groupgoods/pay',//拼团支付订单
 			my_teams:api+'/api/groupgoods/teams',//组团列表
 			OrderDetail:api+'/api/groupgoods/OrderDetail',//拼团订单详情
+			int_detail:api+'/api/creditshop/detail',//积分商品详情
+			int_order:api+'/api/creditshop/ConfirmDetail',//积分商品下单数据确认
+			int_Confirm:api+'/api/creditshop/Confirm',//积分商品订单确认(生成订单号)
+			int_pay:api+'/api/creditshop/pay',//积分商品订单支付
 			
 		},
 		Category:api+'/api/editionpass/Category',//版通商品分类
 		Category_list:api+'/api/editionpass/goodsList',//版通商品商品列表（搜索-分类）
 		org_category:api+'/api/Originality/Category',//文创产品品分类
 		org_category_list:api+'/api/Originality/goodsList',//文创商品列表
+		int_list:api+'/api/creditshop/lists',//积分商品列表
 	},
 	subuser:{
 		Useraddress:api+'/api/Useraddress/Index',//地址列表
@@ -82,7 +87,6 @@ const api_root = {
 	},
 	threeLayers:{
 		goodsList:api+'/api/goods/goodsList',//特色产品分类
-		int_list:api+'/api/creditshop/lists',//积分商品列表
 		Index:api+'/api/cart/Index',//购物车列表
 		Stock:api+'/api/cart/Stock',//更新购物车购买数量
 		Delete:api+'/api/cart/Delete',//购物车删除商品
