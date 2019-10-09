@@ -17,13 +17,13 @@
 							积分商城
 						</view>
 					</view>
-					<view class="int_list">
+					<view class="int_list"  @click="jump('threeuser/int_detailed')">
 						<image src="../../static/image/secondary/integral_detailed.png" mode="widthFix"></image>
 						<view class="">
 							积分明细
 						</view>
 					</view>
-					<view class="int_list">
+					<view class="int_list" @click="jump('threeuser/int_order_list')">
 						<image src="../../static/image/secondary/integral_order.png" mode="widthFix"></image>
 						<view class="">
 							积分订单
@@ -121,11 +121,16 @@
 			}
 		},
 		methods:{
-			
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			}
 			
 		},
 		
 		onShow() {
+			
 		}
 	}
 </script>

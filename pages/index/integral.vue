@@ -7,7 +7,7 @@
 			积分商城
 		</view>
 		<view class="table">
-			<view class="tab_list" v-for="(item,index) in data" @click="jump('../threeLayers/allclass?id='+item.id+'&type=integral')">
+			<view class="tab_list" v-for="(item,index) in data" @click="jump('../subindex/integral_list?id='+item.id)">
 				<image :src="item.icon" mode="widthFix"></image>
 				<view class="">
 					{{item.name}}
