@@ -34,6 +34,7 @@
 							<text class="other_test">其他登录方式</text>
 							<text class="line"></text>
 						</view>
+						<!-- jklsdfajg -->
 						<view class="mode" v-if="show == 0">
 							<image src="../../static/image/wx.png" mode="widthFix" @click="wx()"></image>
 						</view>
