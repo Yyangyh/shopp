@@ -31,7 +31,7 @@
 
 				</view>
 				<view class="bottom">
-					<text class="price">￥{{item.price}}</text>
+					<text class="price">￥{{item.money}}</text>
 					<text class='data'>{{item.sales_count}}人购买</text>
 					<text class="info" @click="detailed('threeindex/integral_details?id=' + item.id)">进入购买</text>
 				</view>
@@ -71,10 +71,16 @@
 				category_id: options.id
 			}, function(self, res) {
 				console.log(res)
-				self.data = res.data.data
+				let data = res.data.data
+				for (let s of data) {
+					let money = []
+					if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
+					if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
+					if(Number(s.price) != 0) money.push('￥'+Number(s.price))
+					s.money = money.join('+')
+				}
+				self.data = data
 			})
-			
-
 		}
 	}
 </script>

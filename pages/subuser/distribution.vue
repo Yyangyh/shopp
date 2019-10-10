@@ -234,7 +234,7 @@
 		line-height: 60rpx;
 		border-radius: 60rpx;
 		background: #1D9DFF;
-		font-size: 30rpx;
+		font-size: 28rpx;
 		color: #FFFFFF;
 	}
 	.features{

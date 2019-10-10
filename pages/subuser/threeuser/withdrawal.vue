@@ -64,6 +64,9 @@
 		width: 100%;
 		height: 100%;
 	}
+	.top{
+		box-shadow: none;
+	}
 	.content{
 		width: 100%;
 		height: 100%;
@@ -72,7 +75,7 @@
 	.drawal{
 		display: flex;
 		justify-content: space-between;
-		padding: 20rpx ;
+		padding: 30rpx 20rpx;
 	}
 	.quota{
 		width: 100%;
@@ -84,7 +87,7 @@
 	}
 	.quota .quota_top{
 		
-		font-size: 36rpx;
+		font-size: 32rpx;
 	}
 	.quota .quota_bottom{
 		font-size: 48rpx;
@@ -92,8 +95,12 @@
 		align-items: center;
 		margin-top: 20rpx;
 	}
+	.quota .quota_bottom text{
+		font-size: 28rpx;
+	}
 	.quota .quota_bottom input{
-		font-size: 44rpx;
+		font-size: 28rpx;
+		margin-left: 10rpx;
 	}
 	.way{
 		box-sizing: border-box;
@@ -112,12 +119,12 @@
 	.alipay {
 		display: flex;
 		justify-content: space-between;
-		font-size: 36rpx;
+		font-size: 28rpx;
 		color: #333333;
 	}
 	.alipay .alipay_img image{
-		width: 64rpx;
-		height: 64rpx;
+		width: 48rpx;
+		height: 48rpx;
 		vertical-align: middle;
 		margin-right: 20rpx;
 	}
@@ -138,16 +145,16 @@
 	}
 	.cash .cash_box{
 		width: 100%;
-		height: 88rpx;
-		line-height: 88rpx;
+		height: 80rpx;
+		line-height: 80rpx;
 		text-align: center;
 		background-color: #1D9DFF;
 		color: white;
-		font-size: 36rpx;
+		font-size: 32rpx;
 		border-radius: 44rpx;
 	}
 	.col_grey{
-		font-size: 36rpx;
+		font-size: 28rpx;
 		color:#666666;
 	}
 	
@@ -156,7 +163,7 @@
 	}
 	.col_blue{
 		color: #02A7F0;
-		font-size: 36rpx;
+		font-size: 28rpx;
 		font-weight: 500;
 	}
 </style>

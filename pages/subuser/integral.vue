@@ -3,7 +3,11 @@
 		<view class="status_bar">
 		            <!-- 这里是状态栏 -->
 		</view>
-		<returns :titles='title'></returns>
+		<view class="top">
+			<image src="../../static/image/return.png" mode="widthFix" @click="returns()"></image>
+			<text>积分明细</text>
+			<text></text>
+		</view>
 		<view class="int_top">
 			<image class="back" src="../../static/image/secondary/integral_back.png" mode="widthFix"></image>
 			<view class="back_index">
@@ -117,7 +121,6 @@
 		},
 		data() {
 			return {
-				title:'积分',
 			}
 		},
 		methods:{
@@ -125,8 +128,12 @@
 				uni.navigateTo({
 					url:url
 				})
-			}
-			
+			},
+			returns(){
+				uni.switchTab({
+				    url: '/pages/index/user'
+				});
+			},
 		},
 		
 		onShow() {
@@ -136,6 +143,26 @@
 </script>
 
 <style scoped>
+	.top{
+		position: relative;
+		height: 105rpx;
+		padding: 0 44rpx;
+		
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		font-size: 32rpx;
+		font-weight: bold;
+		color: #333;
+	}
+	.top image{
+		height: 40rpx;
+		width: 40rpx;
+	}
+	.top text:nth-of-type(2){
+		width: 40rpx;
+		display: inline-block;
+	}
 	.int_top{
 		position: relative;
 		color: #fff;
@@ -160,7 +187,7 @@
 		text-align: center;
 		font-weight: bold;
 		font-size: 100rpx;
-		margin-top: 64rpx;
+		margin-top: 110rpx;
 	}
 	.int_top .back_index .int_tab{
 		display: flex;
@@ -192,6 +219,9 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-30%,-50%);
+	}
+	.equity .equity_box image{
+		height: 180rpx;
 	}
 	.shopp{
 		margin-top: 40rpx;

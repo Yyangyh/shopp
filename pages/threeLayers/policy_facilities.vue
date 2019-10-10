@@ -362,7 +362,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 36rpx;
+		font-size: 32rpx;
 		font-weight: bold;
 		color: #333333;
 		box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);

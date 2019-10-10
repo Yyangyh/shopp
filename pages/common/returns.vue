@@ -48,7 +48,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 36rpx;
+		font-size: 32rpx;
 		font-weight: bold;
 		color: #333333;
 		background: #fff;

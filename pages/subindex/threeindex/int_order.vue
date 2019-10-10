@@ -43,8 +43,7 @@
 				</view> -->
 				<view class="price">
 					<view class="momey">
-						<text>{{shopp.bt}}版通</text>
-						<text>+{{shopp.credit}}积分</text>
+						{{shopp.money}}
 					</view>
 					<view class="number">
 						数量：x{{shopp.stock}}
@@ -68,8 +67,7 @@
 			<view class="list">
 				<text>商品小计</text>
 				<text>
-					<text>{{shopp.bt}}版通</text>
-					<text>+{{shopp.credit}}积分</text>
+					{{shopp.money}}
 				</text>
 			</view>
 			<!-- <view class="list">
@@ -100,8 +98,7 @@
 		
 		<view class="pay">
 			<view class="paying">
-				需支付：<text>{{shopp.bt}}版通</text>
-						<text>+{{shopp.credit}}积分</text>
+				需支付：<text>{{shopp.money}}</text>
 			</view>
 			<view class="btn">
 				<button type="primary" @click="payments()">立即购买</button>
@@ -175,7 +172,7 @@
 							id:res.data.order.order_id,
 							payment_id:self.payment_id
 						},function(selfs,ref){
-							self.common.order(ref,self,'../../subuser/assemble_order','pages/subuser/assemble_order')
+							self.common.order(ref,self,'../../subuser/threeuser/int_order_list','pages/subuser/threeuser/int_order_list')
 						})	
 					}else{
 						uni.showToast({
@@ -215,13 +212,18 @@
 					return
 				}
 				self.data = res.data
-				if(!res.data.base.address){
-					self.show_add = 0
-				}else{
-					self.show_add = 1
-				}
+				!res.data.base.address ? self.show_add = 0 :self.show_add = 1
 				self.address = res.data.base.address
-				self.shopp = res.data.goods_list[0]
+				
+				//金额
+				let shopp = res.data.goods_list[0]
+				let money = []
+				if(Number(shopp.total_bt) != 0) money.push(Number(shopp.total_bt)+'版通')
+				if(Number(shopp.total_credit) != 0) money.push(Number(shopp.total_credit)+'积分')
+				if(Number(shopp.total_price) != 0) money.push('￥'+Number(shopp.total_price))
+				shopp.money = money.join('+')
+				self.shopp = shopp
+				
 				let data = res.data.payment_list
 				for (let s of data) {
 					s.choice = false

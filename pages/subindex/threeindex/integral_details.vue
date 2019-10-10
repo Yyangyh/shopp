@@ -18,8 +18,7 @@
 				{{data.title}}
 			</view>
 			<view class="price">
-				<text>{{data.bt}}版通</text>
-				<text>+{{data.credit}}积分</text>
+				<text>{{data.money}}</text>
 				<!-- <text>已售{{data.sales_count}}</text> -->
 			</view>
 			<view class="pr_bottom">
@@ -179,7 +178,7 @@
 				<image :src="data.images" mode="aspectFill"></image>
 				<view class="wh_right">
 					<view class="wh_test1">
-						￥{{price}}
+						￥{{data.money}}
 					</view>
 					<view class="wh_test2">
 						库存{{inventory}}件
@@ -342,8 +341,14 @@
 				id: options.id
 			}, function(self, res) {
 				
-				self.data = res.data.goods
-				self.price = res.data.goods.price
+				let data =  res.data.goods
+				let money = []
+				if(Number(data.bt) != 0) money.push(Number(data.bt)+'版通')
+				if(Number(data.credit) != 0) money.push(Number(data.credit)+'积分')
+				if(Number(data.price) != 0) money.push('￥'+Number(data.price))
+				data.money = money.join('+')
+				self.data = data
+				// self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory
 				// let list = res.data.goods.specifications.choose
 				// if(list != ''){

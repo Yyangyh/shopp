@@ -27,7 +27,7 @@
 				</view>
 			</view>
 			<view class="box_bottom">
-				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'  @click="jump('threeuser/assembleDetails?id='+item.id+'&temid='+item.teamid)">
+				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'  @click="jump('./int_order_detailed?id='+item.id)">
 					<view class="list_top">
 						<view class="top1">
 							<image src="../../static/image/secondary/shop.png" mode="widthFix"></image>
@@ -47,10 +47,13 @@
 						<view class="top2 stayGoods" v-if="item.status == 2">
 							{{item.statusstr}}
 						</view>
+						<view class="top2 stayGoods" v-if="item.status == 3">
+							{{item.statusstr}}
+						</view>
 					</view>
 					
 					<view class="list_middle">
-						<image :src="item.thumb" mode="aspectFill"></image>
+						<image :src="item.images" mode="aspectFill"></image>
 						<view class="middle1">
 							<view class="">{{item.title}}</view>
 							<view>套装</view>
@@ -62,7 +65,7 @@
 							支付方式：在线支付
 						</view> -->
 						<view class="bottom2">
-							订单金额<text>￥{{Number(item.price)+Number(item.freight)}}</text>
+							订单金额<text>{{item.money}}</text>
 						</view>
 						<view class="bottom3">
 							详情
@@ -72,24 +75,33 @@
 				
 			</view>
 		</view>
+		<uni-load-more :status="more"></uni-load-more>
 	</view>
 </template>
 
 <script>
 	import returns from '../../common/returns.vue'
+	import uniLoadMore from '../../../components/uni-load-more/uni-load-more.vue'
 	export default{
 		components:{
-			returns
+			returns,
+			uniLoadMore
 		},
 		data() {
 			return {
 				show: 0,
-				data:''
+				data:[],
+				money:'',
+				more:'more',
+				page:1,
+				loadRecord:true
 			}
 		},
 		methods:{
 			returns(){
-				this.common.returns(this)
+				uni.reLaunch({
+				    url: '../integral'
+				});
 			},
 			jump(url){
 				uni.navigateTo({
@@ -98,25 +110,55 @@
 			},
 			chiose(status){
 				this.show = status
-				this.service.entire(this,'get',this.service.api_root.subuser.grou_order,{
+				this.loadRecord = true
+				this.page = 1
+				this.service.entire(this,'post',this.service.api_root.subuser.threeuser.int_orders,{
 					token:uni.getStorageSync('token'),
-					is_more:1,
 					status:status,
-					page:1
+					page:this.page
 				},function(self,res){
 					self.data = res.data.data
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+					}
+				})
+			},
+			loadMore(){
+				let page = this.page
+				this.more = 'loading'
+				this.service.entire(this,'post',this.service.api_root.subuser.threeuser.int_orders,{
+					token:uni.getStorageSync('token'),
+					status:this.show,
+					page:page
+				},function(self,res){
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+					let data = self.data
+					data.push(...res.data.data)
+					for (let s of data) {
+						let money = []
+						if(Number(s.total_bt) != 0) money.push(Number(s.total_bt)+'版通')
+						if(Number(s.total_credit) != 0) money.push(Number(s.total_credit)+'积分')
+						if(Number(s.total_price) != 0) money.push('￥'+Number(s.total_price))
+						s.money = money.join('+')
+					}
+					self.data = data
+					self.page = page + 1
+					self.more = 'more'
+					
 				})
 			}
 		},
+		onReachBottom(){
+			if(this.loadRecord == false) return
+			this.loadMore()
+		},
 		onShow() {
-			this.service.entire(this,'post',this.service.api_root.subuser.grou_order,{
-				token:uni.getStorageSync('token'),
-				status:0,
-				page:1
-			},function(self,res){
-				console.log(res)
-				self.data = res.data.data
-			})
+			this.loadMore()
 		}
 	}
 </script>
@@ -144,7 +186,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 36rpx;
+		font-size: 32rpx;
 		font-weight: bold;
 		color: #333333;
 		background: #fff;

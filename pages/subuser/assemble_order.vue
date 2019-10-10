@@ -72,20 +72,26 @@
 				
 			</view>
 		</view>
+		<uni-load-more :status="more"></uni-load-more>
 	</view>
 </template>
 
 <script>
 	import returns from '../common/returns.vue'
+	import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue'
 	export default{
 		components:{
-			returns
+			returns,
+			uniLoadMore
 		},
 		data() {
 			return {
 				title:'拼团订单',
 				show: 0,
-				data:''
+				data:'',
+				more:'more',
+				page:1,
+				loadRecord:true
 			}
 		},
 		methods:{
@@ -101,6 +107,8 @@
 			},
 			chiose(status){
 				this.show = status
+				this.page = 1
+				this.loadRecord = true
 				this.service.entire(this,'get',this.service.api_root.subuser.grou_order,{
 					token:uni.getStorageSync('token'),
 					is_more:1,
@@ -108,18 +116,40 @@
 					page:1
 				},function(self,res){
 					self.data = res.data.data
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+					}
+				})
+			},
+			loadMore(){
+				let page = this.page
+				this.more = 'loading'
+				this.service.entire(this,'get',this.service.api_root.subuser.grou_order,{
+					token:uni.getStorageSync('token'),
+					is_more:1,
+					status:this.show,
+					page:page
+				},function(self,res){
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+					let data = self.data
+					data.push(...res.data.data)
+					self.data = data
+					self.page = page + 1
+					self.more = 'more'
 				})
 			}
 		},
+		onReachBottom(){
+			if(this.loadRecord == false) return
+			this.loadMore()
+		},
 		onShow() {
-			this.service.entire(this,'post',this.service.api_root.subuser.grou_order,{
-				token:uni.getStorageSync('token'),
-				status:0,
-				page:1
-			},function(self,res){
-				console.log(res)
-				self.data = res.data.data
-			})
+			this.loadMore()
 		}
 	}
 </script>
@@ -147,7 +177,7 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		font-size: 36rpx;
+		font-size: 32rpx;
 		font-weight: bold;
 		color: #333333;
 		background: #fff;
