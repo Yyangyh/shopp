@@ -1,6 +1,7 @@
 
 .content.data-v-f3c174ea {
 	padding-bottom: 20rpx;
+	padding-top: 105rpx;
 }
 .top.data-v-f3c174ea{
 	background: #1D9DFF;
@@ -9,6 +10,8 @@
 	height: 105rpx;
 	font-size: 32rpx;
 	padding: 0 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	font-weight: bold;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -23,6 +26,11 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 	padding: 0 22rpx;
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
+	z-index: 888;
 }
 .top text.data-v-f3c174ea:first-child{
 	width: 42rpx;

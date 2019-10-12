@@ -130,6 +130,7 @@
 <style scoped>
 	.content {
 		padding-bottom: 20rpx;
+		padding-top: 105rpx;
 	}
 	.top{
 		background: #1D9DFF;
@@ -138,11 +139,17 @@
 		height: 105rpx;
 		font-size: 32rpx;
 		padding: 0 20rpx;
+		box-sizing: border-box;
 		font-weight: bold;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		padding: 0 22rpx;
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		z-index: 888;
 	}
 	.top text:first-child{
 		width: 42rpx;

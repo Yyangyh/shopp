@@ -8,7 +8,8 @@
 			<view class="top_operation">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<image v-if="is_favor == 0" @click="collect()" class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<image  v-else  @click="collect()" class="love" src="../../static/image/collect.png" mode="widthFix"></image>
 					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -164,8 +165,9 @@
 					购物车
 				</view>
 			</view> -->
-			<view class="tab_list tab_mid" >
-				<image src="../../static/image/collection.png" mode="widthFix"></image>
+			<view class="tab_list tab_mid"  @click="collect()">
+				<image v-if="is_favor == 0" src="../../static/image/collection.png" mode="widthFix"></image>
+				<image v-else src="../../static/image/loves.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>
@@ -241,7 +243,8 @@
 				index_list: 0,
 				price:'',
 				type:'',
-				inventory:''
+				inventory:'',
+				is_favor:''
 			}
 		},
 		methods: {
@@ -252,6 +255,10 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			collect(){ //收藏
+				this.common.collection(this,this.id)
+				console.log(this.is_favor)
 			},
 			reduce() { //数量减
 				this.num == 1 ? this.num = 1 : this.num--
@@ -370,6 +377,7 @@
 				self.data = res.data.goods
 				self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory
+				self.is_favor = res.data.goods.is_favor //是否收藏
 				let list = res.data.goods.specifications.choose
 				if(list != ''){
 					for (let s of list) {

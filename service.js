@@ -1,8 +1,8 @@
 
 
 
-// const api = ''
-const api = 'http://wx.huanqiutongmall.com'
+const api = ''
+// const api = 'http://wx.huanqiutongmall.com'
 
 
 
@@ -123,7 +123,7 @@ const entire = function(self,type,url,data,func){
 						title:'登录失效，请重新登录'
 					})
 					setTimeout(function(){
-						uni.reLaunch({
+						uni.redirectTo({
 							url:'/pages/login/login'
 						})
 					},1500)
@@ -134,7 +134,7 @@ const entire = function(self,type,url,data,func){
 				
 				
 				setTimeout(function(){
-					uni.reLaunch({
+					uni.redirectTo({
 						url:'/pages/login/login'
 					})
 				},100)

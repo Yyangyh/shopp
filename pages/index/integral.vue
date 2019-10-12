@@ -102,6 +102,9 @@
 </script>
 
 <style scoped>
+	.content{
+		padding-top: 105rpx;
+	}
 	.top{
 		height: 105rpx;
 		line-height: 105rpx;
@@ -110,6 +113,12 @@
 		font-size: 32rpx;
 		background: #fff;
 		box-shadow:0px 1rpx 20rpx 0px #eee;
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		background: #fff;
+		z-index: 888;
 	}
 	.table {
 		display: flex;

@@ -263,6 +263,12 @@
 				});
 			},
 			jump(url){
+				if(this.state == 2){
+					uni.navigateTo({
+						url:'../login/login'
+					})
+					return
+				}
 				uni.navigateTo({
 					url:url
 				})
@@ -278,7 +284,7 @@
 				data:data,
 				success(res) {
 					console.log(res.data.data)
-					if(res.data.code == -400){
+					if(res.data.code == -400){ //判断是否已经登录
 						that.state = 2	
 					}else{
 						that.state = 1

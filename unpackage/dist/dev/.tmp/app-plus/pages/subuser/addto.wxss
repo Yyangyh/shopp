@@ -69,6 +69,22 @@ button.data-v-e3c70d84{
 	left: 0;
 	bottom: 0;
 	z-index: 999;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	-webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	        transform: translateY(100%);
+}
+.mask_none.data-v-e3c70d84{
+	-webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	        transform: translateY(100%);
+}
+.mask_show.data-v-e3c70d84{
+	-webkit-transform: translateY(0);
+	    -ms-transform: translateY(0);
+	        transform: translateY(0);
 }
 .choice_city image.data-v-e3c70d84{
 	position: absolute !important;

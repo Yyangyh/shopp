@@ -74,7 +74,7 @@ page.data-v-6134b018{
 }
 .int_box.data-v-6134b018{
 	margin: 0 20rpx;
-	min-height: 600rpx;
+	min-height: 900rpx;
 }
 .int_box .box_list.data-v-6134b018{
 	padding: 28rpx 16rpx;
