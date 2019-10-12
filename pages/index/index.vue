@@ -214,7 +214,7 @@
 					版通（AWT）
 				</view>
 				<view class="ej_bottom">
-					1AWT≈7.88CNY
+					1AWT≈{{set_price}}CNY
 				</view>
 			</view>
 			<image src="../../static/image/index/close.png" mode="widthFix" @click="eject_show = false"></image>
@@ -241,7 +241,8 @@
 				group_list:'',
 				eject_show:true,
 				item_data_guess:'',
-				works_data_guess:''
+				works_data_guess:'',
+				set_price:''
 			}
 		},
 		onLoad() {
@@ -258,7 +259,7 @@
 			// #endif  
 			
 			service.entire(this, 'get', service.api_root.index.banner, {}, function(self, res) { //轮播图
-				console.log(res)
+				
 				self.img_list = res.data
 				let datas = []
 				res.data.forEach((value, index) => {
@@ -272,20 +273,22 @@
 			})
 			
 			service.entire(this, 'get', service.api_root.index.Redgroupsgoods, {}, function(self, res) { //首页拼团
-				console.log(res)
+				
 				self.group_list = res.data
 			})
 			this.service.entire(this,'get',this.service.api_root.threeLayers.goodsList,{},function(self,res){  //猜你喜欢——特色产品
-					console.log(res)
+					
 					self.item_data_guess = res.data.data
 					self.item_data_guess.length = 4
-					console.log(self.data_guess)
 			})
 			this.service.entire(this,'get',this.service.api_root.subindex.org_category_list,{red:1},function(self,res){  //猜你喜欢——文创产品
-				console.log(res)
+				
 				self.works_data_guess = res.data.data
 			})
-			
+			this.service.entire(this,'post',this.service.api_root.index.btscale,{},function(self,res){  //版通比例
+				
+				self.set_price = res.data.set_price
+			})
 		},
 		methods: {
 			jump(url) {
@@ -310,6 +313,7 @@
 <style scoped>
 	.content {
 		padding-bottom: 20rpx;
+		padding-top: 105rpx;
 	}
 
 	.uni-input-placeholder {
@@ -321,13 +325,18 @@
 		width: 100%;
 		top: 0;
 		left: 0;
-		/* z-index: 888; */
+		z-index: 888;
 		background: #1D9DFF;
-		/* position: fixed; */
+		position: fixed;
 	}
 
 	.top_search {
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
 		background: #1D9DFF;
+		z-index: 888;
 	}
 
 	.top_search .navigation {

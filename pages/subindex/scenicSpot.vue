@@ -316,8 +316,16 @@
 <style scoped>
 	.content {
 		padding-bottom: 132rpx;
+		padding-top: 105rpx;
 	}
-
+	.content >>>.return{
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		background: #FFF;
+		z-index: 888;
+	}
 	.top_img {
 		width: 100%;
 		/* height: 400rpx; */

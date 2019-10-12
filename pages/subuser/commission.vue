@@ -102,6 +102,9 @@
 		background: #F2F2F2;
 		
 	}
+	.content >>>.top{
+		position: relative;
+	}
 	.amount{
 		width: 100%;
 		height: 316rpx;

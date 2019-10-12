@@ -6,7 +6,7 @@
 		
 		<returns :titles='title'></returns>
 		<view class="ed_top">
-			<view class=""  v-for="(item,index) in data" :key='item.id' :class="{show:show == index}" @click="show = index,data_list = data[index].items">
+			<view class=""  v-for="(item,index) in data" :key='item.id' :class="{show:show == index}" @click="chiose(index)">
 				{{item.name}}
 			</view>
 		</view>
@@ -62,6 +62,10 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			chiose(index){
+				 this.show = index
+				 this.data_list = this.data[index].items
 			}
 		},
 		onShow() {
@@ -82,7 +86,17 @@
 </script>
 
 <style scoped>
-	.top{
+	.content{
+		padding-top: 105rpx;
+	}
+	
+	.content >>>.top{	
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		background: #FFF;
+		z-index: 888;
 		box-shadow: none;
 	}
 	.ed_top{

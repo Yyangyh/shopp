@@ -11,47 +11,110 @@
 		</view>
 		<view class="integral">
 			<view class="int_top">
-				<view :class="{show:show == 0}" @click="show = 0">
+				<view :class="{show:show == -1}" @click="choice(-1)">
 					全部
 				</view>
-				<view :class="{show:show == 1}" @click="show = 1">
+				<view :class="{show:show == 0}" @click="choice(0)">
 					获得
 				</view>
-				<view :class="{show:show == 2}" @click="show = 2">
+				<view :class="{show:show == 1}" @click="choice(1)">
 					消耗
 				</view>
 			</view>
 			<view class="int_box">
-				<view class="box_list">
+				<view class="box_list" v-for="(item,index) in data" :key='item.id'>
 					<view class="list_left">
 						<view class="">
-							会员签到
+							{{item.msg}}
 						</view>
 						<view class="time">
-							2019-9-20
+							{{item.add_time_time}}
 						</view>
 					</view>
 					<view class="list_right">
-						+2
+						{{item.new_integral - item.original_integral}}
 					</view>
 				</view>
 				
 			</view>
+			<uni-load-more :status="more"></uni-load-more>
 		</view>
+		
 	</view>
 </template>
 
 <script>
+	import uniLoadMore from '../../../components/uni-load-more/uni-load-more.vue'
 	export default{
+		components:{
+			uniLoadMore
+		},
 		data() {
 			return {
-				show:0
+				show:-1,
+				data:[],
+				more:'more',
+				page:1,
+				loadRecord:true
 			}
 		},
 		methods:{
 			returns(){
 				this.common.returns(this)
+			},
+			choice(status){
+				this.show = status
+				this.loadRecord = true
+				this.page = 1
+				let data = {
+					token:uni.getStorageSync('token'),
+					is_more:1,
+					page:1
+				}
+				if(status != -1) data.type = status
+				this.service.entire(this,'post',this.service.api_root.subuser.UserIntegral,data,function(self,res){
+					self.data = res.data.data
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+					}
+				})
+			},
+			loadMore(){  //上拉加载更多
+				let page = this.page
+				this.more = 'loading'
+				let data = {
+					token:uni.getStorageSync('token'),
+					is_more:1,
+					page:page
+				}
+				if(this.show != -1) data.type = this.show
+				this.service.entire(this,'post',this.service.api_root.subuser.UserIntegral,data,function(self,res){
+				
+					let data = self.data
+					if(res.data.data == ''){
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+					data.push(...res.data.data)
+					self.data = data
+					self.page = page + 1
+					self.more = 'more'
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+				})
 			}
+		},
+		onReachBottom(){
+			if(this.loadRecord == false) return
+			this.loadMore()
+		},
+		onShow() {
+			this.loadMore()
 		}
 	}
 </script>

@@ -277,13 +277,20 @@
 	}
 	
 	.content{
-		
+		padding-top: 105rpx;
 		/* height: 100%; */
 		width: 100%;
 	}
-	.top{
+	.content >>>.top{
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		background: #FFF;
+		z-index: 888;
 		box-shadow: none;
 	}
+	
 	.seckill{
 		background: #fff;
 		/* margin-bottom: 24rpx; */

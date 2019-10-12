@@ -1,8 +1,6 @@
 <template>
 	<view class="content">
-		<view class="status_bar">
-		            <!-- 这里是状态栏 -->
-		  </view>
+		
 		<view class="ipt">
 			<image src="../../static/image/user.png" mode=""></image>
 			<input type="text" value="" placeholder="输入手机号"/>
@@ -86,6 +84,7 @@
 		font-size: 32rpx;
 		width: 160rpx;
 		text-align: center;
+		white-space: nowrap;
 	}
 	button{
 		background: #1D74FF;

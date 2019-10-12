@@ -1,8 +1,6 @@
 <template>
 	<view class="content">
-		<view class="status_bar">
-		            <!-- 这里是状态栏 -->
-		  </view>
+		
 		<view class="ipt">
 			<image src="../../static/image/user.png" mode=""></image>
 			<input type="text" v-model="accounts" value="" placeholder="输入手机号"/>
@@ -13,7 +11,7 @@
 			<text @click="obtain()">{{verification}}</text>
 		</view>
 		<button @click="login()">登录</button>
-		<view class="test">
+		<view class="test" @click="jump('./login')">
 			<text>密码登录</text>
 		</view>
 		<view class="other">
@@ -39,6 +37,11 @@
 			}
 		},
 		methods:{
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			},
 			obtain(){ //获取验证码
 				var that = this
 				
@@ -155,6 +158,7 @@
 		font-size: 32rpx;
 		width: 160rpx;
 		text-align: center;
+		white-space: nowrap;
 	}
 	button{
 		background: #1D74FF;

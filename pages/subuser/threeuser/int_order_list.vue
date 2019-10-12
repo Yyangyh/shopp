@@ -132,13 +132,14 @@
 					status:this.show,
 					page:page
 				},function(self,res){
-					if(res.data.data.length < 10){
+					
+					let data = self.data
+					data.push(...res.data.data)
+					if(res.data.data == ''){
 						self.more = 'noMore'
 						self.loadRecord = false
 						return
 					}
-					let data = self.data
-					data.push(...res.data.data)
 					for (let s of data) {
 						let money = []
 						if(Number(s.total_bt) != 0) money.push(Number(s.total_bt)+'版通')
@@ -149,7 +150,11 @@
 					self.data = data
 					self.page = page + 1
 					self.more = 'more'
-					
+					if(res.data.data.length < 10){
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
 				})
 			}
 		},

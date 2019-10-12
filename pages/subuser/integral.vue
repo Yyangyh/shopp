@@ -15,7 +15,7 @@
 					945
 				</view>
 				<view class="int_tab">
-					<view class="int_list">
+					<view class="int_list" @click="shopp()">
 						<image src="../../static/image/secondary/integral.png" mode="widthFix"></image>
 						<view class="">
 							积分商城
@@ -79,7 +79,7 @@
 		<view class="equity">
 			<view class="equity_box">
 				<image src="../../static/image/secondary/int_shopp.png" mode="widthFix"></image>
-				<text>积分兑权益</text>
+				<text>积分兑商品</text>
 			</view>
 		</view>
 		<view class="shopp">
@@ -134,6 +134,11 @@
 				    url: '/pages/index/user'
 				});
 			},
+			shopp(){
+				uni.switchTab({
+				    url: '/pages/index/integral'
+				});
+			}
 		},
 		
 		onShow() {

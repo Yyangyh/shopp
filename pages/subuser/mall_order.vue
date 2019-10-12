@@ -44,7 +44,7 @@
 						<view class="top2 stayGoods" v-if="item.status == 2">
 							{{item.status_name}}
 						</view>
-						<view class="top2 stayComment" v-if="item.status == 8">
+						<view class="top2 stayComment" v-if="item.status == 3">
 							{{item.status_name}}
 						</view>
 					</view>

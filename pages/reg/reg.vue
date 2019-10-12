@@ -1,8 +1,8 @@
 <template>
 	<view class="content">
-		<view class="status_bar">
-		            <!-- 这里是状态栏 -->
-		  </view>
+		<!-- <view class="status_bar">
+		            
+		</view> -->
 		<view class="ipt">
 			<image src="../../static/image/user.png" mode=""></image>
 			<input type="text" value="" v-model="accounts" placeholder="输入手机号"/>
@@ -20,7 +20,7 @@
 			<input type="text" v-model="pwds" value="" password="treu" placeholder="确认密码"/>
 		</view>
 		<button @click="reg()">注册</button>
-		<view class="test">
+		<view class="test" @click="jump('../login/login')">
 			<text>登录</text>
 		</view>
 	</view>
@@ -37,9 +37,15 @@
 				pwd:'',
 				pwds:'',
 				verify:'',
+				referrer:''
 			}
 		},
 		methods:{
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			},
 			obtain(){ //获取验证码
 				var that = this
 				if(that.disabled == true) return
@@ -89,17 +95,18 @@
 					})
 					return;
 				}
-				console.log(service.api_root.reg.reg)
+				let data_list = {
+					accounts:that.accounts,
+					pwd:that.pwd,
+					verify:that.verify,
+					type:'sms'
+				}
+				if(that.referrer != '') data_list.referrer = that.referrer
 				uni.request({
 					url:service.api_root.reg.reg,
 					method:'POST',
 					header:{'X-Requested-With':'xmlhttprequest'},
-					data:{
-						accounts:that.accounts,
-						pwd:that.pwd,
-						verify:that.verify,
-						type:'sms'
-					},
+					data:data_list,
 					success(res) {
 						console.log(res)
 						let data = res.data 
@@ -117,6 +124,16 @@
 						}
 					}
 				})
+			}
+		},
+		onLoad(options) {
+			
+			if(options.referrer){
+				uni.showToast({
+					icon:'none',
+					title:options.referrer
+				})
+				this.referrer = options.referrer
 			}
 		},
 		watch:{
@@ -138,9 +155,7 @@
 	.uni-input-placeholder{
 		color: #C5C5C5;
 	}
-	.uni-input-placeholder{
-		color: #C5C5C5;
-	}
+	
 	.ipt{
 		display: flex;
 		margin: 20rpx;
@@ -159,6 +174,7 @@
 		font-size: 32rpx;
 		width: 160rpx;
 		text-align: center;
+		white-space: nowrap;
 	}
 	button{
 		background: #1D74FF;

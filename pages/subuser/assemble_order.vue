@@ -131,15 +131,21 @@
 					status:this.show,
 					page:page
 				},function(self,res){
+					console.log(res.data.data)
+					let data = self.data
+					if(res.data.data == ''){
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+					data.push(...res.data.data)
+					self.data = data
+					self.page = page + 1
 					if(res.data.data.length < 10){
 						self.more = 'noMore'
 						self.loadRecord = false
 						return
 					}
-					let data = self.data
-					data.push(...res.data.data)
-					self.data = data
-					self.page = page + 1
 					self.more = 'more'
 				})
 			}

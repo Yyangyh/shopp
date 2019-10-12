@@ -139,8 +139,8 @@
 		height: 210rpx;
 		border-radius: 10rpx;
 		background: #FFFFFF;
-		position: absolute;
-		top: 355rpx;
+		position: relative;
+		top: -40rpx;
 		left: 5%;
 		box-shadow: 0 10rpx 20rpx #eee;
 		display: flex;

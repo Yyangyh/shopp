@@ -1,5 +1,8 @@
 <template>
 	<view class="content">
+		<view class="status_bar">
+		            <!-- 这里是状态栏 -->
+		</view>
 		<returns :titles='title'></returns>
 		<view class="edition_top">
 			<view class="">

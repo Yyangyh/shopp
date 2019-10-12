@@ -81,13 +81,18 @@
 	}
 	
 	.content{
-		
+		padding-top: 105rpx;
 		/* height: 100%; */
 		width: 100%;
 	}
 	.top{
 		height: 105rpx;
 		width:100%;
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		background: #FFF;
+		z-index: 888;
 		padding: 0 40rpx;
 		box-sizing: border-box;
 		display: flex;
@@ -112,9 +117,9 @@
 	}
 	.tab{
 		background: #fff;
-		margin: 0 20rpx 16rpx 20rpx;
+		margin: 20rpx 20rpx 16rpx 20rpx;
 		border-radius:10rpx;
-		height: 280rpx;
+		height: 300rpx;
 	}
 	
 	.tab .tab_top{

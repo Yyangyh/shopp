@@ -11,8 +11,8 @@
 				<image src="../../static/image/secondary/avatar00.png" mode="widthFix"></image>
 				<view class="name">
 					<text class="h1">183****1002</text>
-					<text class="h2">推荐人:平台</text>
-					<text class="level">默认等级</text>
+					<text class="h2">推荐人:{{data.myreferrer}}</text>
+					<text class="level">等级{{user_data.name}}</text>
 				</view>
 			</view>
 		</view>
@@ -20,19 +20,19 @@
 		<view class="invitation">
 			<view class="code">
 				<image src="../../static/image/secondary/my_invitation.png" mode="widthFix"></image>
-				<text>我的邀请码:72</text>
+				<text>我的邀请码</text>
 			</view>
-			<view class="qb"  @click="jump('threeuser/mycode')">
-				<image src="../../static/image/secondary/qb.png" mode="widthFix"></image>
+			<view class="qb"  @click="jump('threeuser/mycode?code='+qrcode)">
+				<image :src="qrcode" mode="widthFix"></image>
 			</view>
 		</view>
 		<!--  -->
 		<view class="commission">
 			<view class="success">
-				<text class="h3">0.00</text>
-				<text class="h4">成功提现佣金(元)</text>
+				<text class="h3">{{data.user_profit_price}}</text>
+				<text class="h4">获得佣金(元)</text>
 			</view>
-			<view class="operational">
+			<!-- <view class="operational">
 				<view class="writing">
 					<text class="h3">234.23</text>
 					<text class="h4">成功提现佣金(元)</text>
@@ -40,7 +40,7 @@
 				<view class="btn" @click="jump('threeuser/withdrawal')">
 					佣金提现
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<!--  -->
 		<view class="features">
@@ -48,28 +48,28 @@
 				<image src="../../static/image/secondary/dc.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>分销佣金</text>
-					<text class="h5">0.00 元</text>
+					<text class="h5">{{data.profit_total}} 单</text>
 				</view>
 			</view>
-			<view class="list" >
+			<view class="list"  @click="jump('threeuser/presentation')">
 				<image src="../../static/image/secondary/order2.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>分销订单</text>
-					<text class="h5">0 笔</text>
+					<text class="h5">{{data.order_total}} 笔</text>
 				</view>
 			</view>
-			<view class="list" @click="jump('threeuser/presentation')">
+			<!-- <view class="list">
 				<image src="../../static/image/secondary/withdraw.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>提现明细</text>
 					<text class="h5">0 笔</text>
 				</view>
-			</view>
+			</view> -->
 			<view class="list"  @click="jump('threeuser/team')">
 				<image src="../../static/image/secondary/my_team.png" mode="widthFix"></image>
 				<view class="list_name">
 					<text>我的团队</text>
-					<text class="h5">0 人</text>
+					<text class="h5">{{data.team_total}} 人</text>
 				</view>
 			</view>
 			
@@ -85,7 +85,10 @@
 		},
 		data() {
 			return {
-				title:'我的分销'
+				title:'我的分销',
+				data:'',
+				user_data:'',
+				qrcode:''
 			}
 		},
 		methods: {
@@ -94,16 +97,31 @@
 					url:url
 				})
 			}
+		},
+		onShow() {
+			this.service.entire(this,'post',this.service.api_root.subuser.dis_index,{token:uni.getStorageSync('token')},function(self,res){
+				console.log(res)
+				self.data = res.data
+				self.qrcode = res.data.qrcode.data
+				self.user_data = res.data.user_level.data
+			})
 		}
 	}
 </script>
 
 <style scoped>
+	page{
+		background: #F2F2F2;
+	}
 	.content{
 		width: 100%;
 		height: 100%;
 		background: #F2F2F2;
 		position: relative;
+	}
+	.top{
+		position: relative;
+		z-index: 99;
 	}
 	.avatar{
 		width: 100%;
@@ -185,7 +203,7 @@
 	}
 	.commission{
 		width: 100%;
-		height: 312rpx;
+		height: 150rpx;
 		margin-top: 32rpx;
 	}
 	.success{

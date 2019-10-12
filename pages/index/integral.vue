@@ -86,7 +86,7 @@
 			}
 		},
 		onShow() {
-			this.service.entire(this,'post',this.service.api_root.index.int_category,{},function(self,res){
+			this.service.entire(this,'post',this.service.api_root.index.int_category,{},function(self,res){  //分类列表
 				console.log(res)
 				self.data = res.data
 			})

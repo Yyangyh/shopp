@@ -8,7 +8,7 @@
 		<view class="img">
 			<image src="../../../static/image/bgimg.png" mode="scaleToFill"></image>
 			<view class="code">
-				<image src="../../../static/image/mycode.png" mode="widthFix"></image>
+				<image :src="code" mode="widthFix"></image>
 			</view>
 		</view>
 	</view>
@@ -23,8 +23,13 @@
 		data() {
 			return {
 				title: '我的邀请码',
-				current:0
+				current:0,
+				code:''
 			}
+		},
+		onLoad(options) {
+			console.log(options)
+			this.code = options.code
 		}
 	}
 </script>

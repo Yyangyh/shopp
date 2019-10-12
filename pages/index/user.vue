@@ -5,6 +5,10 @@
 		</view>
 		<view class="top">
 			<view class="top_test">
+				<!--  #ifdef  APP-PLUS -->
+				<image src="../../static/image/sweep.png" mode="widthFix" @click="sweep()"></image>
+				<!--  #endif -->
+				
 				<image src="../../static/image/set.png" mode="widthFix" @click="jump('../subuser/set')"></image>
 				<image src="../../static/image/news.png" mode="widthFix" @click="jump('../subuser/feedback')"></image>
 				<image src="../../static/image/feedback.png" mode="widthFix"  @click="jump('../subuser/notice')"></image>
@@ -209,6 +213,12 @@
 						拼团订单
 					</view>
 				</view>
+				<view class="tab_list" @click="jump('../subuser/settled')">
+					<image src="../../static/image/assemble_1.png" mode="widthFix"></image>
+					<view class="">
+						商家入驻
+					</view>
+				</view>
 			</view>
 		</view>
 	
@@ -225,7 +235,24 @@
 			}
 		},
 		methods:{
-			
+			sweep(){
+				let that = this
+				uni.scanCode({
+				    success: function (res) {
+				        console.log('条码类型：' + res.scanType);
+				        console.log('条码内容：' + res.result);
+						console.log(res.result)
+						let data = res.result
+							data = data.split('?')
+						console.log(data[0])
+						if(data[0] == that.service.api+'/h5/#/pages/reg/reg'){
+							uni.navigateTo({
+								url:'../reg/reg?'+data[1]
+							})
+						}
+				    }
+				});
+			},
 			jump(url){
 				uni.navigateTo({
 					url:url
@@ -266,6 +293,9 @@
 	.content{
 		padding-bottom: 20rpx;
 	}
+	.status_bar{
+		background:linear-gradient(90deg,rgba(0,119,245,1),rgba(0,167,250,1));
+	}
 	.top{
 		
 		background:linear-gradient(90deg,rgba(0,119,245,1),rgba(0,167,250,1));
@@ -285,10 +315,9 @@
 	.top .top_test image{
 		height: 48rpx;
 		width: 48rpx;
+		margin-right: 20rpx;
 	}
-	.top .top_test image:nth-of-type(2){
-		margin: 0 30rpx;
-	}
+	
 	.top .user{
 		display: flex;
 		

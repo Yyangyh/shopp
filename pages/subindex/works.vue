@@ -104,6 +104,15 @@
 
 <style scoped>
 	.content{
+		padding-top: 105rpx;
+	}
+	.content >>>.top{
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		background: #FFF;
+		z-index: 888;
 		
 	}
 	.scroll-view_H{
