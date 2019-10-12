@@ -1,6 +1,7 @@
 
 .content.data-v-4c99c1bb {
 	padding-bottom: 20rpx;
+	padding-top: 105rpx;
 }
 .uni-input-placeholder.data-v-4c99c1bb {
 	color: #fff;
@@ -10,12 +11,17 @@
 	width: 100%;
 	top: 0;
 	left: 0;
-	/* z-index: 888; */
+	z-index: 888;
 	background: #1D9DFF;
-	/* position: fixed; */
+	position: fixed;
 }
 .top_search.data-v-4c99c1bb {
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
 	background: #1D9DFF;
+	z-index: 888;
 }
 .top_search .navigation.data-v-4c99c1bb {
 	height: 105rpx;

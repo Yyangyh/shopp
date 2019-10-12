@@ -1,9 +1,9 @@
 
-.mo_name.data-v-95d9da86{
+.mo_name.data-v-fef1a576{
 	padding: 0 20rpx;
 	margin-top: 30rpx;
 }
-.mo_name .name_top.data-v-95d9da86{
+.mo_name .name_top.data-v-fef1a576{
 	height: 88rpx;
 	line-height: 88rpx;
 	background: #F1F1F1;
@@ -19,15 +19,15 @@
 	        align-items: center;
 	border-radius: 10rpx;
 }
-.mo_name .name_top input.data-v-95d9da86{
+.mo_name .name_top input.data-v-fef1a576{
 	width: 100%;
 	font-size: 32rpx;
 }
-.mo_name .name_bottom.data-v-95d9da86{
+.mo_name .name_bottom.data-v-fef1a576{
 	color: #666666;
 	font-size: 28rpx;
 }
-button.data-v-95d9da86{
+button.data-v-fef1a576{
 	margin: 64rpx 20rpx;
 	color: #fff;
 	background: #1D74FF;

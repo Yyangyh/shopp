@@ -30,6 +30,7 @@ const api_root = {
 		banner:api+'/api/banner/index',//轮播图
 		Redgroupsgoods:api+'/api/groupgoods/Redgroupsgoods',//首页推荐拼团商品
 		int_category:api+'/api/creditshop/category',//积分商城分类列表
+		btscale:api+'/api/index/btscale',//版通比例
 		
 	},
 	user:{
@@ -78,9 +79,16 @@ const api_root = {
 		order_Index:api+'/api/order/Index',//我的订单
 		grou_order:api+'/api/groupgoods/orders',//拼团订单列表
 		UserAvatar:api+'/api/User/UserAvatarUpload',//更改头像
+		UserIntegral:api+'/api/user/UserIntegral',//用户积分
+		dis_index:api+'/api/Distribution/index',//分销首页
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
 			Order_detail:api+'/api/order/Detail',//更改昵称
+			int_orders:api+'/api/creditshop/orders',//积分订单列表
+			int_OrderDetail:api+'/api/creditshop/OrderDetail',//积分订单详情
+			dis_team:api+'/api/Distribution/team',//分销团队
+			dis_profit:api+'/api/Distribution/profit',//分销佣金
+			dis_order:api+'/api/Distribution/order',//分销订单
 		},
 		
 		

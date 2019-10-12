@@ -1,0 +1,106 @@
+
+page.data-v-30db644a{
+	background: #F1F1F1;
+}
+.content.data-v-30db644a{
+	font-size: 28rpx;
+}
+.uni-input-placeholder.data-v-30db644a{
+	color: #999;
+}
+.settled_top.data-v-30db644a{
+	width: 100%;
+	height: 280rpx;
+	margin-bottom: 20rpx;
+}
+.settled_box.data-v-30db644a{
+	background: #fff;
+	margin-bottom: 20rpx;
+}
+.settled_box .box_list.data-v-30db644a{
+	height: 100rpx;
+	padding: 0 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	border-bottom: 1rpx solid #F1F1F1;
+}
+.settled_box .box_list .list_test.data-v-30db644a{
+	font-size: 24rpx;
+	width: 100%;
+}
+.settled_box .box_list>view.data-v-30db644a{
+	width: 140rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.settled_box .box_list input.data-v-30db644a{
+	font-size: 28rpx;
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	    -ms-flex-positive: 2;
+	        flex-grow: 2;
+	color: #333;
+}
+.settled_box .box_list text.data-v-30db644a{
+	color: #FF431D;
+}
+.upload.data-v-30db644a{
+	margin-bottom: 20rpx;
+	height: 100rpx;
+	padding: 0 20rpx;
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.upload .upload_img.data-v-30db644a{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.upload image.data-v-30db644a:nth-of-type(1){
+	width: 50rpx;
+	height: 50rpx;
+	margin-right: 20rpx;
+}
+.upload image.data-v-30db644a:nth-of-type(2){
+	width: 32rpx;
+	height: 32rpx;
+}
+button.data-v-30db644a{
+	text-align: center;
+	height: 80rpx;
+	line-height: 80rpx;
+	border-radius: 80rpx;
+	font-size: 28rpx;
+	color: #fff;
+	background: #1D74FF;
+	margin: 30rpx 20rpx;
+}
+

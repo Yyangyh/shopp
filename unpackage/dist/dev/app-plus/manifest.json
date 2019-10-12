@@ -5,7 +5,7 @@
     "iPad"
   ],
   "id": "__UNI__B01F932",
-  "name": "文旅",
+  "name": "文旅世家",
   "version": {
     "name": "1.0.0",
     "code": "100"
@@ -135,7 +135,10 @@
     "secondwebview": {
       "id": "1",
       "launch_path": "__uniappview.html",
-      "kernel": "WKWebview"
+      "kernel": "WKWebview",
+      "mode": "child",
+      "top": 0,
+      "bottom": 56
     }
   }
 }

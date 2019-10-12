@@ -1,6 +1,15 @@
 
 .content.data-v-026890f8 {
 	padding-bottom: 132rpx;
+	padding-top: 105rpx;
+}
+.content.data-v-026890f8 .return{
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
+	background: #FFF;
+	z-index: 888;
 }
 .top_img.data-v-026890f8 {
 	width: 100%;

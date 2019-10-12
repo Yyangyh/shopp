@@ -29,6 +29,7 @@
 	font-size: 32rpx;
 	width: 160rpx;
 	text-align: center;
+	white-space: nowrap;
 }
 button.data-v-1e4b5071{
 	background: #1D74FF;

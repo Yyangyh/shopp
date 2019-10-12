@@ -1,5 +1,14 @@
 
-.top.data-v-f38a246a{
+.content.data-v-f38a246a{
+	padding-top: 105rpx;
+}
+.content.data-v-f38a246a .top{	
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
+	background: #FFF;
+	z-index: 888;
 	-webkit-box-shadow: none;
 	        box-shadow: none;
 }

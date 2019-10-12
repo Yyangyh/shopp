@@ -17,6 +17,8 @@
 	page {
 		/* height: 100%;
 		width: 100%; */
+		padding-top: var(--status-bar-height);
+		background: #fff;
 	}
 
 	.status_bar {
@@ -24,8 +26,8 @@
 		width: 100%;
 		top: 0;
 		left: 0;
-		/* z-index: 888; */
+		z-index: 888;
 		background: #1D9DFF;
-		/* position: fixed; */
+		position: fixed;
 	}
 </style>

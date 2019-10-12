@@ -1,0 +1,102 @@
+
+.team_level.data-v-ef5cb65e{
+	padding: 20rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.team_level .team_level_box.data-v-ef5cb65e{
+	/* width: 346rpx; */
+	-webkit-box-flex: 1;
+	-webkit-flex-grow: 1;
+	    -ms-flex-positive: 1;
+	        flex-grow: 1;
+	height: 88rpx;
+	line-height: 88rpx;
+	text-align: center;
+	font-size: 32rpx;
+	color: #999999;
+	border-radius: 10rpx;
+	background-color: #F1F1F1;
+	margin-left: 10rpx;
+	margin-right: 10rpx;
+}
+.team_level view.data-v-ef5cb65e:nth-child(1){
+	margin-left: 0rpx;
+}
+.team_level view.data-v-ef5cb65e:nth-last-of-type(1){
+	margin-right: 0rpx;
+}
+.team_level .team_level_box.active.data-v-ef5cb65e{
+	background:-webkit-gradient(linear, left top, right top, color-stop(20%, #3E8FF3),to(#64C5F9));
+	background:-o-linear-gradient(left, #3E8FF3 20%,#64C5F9 100%);
+	background:linear-gradient(to right, #3E8FF3 20%,#64C5F9 100%);
+	color: #FFFFFF;
+}
+.no_data.data-v-ef5cb65e{
+	width: 100%;
+	padding: 220rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.no_data_img.data-v-ef5cb65e{
+	width: 310rpx;
+	height: 254rpx;
+}
+.no_data_img image.data-v-ef5cb65e{
+	width: 310rpx;
+	height: 254rpx;
+}
+.team_list.data-v-ef5cb65e{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	padding: 20rpx 20rpx;
+	border-bottom: 4rpx solid #F1F1F1;
+}
+.list_left.data-v-ef5cb65e {
+	width: 100rpx;
+	height: 100rpx;
+	margin-right: 20rpx;
+}
+.list_left image.data-v-ef5cb65e{
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 50rpx;
+}
+.list_right.data-v-ef5cb65e {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-justify-content: space-around;
+	    -ms-flex-pack: distribute;
+	        justify-content: space-around;
+}
+.list_right .username.data-v-ef5cb65e{
+	font-size: 28rpx;
+}
+.list_right .become_data.data-v-ef5cb65e{
+	font-size: 24rpx;
+	color: #999999;
+}
+.tip.data-v-ef5cb65e{
+	width: 100%;
+	height: 100rpx;
+	text-align: center;
+	line-height: 100rpx;
+	font-size: 24rpx;
+	color: #999999;
+}
+

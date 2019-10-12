@@ -1,10 +1,10 @@
 
-.content.data-v-f08dcf96{
+.content.data-v-942098ae{
 }
-.uni-input-placeholder.data-v-f08dcf96{
+.uni-input-placeholder.data-v-942098ae{
 	color: #cccccc;
 }
-.return.data-v-f08dcf96{
+.return.data-v-942098ae{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -17,13 +17,13 @@
 	-webkit-box-shadow: 0px 0px 6px #CCCCCC;
 	        box-shadow: 0px 0px 6px #CCCCCC;
 }
-.return .return_img.data-v-f08dcf96{
+.return .return_img.data-v-942098ae{
 	width: 48rpx;
 	height: 48rpx;
 	
 	margin-left: 20rpx;
 }
-.return .search.data-v-f08dcf96{
+.return .search.data-v-942098ae{
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
@@ -41,25 +41,25 @@
 	margin: 0 20rpx;
 	border-radius: 34rpx;
 }
-.return .search input.data-v-f08dcf96{
+.return .search input.data-v-942098ae{
 	height: 140rpx;
 }
-.return .search text.data-v-f08dcf96{
+.return .search text.data-v-942098ae{
 	margin: 0 20rpx;
 	color: #666666;
 	font-size: 32rpx;
 }
-.return .search .dorp.data-v-f08dcf96{
+.return .search .dorp.data-v-942098ae{
 	width: 12rpx;
 	height: 12rpx;
 	margin-right: 20rpx;
 }
-.return .search .search1.data-v-f08dcf96{
+.return .search .search1.data-v-942098ae{
 	width: 38rpx;
 	height: 38rpx;
 	margin-right: 20rpx;
 }
-.scroll-view_H.data-v-f08dcf96{
+.scroll-view_H.data-v-942098ae{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -71,12 +71,12 @@
 	white-space: nowrap;
 	/* width: 100%; */
 }
-.scroll-view_box.data-v-f08dcf96{
+.scroll-view_box.data-v-942098ae{
 	/* width: 100%; */
 	/* display: flex; */
 	/* flex-wrap: nowrap; */
 }
-.table.data-v-f08dcf96 {
+.table.data-v-942098ae {
 	width: 100%;
 	display: inline-block;
 /* 	justify-content: flex-start;
@@ -86,7 +86,7 @@
 	padding-bottom: 40rpx;
 	border-bottom: 6rpx solid #F5F5F5;
 }
-.table .tab_list.data-v-f08dcf96{
+.table .tab_list.data-v-942098ae{
 	width: 20%;
 	/* display: inline-block; */
 	float: left;
@@ -95,11 +95,11 @@
 	font-size: 28rpx;
 	color: #333;
 }
-.table .tab_list image.data-v-f08dcf96{
+.table .tab_list image.data-v-942098ae{
 	width: 56rpx;
 	height: 56rpx;
 }
-.exhibition.data-v-f08dcf96{
+.exhibition.data-v-942098ae{
 	padding: 0 20rpx 20rpx 20rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -114,15 +114,15 @@
 	        box-sizing: border-box;
 	margin-top: 30rpx;
 }
-.exhibition .left.data-v-f08dcf96 {
+.exhibition .left.data-v-942098ae {
 	width: 49%;
 	height: 332rpx;
 }
-.exhibition .left image.data-v-f08dcf96 {
+.exhibition .left image.data-v-942098ae {
 	height: 100%;
 	width: 100%;
 }
-.exhibition .right.data-v-f08dcf96 {
+.exhibition .right.data-v-942098ae {
 	width: 49%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -138,20 +138,20 @@
 	    -ms-flex-direction: column-reverse;
 	        flex-direction: column-reverse;
 }
-.exhibition .right view.data-v-f08dcf96 {
+.exhibition .right view.data-v-942098ae {
 	height: 156rpx;
 	width: 100%;
 }
-.exhibition .right image.data-v-f08dcf96{
+.exhibition .right image.data-v-942098ae{
 	height: 100%;
 	width: 100%;
 }
-.guess.data-v-f08dcf96{
+.guess.data-v-942098ae{
 	padding: 20rpx;
 	
 	background: #F1F1F1;
 }
-.guess .gu_top.data-v-f08dcf96{
+.guess .gu_top.data-v-942098ae{
 	font-weight: bold;
 	font-size: 32rpx;
 	padding-top: 20rpx;
@@ -161,30 +161,30 @@
 	border-top-left-radius: 10rpx;
 	border-top-right-radius: 10rpx;
 }
-.guess .product .pr_list.data-v-f08dcf96{
+.guess .product .pr_list.data-v-942098ae{
 	margin-bottom: 20rpx;
 	background: #fff;
 	padding: 20rpx;
 	border-radius: 10rpx;
 }
-.guess .product view.data-v-f08dcf96:nth-of-type(1){
+.guess .product view.data-v-942098ae:nth-of-type(1){
 	border-top-left-radius: 0rpx;
 	border-top-right-radius: 0rpx;
 }
-.guess  .ticket.data-v-f08dcf96{
+.guess  .ticket.data-v-942098ae{
 	color: #666666;
 	font-size: 28rpx;
 	margin: 10rpx 0;
 	padding: 0 10rpx;
 }
-.guess  .address.data-v-f08dcf96{
+.guess  .address.data-v-942098ae{
 	color: #333;
 	font-size: 28rpx;
 	font-weight: bold;
 	padding: 0 10rpx;
 	margin-bottom: 20rpx;
 }
-.guess .tips.data-v-f08dcf96{
+.guess .tips.data-v-942098ae{
 	color: #00D3B3;
 	font-size: 24rpx;
 	border: 1rpx solid #00D3B3;
@@ -193,23 +193,23 @@
 	margin-left: 20rpx;
 	font-weight: 100;
 }
-.guess .product .bottom .price.data-v-f08dcf96{
+.guess .product .bottom .price.data-v-942098ae{
 	color: #FF431D;
 	margin-right: 20rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 }
-.guess .product .bottom .data.data-v-f08dcf96{
+.guess .product .bottom .data.data-v-942098ae{
 	color: #999999;
 	font-size: 26rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 }
-.guess .product image.data-v-f08dcf96{
+.guess .product image.data-v-942098ae{
 	width: 100%;
 	height: 300rpx;
 }
-.guess .product .info.data-v-f08dcf96{
+.guess .product .info.data-v-942098ae{
 	float: right;
 	color: #FF431D;
 	border: 1rpx solid #FF431D;

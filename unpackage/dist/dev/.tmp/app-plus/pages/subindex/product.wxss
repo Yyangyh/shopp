@@ -1,10 +1,17 @@
 
 .content.data-v-ab807708{
+	padding-top: 105rpx;
 }
 .uni-input-placeholder.data-v-ab807708{
 	color: #cccccc;
 }
 .return.data-v-ab807708{
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
+	z-index: 888;
+	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;

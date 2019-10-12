@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/re_search"
+  }
+}

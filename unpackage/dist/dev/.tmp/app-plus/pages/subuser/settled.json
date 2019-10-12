@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "商家入驻",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

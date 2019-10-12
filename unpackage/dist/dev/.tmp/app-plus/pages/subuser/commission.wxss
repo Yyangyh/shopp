@@ -4,6 +4,9 @@
 	height: 100%;
 	background: #F2F2F2;
 }
+.content.data-v-c122c30e .top{
+	position: relative;
+}
 .amount.data-v-c122c30e{
 	width: 100%;
 	height: 316rpx;

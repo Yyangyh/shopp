@@ -5,11 +5,17 @@ page.data-v-79463ebc {
 	background: #F4F4F4;
 }
 .content.data-v-79463ebc{
-	
+	padding-top: 105rpx;
 	/* height: 100%; */
 	width: 100%;
 }
-.top.data-v-79463ebc{
+.content.data-v-79463ebc .top{
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
+	background: #FFF;
+	z-index: 888;
 	-webkit-box-shadow: none;
 	        box-shadow: none;
 }

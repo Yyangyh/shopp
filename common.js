@@ -1,6 +1,7 @@
 import service from './service.js'
 
 const order = function(ref,self,url,wxUrl){ //支付调用
+			console.log(self.payment_name)
 	uni.showToast({
 		icon:"none",
 		title:ref.msg
@@ -69,7 +70,6 @@ const order = function(ref,self,url,wxUrl){ //支付调用
 	   
 	   
 		// #ifdef  APP-PLUS
-			console.log(ref.data.data)
 		uni.requestPayment({
 		    provider: 'wxpay',
 		    orderInfo:ref.data.data,//微信、支付宝订单数据
@@ -91,6 +91,13 @@ const order = function(ref,self,url,wxUrl){ //支付调用
 			},1500)
 		}else if(self.payment_name == 'BtPay'){ //选择版通支付时
 			
+			setTimeout(function(){
+				uni.redirectTo({
+					url:url
+				})
+			},1500)
+			
+		}else if(self.payment_name == ''){ //积分支付时
 			setTimeout(function(){
 				uni.redirectTo({
 					url:url

@@ -5,9 +5,6 @@
 .uni-input-placeholder.data-v-b8beec02{
 	color: #C5C5C5;
 }
-.uni-input-placeholder.data-v-b8beec02{
-	color: #C5C5C5;
-}
 .ipt.data-v-b8beec02{
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -32,6 +29,7 @@
 	font-size: 32rpx;
 	width: 160rpx;
 	text-align: center;
+	white-space: nowrap;
 }
 button.data-v-b8beec02{
 	background: #1D74FF;
