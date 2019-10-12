@@ -135,11 +135,7 @@
 					
 					let data = self.data
 					data.push(...res.data.data)
-					if(res.data.data == ''){
-						self.more = 'noMore'
-						self.loadRecord = false
-						return
-					}
+					
 					for (let s of data) {
 						let money = []
 						if(Number(s.total_bt) != 0) money.push(Number(s.total_bt)+'版通')

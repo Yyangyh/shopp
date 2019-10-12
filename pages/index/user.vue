@@ -333,7 +333,7 @@
 	.top .user .user_head{
 		height: 130rpx;
 		width: 130rpx;
-		border-radius: 50%;
+		border-radius: 130rpx;
 		margin-right: 26rpx;
 	}
 	.top .user .user_left .left_top{

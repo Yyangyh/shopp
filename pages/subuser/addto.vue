@@ -38,7 +38,7 @@
 			<!-- 遮罩 -->
 		</view>
 		
-		<view class="choice_city" v-show="show == 1">
+		<view class="choice_city" :class="show===0 ? 'mask_none' : show===1 ? 'mask_show' : ''">
 			<image src="../../static/image/secondary/close2.png" mode="widthFix" @click="show = 0"></image>
 			<view class="ci_test1">
 				请选择
@@ -222,7 +222,15 @@
 		left: 0;
 		bottom: 0;
 		z-index: 999;
-	}
+		transition: .3s;
+		transform: translateY(100%);
+	 }
+	 .mask_none{
+		transform: translateY(100%);
+	 }
+	 .mask_show{
+		transform: translateY(0);
+	 }
 	.choice_city image{
 		position: absolute !important;
 		width: 40rpx;

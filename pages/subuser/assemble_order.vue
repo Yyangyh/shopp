@@ -88,7 +88,7 @@
 			return {
 				title:'拼团订单',
 				show: 0,
-				data:'',
+				data:[],
 				more:'more',
 				page:1,
 				loadRecord:true
@@ -133,11 +133,7 @@
 				},function(self,res){
 					console.log(res.data.data)
 					let data = self.data
-					if(res.data.data == ''){
-						self.more = 'noMore'
-						self.loadRecord = false
-						return
-					}
+					
 					data.push(...res.data.data)
 					self.data = data
 					self.page = page + 1

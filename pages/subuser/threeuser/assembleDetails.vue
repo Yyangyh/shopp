@@ -106,7 +106,7 @@
 		<view class="mask" v-if="show" @click="show = !show">
 
 		</view>
-		<view class="mask_box" v-if="show">
+		<view class="mask_box" :class="show===false ? 'mask_none' : show===true ? 'mask_show' : ''">
 			<image class="close" src="../../../static/image/index/close.png" mode="widthFix" @click="show = !show"></image>
 			<view class="box_top">
 				支付方式
@@ -519,8 +519,15 @@
 		height: 640rpx;
 		padding: 20rpx;
 		box-sizing: border-box;
-	}
-
+		transition: .3s;
+		transform: translateY(100%);
+	 }
+	 .mask_none{
+		transform: translateY(100%);
+	 }
+	 .mask_show{
+		transform: translateY(0);
+	 }
 	.mask_box .box_top {
 		font-size: 32rpx;
 		color: #333333;

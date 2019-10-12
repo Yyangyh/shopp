@@ -171,9 +171,9 @@
 
 
 		<view class="mask_black" v-show="show == 1" @click="show = 0">
-
+		
 		</view>
-		<view class="mask_white" v-show="show == 1">
+		<view class="mask_white" :class="show===0 ? 'mask_none' : show===1 ? 'mask_show' : ''">
 			<view class="wh_top">
 				<image :src="data.images" mode="aspectFill"></image>
 				<view class="wh_right">
@@ -761,8 +761,15 @@
 		bottom: 0;
 		left: 0;
 		z-index: 999;
+		transition: .3s;
+		transform: translateY(100%);
 	}
-
+	.mask_none{
+		transform: translateY(100%);
+	}
+	.mask_show{
+		transform: translateY(0);
+	}
 	.mask_white .wh_top {
 		display: flex;
 		align-items: flex-end;
@@ -789,7 +796,19 @@
 		font-size: 24rpx;
 		margin: 7rpx 0 8rpx 0;
 	}
-
+	.mask_white .save {
+		background: #1D74FF;
+		color: #fff;
+		height: 80rpx;
+		line-height: 80rpx;
+		border-radius: 80rpx;
+		position: absolute;
+		bottom: 20rpx;
+		left: 2%;
+		width: 96%;
+		
+	}
+	
 	.norms_test {
 		margin: 0rpx 0 18rpx 0;
 		font-size: 30rpx;
@@ -859,18 +878,7 @@
 		border-radius: 10rpx;
 	}
 
-	.mask_white .save {
-		background: #1D74FF;
-		color: #fff;
-		height: 80rpx;
-		line-height: 80rpx;
-		border-radius: 80rpx;
-		position: absolute;
-		bottom: 20rpx;
-		left: 2%;
-		width: 96%;
-	}
-
+	
 	.close {
 		height: 40rpx;
 		width: 40rpx;
@@ -887,4 +895,5 @@
 	.disabled {
 		opacity: 0.5;
 	}
+	
 </style>

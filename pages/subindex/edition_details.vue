@@ -181,7 +181,7 @@
 		<view class="mask_black" v-show="show == 1" @click="show = 0">
 
 		</view>
-		<view class="mask_white" v-show="show == 1">
+		<view class="mask_white" :class="show===0 ? 'mask_none' : show===1 ? 'mask_show' : ''">
 			<view class="wh_top">
 				<image :src="data.images" mode="aspectFill"></image>
 				<view class="wh_right">
@@ -764,6 +764,14 @@
 		bottom: 0;
 		left: 0;
 		z-index: 999;
+		transition: .3s;
+		transform: translateY(100%);
+	}
+	.mask_none{
+		transform: translateY(100%);
+	}
+	.mask_show{
+		transform: translateY(0);
 	}
 	
 	.mask_white .wh_top {

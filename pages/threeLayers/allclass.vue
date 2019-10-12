@@ -7,7 +7,7 @@
 		<view class="top_class">
 			<view class="class_list">
 				<text>全部分类</text>
-				<image src="../../static/image/upper.png" mode="widthFix"></image>
+				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
 			<view class="class_list">
 				<text>全部地区</text>
