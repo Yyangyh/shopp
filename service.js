@@ -1,8 +1,8 @@
 
 
 
-const api = ''
-// const api = 'http://wx.huanqiutongmall.com'
+// const api = ''
+const api = 'http://wx.huanqiutongmall.com'
 
 
 
@@ -24,6 +24,7 @@ const api_root = {
 		login: api+'/api/user/Login',//账号密码登录
 		MobileLogin: api+'/api/user/MobileLogin',//手机验证码登录
 		WeatchInfo: api+'/api/user/WeatchInfo',//获取微信用户信息
+		logout: api+'/api/user/logout',//获取微信用户信息
 		
 	},
 	index:{
@@ -106,6 +107,8 @@ const api_root = {
 	}
 }
 const entire = function(self,type,url,data,func){
+	
+	if(uni.getStorageSync('token') != '') data.token = self.$store.state.token
 	uni.request({
 		url:url,
 		data:data,
@@ -114,15 +117,27 @@ const entire = function(self,type,url,data,func){
 		success(res) {
 			let res_list = res.data
 			if(res_list.code == -400){
-				uni.removeStorageSync('token')
+				if(uni.getStorageSync('token') != ''){
+					uni.showToast({
+						icon:'none',
+						title:'登录失效，请重新登录'
+					})
+					setTimeout(function(){
+						uni.reLaunch({
+							url:'/pages/login/login'
+						})
+					},1500)
+					return
+				}
+				// uni.removeStorageSync('token')
+				self.$store.commit('logout')
 				
-				uni.reLaunch({
-					url:'/pages/login/login'
-				})
-				uni.showToast({
-					icon:'none',
-					title:'登录失效，请重新登录'
-				})
+				
+				setTimeout(function(){
+					uni.reLaunch({
+						url:'/pages/login/login'
+					})
+				},100)
 			}else{
 				func(self,res_list)
 			}

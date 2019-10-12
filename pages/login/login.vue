@@ -82,8 +82,8 @@
 							title:data.msg
 						})
 						if(data.code == 0){
-							uni.setStorageSync('token',data.data.token)
-							
+							// uni.setStorageSync('token',data.data.token)
+							that.$store.commit('login',data.data.token)
 							// #ifdef H5
 							// 	先判断是否在h5打开，再判断是否是在微信浏览器打开
 								let ua = navigator.userAgent.toLowerCase();

@@ -178,7 +178,7 @@
 	}
 	.int_box{
 		margin: 0 20rpx;
-		min-height: 600rpx;
+		min-height: 900rpx;
 	}
 	.int_box .box_list{
 		padding: 28rpx 16rpx;

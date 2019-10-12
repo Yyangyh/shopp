@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App'
 import service from './service.js'
 import common from './common.js'
-
+import store from './store/index.js'  
+Vue.prototype.$store = store  
 Vue.prototype.service = service
 Vue.prototype.common = common
 

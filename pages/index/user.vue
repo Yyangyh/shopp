@@ -13,25 +13,33 @@
 				<image src="../../static/image/news.png" mode="widthFix" @click="jump('../subuser/feedback')"></image>
 				<image src="../../static/image/feedback.png" mode="widthFix"  @click="jump('../subuser/notice')"></image>
 			</view>
-			<view class="user">
-				<image class="user_head" :src="data.avatar" mode="aspectFill"  @click="jump('../subuser/profile')"></image>
-				<view class="user_left">
-					<view class="left_top">
-						<view v-if="nickname">{{nickname}}</view>
-						<view v-else>未修改昵称</view>
-						<view class="user_right">
-							<image src="../../static/image/id.png" mode="widthFix"></image>
-							<text>实名认证</text>
-							<image src="../../static/image/go1.png" mode="widthFix"></image>
+			<view class="">
+				<view class="user" v-if="state == 1">
+					<image class="user_head" :src="data.avatar" mode="aspectFill"  @click="jump('../subuser/profile')"></image>
+					<view class="user_left">
+						<view class="left_top">
+							<view v-if="nickname">{{nickname}}</view>
+							<view v-else>未修改昵称</view>
+							<view class="user_right">
+								<image src="../../static/image/id.png" mode="widthFix"></image>
+								<text>实名认证</text>
+								<image src="../../static/image/go1.png" mode="widthFix"></image>
+							</view>
 						</view>
-					</view>
-					<view class="left_bottom">
-						<image src="../../static/image/check.png" mode="widthFix"></image>
-						<text>会员</text>
+						<view class="left_bottom">
+							<image src="../../static/image/check.png" mode="widthFix"></image>
+							<text>会员</text>
+						</view>
 					</view>
 				</view>
 				
-				
+				<view class="logint" v-if="state == 2">
+					<image class="user_head" src="../../static/image/state_user.png" mode="widthFix"></image>
+					<view class="logint_one">
+						<view @click="jump('../login/login')">登录/注册</view>
+						<image src="../../static/image/go1.png" mode="widthFix"></image>
+					</view>
+				</view>
 			</view>
 			<view class="semicircle" :style="style">
 				
@@ -231,7 +239,8 @@
 			return {
 				style:'',
 				data:'',
-				nickname:''
+				nickname:'',
+				state:''
 			}
 		},
 		methods:{
@@ -260,13 +269,28 @@
 			}
 		},
 		onShow() {
-			this.service.entire(this,'post',this.service.api_root.user.userCenter+'?token='+uni.getStorageSync('token'),{},function(self,res){
-				console.log(res)
-				self.data = res.data
-				self.nickname = res.data.nickname
-				uni.setStorageSync('nickname',res.data.nickname)
-				uni.setStorageSync('user',res.data)
+			let that = this
+			let data ={}
+			if(uni.getStorageSync('token')) data.token = uni.getStorageSync('token')
+			uni.request({
+				url:this.service.api_root.user.userCenter,
+				method:'POST',
+				data:data,
+				success(res) {
+					console.log(res.data.data)
+					if(res.data.code == -400){
+						that.state = 2	
+					}else{
+						that.state = 1
+						that.data = res.data.data
+						that.nickname = res.data.data.nickname
+						uni.setStorageSync('nickname',res.data.data.nickname)
+						uni.setStorageSync('user',res.data.data)
+					}
+					
+				}
 			})
+			
 			
 		},
 		onLoad() {
@@ -323,6 +347,7 @@
 		
 		color: #fff;
 		font-size: 28rpx;
+		
 		padding: 20rpx 0 100rpx 54rpx;
 	}
 	.top .user .user_left{
@@ -330,7 +355,7 @@
 		flex-direction: column;
 		justify-content: center;
 	}
-	.top .user .user_head{
+	.top .user_head{
 		height: 130rpx;
 		width: 130rpx;
 		border-radius: 130rpx;
@@ -365,7 +390,21 @@
 	.top .user .user_right text{
 		margin: 0 6rpx;
 	}
-	.top .user image{
+	.top .user .user_left image{
+		width: 24rpx;
+		height: 24rpx;
+	}
+	.top .logint {
+		display: flex;
+		color: #fff;
+		font-size: 28rpx;
+		padding: 20rpx 0 100rpx 54rpx;
+	}
+	.top .logint .logint_one {
+		display: flex;
+		align-items: center;
+	}
+	.top .logint .logint_one image{
 		width: 24rpx;
 		height: 24rpx;
 	}

@@ -62,10 +62,13 @@
 		},
 		methods:{
 			signOut(){
+				this.service.entire(this,'post',this.service.api_root.login.logout,{},function(self,res){
+					console.log(res)
+				})
 				uni.clearStorageSync('token')
-				uni.reLaunch({
-				    url: '../login/login'
-				});
+				uni.switchTab({
+					url:'../index/index'
+				})
 			},
 			returns(){
 				this.common.returns(this)

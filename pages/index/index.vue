@@ -223,6 +223,7 @@
 </template>
 
 <script>
+	
 	import service from '../../service.js'
 	// import Load from '../../components/load/load.vue'
 	import bwSwiper from '../../components/wxcomponents/bw-swiper/bw-swiper.vue'
@@ -245,10 +246,12 @@
 				set_price:''
 			}
 		},
+		
 		onLoad() {
 			
 		},
 		onShow() {
+			
 			// #ifdef H5  
 			let Url = window.location.href
 				Url = Url.split('?')
@@ -290,10 +293,11 @@
 				self.set_price = res.data.set_price
 			})
 		},
+		
 		methods: {
+			
 			jump(url) {
 				if(!url){
-					
 					uni.showToast({
 						icon:'none',
 						title:'暂未开放'
