@@ -140,7 +140,7 @@
 							<view class="ri_test1">
 								￥<text>580</text>
 							</view>
-							<view class="ri_test2">
+							<view class="ri_test2" @click="jump('/pages/threeLayers/fill_in')">
 								立即购买
 							</view>
 						</view>
