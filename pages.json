@@ -357,7 +357,15 @@
 				}
 			}
 		},
-		
+		{
+			"path": "pages/subuser/collect",
+			"style": {
+				"navigationBarTitleText": "收藏",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
 		{
 			"path": "pages/subuser/distribution",
 			"style": {

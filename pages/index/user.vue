@@ -203,7 +203,7 @@
 						实名认证
 					</view>
 				</view>
-				<view class="tab_list">
+				<view class="tab_list" @click="jump('../subuser/collect')">
 					<image src="../../static/image/collection2.png" mode="widthFix"></image>
 					<view class="">
 						收藏
@@ -353,7 +353,6 @@
 		
 		color: #fff;
 		font-size: 28rpx;
-		
 		padding: 20rpx 0 100rpx 54rpx;
 	}
 	.top .user .user_left{

@@ -82,6 +82,7 @@ const api_root = {
 		UserAvatar:api+'/api/User/UserAvatarUpload',//更改头像
 		UserIntegral:api+'/api/user/UserIntegral',//用户积分
 		dis_index:api+'/api/Distribution/index',//分销首页
+		Userfavor:api+'/api/user/Userfavor',//商品收藏列表
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
 			Order_detail:api+'/api/order/Detail',//更改昵称

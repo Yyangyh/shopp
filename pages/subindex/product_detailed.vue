@@ -703,7 +703,7 @@
 
 	.bottom_tab .tab_list {
 		text-align: center;
-
+		
 	}
 
 	.bottom_tab .tab_list image {

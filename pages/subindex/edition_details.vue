@@ -167,7 +167,7 @@
 			</view> -->
 			<view class="tab_list tab_mid"  @click="collect()">
 				<image v-if="is_favor == 0" src="../../static/image/collection.png" mode="widthFix"></image>
-				<image v-else src="../../static/image/loves.png" mode="widthFix"></image>
+				<image v-else src="../../static/image/collect.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>
@@ -711,7 +711,6 @@
 	}
 	.bottom_tab .tab_list{
 		text-align: center;
-		
 	}
 	.bottom_tab .tab_mid{
 		margin-left: -80rpx !important;
