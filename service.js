@@ -83,6 +83,11 @@ const api_root = {
 		UserIntegral:api+'/api/user/UserIntegral',//用户积分
 		dis_index:api+'/api/Distribution/index',//分销首页
 		Userfavor:api+'/api/user/Userfavor',//商品收藏列表
+		UserfavorDelete:api+'/api/user/UserfavorDelete',//商品收藏列表
+		merchUpload:api+'/api/merch/Upload',//证件图片上传
+		merchSubmit:api+'/api/merch/Submit',//提交商户申请
+		merchRegister:api+'/api/merch/Register',//个人申请信息获取（检查申请状态）
+		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
 			Order_detail:api+'/api/order/Detail',//更改昵称

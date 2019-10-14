@@ -222,7 +222,7 @@
 					</view>
 				</view>
 				<view class="tab_list" @click="jump('../subuser/settled')">
-					<image src="../../static/image/assemble_1.png" mode="widthFix"></image>
+					<image src="../../static/image/settled.png" mode="widthFix"></image>
 					<view class="">
 						商家入驻
 					</view>
