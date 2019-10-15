@@ -8,7 +8,7 @@
 			<view class="top_operation">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<!-- <image class="love" src="../../static/image/love.png" mode="widthFix"></image> -->
 					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -36,7 +36,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="pr_shop">
+		<!-- <view class="pr_shop">
 			<view class="sh_top">
 				<image src="../../static/image/portrait1.png" mode="widthFix"></image>
 				<text>文旅特色产品</text>
@@ -45,7 +45,7 @@
 				<text>进店逛逛</text>
 				<image src="../../static/image/go.png" mode="widthFix"></image>
 			</view>
-		</view>
+		</view> -->
 		
 		<view class="user_comment">
 			<view class="user_top">
@@ -86,7 +86,7 @@
 			<!-- <image src="../../static/image/product4.png" mode="widthFix"></image> -->
 		</view>
 		
-		<view class="recommend">
+		<!-- <view class="recommend">
 			<view class="recommend_test">
 				猜你喜欢
 			</view>
@@ -144,27 +144,27 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		
 		<view class="bottom_tab">
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<image src="../../static/image/shops.png" mode="widthFix"></image>
 				<view class="">
 					店铺
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="tab_list" @click="jump('../threeLayers/shoppingCart')">
 				<image src="../../static/image/shopping.png" mode="widthFix"></image>
 				<view class="">
 					购物车
 				</view>
 			</view> -->
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<image src="../../static/image/collection.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>
-			</view>
+			</view> -->
 			<view class="tab_list tab_right">
 				<view class="single" @click="purchase('single')">
 					<view class="">
@@ -232,7 +232,8 @@
 <style scoped>
 	.content{
 		background: #F1F1F1;
-		padding-bottom: 100rpx;
+		padding-bottom: 120rpx;
+		
 	}
 	.top_img{
 		width: 100%;
@@ -538,12 +539,13 @@
 	.bottom_tab .tab_right{
 		font-size: 32rpx;
 		display: flex;
+		width: 100%;
 	}
 	.bottom_tab .tab_right .single{
 		background: #1D9DFF;
 		color: #fff;
 		font-size: 24rpx;
-		width: 208rpx;
+		width: 50%;
 		height: 80rpx;
 		border-bottom-left-radius: 40rpx;
 		border-top-left-radius: 40rpx;
@@ -555,7 +557,7 @@
 		background: #1D74FF;
 		color: #fff;
 		font-size: 24rpx;
-		width: 208rpx;
+		width: 50%;
 		height: 80rpx;
 		border-bottom-right-radius: 40rpx;
 		border-top-right-radius: 40rpx;

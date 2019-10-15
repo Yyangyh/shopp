@@ -22,7 +22,7 @@
 				<view class="tab_left">
 					<label class="radio" @click="singleElection(index)"><radio value="r1" :checked="item.choice" /></label>
 				</view>
-				<view class="list_box">
+				<view class="list_box" @click="jump(type,item.goods_id)">
 					<view class="list_img">
 						<image :src="item.images" mode="scaleToFill"></image>
 					</view>
@@ -90,6 +90,17 @@
 				this.whole_choice = !this.whole_choice
 				for (let s of this.data) {
 					s.choice = this.whole_choice
+				}
+			},
+			jump(type,id){
+				if(type == 3){
+					uni.navigateTo({
+						url:'../subindex/edition_details?id='+id
+					})
+				}else{
+					uni.navigateTo({
+						url:'../subindex/product_detailed?id='+id
+					})
 				}
 			},
 			cut(){

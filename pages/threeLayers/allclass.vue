@@ -13,12 +13,16 @@
 				<text>全部地区</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
-			<view class="class_list">
+			<view class="class_list" @click="show = !show">
 				<text>智能排序</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
 		</view>
-
+		<!-- <view class="sort">
+			<view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
+				
+			</view>
+		</view> -->
 		<view class="product">
 			<view class="pr_list" v-for="item in data" :key='item.id'>
 				<image :src="item.images" mode="aspectFill" @click="detailed('../subindex/product_detailed',item.id,item.type)"></image>
@@ -47,7 +51,8 @@
 	export default {
 		data() {
 			return {
-				data: ''
+				data: '',
+				show:false
 			}
 		},
 		components: {
@@ -112,7 +117,9 @@
 </script>
 
 <style scoped>
-	.content {}
+	.content {
+		position: relative;
+	}
 
 	.top_class {
 		display: flex;
@@ -132,7 +139,27 @@
 		width: 20rpx;
 		margin-left: 10rpx;
 	}
-
+	.sort{
+		overflow: hidden;
+		left: 0;
+		width: 100%;
+		position: absolute;
+		z-index: 888;
+		height: 360rpx;
+	}
+	.sort_box{
+		transition: 0.6s;
+		background: rgba(0,0,0,.6);
+		height: 360rpx;
+		width: 100%;
+		
+	}
+	.hide{
+		transform: translateY(-100%);
+	}
+	.show{
+		transform: translateY(0%);
+	}
 	.product {
 		background: #F1F1F1;
 		overflow: hidden;

@@ -8,7 +8,7 @@
 			<view class="top_operation">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<!-- <image class="love" src="../../static/image/love.png" mode="widthFix"></image> -->
 					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -83,7 +83,7 @@
 			<!-- <image src="../../static/image/product4.png" mode="widthFix"></image> -->
 		</view>
 		
-		<view class="recommend">
+		<!-- <view class="recommend">
 			<view class="recommend_test">
 				猜你喜欢
 			</view>
@@ -141,27 +141,27 @@
 					</view>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		
 		<view class="bottom_tab"  v-if="end == true">
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<image src="../../static/image/shops.png" mode="widthFix"></image>
 				<view class="">
 					店铺
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="tab_list" @click="jump('../threeLayers/shoppingCart')">
 				<image src="../../static/image/shopping.png" mode="widthFix"></image>
 				<view class="">
 					购物车
 				</view>
 			</view> -->
-			<view class="tab_list tab_mid">
+			<!-- <view class="tab_list tab_mid">
 				<image src="../../static/image/collection.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>
-			</view>
+			</view> -->
 			<view class="tab_list tab_right">
 				<!-- <text @click="show = 1">加入购物车</text> -->
 				<!-- <text @click="show = 1">马上抢</text> -->
@@ -372,7 +372,7 @@
 		width: 100%;
 		position: absolute;
 		z-index: 99;
-		top: 0;
+		top: var(--status-bar-height);
 		height: 60rpx;
 		padding: 20rpx 0;
 		display: flex;
@@ -642,7 +642,7 @@
 	}
 	.bottom_tab .tab_list{
 		text-align: center;
-		
+		width: 100%;
 	}
 	.bottom_tab .tab_mid{
 		margin-left: -80rpx !important;
@@ -659,7 +659,7 @@
 		color: #fff;
 	}
 	.bottom_tab .tab_right text{
-		display: inline-block;
+		display: block;
 		height: 80rpx;
 		line-height: 80rpx;
 		padding: 0 30rpx;
@@ -668,7 +668,6 @@
 	.bottom_tab .tab_right text:nth-of-type(1){
 		background: #1D9DFF;
 		border-radius: 20rpx;
-		width: 320rpx;
 		
 	}
 	.bottom_tab button{

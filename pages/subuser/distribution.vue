@@ -8,9 +8,9 @@
 		
 		<view class="avatar">
 			<view class="personal">
-				<image src="../../static/image/secondary/avatar00.png" mode="widthFix"></image>
+				<image :src="user.avatar" mode="widthFix"></image>
 				<view class="name">
-					<text class="h1">183****1002</text>
+					<text class="h1">{{user.nickname}}</text>
 					<text class="h2">推荐人:{{data.myreferrer}}</text>
 					<text class="level">等级{{user_data.name}}</text>
 				</view>
@@ -88,7 +88,8 @@
 				title:'我的分销',
 				data:'',
 				user_data:'',
-				qrcode:''
+				qrcode:'',
+				user:uni.getStorageSync('user')
 			}
 		},
 		methods: {
@@ -99,7 +100,7 @@
 			}
 		},
 		onShow() {
-			this.service.entire(this,'post',this.service.api_root.subuser.dis_index,{token:uni.getStorageSync('token')},function(self,res){
+			this.service.entire(this,'post',this.service.api_root.subuser.dis_index,{},function(self,res){
 				console.log(res)
 				self.data = res.data
 				self.qrcode = res.data.qrcode.data
@@ -143,6 +144,7 @@
 	.personal image{
 		width: 150rpx;
 		height: 150rpx;
+		border-radius: 50%;
 	}
 	.name{
 		display: flex;

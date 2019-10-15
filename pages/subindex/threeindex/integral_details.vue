@@ -8,7 +8,7 @@
 			<view class="top_operation">
 				<image src="../../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image class="love" src="../../../static/image/love.png" mode="widthFix"></image>
+					<!-- <image class="love" src="../../../static/image/love.png" mode="widthFix"></image> -->
 					<image class="share" src="../../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -32,7 +32,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="pr_shop">
+		<!-- <view class="pr_shop">
 			<view class="sh_top">
 				<image src="../../../static/image/portrait1.png" mode="widthFix"></image>
 				<text>文旅特色产品</text>
@@ -41,7 +41,7 @@
 				<text>进店逛逛</text>
 				<image src="../../../static/image/go.png" mode="widthFix"></image>
 			</view>
-		</view>
+		</view> -->
 
 		<view class="user_comment">
 			<view class="user_top">
@@ -88,80 +88,41 @@
 				猜你喜欢
 			</view>
 			<view class="spot">
-				<view class="sp_list">
-					<image src="../../../static/image/duck1.png" mode=""></image>
-					<view class="ticket">
+				<view class="sp_list" v-for="(item,index) in data_list" @click="jumps(item.id)">
+					<image :src="item.images" mode=""></image>
+					<!-- <view class="ticket">
 						武汉-特色产品
-					</view>
+					</view> -->
 					<view class="address">
-						鸭脖武汉特产鸭肉食品
+						{{item.title}}
 					</view>
 					<view class="bottom">
-						<text class="price">￥100</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../../static/image/duck2.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥500</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../../static/image/duck1.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥100</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../../static/image/duck2.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥500</text>
-						<text class='data'>300人购买</text>
+						<text class="price">{{item.money}}</text>
+						<!-- <text class='data'>300人购买</text> -->
 					</view>
 				</view>
 			</view>
 		</view>
 
 		<view class="bottom_tab">
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<image src="../../../static/image/shops.png" mode="widthFix"></image>
 				<view class="">
 					店铺
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="tab_list" @click="jump('../threeLayers/shoppingCart')">
 				<image src="../../../static/image/shopping.png" mode="widthFix"></image>
 				<view class="">
 					购物车
 				</view>
 			</view> -->
-			<view class="tab_list tab_mid" >
+			<!-- <view class="tab_list tab_mid" >
 				<image src="../../../static/image/collection.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>
-			</view>
+			</view> -->
 			<view class="tab_list tab_right">
 				<!-- <text @click="show = 1,type = 'cart'">加入购物车</text> -->
 				<text @click="show = 1,type = 'goods'">立即购买</text>
@@ -233,7 +194,9 @@
 				index_list: 0,
 				price:'',
 				type:'',
-				inventory:''
+				inventory:'',
+				data_list:''
+				
 			}
 		},
 		methods: {
@@ -333,12 +296,18 @@
 					url: './int_order?data='+JSON.stringify(data)
 				})
 				
-			}
+			},
+			jumps(id){
+				uni.navigateTo({
+					url:'./integral_details?id='+id
+				})
+			},
+			
 		},
 		onLoad(options) {
 			this.id = options.id
 			this.service.entire(this, 'post', this.service.api_root.subindex.threeindex.int_detail, {
-				id: options.id
+				id:options.id
 			}, function(self, res) {
 				
 				let data =  res.data.goods
@@ -350,19 +319,24 @@
 				self.data = data
 				// self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory
-				// let list = res.data.goods.specifications.choose
-				// if(list != ''){
-				// 	for (let s of list) {
-				// 		for (let k of s.value) {
-				// 			k.show = false
-				// 			k.disabled = true
-				// 		}
-				// 	}
-				// 	for (let s of list[0].value) {
-				// 		s.disabled = false
-				// 	}
-				// }
-				// self.choose_list = list
+				
+				
+			})
+			
+			this.service.entire(this, 'get', this.service.api_root.subindex.int_list, {  //猜你喜欢
+				is_home_recommended: 1
+			}, function(self, res) {
+				console.log(res)
+				let data = res.data.data
+				for (let s of data) {
+					let money = []
+					if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
+					if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
+					if(Number(s.price) != 0) money.push('￥'+Number(s.price))
+					s.money = money.join('+')
+				}
+				data.length = 4
+				self.data_list = data
 			})
 		}
 	}
@@ -390,7 +364,7 @@
 		width: 100%;
 		position: absolute;
 		z-index: 99;
-		top: 0;
+		top: var(--status-bar-height);
 		height: 60rpx;
 		padding: 20rpx 0;
 		display: flex;
@@ -639,6 +613,11 @@
 		font-weight: bold;
 		padding: 0 10rpx;
 		margin-bottom: 20rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 	
 	.tips {
@@ -683,7 +662,7 @@
 	}
 	.bottom_tab .tab_list{
 		text-align: center;
-		
+		width: 100%;
 	}
 	.bottom_tab .tab_mid{
 		margin-left: -80rpx !important;
@@ -700,16 +679,15 @@
 		color: #fff;
 	}
 	.bottom_tab .tab_right text{
-		display: inline-block;
+		display: block;
 		height: 80rpx;
 		line-height: 80rpx;
-		padding: 0 30rpx;
+		margin: 0 30rpx;
 		font-size: 30rpx;
 	}
 	.bottom_tab .tab_right text:nth-of-type(1){
 		background: #1D9DFF;
 		border-radius: 20rpx;
-		width: 320rpx;
 		
 	}
 	.bottom_tab button{

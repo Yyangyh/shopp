@@ -33,7 +33,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="pr_shop">
+		<!-- <view class="pr_shop">
 			<view class="sh_top">
 				<image src="../../static/image/portrait1.png" mode="widthFix"></image>
 				<text>文旅特色产品</text>
@@ -42,7 +42,7 @@
 				<text>进店逛逛</text>
 				<image src="../../static/image/go.png" mode="widthFix"></image>
 			</view>
-		</view>
+		</view> -->
 
 		<view class="user_comment">
 			<view class="user_top">
@@ -153,12 +153,12 @@
 		</view>
 
 		<view class="bottom_tab">
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<image src="../../static/image/shops.png" mode="widthFix"></image>
 				<view class="">
 					店铺
 				</view>
-			</view>
+			</view> -->
 			<!-- <view class="tab_list" @click="jump('../threeLayers/shoppingCart')">
 				<image src="../../static/image/shopping.png" mode="widthFix"></image>
 				<view class="">

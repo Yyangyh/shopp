@@ -114,7 +114,7 @@ const api_root = {
 }
 const entire = function(self,type,url,data,func){
 	
-	if(uni.getStorageSync('token') != '') data.token = self.$store.state.token
+	if(uni.getStorageSync('token') != '') data.token = uni.getStorageSync('token')
 	uni.request({
 		url:url,
 		data:data,
@@ -135,8 +135,8 @@ const entire = function(self,type,url,data,func){
 					},1500)
 					return
 				}
-				// uni.removeStorageSync('token')
-				self.$store.commit('logout')
+				uni.removeStorageSync('token')
+				// self.$store.commit('logout')
 				
 				
 				setTimeout(function(){

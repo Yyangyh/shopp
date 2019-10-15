@@ -185,12 +185,12 @@
 						分销中心
 					</view>
 				</view>
-				<view class="tab_list" @click="jump('../subuser/commission')">
+				<!-- <view class="tab_list" @click="jump('../subuser/commission')">
 					<image src="../../static/image/commission.png" mode="widthFix"></image>
 					<view class="">
 						佣金
 					</view>
-				</view>
+				</view> -->
 				<view class="tab_list"  @click="jump('../subuser/user_edition')">
 					<image src="../../static/image/editionPass.png" mode="widthFix"></image>
 					<view class="">

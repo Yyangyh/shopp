@@ -21,56 +21,16 @@
 				猜你喜欢
 			</view>
 			<view class="guess_box">
-				<view class="box_list">
-					<image src="../../static/image/index/towel.png" mode=""></image>
+				<view class="box_list" v-for="(item,index) in data_list" :key='item.id' @click="jump('../subindex/threeindex/integral_details?id='+item.id)">
+					<image :src="item.images" mode=""></image>
 					<view class="list_one">
-						洁丽雅毛巾2条装 纯棉洗脸
-						洗澡家用成人男女帕
+						{{item.title}}
 					</view>
 					<view class="list_two">
-						1000积分兑换
+						{{item.money}}兑换
 					</view>
 					<view class="list_three">
-						￥100
-					</view>
-				</view>
-				<view class="box_list">
-					<image src="../../static/image/index/umbrella.png" mode=""></image>
-					<view class="list_one">
-						心选超轻削光紗弯柄三折晴
-						雨伞遮阳伞
-					</view>
-					<view class="list_two">
-						1000积分+50版通兑换
-					</view>
-					<view class="list_three">
-						￥100
-					</view>
-				</view>
-				<view class="box_list">
-					<image src="../../static/image/index/towel.png" mode=""></image>
-					<view class="list_one">
-						洁丽雅毛巾2条装 纯棉洗脸
-						洗澡家用成人男女帕
-					</view>
-					<view class="list_two">
-						1000积分兑换
-					</view>
-					<view class="list_three">
-						￥100
-					</view>
-				</view>
-				<view class="box_list">
-					<image src="../../static/image/index/umbrella.png" mode=""></image>
-					<view class="list_one">
-						心选超轻削光紗弯柄三折晴
-						雨伞遮阳伞
-					</view>
-					<view class="list_two">
-						1000积分+50版通兑换
-					</view>
-					<view class="list_three">
-						￥100
+						￥{{item.original_price}}
 					</view>
 				</view>
 			</view>
@@ -82,13 +42,28 @@
 	export default{
 		data() {
 			return {
-				data:''
+				data:'',
+				data_list:''
 			}
 		},
 		onShow() {
 			this.service.entire(this,'post',this.service.api_root.index.int_category,{},function(self,res){  //分类列表
 				console.log(res)
 				self.data = res.data
+			})
+			this.service.entire(this, 'get', this.service.api_root.subindex.int_list, {  //猜你喜欢
+				is_home_recommended: 1
+			}, function(self, res) {
+				// console.log(res)
+				let data = res.data.data
+				for (let s of data) {
+					let money = []
+					if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
+					if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
+					if(Number(s.price) != 0) money.push('￥'+Number(s.price))
+					s.money = money.join('+')
+				}
+				self.data_list = data
 			})
 		},
 		methods:{
@@ -122,7 +97,7 @@
 	}
 	.table {
 		display: flex;
-		justify-content: space-around;
+		justify-content: flex-start;
 		flex-wrap: wrap;
 		padding-bottom: 40rpx;
 		border-bottom: 6rpx solid #F5F5F5;
@@ -147,6 +122,7 @@
 	.guess .guess_test{
 		font-size: 32rpx;
 		font-weight: bold;
+		margin-bottom: 20rpx;
 	}
 	.guess .guess_box{
 		display: flex;
@@ -162,6 +138,11 @@
 		font-weight: bold;
 		clolr: #333;
 		margin-bottom: 20rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 		
 	.guess .guess_box .box_list .list_two{

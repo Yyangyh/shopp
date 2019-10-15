@@ -12,7 +12,7 @@
 			<image class="back" src="../../static/image/secondary/integral_back.png" mode="widthFix"></image>
 			<view class="back_index">
 				<view class="int_num">
-					945
+					{{integral}}
 				</view>
 				<view class="int_tab">
 					<view class="int_list" @click="shopp()">
@@ -121,6 +121,7 @@
 		},
 		data() {
 			return {
+				integral:uni.getStorageSync('user').integral
 			}
 		},
 		methods:{

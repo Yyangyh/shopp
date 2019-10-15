@@ -134,6 +134,17 @@
 			},
 			singleElection(index){//单选
 				this.data[index].choice = !this.data[index].choice
+				if(this.data[index].choice == true){ //全选
+					for (let s of this.data) {
+						if(s.choice == false) return
+					}
+					this.checked = true
+				}
+				if(this.data[index].choice == false){ //非全选
+					for (let s of this.data) {
+						if(s.choice == false) this.checked = false
+					}
+				}
 				let all = []
 				for (let s of this.data) {
 					if(s.choice == true){

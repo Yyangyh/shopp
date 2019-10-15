@@ -12,8 +12,8 @@
 			</view>
 			<view class="name_back">
 				<view class="avatar">
-					<image src="../../static/image/secondary/avatar.png" mode="widthFix"></image>
-					<text class="myname">130****0001</text>
+					<image :src="user.avatar" mode="widthFix"></image>
+					<text class="myname">{{user.nickname}}</text>
 				</view>
 				<view class="button">
 					去实名
@@ -50,7 +50,8 @@
 			return {
 				title:'钱包',
 				data:'',
-				data_dition:''
+				data_dition:'',
+				user:uni.getStorageSync('user')
 			}
 		},
 		methods: {
@@ -119,6 +120,7 @@
 	.avatar image{
 		width: 90rpx;
 		height: 90rpx;
+		border-radius: 45rpx;
 	}
 	.myname{
 		margin-left: 30rpx;

@@ -217,7 +217,7 @@
 					1AWT≈{{set_price}}CNY
 				</view>
 			</view>
-			<image src="../../static/image/index/close.png" mode="widthFix" @click="eject_show = false"></image>
+			<image src="../../static/image/index/close.png" mode="widthFix" @click="close()"></image>
 		</view>
 	</view>
 </template>
@@ -240,7 +240,7 @@
 				//轮播
 				show: false,
 				group_list:'',
-				eject_show:true,
+				eject_show:'',
 				item_data_guess:'',
 				works_data_guess:'',
 				set_price:''
@@ -251,7 +251,7 @@
 			
 		},
 		onShow() {
-			
+			uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
 			// #ifdef H5  
 			let Url = window.location.href
 				Url = Url.split('?')
@@ -260,6 +260,8 @@
 				uni.setStorageSync('token',token)
 			}
 			// #endif  
+			
+			
 			
 			service.entire(this, 'get', service.api_root.index.banner, {}, function(self, res) { //轮播图
 				
@@ -295,7 +297,10 @@
 		},
 		
 		methods: {
-			
+			close(){
+				this.eject_show = false
+				uni.setStorageSync('notice',1)
+			},
 			jump(url) {
 				if(!url){
 					uni.showToast({
