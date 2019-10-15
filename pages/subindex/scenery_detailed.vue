@@ -368,7 +368,34 @@
 				</view>
 			</view>
 		</view>
-		
+		<view class="mask">
+			
+		</view>
+		<view class="pop-ups">
+			<view class="h1">
+				<text>澳门大三巴牌坊+澳门威尼斯度假村+永利皇宫观 光缆车一日游【新增...</text>
+			</view>
+			<view class="description">
+				<view class="h2">预定说明</view>
+				<view class="h3">
+					预定时间：
+					<view class="cc">
+						<text class="point">
+							可订6月17日
+						</text>
+						<text class="">
+							需要在游玩当天的16:00前预定
+						</text>
+					</view>
+				</view>
+				<view class="h3">
+					
+				</view>
+			</view>
+			<view class="regulation">
+				
+			</view>
+		</view>
 		
 	</view>
 </template>
@@ -794,6 +821,71 @@
 		bottom: 0;
 		height: 600rpx;
 		width: 100%;
+	}
+	.mask{
+		width: 100%;
+		height: 100%;
+		background: rgba(0,0,0,.5);
+		position: fixed;
+		top: 0;
+		left: 0;
+		z-index: 100;
+	}
+	.pop-ups{
+		width: 100%;
+		height: 848rpx;
+		background: #FFFFFF;
+		position: fixed;
+		bottom: 0;
+		z-index: 101;
+	}
+	.h1{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 36rpx 54rpx 50rpx 14rpx;
+		color: #333333;
+		line-clamp: 2;
+		word-wrap: break-word;
+		text-overflow: ellipsis;
+		font-size: 32rpx;
+		font-weight: bold;
+	}
+	.description{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0 16rpx;
+	}
+	.h2{
+		color: #333333;
+		font-size: 26rpx;
+	}
+	.h2:first-of-type{
+		display: flex;
+		align-items: center;
+		padding-left: 14rpx;
+		border-left: 4rpx solid #1F9EFF;
+	}
+	.h3{
+		color: #333333;
+		font-size: 24rpx;
+		color-rendering: ;
+		padding-left: 18rpx;
+		padding-top: 36rpx;
+	}
+	.h3:first-of-type{
+		display: flex;
+		justify-content: center;
+	}
+	.cc{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		flex-direction: column;
+	}
+	.point{
+		padding: 0 16rpx;
+		font-size: 24rpx;
+		background: linear-gradient(top,#FFAA1C,#FF8402);
 	}
 	
 </style>

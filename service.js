@@ -87,6 +87,8 @@ const api_root = {
 		merchUpload:api+'/api/merch/Upload',//证件图片上传
 		merchSubmit:api+'/api/merch/Submit',//提交商户申请
 		merchRegister:api+'/api/merch/Register',//个人申请信息获取（检查申请状态）
+		message:api+'/api/user/message',//系统通知
+		Answer:api+'/api/user/Answer',//反馈
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称

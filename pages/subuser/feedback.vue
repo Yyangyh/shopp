@@ -3,9 +3,9 @@
 		<view class="status_bar">
 		            <!-- 这里是状态栏 -->
 		</view>
-		<returns :titles='title'></returns>
-		<view class="fe_top">
-			<view class="fe_test">反馈类型</view>
+		<returns :titles='titles'></returns>
+		<!-- <view class="fe_top">
+			<view class="fe_test">类型</view>
 			<view class="tab_box">
 				<view class="tab_list">
 					交通信息
@@ -26,16 +26,28 @@
 					推荐玩法
 				</view>
 			</view>
+		</view> -->
+		<view class="log">
+			<text>姓名</text>
+			<input type="text" v-model="name" placeholder="输入姓名"/>
+		</view>
+		<view class="log">
+			<text>电话</text>
+			<input type="text" v-model="tel" placeholder="输入电话"/>
+		</view>
+		<view class="log">
+			<text>标题</text>
+			<input type="text" v-model="title" placeholder="输入标题"/>
 		</view>
 		<view class="fe_bottom">
 			<view class="fe_test">
-				反馈类型
+				内容
 			</view>
 			<view class="textarea">
-				<textarea placeholder-style="color:#999999" placeholder="输入反馈内容"/>
+				<textarea placeholder-style="color:#999999" v-model="content" placeholder="输入内容"/>
 			</view>
 		</view>
-		<button>提交</button>
+		<button @click="submit()">提交</button>
 	</view>
 </template>
 
@@ -47,13 +59,43 @@
 			returns
 		},
 		data() {
+			// Answer
 			return {
-				title:'反馈',
+				titles:'反馈',
+				name:'',
+				tel:'',
+				title:'',
+				content:''
 			}
 		},
 		methods:{
-			
-			
+			submit(){
+				this.service.entire(this,'post',this.service.api_root.subuser.Answer,{
+					name:this.name,
+					tel:this.tel,
+					title:this.title,
+					content:this.content,
+				},function(self,res){
+					if(res.code == 0)
+					{
+						uni.showToast({
+							icon:'none',
+							title:res.msg
+						})
+						setTimeout(function(){
+							uni.switchTab({
+								url:'/pages/index/user'
+							})
+						},1500)
+					} else {
+						uni.showToast({
+							icon:'none',
+							title:res.msg
+						})
+					}
+					
+				})
+			}
 		},
 		
 		onShow() {
@@ -109,5 +151,32 @@
 		/* width: 84%; */
 		margin:80rpx 36rpx;
 	}
-	
+	.log{
+		width: 100%;
+		/* height: 90rpx; */
+		box-sizing: border-box;
+		margin: 20rpx 0;
+		padding: 0 40rpx;
+		/* background: #F2F2F2; */
+		display: flex;
+		align-items: flex-start;
+		justify-content: center;
+		flex-direction: column;
+	}
+	.log text{
+		color: #333333;
+		font-size: 17px;
+		padding: 0 3px;
+		margin: 18px 0 21px 0;
+		font-weight: bold;
+		margin-bottom:20rpx;
+	}
+	.log input{
+		width: 100%;
+		height: 90rpx;
+		box-sizing: border-box;
+		padding: 0 20rpx;
+		background: #F2F2F2;
+		border-radius: 10rpx;
+	}
 </style>

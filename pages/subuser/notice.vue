@@ -4,7 +4,7 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="tab_top">
+		<!-- <view class="tab_top">
 			<view class="tab_list">
 				<image src="../../static/image/secondary/order.png" mode="widthFix"></image>
 				<view class="">
@@ -29,9 +29,21 @@
 					优惠活动
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="tab_bottom">
-			<view class="list">
+			<view class="list" v-for="(li,index) in list" :key="index">
+				<view class="list_top">
+					{{li.title}}
+				</view>
+				<view class="list_middle">
+					{{li.detail}}
+				</view>
+				<view class="list_bottom">
+					<text class="time">{{li.add_time_time}}</text>
+					<!-- <text class="see">查看详情</text> -->
+				</view>
+			</view>
+			<!-- <view class="list">
 				<view class="list_top">
 					订单支付提醒
 				</view>
@@ -54,19 +66,7 @@
 					<text class="time">2019-06-01 12:34</text>
 					<text class="see">查看详情</text>
 				</view>
-			</view>
-			<view class="list">
-				<view class="list_top">
-					订单支付提醒
-				</view>
-				<view class="list_middle">
-					订单WL23163464563，长隆野生动物世界景点门票尚未完成支付
-				</view>
-				<view class="list_bottom">
-					<text class="time">2019-06-01 12:34</text>
-					<text class="see">查看详情</text>
-				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>
@@ -81,6 +81,7 @@
 		data() {
 			return {
 				title:'系统通知',
+				list:[]
 			}
 		},
 		methods:{
@@ -89,6 +90,13 @@
 		},
 		
 		onShow() {
+			this.service.entire(this,'post',this.service.api_root.subuser.message,{
+				
+			},function(self,res){ //猜你喜欢
+			    var res = res.data;
+				self.list = res.data;
+			    console.log(res)
+			   })
 		}
 	}
 </script>
@@ -112,19 +120,27 @@
 		width: 100rpx;
 	}
 	.tab_bottom{
-		padding: 40rpx 0 80rpx 0;
-		margin: 0 30rpx 86rpx 30rpx;
-		box-shadow: 0 0 16rpx #ccc;
-		border-radius:20rpx;
+		/* padding: 40rpx 0 80rpx 0; */
+		/* margin: 0 30rpx 86rpx 30rpx; */
+		margin: 0 30rpx ;
+		/* box-shadow: 0 0 16rpx #ccc; */
+		/* border-radius:20rpx; */
 		
 	}
+	
 	.tab_bottom .list{
+		width: 100%;
+		box-sizing: border-box;
 		border-bottom: 2rpx solid #F4F4F4;
 		padding: 20rpx 40rpx;
+		border-radius: 20rpx;
+		border: 2rpx solid #F1F1F1;
+		margin: 30rpx 0;
+		box-shadow: 0 0 18rpx #F1F1F1;
 	}
-	.tab_bottom .list:last-of-type{
+	/* .tab_bottom .list:last-of-type{
 		border-bottom: none;
-	}
+	} */
 	.tab_bottom .list_top{
 		color: #333333;
 		font-size: 32rpx;
