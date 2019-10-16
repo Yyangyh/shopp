@@ -140,7 +140,7 @@
 							<view class="ri_test1">
 								￥<text>580</text>
 							</view>
-							<view class="ri_test2" @click="jump('/pages/threeLayers/fill_in')">
+							<view class="ri_test2" @click="show_box()">
 								立即购买
 							</view>
 						</view>
@@ -368,17 +368,17 @@
 				</view>
 			</view>
 		</view>
-		<view class="mask">
+		<view class="mask" v-show="box">
 			
 		</view>
-		<view class="pop-ups">
+		<view class="pop-ups" v-show="box">
 			<view class="h1">
 				<text>澳门大三巴牌坊+澳门威尼斯度假村+永利皇宫观 光缆车一日游【新增...</text>
 			</view>
 			<view class="description">
 				<view class="h2">预定说明</view>
 				<view class="h3">
-					预定时间：
+					<text>预定时间：</text>
 					<view class="cc">
 						<text class="point">
 							可订6月17日
@@ -389,11 +389,42 @@
 					</view>
 				</view>
 				<view class="h3">
-					
+					<text>有效期：</text>
+					<text class="xx">游玩日期当天有效</text>
+				</view>
+				<view class="h3">
+					<text>限购政策：</text>
+					<text class="xx">每笔订单最多购买20份</text>
 				</view>
 			</view>
 			<view class="regulation">
+				<view class="h2">入园须知</view>
+				<view class="h3">
+					<text>入园方式：</text>
+					<view class="cc">
+						<text class="point">需提前换票入园</text>
+					</view>
+				</view>
+				<view class="h4">
+					① 凭商家确认短信、手机号、姓名到景区门口自助取票机或
+				</view>
 				
+				<view class="h4">
+					① 凭商家确认短信、手机号、姓名到景区门口自助取票机或
+				</view>
+				<view class="h4">
+					① 凭商家确认短信、手机号、姓名到景区门口自助取票机或
+				</view>
+			</view>
+			<view class="btn">
+				<view class="price">
+					<text>价格</text>
+					<text class="ll">￥580</text>
+				</view>
+				<view class="payment">
+					<image src="../../static/image/collect.png" mode="widthFix"></image>
+					<button type="primary" @click="jump('/pages/threeLayers/fill_in')">立即购买</button>
+				</view>
 			</view>
 		</view>
 		
@@ -404,7 +435,8 @@
 	export default{
 		data() {
 			return {
-				show: 0
+				show: 0,
+				box: false
 			}
 		},
 		methods:{
@@ -412,9 +444,13 @@
 				this.common.returns(this)
 			},
 			jump(url){
+				this.box = false;
 				uni.navigateTo({
 					url:url
 				})
+			},
+			show_box(){
+				this.box = true;
 			}
 			
 		}
@@ -833,7 +869,9 @@
 	}
 	.pop-ups{
 		width: 100%;
-		height: 848rpx;
+		height: 900rpx;
+		box-sizing: border-box;
+		/* padding-bottom: 120rpx; */
 		background: #FFFFFF;
 		position: fixed;
 		bottom: 0;
@@ -842,7 +880,7 @@
 	.h1{
 		width: 100%;
 		box-sizing: border-box;
-		padding: 36rpx 54rpx 50rpx 14rpx;
+		padding: 36rpx 54rpx 0rpx 14rpx;
 		color: #333333;
 		line-clamp: 2;
 		word-wrap: break-word;
@@ -858,6 +896,7 @@
 	.h2{
 		color: #333333;
 		font-size: 26rpx;
+		margin-top: 50rpx;
 	}
 	.h2:first-of-type{
 		display: flex;
@@ -868,24 +907,89 @@
 	.h3{
 		color: #333333;
 		font-size: 24rpx;
-		color-rendering: ;
 		padding-left: 18rpx;
-		padding-top: 36rpx;
-	}
-	.h3:first-of-type{
+		margin-top: 30rpx;
 		display: flex;
-		justify-content: center;
+		justify-content: flex-start;
+		align-items: flex-start;
 	}
 	.cc{
 		display: flex;
-		align-items: center;
+		align-items: flex-start;
 		justify-content: space-between;
 		flex-direction: column;
 	}
-	.point{
+	.cc text{
 		padding: 0 16rpx;
+	}
+	.point{
+		/* padding: 0 16rpx; */
+		margin-bottom: 18rpx;
 		font-size: 24rpx;
 		background: linear-gradient(top,#FFAA1C,#FF8402);
 	}
 	
+	.xx{
+		color: #666666;
+		font-size: 24rpx;
+	}
+	.regulation{
+		width: 100%;
+		box-sizing: border-box;
+		padding: 0 16rpx;
+	}
+	.h4{
+		color: #666666;
+		font-size: 24rpx;
+		padding-left: 18rpx;
+		margin-top: 16rpx;
+	}
+	.h4:nth-of-type(1){
+		margin-top: 0;
+	}
+	.btn{
+		width: 100%;
+		height: 120rpx;
+		box-sizing: border-box;
+		padding: 0 40rpx;
+		position: fixed;
+		bottom: 0;
+		z-index: 102;
+		background: #FFFFFF;
+		box-shadow: 0rpx 0 15rpx 0 #CCCCCC;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+	.price{
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	.price text{
+		color: #666666;
+		font-size: 34rpx;
+	}
+	.price .ll{
+		color: #FF431D;
+		font-size: 40rpx;
+	}
+	.payment{
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.payment image{
+		width: 70rpx;
+		height: 70rpx;
+		margin-right: 30rpx;
+	}
+	.payment button{
+		color: #FFFFFF;
+		font-size: 34rpx;
+		width: 224rpx;
+		height: 90rpx;
+		border-radius: 90rpx;
+		text-align: center;
+	}
 </style>
