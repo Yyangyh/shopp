@@ -1,9 +1,18 @@
 
-.top.data-v-e26bf4be{
+.content.data-v-1d9595e8{
+	padding-top: 105rpx;
+}
+.content.data-v-1d9595e8 .top{	
+	position: fixed;
+	top: var(--status-bar-height);
+	left: 0;
+	width: 100%;
+	background: #FFF;
+	z-index: 888;
 	-webkit-box-shadow: none;
 	        box-shadow: none;
 }
-.ed_top.data-v-e26bf4be{
+.ed_top.data-v-1d9595e8{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -13,16 +22,16 @@
 	-webkit-box-shadow:0px 14rpx 20rpx 0px #eee;
 	        box-shadow:0px 14rpx 20rpx 0px #eee;
 }
-.ed_top view.data-v-e26bf4be{
+.ed_top view.data-v-1d9595e8{
 	width: 50%;
 	font-size: 28rpx;
 	border-bottom: 6rpx solid #fff;
 	padding: 22rpx 0;
 }
-.show.data-v-e26bf4be{
+.show.data-v-1d9595e8{
 	border-bottom-color: #1D9DFF !important;
 }
-.table.data-v-e26bf4be {
+.table.data-v-1d9595e8 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -38,26 +47,26 @@
 	padding-bottom: 40rpx;
 	border-bottom: 6rpx solid #F5F5F5;
 }
-.table .tab_list.data-v-e26bf4be {
+.table .tab_list.data-v-1d9595e8 {
 	width: 20%;
 	text-align: center;
 	margin-top: 30rpx;
 	font-size: 24rpx;
 	color: #666;
 }
-.table .tab_list image.data-v-e26bf4be {
+.table .tab_list image.data-v-1d9595e8 {
 	width: 80rpx;
 	height: 80rpx;
 }
-.guess.data-v-e26bf4be{
+.guess.data-v-1d9595e8{
 	padding: 20rpx 20rpx;
 }
-.guess .guess_test.data-v-e26bf4be{
+.guess .guess_test.data-v-1d9595e8{
 	font-size: 40rpx;
 	font-weight: bold;
 	margin-bottom: 20rpx;
 }
-.guess .guess_box.data-v-e26bf4be{
+.guess .guess_box.data-v-1d9595e8{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -70,29 +79,30 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.guess .guess_box .box_list.data-v-e26bf4be{
+.guess .guess_box .box_list.data-v-1d9595e8{
 	width: 49%;
 	font-size: 28rpx;
 	margin-bottom: 20rpx;
 }
-.guess .guess_box .box_list .list_one.data-v-e26bf4be{
+.guess .guess_box .box_list .list_one.data-v-1d9595e8{
 	font-weight: bold;
 	clolr: #333;
 	margin-bottom: 20rpx;
+	height: 76rpx;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;
 	overflow: hidden;
 }
-.guess .guess_box .box_list .list_two.data-v-e26bf4be{
+.guess .guess_box .box_list .list_two.data-v-1d9595e8{
 	color: #FF431D;
 }
-.guess .guess_box .box_list .list_three.data-v-e26bf4be{
+.guess .guess_box .box_list .list_three.data-v-1d9595e8{
 	color: #999999;
 	font-size: 24rpx;
 	text-decoration:line-through;
 }
-.guess .guess_box image.data-v-e26bf4be{
+.guess .guess_box image.data-v-1d9595e8{
 	width: 100%;
 	height: 224rpx;
 	margin-bottom: 20rpx;

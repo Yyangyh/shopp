@@ -87,56 +87,17 @@
 				猜你喜欢
 			</view>
 			<view class="spot">
-				<view class="sp_list">
-					<image src="../../static/image/duck1.png" mode=""></image>
-					<view class="ticket">
+				<view class="sp_list" v-for="(item,index) in data_guess" @click="jumps(item.id,item.type)">
+					<image :src="item.images" mode=""></image>
+					<!-- <view class="ticket">
 						武汉-特色产品
-					</view>
+					</view> -->
 					<view class="address">
-						鸭脖武汉特产鸭肉食品
+						{{item.title}}
 					</view>
 					<view class="bottom">
-						<text class="price">￥100</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../static/image/duck2.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥500</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../static/image/duck1.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥100</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../static/image/duck2.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥500</text>
-						<text class='data'>300人购买</text>
+						<text class="price">￥{{item.price}}</text>
+						<!-- <text class='data'>300人购买</text> -->
 					</view>
 				</view>
 			</view>
@@ -234,7 +195,8 @@
 				price:'',
 				type:'',
 				inventory:'',
-				is_favor:''
+				is_favor:'',
+				data_guess:''
 			}
 		},
 		methods: {
@@ -358,6 +320,11 @@
 					})
 				}
 				
+			},
+			jumps(id,type){
+				uni.navigateTo({
+					url:'./product_detailed?id='+id+'&type='+type
+				})
 			}
 		},
 		onLoad(options) {
@@ -383,6 +350,20 @@
 				}
 				self.choose_list = list
 			})
+			if(options.type == 0){
+				this.service.entire(this,'get',this.service.api_root.threeLayers.goodsList,{},function(self,res){  //猜你喜欢_特色产品
+						
+						self.data_guess = res.data.data
+						self.data_guess.length = 4
+				})
+			}else{
+				this.service.entire(this,'get',this.service.api_root.subindex.org_category_list,{red:1},function(self,res){  //猜你喜欢——文创产品
+					// console.log(res)
+					self.data_guess = res.data.data
+					self.data_guess.length = 4
+				})
+			}
+			
 		}
 	}
 </script>
@@ -656,8 +637,14 @@
 		color: #333;
 		font-size: 26rpx;
 		font-weight: bold;
+		height: 68rpx;
 		padding: 0 10rpx;
 		margin-bottom: 20rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 
 	.tips {

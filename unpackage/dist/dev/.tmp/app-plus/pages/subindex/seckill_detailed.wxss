@@ -369,6 +369,7 @@
 }
 .bottom_tab .tab_list.data-v-a07914fa{
 	text-align: center;
+	width: 100%;
 }
 .bottom_tab .tab_mid.data-v-a07914fa{
 	margin-left: -80rpx !important;
@@ -385,7 +386,7 @@
 	color: #fff;
 }
 .bottom_tab .tab_right text.data-v-a07914fa{
-	display: inline-block;
+	display: block;
 	height: 80rpx;
 	line-height: 80rpx;
 	padding: 0 30rpx;
@@ -394,7 +395,6 @@
 .bottom_tab .tab_right text.data-v-a07914fa:nth-of-type(1){
 	background: #1D9DFF;
 	border-radius: 20rpx;
-	width: 320rpx;
 }
 .bottom_tab button.data-v-a07914fa{
 	width: 100%;

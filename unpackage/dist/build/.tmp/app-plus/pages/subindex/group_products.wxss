@@ -1,18 +1,18 @@
 
-.content.data-v-cf7243b2{
+.content.data-v-75d81683{
 	background: #F1F1F1;
-	padding-bottom: 100rpx;
+	padding-bottom: 120rpx;
 }
-.top_img.data-v-cf7243b2{
+.top_img.data-v-75d81683{
 	width: 100%;
 	height: 360rpx;
 	position: relative;
 }
-.top_img image.data-v-cf7243b2{
+.top_img image.data-v-75d81683{
 	width: 100%;
 	height: 100%;
 }
-.top_img .top_operation.data-v-cf7243b2{
+.top_img .top_operation.data-v-75d81683{
 	width: 100%;
 	position: absolute;
 	z-index: 99;
@@ -35,20 +35,20 @@
 	        align-items: center;
 	/* margin: 0 20rpx; */
 }
-.top_img .top_operation image.data-v-cf7243b2{
+.top_img .top_operation image.data-v-75d81683{
 	height: 50rpx;
 	width: 50rpx;
 }
-.top_img .top_operation image.data-v-cf7243b2:nth-of-type(1){
+.top_img .top_operation image.data-v-75d81683:nth-of-type(1){
 	margin-left: 30rpx;
 }
-.top_img .top_operation .love.data-v-cf7243b2{
+.top_img .top_operation .love.data-v-75d81683{
 	margin-right: 20rpx;
 }
-.top_img .top_operation .share.data-v-cf7243b2{
+.top_img .top_operation .share.data-v-75d81683{
 	margin-right: 30rpx;
 }
-.product_price.data-v-cf7243b2{
+.product_price.data-v-75d81683{
 	background: #fff;
 	width: 96%;
 	font-size: 32rpx;
@@ -57,12 +57,12 @@
 	left: 2%;
 	border-radius: 10rpx;
 }
-.product_price .pr_top.data-v-cf7243b2{
+.product_price .pr_top.data-v-75d81683{
 	/* font-weight: bold; */
 	font-size: 32rpx;
 	padding: 20rpx;
 }
-.product_price .price.data-v-cf7243b2{
+.product_price .price.data-v-75d81683{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -80,7 +80,7 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.product_price .price view.data-v-cf7243b2{
+.product_price .price view.data-v-75d81683{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -90,23 +90,23 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.product_price .price image.data-v-cf7243b2{
+.product_price .price image.data-v-75d81683{
 	height: 34rpx;
 	width: 34rpx;
 	margin: 0 20rpx 0 30rpx;
 }
-.product_price .price view text.data-v-cf7243b2:nth-of-type(1){
+.product_price .price view text.data-v-75d81683:nth-of-type(1){
 	font-weight: bold;
 	color: #FF431D;
 	font-size: 36rpx;
 }
-.product_price .price view text.data-v-cf7243b2:nth-of-type(2){
+.product_price .price view text.data-v-75d81683:nth-of-type(2){
 	font-size: 28rpx;
 }
-.product_price .price .sell.data-v-cf7243b2{
+.product_price .price .sell.data-v-75d81683{
 	font-size: 24rpx;
 }
-.product_price .pr_bottom.data-v-cf7243b2 {
+.product_price .pr_bottom.data-v-75d81683 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -117,18 +117,18 @@
 	        justify-content: space-between;
 	padding: 20rpx;
 }
-.product_price .pr_bottom image.data-v-cf7243b2{
+.product_price .pr_bottom image.data-v-75d81683{
 	width: 32rpx;
 	height: 32rpx;
 }
-.product_price .pr_bottom .pr_coupon.data-v-cf7243b2{
+.product_price .pr_bottom .pr_coupon.data-v-75d81683{
 	color: #333333;
 	font-size: 30rpx;
 }
-.product_price .pr_bottom .pr_coupon image.data-v-cf7243b2{
+.product_price .pr_bottom .pr_coupon image.data-v-75d81683{
 	margin-right: 20rpx;
 }
-.product_price .pr_bottom .receive_co.data-v-cf7243b2{
+.product_price .pr_bottom .receive_co.data-v-75d81683{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -141,7 +141,7 @@
 	color: #999;
 	font-size: 24rpx;
 }
-.pr_shop.data-v-cf7243b2{
+.pr_shop.data-v-75d81683{
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -155,7 +155,7 @@
 	line-height: 120rpx;
 	padding: 0 20rpx;
 }
-.pr_shop .sh_top.data-v-cf7243b2{
+.pr_shop .sh_top.data-v-75d81683{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -168,12 +168,12 @@
 	font-size: 32rpx;
 	font-weight: 400;
 }
-.pr_shop .sh_top image.data-v-cf7243b2{
+.pr_shop .sh_top image.data-v-75d81683{
 	height: 90rpx;
 	width: 90rpx;
 	margin-right: 20rpx;
 }
-.pr_shop .sh_bottom.data-v-cf7243b2 {
+.pr_shop .sh_bottom.data-v-75d81683 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -186,20 +186,20 @@
 	color: #999;
 	padding-right: 2%;
 }
-.pr_shop .sh_bottom image.data-v-cf7243b2{
+.pr_shop .sh_bottom image.data-v-75d81683{
 	height: 32rpx;
 	width: 32rpx;
 }
-.user_comment.data-v-cf7243b2 {
+.user_comment.data-v-75d81683 {
 	background: #fff;
 	margin-top: 20rpx;
 	padding: 20rpx 30rpx;
 }
-.user_comment .user_top.data-v-cf7243b2 {
+.user_comment .user_top.data-v-75d81683 {
 	font-weight: bold;
 	font-size: 28rpx;
 }
-.user_comment .user.data-v-cf7243b2 {
+.user_comment .user.data-v-75d81683 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -210,65 +210,65 @@
 	        align-items: center;
 	margin: 20rpx 0;
 }
-.user_comment .user .user_img.data-v-cf7243b2 {
+.user_comment .user .user_img.data-v-75d81683 {
 	width: 90rpx;
 	height: 90rpx;
 }
-.user_comment .user .user_test.data-v-cf7243b2 {
+.user_comment .user .user_test.data-v-75d81683 {
 	margin: 0 20rpx;
 	font-size: 32rpx;
 }
-.user_comment .user .user_test view.data-v-cf7243b2 {
+.user_comment .user .user_test view.data-v-75d81683 {
 	font-weight: bold;
 	color: #333333;
 	font-size: 28rpx;
 }
-.user_comment .user .user_test text.data-v-cf7243b2 {
+.user_comment .user .user_test text.data-v-75d81683 {
 	font-size: 24rpx;
 	color: #999999;
 }
-.user_comment .user .user_star.data-v-cf7243b2 {
+.user_comment .user .user_star.data-v-75d81683 {
 	-webkit-align-self: flex-start;
 	    -ms-flex-item-align: start;
 	        align-self: flex-start;
 }
-.user_comment .user .user_star image.data-v-cf7243b2 {
+.user_comment .user .user_star image.data-v-75d81683 {
 	height: 26rpx;
 	width: 26rpx;
 }
-.user_comment .com_content .content_test view.data-v-cf7243b2 {
+.user_comment .com_content .content_test view.data-v-75d81683 {
 	font-size: 24rpx;
 	color: #666666;
 }
-.user_comment .com_content .content_img image.data-v-cf7243b2 {
+.user_comment .com_content .content_img image.data-v-75d81683 {
 	height: 120rpx;
 	width: 120rpx;
 	margin-right: 20rpx;
 	margin-top: 30rpx;
 }
-.user_comment .com_content .more.data-v-cf7243b2 {
+.user_comment .com_content .more.data-v-75d81683 {
 	font-size: 32rpx;
 	color: #666666;
 	margin: 20rpx 0;
 }
-.pro_img.data-v-cf7243b2{
+.pro_img.data-v-75d81683{
 }
-.pro_img .img_test.data-v-cf7243b2{
+.pro_img .img_test.data-v-75d81683{
 	text-align: center;
 	padding: 30rpx;
 	font-size: 32rpx;
 }
-.pro_img image.data-v-cf7243b2{
+.pro_img image.data-v-75d81683{
 	width: 100%;
 }
-.recommend .recommend_test.data-v-cf7243b2{
+.recommend .recommend_test.data-v-75d81683{
 	font-size: 32rpx;
 	font-weight: bold;
 	padding: 30rpx 20rpx;
 	background: #fff;
 	margin-top: 30rpx;
 }
-.spot.data-v-cf7243b2{
+.spot.data-v-75d81683{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -282,7 +282,7 @@
 	margin-bottom: 20rpx;
 	background: #fff;
 }
-.spot .sp_list.data-v-cf7243b2{
+.spot .sp_list.data-v-75d81683{
 	width: 45%;
 	height: 400rpx;
 	background: #fff;
@@ -292,24 +292,24 @@
 	border-top-right-radius: 10rpx;
 	border-top-left-radius: 10rpx;
 }
-.spot .sp_list image.data-v-cf7243b2{
+.spot .sp_list image.data-v-75d81683{
 	width: 100%;
 	height: 200rpx;
 }
-.ticket.data-v-cf7243b2{
+.ticket.data-v-75d81683{
 	color: #666666;
 	font-size: 28rpx;
 	margin: 10rpx 0;
 	padding: 0 10rpx;
 }
-.address.data-v-cf7243b2{
+.address.data-v-75d81683{
 	color: #333;
 	font-size: 24rpx;
 	font-weight: bold;
 	padding: 0 10rpx;
 	margin-bottom: 20rpx;
 }
-.tips.data-v-cf7243b2{
+.tips.data-v-75d81683{
 	color: #00D3B3;
 	font-size: 24rpx;
 	border: 1rpx solid #00D3B3;
@@ -318,7 +318,7 @@
 	margin-left: 20rpx;
 	font-weight: 100;
 }
-.spot .sp_list .bottom.data-v-cf7243b2{
+.spot .sp_list .bottom.data-v-75d81683{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -334,14 +334,14 @@
 	margin: 10rpx 0;
 	padding: 0 10rpx;
 }
-.spot .sp_list .bottom .price.data-v-cf7243b2{
+.spot .sp_list .bottom .price.data-v-75d81683{
 	color: #FF431D;
 }
-.spot .sp_list .bottom .data.data-v-cf7243b2{
+.spot .sp_list .bottom .data.data-v-75d81683{
 	color: #999999;
 	font-size: 26rpx;
 }
-.bottom_tab.data-v-cf7243b2{
+.bottom_tab.data-v-75d81683{
 	background: #FFFFFF;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -364,58 +364,59 @@
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
 }
-.bottom_tab .tab_list.data-v-cf7243b2{
+.bottom_tab .tab_list.data-v-75d81683{
 	text-align: center;
 	color: #999999;
 }
-.bottom_tab .tab_list image.data-v-cf7243b2{
+.bottom_tab .tab_list image.data-v-75d81683{
 	height: 44rpx;
 	width: 44rpx;
 }
-.bottom_tab .tab_right.data-v-cf7243b2{
+.bottom_tab .tab_right.data-v-75d81683{
 	font-size: 32rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	width: 100%;
 }
-.bottom_tab .tab_right .single.data-v-cf7243b2{
+.bottom_tab .tab_right .single.data-v-75d81683{
 	background: #1D9DFF;
 	color: #fff;
 	font-size: 24rpx;
-	width: 208rpx;
+	width: 50%;
 	height: 80rpx;
 	border-bottom-left-radius: 40rpx;
 	border-top-left-radius: 40rpx;
 }
-.bottom_tab .tab_right .single view.data-v-cf7243b2:nth-of-type(1){
+.bottom_tab .tab_right .single view.data-v-75d81683:nth-of-type(1){
 	font-size: 30rpx;
 }
-.bottom_tab .tab_right .group.data-v-cf7243b2{
+.bottom_tab .tab_right .group.data-v-75d81683{
 	background: #1D74FF;
 	color: #fff;
 	font-size: 24rpx;
-	width: 208rpx;
+	width: 50%;
 	height: 80rpx;
 	border-bottom-right-radius: 40rpx;
 	border-top-right-radius: 40rpx;
 }
-.bottom_tab .tab_right .group view.data-v-cf7243b2:nth-of-type(1){
+.bottom_tab .tab_right .group view.data-v-75d81683:nth-of-type(1){
 	font-size: 30rpx;
 }
-.bottom_tab .tab_right text.data-v-cf7243b2{
+.bottom_tab .tab_right text.data-v-75d81683{
 	display: inline-block;
 	height: 80rpx;
 	line-height: 80rpx;
 	padding: 0 30rpx;
 	font-size: 30rpx;
 }
-.bottom_tab .tab_right text.data-v-cf7243b2:nth-of-type(1){
+.bottom_tab .tab_right text.data-v-75d81683:nth-of-type(1){
 	background: #1D9DFF;
 	border-bottom-left-radius: 40rpx;
 	border-top-left-radius: 40rpx;
 }
-.bottom_tab .tab_right text.data-v-cf7243b2:nth-of-type(2){
+.bottom_tab .tab_right text.data-v-75d81683:nth-of-type(2){
 	background: #1D74FF;
 	border-bottom-right-radius: 40rpx;
 	border-top-right-radius: 40rpx;

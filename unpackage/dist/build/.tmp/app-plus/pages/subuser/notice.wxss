@@ -1,8 +1,8 @@
 
-.content.data-v-06e2c5e8{
+.content.data-v-0c0d095a{
 	overflow: hidden;
 }
-.tab_top.data-v-06e2c5e8{
+.tab_top.data-v-0c0d095a{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -19,29 +19,37 @@
 	-webkit-box-shadow: 0 0 16rpx #ccc;
 	        box-shadow: 0 0 16rpx #ccc;
 }
-.tab_top image.data-v-06e2c5e8{
+.tab_top image.data-v-0c0d095a{
 	height: 100rpx;
 	width: 100rpx;
 }
-.tab_bottom.data-v-06e2c5e8{
-	padding: 40rpx 0 80rpx 0;
-	margin: 0 30rpx 86rpx 30rpx;
-	-webkit-box-shadow: 0 0 16rpx #ccc;
-	        box-shadow: 0 0 16rpx #ccc;
-	border-radius:20rpx;
+.tab_bottom.data-v-0c0d095a{
+	/* padding: 40rpx 0 80rpx 0; */
+	/* margin: 0 30rpx 86rpx 30rpx; */
+	margin: 0 30rpx ;
+	/* box-shadow: 0 0 16rpx #ccc; */
+	/* border-radius:20rpx; */
 }
-.tab_bottom .list.data-v-06e2c5e8{
+.tab_bottom .list.data-v-0c0d095a{
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 	border-bottom: 2rpx solid #F4F4F4;
 	padding: 20rpx 40rpx;
+	border-radius: 20rpx;
+	border: 2rpx solid #F1F1F1;
+	margin: 30rpx 0;
+	-webkit-box-shadow: 0 0 18rpx #F1F1F1;
+	        box-shadow: 0 0 18rpx #F1F1F1;
 }
-.tab_bottom .list.data-v-06e2c5e8:last-of-type{
+/* .tab_bottom .list:last-of-type{
 	border-bottom: none;
-}
-.tab_bottom .list_top.data-v-06e2c5e8{
+} */
+.tab_bottom .list_top.data-v-0c0d095a{
 	color: #333333;
 	font-size: 32rpx;
 }
-.tab_bottom .list_middle.data-v-06e2c5e8{
+.tab_bottom .list_middle.data-v-0c0d095a{
 	color: #666666;
 	font-size: 24rpx;
 	display: -webkit-box;
@@ -50,7 +58,7 @@
 	overflow: hidden;
 	margin-top: 22rpx;
 }
-.tab_bottom .list_bottom.data-v-06e2c5e8{
+.tab_bottom .list_bottom.data-v-0c0d095a{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -61,11 +69,11 @@
 	        justify-content: space-between;
 	margin-top: 22rpx;
 }
-.tab_bottom .list_bottom .time.data-v-06e2c5e8{
+.tab_bottom .list_bottom .time.data-v-0c0d095a{
 	color: #999999;
 	font-size: 22rpx;
 }
-.tab_bottom .list_bottom .see.data-v-06e2c5e8{
+.tab_bottom .list_bottom .see.data-v-0c0d095a{
 	text-align: center;
 	display: inline-block;
 	height: 46rpx;

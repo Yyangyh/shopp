@@ -88,6 +88,7 @@
 	font-weight: bold;
 	clolr: #333;
 	margin-bottom: 20rpx;
+	height: 76rpx;
 	display: -webkit-box;
 	-webkit-box-orient: vertical;
 	-webkit-line-clamp: 2;

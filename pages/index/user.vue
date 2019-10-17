@@ -95,7 +95,7 @@
 		
 		
 		<view class="user_middle">
-			<view class="middle_top">
+			<!-- <view class="middle_top">
 				<view class="">
 					我的订单
 				</view>
@@ -103,11 +103,17 @@
 					<text>查看更多订单</text>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
-			</view>
+			</view> -->
 			<view class="middle_tab">
-				<view class="tab_top">
-					门票玩乐订单
+				<view class="tab_top_box">
+					<view class="tab_top">
+						门票玩乐订单
+					</view>
+					<view class="more">
+						查看更多
+					</view>
 				</view>
+				
 				<view class="tab_box">
 					<view class="tab_list">
 						<image src="../../static/image/behalf1.png" mode="widthFix"></image>
@@ -134,8 +140,13 @@
 						</view>
 					</view>
 				</view>
-				<view class="tab_top">
-					商城订单
+				<view class="tab_top_box">
+					<view class="tab_top">
+						商城订单
+					</view>
+					<view class="more"  @click="jump('../subuser/mall_order?status=-1')">
+						查看更多
+					</view>
 				</view>
 				<view class="tab_box">
 					<view class="tab_list"  @click="jump('../subuser/mall_order?status=1')">
@@ -248,12 +259,9 @@
 				let that = this
 				uni.scanCode({
 				    success: function (res) {
-				        console.log('条码类型：' + res.scanType);
-				        console.log('条码内容：' + res.result);
-						console.log(res.result)
+				        
 						let data = res.result
 							data = data.split('?')
-						console.log(data[0])
 						if(data[0] == that.service.api+'/h5/#/pages/reg/reg'){
 							uni.navigateTo({
 								url:'../reg/reg?'+data[1]
@@ -283,7 +291,6 @@
 				method:'POST',
 				data:data,
 				success(res) {
-					console.log(res.data.data)
 					if(res.data.code == -400){ //判断是否已经登录
 						that.state = 2	
 					}else{
@@ -322,6 +329,7 @@
 	}
 	.content{
 		padding-bottom: 20rpx;
+		padding-top: 0;
 	}
 	.status_bar{
 		background:linear-gradient(90deg,rgba(0,119,245,1),rgba(0,167,250,1));
@@ -515,6 +523,14 @@
 	}
 	.user_middle .middle_tab{
 		padding-top: 34rpx;
+	}
+	.user_middle .middle_tab .tab_top_box{
+		display: flex;
+		justify-content: space-between;
+	}
+	.user_middle .middle_tab .tab_top_box .more{
+		font-size: 24rpx;
+		color: #CCCCCC;
 	}
 	.user_middle .middle_tab .tab_top{
 		font-size: 28rpx;

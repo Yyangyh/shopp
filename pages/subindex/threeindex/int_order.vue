@@ -78,7 +78,7 @@
 		</view>
 		
 		<view class="payment">
-			<view class="pa_test">
+			<view class="pa_test" v-if="payment != ''">
 				支付方式
 			</view>
 			<view class="pa_box">
@@ -143,44 +143,60 @@
 				this.payment_name = this.payment[index].payment
 			},
 			payments(){
-				if(!this.address){
+				let that = this
+				if(!that.address){
 					uni.showToast({
 						icon:'none',
 						title:'请添加收货地址'
 					})
 					return
 				}
-				// if(!this.payment_id){
-				// 	uni.showToast({
-				// 		icon:'none',
-				// 		title:'请选择支付方式'
-				// 	})
-				// 	return
-				// }
+				if(that.payment.length != 0  && !that.payment_id){
+					
+					uni.showToast({
+						icon:'none',
+						title:'请选择支付方式'
+					})
+					return
+				}
 				
-				this.service.entire(this,'post',this.service.api_root.subindex.threeindex.int_Confirm,{
-					token:uni.getStorageSync('token'),
-					stock:this.options.num,
-					address_id:this.address.id,
-					goods_id:this.shopp.id,
-					payment_id:this.payment_id,
-				},function(self,res){
-					console.log(res)
-					if(res.code == 0){
-						self.service.entire(self,'post',self.service.api_root.subindex.threeindex.int_pay,{
-							token:uni.getStorageSync('token'),
-							id:res.data.order.order_id,
-							payment_id:self.payment_id
-						},function(selfs,ref){
-							self.common.order(ref,self,'../../subuser/threeuser/int_order_list','pages/subuser/threeuser/int_order_list')
-						})	
-					}else{
-						uni.showToast({
-							icon:"none",
-							title:res.msg
-						})
-					}
-				})
+				
+				
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定支付？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that,'post',that.service.api_root.subindex.threeindex.int_Confirm,{
+				            	token:uni.getStorageSync('token'),
+				            	stock:that.options.num,
+				            	address_id:that.address.id,
+				            	goods_id:that.shopp.id,
+				            	payment_id:that.payment_id,
+				            },function(self,res){
+				            	console.log(res)
+				            	if(res.code == 0){
+				            		self.service.entire(self,'post',self.service.api_root.subindex.threeindex.int_pay,{
+				            			token:uni.getStorageSync('token'),
+				            			id:res.data.order.order_id,
+				            			payment_id:self.payment_id
+				            		},function(selfs,ref){
+				            			self.common.order(ref,self,'../../subuser/threeuser/int_order_list','pages/subuser/threeuser/int_order_list')
+				            		})	
+				            	}else{
+				            		uni.showToast({
+				            			icon:"none",
+				            			title:res.msg
+				            		})
+				            	}
+				            })
+				        } else if (res.cancel) {
+				            return
+				        }
+				    }
+				});
+				
+				
 			}
 		},
 		onLoad(options) {
@@ -225,9 +241,12 @@
 				self.shopp = shopp
 				
 				let data = res.data.payment_list
-				for (let s of data) {
-					s.choice = false
+				if(res.data.payment_list != ''){
+					for (let s of data) {
+						s.choice = false
+					}
 				}
+				console.log(data)
 				self.payment = data
 			})
 		}

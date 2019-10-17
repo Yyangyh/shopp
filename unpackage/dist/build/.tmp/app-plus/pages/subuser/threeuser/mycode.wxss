@@ -1,0 +1,34 @@
+
+uni-page-body.data-v-5167fe25{
+	width: 100%;
+	height: 100%;
+}
+.content.data-v-5167fe25{
+	width: 100%;
+	height: 100%;
+}
+.img.data-v-5167fe25{
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
+.img image.data-v-5167fe25{
+	width: 100%;
+	height: 100%;
+}
+.img .code.data-v-5167fe25{
+	position: absolute;
+	top:60%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
+	z-index: 10;
+	height: 342rpx;
+	width:  342rpx;
+}
+.img .code image.data-v-5167fe25{
+	height: 342rpx;
+	width:  342rpx;
+}
+

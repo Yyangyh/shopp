@@ -37,9 +37,9 @@
 						<view class="test_one">
 							{{item.goods_name}}
 						</view>
-						<view class="test_two">
+						<!-- <view class="test_two">
 							{{item.title}}
-						</view>
+						</view> -->
 						<view class="price">
 							<text class="price_one">￥{{item.price}}</text>
 							<text class="price_two">￥{{item.goods_price}}</text>
@@ -95,7 +95,6 @@
 		},
 		methods:{
 			jump(url,index,id){
-				console.log(this.data[index])
 				let data={ // 传参
 					id:id,
 					price:this.data[index].price,

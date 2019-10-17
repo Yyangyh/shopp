@@ -76,7 +76,7 @@
 				self.data.length = 2
 				self.data_list = self.data[0].items
 			})
-			this.service.entire(this,'post',this.service.api_root.subindex.Category_list,{is_home_recommended:1},function(self,res){
+			this.service.entire(this,'post',this.service.api_root.subindex.Category_list,{is_home_recommended:1},function(self,res){ //猜你喜欢
 				
 				self.data_guess = res.data.data
 				
@@ -157,6 +157,7 @@
 		font-weight: bold;
 		clolr: #333;
 		margin-bottom: 20rpx;
+		height: 76rpx;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;

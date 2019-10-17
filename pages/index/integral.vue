@@ -138,6 +138,7 @@
 		font-weight: bold;
 		clolr: #333;
 		margin-bottom: 20rpx;
+		height: 76rpx;
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display:-webkit-box; 

@@ -4,6 +4,7 @@ page.data-v-ff13191c{
 }
 .content.data-v-ff13191c{
 	padding-bottom: 20rpx;
+	padding-top: 0;
 }
 .status_bar.data-v-ff13191c{
 	background:-webkit-gradient(linear,left top, right top,from(rgba(0,119,245,1)),to(rgba(0,167,250,1)));
@@ -51,7 +52,6 @@ page.data-v-ff13191c{
 	
 	color: #fff;
 	font-size: 28rpx;
-	
 	padding: 20rpx 0 100rpx 54rpx;
 }
 .top .user .user_left.data-v-ff13191c{
@@ -282,6 +282,20 @@ page.data-v-ff13191c{
 }
 .user_middle .middle_tab.data-v-ff13191c{
 	padding-top: 34rpx;
+}
+.user_middle .middle_tab .tab_top_box.data-v-ff13191c{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.user_middle .middle_tab .tab_top_box .more.data-v-ff13191c{
+	font-size: 24rpx;
+	color: #CCCCCC;
 }
 .user_middle .middle_tab .tab_top.data-v-ff13191c{
 	font-size: 28rpx;

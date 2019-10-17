@@ -8,8 +8,14 @@
 			<view class="" v-if="data.status == 2">
 				买家已付款
 			</view>
-			<view class="" v-else>
+			<view class="" v-else-if="data.status == 3">
+				等待买家收货
+			</view>
+			<view class="" v-else-if="data.status == 1">
 				等待买家付款
+			</view>
+			<view class="" v-else-if="data.status == 4">
+				已完成
 			</view>
 			<image src="../../../static/image/threeLayers/box.png" mode="widthFix"></image>
 		</view>
@@ -29,7 +35,7 @@
 		</view>
 
 		<view class="order">
-			<view class="order_num">
+			<view class="order_num" @click="jump('../../subindex/threeindex/integral_details?id='+data.goods_id)">
 				<view class="num_one">
 					<image :src="data.images" mode="widthFix"></image>
 				</view>
@@ -173,6 +179,7 @@
 			},
 			payment() {
 				//提交
+				let that = this
 				// if (!this.payment_id) {
 				// 	uni.showToast({
 				// 		icon: 'none',
@@ -180,15 +187,25 @@
 				// 	})
 				// 	return
 				// }
-
-				this.service.entire(this, 'post', this.service.api_root.subindex.threeindex.int_pay, {
-					token: uni.getStorageSync('token'),
-					id: this.data.id,
-					payment_id: this.payment_id
-				}, function(self, ref) {
-					self.common.order(ref,self,'./int_order_list?status=0','pages/subuser/threeuser/int_order_list?status=0')
-					
-				})
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定支付？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that, 'post', that.service.api_root.subindex.threeindex.int_pay, {
+				            	token: uni.getStorageSync('token'),
+				            	id: that.data.id,
+				            	payment_id: that.payment_id
+				            }, function(self, ref) {
+				            	self.common.order(ref,self,'./int_order_list?status=0','pages/subuser/threeuser/int_order_list?status=0')
+				            	
+				            })
+				        } else if (res.cancel) {
+				            return
+				        }
+				    }
+				});
+				
 
 			}
 		},

@@ -1,6 +1,8 @@
 
-.content.data-v-f5bf5b6a {}
-.top_class.data-v-f5bf5b6a {
+.content.data-v-62128216 {
+	position: relative;
+}
+.top_class.data-v-62128216 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -10,7 +12,7 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.top_class .class_list.data-v-f5bf5b6a {
+.top_class .class_list.data-v-62128216 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -22,38 +24,64 @@
 	padding: 30rpx 20rpx;
 	font-size: 32rpx;
 }
-.top_class .class_list image.data-v-f5bf5b6a {
+.top_class .class_list image.data-v-62128216 {
 	height: 20rpx;
 	width: 20rpx;
 	margin-left: 10rpx;
 }
-.product.data-v-f5bf5b6a {
+.sort.data-v-62128216{
+	overflow: hidden;
+	left: 0;
+	width: 100%;
+	position: absolute;
+	z-index: 888;
+	height: 360rpx;
+}
+.sort_box.data-v-62128216{
+	-webkit-transition: 0.6s;
+	-o-transition: 0.6s;
+	transition: 0.6s;
+	background: rgba(0,0,0,.6);
+	height: 360rpx;
+	width: 100%;
+}
+.hide.data-v-62128216{
+	-webkit-transform: translateY(-100%);
+	    -ms-transform: translateY(-100%);
+	        transform: translateY(-100%);
+}
+.show.data-v-62128216{
+	-webkit-transform: translateY(0%);
+	    -ms-transform: translateY(0%);
+	        transform: translateY(0%);
+}
+.product.data-v-62128216 {
 	background: #F1F1F1;
 	overflow: hidden;
 }
-.product .pr_list.data-v-f5bf5b6a {
+.product .pr_list.data-v-62128216 {
 	margin: 20rpx;
 	padding: 20rpx;
 	background: #fff;
 	border-radius: 10rpx;
 }
-.product .bottom .price.data-v-f5bf5b6a {
+.product .bottom .price.data-v-62128216 {
 	color: #FF431D;
 	margin-right: 20rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 }
-.product .bottom .data.data-v-f5bf5b6a {
+.product .bottom .data.data-v-62128216 {
 	color: #999999;
 	font-size: 26rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 }
-.product image.data-v-f5bf5b6a {
+.product image.data-v-62128216 {
 	width: 100%;
 	height: 300rpx;
 }
-.product .info.data-v-f5bf5b6a {
+.product .info.data-v-62128216 {
 	float: right;
 	color: #FF431D;
 	border: 1rpx solid #FF431D;
@@ -61,20 +89,20 @@
 	font-size: 30rpx;
 	padding: 10rpx;
 }
-.ticket.data-v-f5bf5b6a {
+.ticket.data-v-62128216 {
 	color: #666666;
 	font-size: 28rpx;
 	margin: 10rpx 0;
 	padding: 0 10rpx;
 }
-.address.data-v-f5bf5b6a {
+.address.data-v-62128216 {
 	color: #333;
 	font-size: 30rpx;
 	font-weight: bold;
 	padding: 0 10rpx;
 	margin-bottom: 20rpx;
 }
-.tips.data-v-f5bf5b6a {
+.tips.data-v-62128216 {
 	color: #00D3B3;
 	font-size: 24rpx;
 	border: 1rpx solid #00D3B3;

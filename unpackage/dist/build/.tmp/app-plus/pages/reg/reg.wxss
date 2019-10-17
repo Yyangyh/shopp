@@ -1,14 +1,11 @@
 
-.content.data-v-b603ee6e{
+.content.data-v-c87fce56{
 	overflow: hidden;
 }
-.uni-input-placeholder.data-v-b603ee6e{
+.uni-input-placeholder.data-v-c87fce56{
 	color: #C5C5C5;
 }
-.uni-input-placeholder.data-v-b603ee6e{
-	color: #C5C5C5;
-}
-.ipt.data-v-b603ee6e{
+.ipt.data-v-c87fce56{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -17,23 +14,24 @@
 	border-bottom: 2rpx solid #EEEEEE;
 	padding: 20rpx 20rpx;
 }
-.ipt image.data-v-b603ee6e{
+.ipt image.data-v-c87fce56{
 	margin-right: 20rpx;
 	width: 35rpx;
 	height: 45rpx;
 }
-.ipt input.data-v-b603ee6e{
+.ipt input.data-v-c87fce56{
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
 	        flex-grow: 2;
 }
-.ipt text.data-v-b603ee6e{
+.ipt text.data-v-c87fce56{
 	font-size: 32rpx;
 	width: 160rpx;
 	text-align: center;
+	white-space: nowrap;
 }
-button.data-v-b603ee6e{
+button.data-v-c87fce56{
 	background: #1D74FF;
 	color: #FFFFFF;
 	height: 90rpx;
@@ -42,7 +40,7 @@ button.data-v-b603ee6e{
 	width: 84%;
 	margin:60rpx 8% 30rpx 8%;
 }
-.test.data-v-b603ee6e{
+.test.data-v-c87fce56{
 	text-align: center;
 	font-size: 32rpx;
 	color: #1D74FF;

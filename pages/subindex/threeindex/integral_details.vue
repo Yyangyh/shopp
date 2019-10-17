@@ -364,7 +364,7 @@
 		width: 100%;
 		position: absolute;
 		z-index: 99;
-		top: var(--status-bar-height);
+		top: 0;
 		height: 60rpx;
 		padding: 20rpx 0;
 		display: flex;

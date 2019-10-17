@@ -14,15 +14,22 @@
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
 			<view class="class_list" @click="show = !show">
-				<text>智能排序</text>
+				<text>{{list_test}}</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
 		</view>
-		<!-- <view class="sort">
-			<view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
-				
+
+		<view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
+			<view class="sort_list" v-for="(item,index) in sort" :key='index' @click="hook(index,item.name,item.order)">
+				<view class="">
+					{{item.title}}
+				</view>
+				<image v-show="item.chiose" src="../../static/image/threeLayers/hook.png" mode="widthFix"></image>
 			</view>
-		</view> -->
+
+		</view>
+		<view class="sort" v-show="show === true">
+		</view>
 		<view class="product">
 			<view class="pr_list" v-for="item in data" :key='item.id'>
 				<image :src="item.images" mode="aspectFill" @click="detailed('../subindex/product_detailed',item.id,item.type)"></image>
@@ -52,7 +59,29 @@
 		data() {
 			return {
 				data: '',
-				show:false
+				show: false,
+				type: '',
+				id: '',
+				list_test:'智能排序',
+				sort: [{
+						title: '价格最低',
+						chiose: false,
+						name: 'min_price',
+						order: 'asc'
+					},
+					{
+						title: '价格最高',
+						chiose: false,
+						name: 'min_price',
+						order: 'desc'
+					},
+					{
+						title: '销量最多',
+						chiose: false,
+						name: 'sales_count',
+						order: 'asc'
+					},
+				]
 			}
 		},
 		components: {
@@ -63,6 +92,41 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			hook(index, name, order) {
+				console.log(index)
+				this.list_test = this.sort[index].title
+				let data = {
+					category_id: this.id,
+					order_by_field:name,
+					order_by_type:order
+				}
+				console.log(data)
+				if (this.type == 'works') {
+					this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list, data, function(self, res) { //文创
+						console.log(res)
+						self.data = res.data.data
+						self.show = false
+					})
+				} else if (this.type == 'edition') { //版通
+					this.service.entire(this, 'get', this.service.api_root.subindex.Category_list, data, function(self, res) {
+						console.log(res)
+						self.data = res.data.data
+						self.show = false
+					})
+				} else if (this.type == 'scenic') { //景点
+					this.service.entire(this, 'get', this.service.api_root.subindex.scen_list, data, function(self, res) {
+						console.log(res)
+						self.data = res.data.data
+						self.show = false
+					})
+				} else {
+					this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList, data, function(self, res) { //特色
+						console.log(res)
+						self.data = res.data.data
+						self.show = false
+					})
+				}
 			},
 			detailed(url, id, type) {
 				if (type == 3) {
@@ -75,13 +139,15 @@
 					})
 				} else {
 					uni.navigateTo({
-						url: '../subindex/product_detailed?id=' + id
+						url: '../subindex/product_detailed?id=' + id + '&type=' + type
 					})
 				}
 			}
 		},
 		onLoad(options) {
 			console.log(options.type)
+			this.type = options.type
+			this.id = options.id
 			if (options.type == 'works') {
 				this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list, { //文创
 					category_id: options.id
@@ -119,9 +185,26 @@
 <style scoped>
 	.content {
 		position: relative;
+		padding-top: 210rpx;
+	}
+
+	.content>>>.return {
+		position: fixed;
+		z-index: 999;
+		top: var(--status-bar-height);
+		left: 0;
+		width: 100%;
+		background: #fff;
 	}
 
 	.top_class {
+		position: fixed;
+		top: calc(var(--status-bar-height) + 105rpx);
+		left: 0;
+		background: #fff;
+		width: 100%;
+
+		z-index: 999;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -139,27 +222,52 @@
 		width: 20rpx;
 		margin-left: 10rpx;
 	}
-	.sort{
+
+	.sort {
 		overflow: hidden;
 		left: 0;
+		top: 0;
 		width: 100%;
-		position: absolute;
+		position: fixed;
 		z-index: 888;
-		height: 360rpx;
+		background: rgba(0, 0, 0, 0.6);
+		height: 100%;
 	}
-	.sort_box{
-		transition: 0.6s;
-		background: rgba(0,0,0,.6);
-		height: 360rpx;
+
+	.sort_box {
+		transition: 0.3s;
+		background: #fff;
+		position: fixed;
+		top: calc(var(--status-bar-height) + 205rpx);
+		z-index: 900;
+		padding: 0 20rpx;
+		box-sizing: border-box;
 		width: 100%;
-		
+		font-size: 30rpx;
+
 	}
-	.hide{
+
+	.sort_box .sort_list {
+		height: 100rpx;
+		border-bottom: 2rpx solid #F1F1F1;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
+
+	.sort_box .sort_list image {
+		height: 38rpx;
+		width: 38rpx;
+	}
+
+	.hide {
 		transform: translateY(-100%);
 	}
-	.show{
+
+	.show {
 		transform: translateY(0%);
 	}
+
 	.product {
 		background: #F1F1F1;
 		overflow: hidden;

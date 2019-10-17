@@ -253,11 +253,14 @@
 		onShow() {
 			uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
 			// #ifdef H5  
-			let Url = window.location.href
-				Url = Url.split('?')
-			if(Url.length == 2){
-				let token = Url[1].split('token=')[1]
-				uni.setStorageSync('token',token)
+			let ua = navigator.userAgent.toLowerCase();
+			if (ua.match(/MicroMessenger/i) == "micromessenger") {  //判断是否是微信浏览器
+				let Url = window.location.href
+					Url = Url.split('?')
+				if(Url.length == 2){
+					let token = Url[1].split('token=')[1]
+					uni.setStorageSync('token',token)
+				}
 			}
 			// #endif  
 			

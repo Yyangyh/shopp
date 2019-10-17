@@ -39,7 +39,7 @@
 					<image src="" mode="widthFix"></image>
 				</view>
 			</view>
-			<view class="profile_list">
+			<!-- <view class="profile_list">
 				<view class="list_left">
 					手机
 				</view>
@@ -49,7 +49,7 @@
 					</view>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 	</view>
 </template>

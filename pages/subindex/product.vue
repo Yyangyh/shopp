@@ -93,19 +93,19 @@
 		},
 		onShow() {
 			this.service.entire(this,'get',this.service.api_root.subindex.goods_Category,{},function(self,res){
-				console.log(res)
+				// console.log(res)
 				let data = res.data
 				let result = [];
 				for(let i=0;i<data.length;i+=10){
 				    result.push(data.slice(i,i+10));
 				}
 				self.data = result
-				console.log(self.data)
+				// console.log(self.data)
 			})
 			this.service.entire(this,'get',this.service.api_root.threeLayers.goodsList,{},function(self,res){  //猜你喜欢——特色产品
-					console.log(res)
+					// console.log(res)
 					self.data_guess = res.data.data
-					console.log(self.data_guess)
+					// console.log(self.data_guess)
 			})
 			
 			// this.service.entire(this,'get',this.service.api_root.subindex.org_category_list,{red:1},function(self,res){
@@ -126,7 +126,7 @@
 	}
 	.return{
 		position: fixed;
-		top: var(--status-bar-height);
+		top: 0;
 		left: 0;
 		width: 100%;
 		z-index: 888;

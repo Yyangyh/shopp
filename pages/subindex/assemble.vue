@@ -9,12 +9,12 @@
 			<text @click="jump('threeindex/my_group')">我的团</text>
 		</view>
 		<view class="tab" v-for="(item,index) in data" :key='item.id'>
-			<view class="tab_top">
+			<view class="tab_top"  @click="jump('./group_products?id='+item.id)"> 
 				<image :src="item.thumb" mode="aspectFill"></image>
 				<view class="tab_right">
-					<view class="test_one">
+					<!-- <view class="test_one">
 						{{item.category_name}}
-					</view>
+					</view> -->
 					<view class="test_two">
 						{{item.title}}
 					</view>
@@ -89,7 +89,7 @@
 		height: 105rpx;
 		width:100%;
 		position: fixed;
-		top: var(--status-bar-height);
+		top:var(--status-bar-height);
 		left: 0;
 		background: #FFF;
 		z-index: 888;

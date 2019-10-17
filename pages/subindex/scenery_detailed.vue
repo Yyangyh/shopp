@@ -368,7 +368,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="mask">
+		<!-- <view class="mask">
 			
 		</view>
 		<view class="pop-ups">
@@ -395,7 +395,7 @@
 			<view class="regulation">
 				
 			</view>
-		</view>
+		</view> -->
 		
 	</view>
 </template>

@@ -84,12 +84,12 @@
 			</view>
 		</view>
 		<!--  -->
-		<view class="more">
+		<view class="more" @click="jump()">
 			更多好团
 		</view>
 		<!--  -->
 		<view class="list_shop">
-			<view class="list">
+			<!-- <view class="list">
 				<view class="img">
 					<image src="../../../static/image/threeLayers/shop.png" mode="widthFix"></image>
 				</view>
@@ -100,7 +100,7 @@
 					<view class="h4">
 						<text class="h5">
 							￥10.00
-							<!-- <text class="h6">￥10.00</text> -->
+							
 						</text>
 						<del class="h6">￥10.00</del>
 					</view>
@@ -127,7 +127,7 @@
 						4人参团
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		
 	</view>
@@ -153,6 +153,11 @@
 				uni.navigateTo({
 					url:'./group_order?type='+this.type+'&id='+this.id
 				})
+			},
+			jump(){
+				uni.navigateTo({
+					url:'../assemble'
+				})
 			}
 		},
 		onLoad(options) {
@@ -166,11 +171,14 @@
 	}
 </script>
 
-<style>
+<style scoped>
 	.content{
 		width: 100%;
 		height: 100%;
 		background: #F2F2F2;
+	}
+	.content >>>.top{
+		position: relative;
 	}
 	.shop{
 		width: 100%;

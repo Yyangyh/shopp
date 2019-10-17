@@ -1,1 +1,1 @@
-<view class="top data-v-5484581a"><image src="/static/image/return.png" mode="widthFix" data-event-opts="{{[['tap',[['returns']]]]}}" bindtap="__e" class="data-v-5484581a"></image><text class="data-v-5484581a">{{titles}}</text><text class="data-v-5484581a"></text></view>
+<view class="top data-v-09641422"><image src="/static/image/return.png" mode="widthFix" data-event-opts="{{[['tap',[['returns']]]]}}" bindtap="__e" class="data-v-09641422"></image><text class="data-v-09641422">{{titles}}</text><text class="data-v-09641422"></text></view>

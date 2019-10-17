@@ -38,7 +38,7 @@
 				<view class="title">
 					<text>{{item.title}}</text>
 				</view>
-				<view class="button">
+				<view class="button" v-if="item.spec">
 					<text v-for="(items,indexs) in item.spec" :key='indexs'>{{items.type}}：{{items.value}}</text>
 				</view>
 				<view class="price">
@@ -145,7 +145,7 @@
 				this.payment_name = this.payment[index].payment
 			},
 			payments(){  //提交
-			
+				let that = this
 				if(!this.address){
 					uni.showToast({
 						icon:'none',
@@ -160,139 +160,44 @@
 					})
 					return
 				}
-				if(this.require_data.seckill_goods_id) this.require_data.seckill_discount_price = this.shopp[0].seckill_discount_price //限时抢购所需的参数
-				let data = {
-					token:uni.getStorageSync('token'),
-					address_id:this.address.id,
-					payment_id:this.payment_id,
-				}
-				let data_list = Object.assign(data,this.require_data)
-				this.service.entire(this,'post',this.service.api_root.threeLayers.Add,data_list,function(self,res){
-					console.log(res)
-					if(res.code == 0){
-						self.service.entire(self,'post',self.service.api_root.threeLayers.Pay,{
-							token:uni.getStorageSync('token'),
-							id:res.data.order.id
-						},function(self,ref){
-							console.log(ref)
-							self.common.order(ref,self,'../subuser/mall_order?status=-1','pages/subuser/mall_order?status=-1')
-							// if(self.payment_name == 'Alipay'){
-							// 	//当选择支付宝支付时
-							// 	// #ifndef  APP-PLUS
-							// 		uni.showToast({
-							// 			icon:'none',
-							// 			title:'只能在APP内选择支付宝支付'
-							// 		})
-							// 		return
-							// 	// #endif
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定支付？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            // console.log('用户点击确定');
+							if(that.require_data.seckill_goods_id) that.require_data.seckill_discount_price = that.shopp[0].seckill_discount_price //限时抢购所需的参数
+							let data = {
+								token:uni.getStorageSync('token'),
+								address_id:that.address.id,
+								payment_id:that.payment_id,
+							}
+							let data_list = Object.assign(data,that.require_data)
+							that.service.entire(that,'post',that.service.api_root.threeLayers.Add,data_list,function(self,res){
+								console.log(res)
+								if(res.code == 0){
+									self.service.entire(self,'post',self.service.api_root.threeLayers.Pay,{
+										token:uni.getStorageSync('token'),
+										id:res.data.order.id
+									},function(self,ref){
+										console.log(ref)
+										self.common.order(ref,self,'../subuser/mall_order?status=-1','pages/subuser/mall_order?status=-1')
+									})
+								}else{
+									uni.showToast({
+										icon:'none',
+										title:res.msg
+									})
+								}
 								
-							// 	uni.showToast({
-							// 		icon:'none',
-							// 		title:'支付宝支付暂未开放'
-							// 	})
-							// 	return
-							// }else if(self.payment_name == 'Weixin'){
-							// 	//当选择微信支付时
-							// 	// #ifdef H5  
-							// 	console.log('h5')
-							// 	let ua = navigator.userAgent.toLowerCase();
-							// 	if (ua.match(/MicroMessenger/i) == "micromessenger"){ //判断是否是在微信内置浏览器打开
-									
-							// 		let appId = ref.data.data.appId
-							// 		let timeStamp = ref.data.data.timeStamp
-							// 		let nonceStr = ref.data.data.nonceStr
-							// 		let package_id = ref.data.data.package
-							// 		let signType = ref.data.data.signType
-							// 		let paySign = ref.data.data.paySign
-							// 		console.log(signType)
-							// 		function onBridgeReady(appId,timeStamp,nonceStr,package_id,signType,paySign){
-							// 		   WeixinJSBridge.invoke(
-							// 		      'getBrandWCPayRequest', {
-							// 		         "appId":appId,     //公众号名称，由商户传入     
-							// 		         "timeStamp":timeStamp,         //时间戳，自1970年以来的秒数     
-							// 		         "nonceStr":nonceStr, //随机串     
-							// 		         "package":package_id,     
-							// 		         "signType":signType,         //微信签名方式：     
-							// 		         "paySign":paySign //微信签名 
-							// 		      },
-							// 		      function(res){
-							// 				if(res.err_msg == "get_brand_wcpay_request:ok" ){
-							// 						uni.redirectTo({
-							// 							url:'../subuser/mall_order?status=-1'
-							// 						})
-							// 						// 使用以上方式判断前端返回,微信团队郑重提示：
-							// 						//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-							// 				} 
-							// 		   }); 
-							// 		}
-							// 		if (typeof WeixinJSBridge == "undefined"){
-							// 		   if( document.addEventListener ){
-							// 		       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-							// 		   }else if (document.attachEvent){
-							// 		       document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-							// 		       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-							// 		   }
-							// 		}else{
-							// 		   onBridgeReady(appId,timeStamp,nonceStr,package_id,signType,paySign);
-							// 		}
-							// 	}else{ //普通浏览器微信支付
-							// 		let string = encodeURI('http://wx.huanqiutongmall.com/h5/#/pages/subuser/mall_order?status=-1')
-							// 		window.location.href = ref.data.data+'&redirect_url=' + string
-							// 	}
-							// 	// #endif  
-								
-								
-							// 	// #ifdef  APP-PLUS
-							// 		console.log(ref.data.data)
-							// 		uni.requestPayment({
-							// 			  provider: 'wxpay',
-							// 			  orderInfo:ref.data.data,//微信、支付宝订单数据
-							// 			  success: function (ref) {
-							// 				  uni.redirectTo({
-							// 				  	url:'../subuser/mall_order?status=-1'
-							// 				  })
-							// 			  },
-							// 			  fail: function (err) {
-							// 				  console.log('fail:' + JSON.stringify(err));
-							// 			  }
-							// 		});  
-									
-							// 	// #endif
-								
-								
-								
-							// }else if(self.payment_name == 'WalletPay'){ //选择钱包支付时
-							// 	uni.showToast({
-							// 		icon:'none',
-							// 		title:ref.msg
-							// 	})
-							// 	setTimeout(function(){
-							// 		uni.redirectTo({
-							// 			url:'../subuser/mall_order?status=-1'
-							// 		})
-							// 	},1500)
-								
-							// }else if(self.payment_name == 'BtPay'){ //选择版通支付时
-							// 	uni.showToast({
-							// 		icon:'none',
-							// 		title:ref.msg
-							// 	})
-							// 	setTimeout(function(){
-							// 		uni.redirectTo({
-							// 			url:'../subuser/mall_order?status=-1'
-							// 		})
-							// 	},1500)
-								
-							// }
-						})
-					}else{
-						uni.showToast({
-							icon:'none',
-							title:res.msg
-						})
-					}
-					
-				})
+							})
+				        } else if (res.cancel) {
+				            // console.log('用户点击取消');
+							return
+				        }
+				    }
+				});
+				
 			}
 		},
 		onLoad(options) {

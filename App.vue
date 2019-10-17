@@ -20,13 +20,15 @@
 		padding-top: var(--status-bar-height);
 		background: #fff;
 	}
-
+	.content{
+		padding-top: 105rpx;
+	}
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
 		top: 0;
 		left: 0;
-		z-index: 888;
+		z-index: 998;
 		background: #1D9DFF;
 		position: fixed;
 	}

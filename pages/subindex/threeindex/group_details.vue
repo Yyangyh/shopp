@@ -5,7 +5,7 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="shop">
+		<view class="shop" @click="jump('../group_products?id='+goods.id)">
 			<view class="pic">
 				<image :src="goods.thumb" mode="aspectFill"></image>
 			</view>
@@ -17,7 +17,7 @@
 					{{goods.groupnum}}人团
 				</view>
 				<view class="price">
-					<text class="h1">¥{{goods.price}}/2件</text>
+					<text class="h1">¥{{goods.price}}/{{goods.goodsnum}}件</text>
 				</view>
 			</view>
 		</view>
@@ -25,39 +25,35 @@
 		<view class="group">
 			<!--  -->
 			<view class="member">
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group.png" mode="widthFix"></image>
+				<view class="member_list" v-for="(item,index) in users"  :key='index'>
+					<block v-if="item" >
+						<image v-if="item.heads == 1" class="group_comman" src="../../../static/image/threeLayers/group.png" mode="widthFix"></image>
+						<image v-if="item.avatar" class="group_comman1" :src="item.avatar" mode="widthFix"></image>
+						
+					</block>
+					<block v-else>
+						<image  src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
+					</block>
+					
 				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
-				<view class="member_list">
-					<image src="../../../static/image/threeLayers/group01.png" mode="widthFix"></image>
-				</view>
+				
 			</view>
 			<!--  -->
-			<view class="prompt">
-				还差<text style="color: #F2221F;">{{data.num}}</text>人组团成功
-			</view>
-			<view class="countdown">
-				<text v-if="second > 0">剩余{{duration}}</text>
-				<text v-else>{{duration}}</text>
-			</view>
+			<block v-if="data.status == 2">
+				<view class="prompt">
+					组团成功
+				</view>
+			</block>
+			<block v-else>
+				<view class="prompt">
+					还差<text style="color: #F2221F;">{{data.num}}</text>人组团成功
+				</view>
+				<view class="countdown" v-if="second ">
+					<text v-if="second > 0">剩余{{duration}}</text>
+					<text v-else>{{duration}}</text>
+				</view>
+			</block>
+			
 		</view>
 		<!--  -->
 		<view class="notice">
@@ -67,12 +63,12 @@
 		<view class="details">
 			<view class="title">
 				<view>拼团详情</view>
-				<view>商品详情</view>
+				<!-- <view>商品详情</view> -->
 			</view>
 			<view class="list" v-for="(item,index) in order.users" :key='index'>
 				<view class="information">
 					<image :src="item.avatar" mode="widthFix"></image>
-					<text>159****0435</text>
+					<text>{{item.nickname}}</text>
 				</view>
 				<view class="time">
 					<text>2019-09-12</text>
@@ -81,12 +77,18 @@
 			</view>
 		</view>
 		<!--  -->
-		<view class="bootom">
-			<view class="h9">
+		<view class="bootom" v-if="data.endtime != 0 ">
+			<view class="h9" @click="jump('../assemble')">
 				首页
 			</view>
-			<view class="h8">
+			<view class="h8" v-if="data.pay_status == 1" @click="tips()">
 				快邀请好友参团吧
+			</view>
+			<view class="h8" v-else-if="data.pay_status == 0" @click="jump('./group_order?type=groups&id='+goods.id+'&teamid='+data.teamid)">
+				参与拼团
+			</view>
+			<view class="h8" v-else-if="data.pay_status == 2">
+				团已满
 			</view>
 		</view>
 	</view>
@@ -103,12 +105,31 @@
 				title: '团详情',
 				data:'',
 				goods:'',
+				users:'',
 				order:'',
+				
 				endtime:'',
 				id:'',
 				duration:'',
 				second:'',
 				show:true
+			}
+		},
+		methods:{
+			tips(){
+				uni.showModal({
+				    title: '提示',
+				    content: '请点击右上角选择分享！',
+					showCancel:false,
+				    success: function (res) {
+				       
+				    }
+				});
+			},
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
 			}
 		},
 		onLoad(options) {
@@ -123,6 +144,11 @@
 				self.data = res.data
 				self.goods = res.data.goods
 				self.order = res.data.order
+				let user = JSON.stringify(res.data.order.users)
+					user = JSON.parse(user)
+				self.users = user
+				console.log(user)
+				self.users.length = res.data.goods.groupnum
 				self.endtime =  res.data.endtime
 				let times = new Date().getTime().toString().substr(0,10)
 				
@@ -217,16 +243,31 @@
 		width: 88rpx;
 		height: 96rpx;
 	}
+	
 	.member_list{
 		margin: 10rpx 20rpx;
+		position: relative;
 	}
-	.member_list:first-of-type,.member_list:first-of-type image{
+	.member_list .group_comman{
+		height: 90rpx;
+		width: 90rpx;
+		position: absolute;
+		z-index: 99;
+		bottom: -30rpx;
+		left: 0;
+	}
+	.member_list .group_comman1{
+		border-radius: 50%;
+		top: 0;
+		left: 0;
+		z-index: 88;
+		position: absolute;
+	}
+	/* .member_list:first-of-type,.member_list:first-of-type image{
 		width: 124rpx;
 		height: 124rpx;
-	}
-	.member_list:first-of-type{
-		margin-top: 42rpx;
-	}
+	} */
+	
 	.prompt{
 		margin: 20rpx 0;
 		color: #333333;
@@ -265,21 +306,22 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
+		border-bottom: 4rpx solid #F2F2F2;
 	}
 	.title view{
-		width: 50%;
+		width: 100%;
 		height: 100rpx;
 		text-align: center;
 		line-height: 104rpx;
 		color: #333333;
 		font-size: 30rpx;
-		border-bottom: 4rpx solid #F2F2F2;
+		
 	}
-	.title view:first-of-type{
+	/* .title view:first-of-type{
 		height: 94rpx;
 		color: #1D9DFF;
 		border-bottom: 10rpx solid #1D9DFF;
-	}
+	} */
 	.list{
 		width: 90%;
 		height: 100rpx;
@@ -308,6 +350,7 @@
 		width: 72rpx;
 		height: 72rpx;
 		margin-right: 20rpx;
+		border-radius: 50%;
 	}
 	.bootom{
 		width: 100%;

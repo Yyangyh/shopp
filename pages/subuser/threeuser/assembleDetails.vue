@@ -32,7 +32,7 @@
 		</view>
 
 		<view class="order">
-			<view class="order_num" v-for="(item,index) in data_list" :key='item.id'>
+			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' @click="jump('../../subindex/group_products?id='+item.id)">
 				<view class="num_one">
 					<image :src="item.thumb" mode="widthFix"></image>
 				</view>
@@ -164,6 +164,7 @@
 			},
 			payment() {
 				//提交
+				let that = this
 				if (!this.payment_id) {
 					uni.showToast({
 						icon: 'none',
@@ -171,115 +172,24 @@
 					})
 					return
 				}
-
-				this.service.entire(this, 'get', this.service.api_root.subindex.threeindex.my_pay, {
-					token: uni.getStorageSync('token'),
-					orderid: this.data.id,
-					payment_id: this.payment_id
-				}, function(self, ref) {
-					self.common.order(ref,self,'../assemble_order','pages/subuser/assemble_order')
-					// uni.showToast({
-					// 	icon:'none',
-					// 	title:ref.msg
-					// })
-					// if (self.payment_name == 'Alipay') {
-					// 		//当选择支付宝支付时
-					// 		// #ifndef  APP-PLUS
-					// 			uni.showToast({
-					// 				icon:'none',
-					// 				title:'只能在APP内选择支付宝支付'
-					// 			})
-					// 			return
-					// 		// #endif
-							
-					// 		uni.showToast({
-					// 			icon:'none',
-					// 			title:'支付宝支付暂未开放'
-					// 		})
-					// 		return
-					// } else if (self.payment_name == 'Weixin') {
-					// 		//当选择微信支付时
-					// 		// #ifdef H5  
-					// 		console.log('h5')
-					// 		let ua = navigator.userAgent.toLowerCase();
-					// 		if (ua.match(/MicroMessenger/i) == "micromessenger"){ //判断是否是在微信内置浏览器打开
-								
-					// 			let appId = ref.data.data.appId
-					// 			let timeStamp = ref.data.data.timeStamp
-					// 			let nonceStr = ref.data.data.nonceStr
-					// 			let package_id = ref.data.data.package
-					// 			let signType = ref.data.data.signType
-					// 			let paySign = ref.data.data.paySign
-					// 			console.log(signType)
-					// 			function onBridgeReady(appId,timeStamp,nonceStr,package_id,signType,paySign){
-					// 			   WeixinJSBridge.invoke(
-					// 			      'getBrandWCPayRequest', {
-					// 			         "appId":appId,     //公众号名称，由商户传入     
-					// 			         "timeStamp":timeStamp,         //时间戳，自1970年以来的秒数     
-					// 			         "nonceStr":nonceStr, //随机串     
-					// 			         "package":package_id,     
-					// 			         "signType":signType,         //微信签名方式：     
-					// 			         "paySign":paySign //微信签名 
-					// 			      },
-					// 			      function(res){
-					// 					if(res.err_msg == "get_brand_wcpay_request:ok" ){
-					// 							uni.redirectTo({
-					// 								url:'../assemble_order'
-					// 							})
-					// 							// 使用以上方式判断前端返回,微信团队郑重提示：
-					// 							//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-					// 					} 
-					// 			   }); 
-					// 			}
-					// 			if (typeof WeixinJSBridge == "undefined"){
-					// 			   if( document.addEventListener ){
-					// 			       document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-					// 			   }else if (document.attachEvent){
-					// 			       document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-					// 			       document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-					// 			   }
-					// 			}else{
-					// 			   onBridgeReady(appId,timeStamp,nonceStr,package_id,signType,paySign);
-					// 			}
-					// 		}else{ //普通浏览器微信支付
-					// 			let string = encodeURI('http://wx.huanqiutongmall.com/h5/#/pages/assemble_order')
-					// 			window.location.href = ref.data.data+'&redirect_url=' + string
-					// 		}
-					// 		// #endif  
-							
-							
-					// 		// #ifdef  APP-PLUS
-					// 			console.log(ref.data.data)
-					// 			uni.requestPayment({
-					// 				  provider: 'wxpay',
-					// 				  orderInfo:ref.data.data,//微信、支付宝订单数据
-					// 				  success: function (ref) {
-					// 					  uni.redirectTo({
-					// 					  	url:'../assemble_order'
-					// 					  })
-					// 				  },
-					// 				  fail: function (err) {
-					// 					  console.log('fail:' + JSON.stringify(err));
-					// 				  }
-					// 			});  
-								
-					// 		// #endif
-							
-							
-							
-					// 	} else if (self.payment_name == 'WalletPay') { //选择钱包支付时
-					// 	setTimeout(function() {
-					// 		uni.redirectTo({
-					// 			url: '../assemble_order'
-					// 		})
-					// 	}, 1500)
-
-					// }
-
-
-
-
-				})
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定支付？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that, 'get', that.service.api_root.subindex.threeindex.my_pay, {
+				            	token: uni.getStorageSync('token'),
+				            	orderid: that.data.id,
+				            	payment_id: that.payment_id
+				            }, function(self, ref) {
+				            	self.common.order(ref,self,'../assemble_order','pages/subuser/assemble_order')
+				            })
+				        } else if (res.cancel) {
+				           return
+				        }
+				    }
+				});
+				
 
 			}
 		},

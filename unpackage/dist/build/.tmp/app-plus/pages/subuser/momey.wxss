@@ -1,10 +1,10 @@
 
-.content.data-v-16072561{
+.content.data-v-77700b04{
 	width: 100%;
 	height: 100%;
 	background: #FFFFFF;
 }
-.back.data-v-16072561{
+.back.data-v-77700b04{
 	height: 105rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -21,15 +21,15 @@
 	z-index: 100;
 	margin: 0 32rpx;
 }
-.back.data-v-16072561{
+.back.data-v-77700b04{
 	color: #FFFFFF;
 	font-size: 30rpx;
 }
-.back image.data-v-16072561{
+.back image.data-v-77700b04{
 	width: 40rpx;
 	height: 40rpx;
 }
-.name.data-v-16072561{
+.name.data-v-77700b04{
 	
 	width: 100%;
 	height: 290rpx;
@@ -48,7 +48,7 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.name_back.data-v-16072561{
+.name_back.data-v-77700b04{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -64,7 +64,7 @@
 	margin: 0 32rpx;
 	margin-bottom: 58rpx;
 }
-.avatar.data-v-16072561{
+.avatar.data-v-77700b04{
 	height: 90rpx;
 	line-height: 90rpx;
 	font-size: 30rpx;
@@ -81,15 +81,16 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.avatar image.data-v-16072561{
+.avatar image.data-v-77700b04{
 	width: 90rpx;
 	height: 90rpx;
+	border-radius: 45rpx;
 }
-.myname.data-v-16072561{
+.myname.data-v-77700b04{
 	margin-left: 30rpx;
 	color: #FFFFFF;
 }
-.button.data-v-16072561{
+.button.data-v-77700b04{
 	width: 120rpx;
 	height: 50rpx;
 	background: #FFFFFF;
@@ -99,13 +100,13 @@
 	text-align: center;
 	line-height: 50rpx;
 }
-.wallet.data-v-16072561{
+.wallet.data-v-77700b04{
 	width: 90%;
 	height: 210rpx;
 	border-radius: 10rpx;
 	background: #FFFFFF;
-	position: absolute;
-	top: 355rpx;
+	position: relative;
+	top: -40rpx;
 	left: 5%;
 	-webkit-box-shadow: 0 10rpx 20rpx #eee;
 	        box-shadow: 0 10rpx 20rpx #eee;
@@ -121,10 +122,10 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.wallet view.data-v-16072561{
+.wallet view.data-v-77700b04{
 	width: 30%;
 }
-.commission.data-v-16072561,.balance.data-v-16072561,.version_pass.data-v-16072561{
+.commission.data-v-77700b04,.balance.data-v-77700b04,.version_pass.data-v-77700b04{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -143,15 +144,15 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.commission image.data-v-16072561,.balance image.data-v-16072561,.version_pass image.data-v-16072561{
+.commission image.data-v-77700b04,.balance image.data-v-77700b04,.version_pass image.data-v-77700b04{
 	width: 70rpx;
 	height: 70rpx;
 }
-.h1.data-v-16072561{
+.h1.data-v-77700b04{
 	color: #666666;
 	font-size: 30rpx;
 }
-.h2.data-v-16072561{
+.h2.data-v-77700b04{
 	color: #F12229;
 	font-size: 30rpx;
 }

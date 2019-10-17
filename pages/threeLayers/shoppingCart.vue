@@ -47,7 +47,7 @@
 		</view>
 		
 		
-		<view class="tab_bottom"  v-show="show == true">
+		<view class="tab_bottom"  v-if="show == true">
 			<view class="alls">
 				<label class="radio" @click="allElection()"><radio value="r1" :checked="checked" />全选</label>
 			</view>
@@ -63,7 +63,7 @@
 				<button @click="settlement()">去结算</button>
 			</view>
 		</view>
-		<view class="tab_delete" v-show="show == false">
+		<view class="tab_delete" v-else-if="show == false">
 			<view class="alls">
 				<label class="radio" @click="allElection()"><radio value="r1" :checked="checked" />全选</label>
 			</view>

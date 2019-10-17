@@ -122,6 +122,7 @@
 				show_add:3,
 				options:'',
 				payment_name: '',
+				teamid:''
 			}
 		},
 		methods:{
@@ -137,10 +138,10 @@
 				
 				this.payment[index].choice = true
 				this.payment_id = this.payment[index].id
-				console.log(this.payment[index])
 				this.payment_name = this.payment[index].payment
 			},
 			payments(){
+				let that = this
 				if(!this.address){
 					uni.showToast({
 						icon:'none',
@@ -155,142 +156,59 @@
 					})
 					return
 				}
+				let data = {
+					aid:that.address.id,
+					id:that.shopp.id,
+					payment_id:that.payment_id,
+					type:that.type
+				}
+				if(this.teamid) data.teamid = this.teamid
 				
-				this.service.entire(this,'get',this.service.api_root.subindex.threeindex.grou_Confirm,{
-					token:uni.getStorageSync('token'),
-					aid:this.address.id,
-					id:this.shopp.id,
-					payment_id:this.payment_id,
-					type:this.type
-				},function(self,res){
-					
-					if(res.code == 0){
-						self.service.entire(self,'get',self.service.api_root.subindex.threeindex.my_pay,{
-							token:uni.getStorageSync('token'),
-							orderid:res.data.orderid,
-							payment_id:self.payment_id
-						},function(selfs,ref){
-							// console.log(self)
-							
-							self.common.order(ref,self,'../../subuser/assemble_order','pages/subuser/assemble_order')
-					// 		uni.showToast({
-					// 			icon:"none",
-					// 			title:ref.msg
-					// 		})
-					// 	if(self.payment_name == 'Alipay'){
-					// 		//当选择支付宝支付时
-					// 	   // #ifndef  APP-PLUS
-					// 		uni.showToast({
-					// 			 icon:'none',
-					// 			 title:'只能在APP内选择支付宝支付'
-					// 		})
-					// 		return
-					// 	   // #endif
-						   
-					// 	   uni.showToast({
-					// 			icon:'none',
-					// 			title:'支付宝支付暂未开放'
-					// 	   })
-					// 		return
-					// 	}else if(self.payment_name == 'Weixin'){//当选择微信支付时
-					// 		// #ifdef H5  
-      
-					// 		let ua = navigator.userAgent.toLowerCase();
-					// 		if (ua.match(/MicroMessenger/i) == "micromessenger"){ //判断是否是在微信内置浏览器打开
-					
-					// 		let appId = ref.data.data.appId
-					// 		let timeStamp = ref.data.data.timeStamp
-					// 		let nonceStr = ref.data.data.nonceStr
-					// 		let package_id = ref.data.data.package
-					// 		let signType = ref.data.data.signType
-					// 		let paySign = ref.data.data.paySign
-					// 		console.log(signType)
-					// 		function onBridgeReady(appId,timeStamp,nonceStr,package_id,signType,paySign){
-					// 			   WeixinJSBridge.invoke(
-					// 					'getBrandWCPayRequest', {
-					// 					"appId":appId,     //公众号名称，由商户传入     
-					// 					"timeStamp":timeStamp,         //时间戳，自1970年以来的秒数     
-					// 					"nonceStr":nonceStr, //随机串     
-					// 					"package":package_id,     
-					// 					"signType":signType,         //微信签名方式：     
-					// 					"paySign":paySign //微信签名 
-					// 				},function(res){
-					// 					  if(res.err_msg == "get_brand_wcpay_request:ok" ){
-					// 						uni.redirectTo({
-					// 						 url:'../../subuser/assemble_order'
-					// 						})
-					// 						// 使用以上方式判断前端返回,微信团队郑重提示：
-					// 						//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
-					// 					} 
-					// 				}); 
-					// 			}
-					// 			if (typeof WeixinJSBridge == "undefined"){
-					// 			   if( document.addEventListener ){
-					// 				   document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
-					// 			   }else if (document.attachEvent){
-					// 				   document.attachEvent('WeixinJSBridgeReady', onBridgeReady); 
-					// 				   document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
-					// 			   }
-					// 			}else{
-					// 				onBridgeReady(appId,timeStamp,nonceStr,package_id,signType,paySign);
-					// 			}
-					// 	   }else{ //普通浏览器微信支付
-					// 			let string = encodeURI('http://wx.huanqiutongmall.com/h5/#/pages/subuser/assemble_order')
-					// 			window.location.href = ref.data.data+'&redirect_url=' + string
-					// 	   }
-					// 		// #endif  
-						   
-						   
-					// 		// #ifdef  APP-PLUS
-					// 			console.log(ref.data.data)
-					// 		uni.requestPayment({
-					// 		    provider: 'wxpay',
-					// 		    orderInfo:ref.data.data,//微信、支付宝订单数据
-					// 		    success: function (ref) {
-					// 			uni.redirectTo({
-					// 				url:'../../subuser/assemble_order'
-					// 			})
-					// 		   },
-					// 		   fail: function (err) {
-					// 				console.log('fail:' + JSON.stringify(err));
-					// 		   }
-					// 		});  
-					
-					// 		// #endif
-					// 	   }else if(self.payment_name == 'WalletPay'){ //选择钱包支付时
-					// 			uni.showToast({
-					// 				icon:'none',
-					// 				title:ref.msg
-					// 			})
-					// 			setTimeout(function(){
-					// 				uni.redirectTo({
-					// 					url:'../../subuser/assemble_order'
-					// 				})
-					// 			},1500)
-					// 		}
-						})	
-					}else{
-						uni.showToast({
-							icon:"none",
-							title:res.msg
-						})
-					}
-				})
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定支付？',
+				    success: function (res) {
+				        if (res.confirm) {
+				           that.service.entire(that,'get',that.service.api_root.subindex.threeindex.grou_Confirm,data,function(self,res){
+				           	
+				           	if(res.code == 0){
+				           		self.service.entire(self,'get',self.service.api_root.subindex.threeindex.my_pay,{
+				           			token:uni.getStorageSync('token'),
+				           			orderid:res.data.orderid,
+				           			payment_id:self.payment_id
+				           		},function(selfs,ref){
+				           			self.common.order(ref,self,'../../subuser/assemble_order','pages/subuser/assemble_order')
+				           		})	
+				           	}else{
+				           		uni.showToast({
+				           			icon:"none",
+				           			title:res.msg
+				           		})
+				           	}
+				           })
+				        } else if (res.cancel) {
+				            return
+				        }
+				    }
+				});
+				
+				
 			}
 		},
 		onLoad(options) {
 			this.options = options
 			this.type = options.type
-			
+			if(options.teamid) this.teamid = options.teamid
 			
 		},
 		onShow() {
 			let options = this.options
-			this.service.entire(this,'get',this.service.api_root.subindex.threeindex.ConfirmDetail,{
-				token:uni.getStorageSync('token'),
+			let data = {
 				id:options.id,
 				type:options.type,
-			},function(self,res){
+			}
+			if(this.teamid) data.teamid = this.teamid
+			this.service.entire(this,'get',this.service.api_root.subindex.threeindex.ConfirmDetail,data,function(self,res){
 				if(res.code == -100){
 					uni.showModal({
 					    title: '提示',

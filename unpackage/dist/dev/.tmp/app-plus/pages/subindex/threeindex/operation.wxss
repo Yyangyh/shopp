@@ -1,10 +1,13 @@
 
-.content{
+.content.data-v-47fbad4f{
 	width: 100%;
 	height: 100%;
 	background: #F2F2F2;
 }
-.shop{
+.content.data-v-47fbad4f .top{
+	position: relative;
+}
+.shop.data-v-47fbad4f{
 	width: 100%;
 	height: 250rpx;
 	background: #FFFFFF;
@@ -22,16 +25,16 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.pic{
+.pic.data-v-47fbad4f{
 	width: 30%;
 	height: 206rpx;
 	margin-right: 20rpx;
 }
-.pic image{
+.pic image.data-v-47fbad4f{
 	width: 206rpx;
 	height: 206rpx;
 }
-.introduction{
+.introduction.data-v-47fbad4f{
 	width: 61%;
 	height: 206rpx;
 	display: -webkit-box;
@@ -52,12 +55,12 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.name{
+.name.data-v-47fbad4f{
 	font-size: 32rpx;
 	color: #333333;
 	font-weight: bold;
 }
-.people{
+.people.data-v-47fbad4f{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -74,12 +77,12 @@
 	font-size: 28rpx;
 	margin: 24rpx 0;
 }
-.people image{
+.people image.data-v-47fbad4f{
 	width: 34rpx;
 	height: 34rpx;
 	margin-right:20rpx ;
 }
-.price{
+.price.data-v-47fbad4f{
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -94,21 +97,21 @@
 	    -ms-flex-align: end;
 	        align-items: flex-end;
 }
-.num{
+.num.data-v-47fbad4f{
 	color: #FF431D;
 }
-.h1{
+.h1.data-v-47fbad4f{
 	font-size: 40rpx;
 	font-size: bold;
 }
-.h2{
+.h2.data-v-47fbad4f{
 	font-size: 36rpx;
 }
-.condition{
+.condition.data-v-47fbad4f{
 	color: #666666;
 	font-size: 28rpx;
 }
-.crowd{
+.crowd.data-v-47fbad4f{
 	width: 100%;
 	height: 170rpx;
 	background: #FFFFFF;
@@ -131,13 +134,13 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.title{
+.title.data-v-47fbad4f{
 	width: 90%;
 	color: #333333;
 	font-size: 30rpx;
 	font-weight: bold;
 }
-.crowd_content{
+.crowd_content.data-v-47fbad4f{
 	width: 90%;
 	height: 50rpx;
 	margin: 20rpx 0;
@@ -154,7 +157,7 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.step{
+.step.data-v-47fbad4f{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -168,24 +171,24 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.arrow{
+.arrow.data-v-47fbad4f{
 	width: 40rpx;
 	height: 52rpx;
 }
-.arrow image{
+.arrow image.data-v-47fbad4f{
 	width: 40rpx;
 	height: 52rpx;
 }
-.icon{
+.icon.data-v-47fbad4f{
 	width: 52rpx;
 	height: 52rpx;
 	margin-right: 20rpx;
 }
-.icon image{
+.icon image.data-v-47fbad4f{
 	width: 52rpx;
 	height: 52rpx;
 }
-.write{
+.write.data-v-47fbad4f{
 	font-size: 24rpx;
 	color: #333333;
 	display: -webkit-box;
@@ -206,12 +209,12 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.write text{
+.write text.data-v-47fbad4f{
 	padding: 0;
 	border: 0;
 	margin: 0;
 }
-.invite{
+.invite.data-v-47fbad4f{
 	width: 100%;
 	height: 252rpx;
 	background: #FFFFFF;
@@ -236,7 +239,7 @@
 	font-size: 28rpx;
 	font-weight: bold;
 }
-.h3{
+.h3.data-v-47fbad4f{
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -256,7 +259,7 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.button{
+.button.data-v-47fbad4f{
 	width: 100%;
 	margin-top: 40rpx;
 	display: -webkit-box;
@@ -267,7 +270,7 @@
 	    -ms-flex-pack: distribute;
 	        justify-content: space-around;
 }
-.btn1,.btn2{
+.btn1.data-v-47fbad4f,.btn2.data-v-47fbad4f{
 	width: 220rpx;
 	height: 60rpx;
 	border-radius: 60rpx;
@@ -275,15 +278,15 @@
 	text-align: center;
 	line-height: 60rpx;
 }
-.btn1{
+.btn1.data-v-47fbad4f{
 	color: #333333;
 	border: 1rpx solid #333333;
 }
-.btn2{
+.btn2.data-v-47fbad4f{
 	color: #FFFFFF;
 	background-color: #1E9DFF;
 }
-.more{
+.more.data-v-47fbad4f{
 	width: 100%;
 	height: 70rpx;
 	text-align: center;
@@ -291,7 +294,7 @@
 	color: #666666;
 	font-size: 30rpx;
 }
-.list_shop{
+.list_shop.data-v-47fbad4f{
 	width: 100%;
 	height: 508rpx;
 	background: #FFFFFF;
@@ -308,23 +311,23 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.list{
+.list.data-v-47fbad4f{
 	width: 350rpx;
 	height: 380rpx;
 	border-radius: 20rpx;
 }
-.list:first-of-type{
+.list.data-v-47fbad4f:first-of-type{
 	margin-right: 20rpx;
 }
-.img{
+.img.data-v-47fbad4f{
 	width: 350rpx;
 	height: 224rpx;
 }
-.img image{
+.img image.data-v-47fbad4f{
 	width: 350rpx;
 	height: 224rpx;
 }
-.shop_name{
+.shop_name.data-v-47fbad4f{
 	width: 90%;
 	margin: 0 auto;
 	color: #000000;
@@ -332,7 +335,7 @@
 	font-weight: bold;
 	/* text-align: center; */
 }
-.price_tag{
+.price_tag.data-v-47fbad4f{
 	width: 90%;
 	margin: 0 auto;
 	display: -webkit-box;
@@ -348,14 +351,14 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.h4{
+.h4.data-v-47fbad4f{
 	color: #FF431D;
 	font-size: 28rpx;
 	/* display: flex;
 	justify-content: center;
 	align-items: center; */
 }
-.h6{
+.h6.data-v-47fbad4f{
 	font-size: 24rpx;
 	color: #999999;
 }

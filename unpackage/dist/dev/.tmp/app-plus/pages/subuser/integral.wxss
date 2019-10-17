@@ -126,6 +126,15 @@
 	text-align: center;
 	width: 50%;
 }
+.shopp .shopp_tab .shopp_list .list_one.data-v-1f77578c{
+	height: 76rpx;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	display:-webkit-box; 
+	-webkit-box-orient:vertical; 
+	-webkit-line-clamp:2;
+}
 .shopp .shopp_tab .shopp_list .list_two.data-v-1f77578c{
 	color: #FF431D;
 	margin: 16rpx 0 10rpx 0;

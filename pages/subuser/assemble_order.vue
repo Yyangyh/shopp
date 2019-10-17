@@ -55,7 +55,7 @@
 							<view class="">{{item.title}}</view>
 							<view>套装</view>
 						</view>
-						<view class="middle2">x1</view>
+						<view class="middle2">x{{item.goodsnum}}</view>
 					</view>
 					<view class="list_bottom">
 						<!-- <view class="bottom1">
@@ -106,6 +106,7 @@
 				})
 			},
 			chiose(status){
+				this.data = ''
 				this.show = status
 				this.page = 1
 				this.loadRecord = true

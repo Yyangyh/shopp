@@ -41,7 +41,9 @@
 					请上传营业执照
 				</view>
 				<view class="upload_img"  @click="upload(1)">
-					<image src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
+					<image v-if="license_image" :src="license_image" mode="widthFix"></image>
+					<image v-else src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
+					
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -50,7 +52,8 @@
 					法人身份证正面
 				</view>
 				<view class="upload_img"  @click="upload(2)">
-					<image src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
+					<image v-if="identity_positive_image" :src="identity_positive_image" mode="widthFix"></image>
+					<image v-else src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -59,7 +62,8 @@
 					法人身份证反面
 				</view>
 				<view class="upload_img"  @click="upload(3)">
-					<image src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
+					<image v-if="identity_other_image" :src="identity_other_image" mode="widthFix"></image>
+					<image v-else src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
 			</view>

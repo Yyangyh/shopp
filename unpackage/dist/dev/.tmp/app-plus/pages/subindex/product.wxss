@@ -7,7 +7,7 @@
 }
 .return.data-v-ab807708{
 	position: fixed;
-	top: var(--status-bar-height);
+	top: 0;
 	left: 0;
 	width: 100%;
 	z-index: 888;

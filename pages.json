@@ -439,6 +439,15 @@
 			}
 		},
 		{
+			"path": "pages/subuser/threeuser/int_explain",
+			"style": {
+				"navigationBarTitleText": "积分说明",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/threeuser/int_order_detailed",
 			"style": {
 				"navigationBarTitleText": "订单详情",

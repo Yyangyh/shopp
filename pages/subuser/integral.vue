@@ -33,7 +33,7 @@
 							积分订单
 						</view>
 					</view>
-					<view class="int_list">
+					<view class="int_list" @click="jump('threeuser/int_explain')">
 						<image src="../../static/image/secondary/integral_explain.png" mode="widthFix"></image>
 						<view class="">
 							积分说明
@@ -50,28 +50,16 @@
 		</view>
 		<view class="shopp">
 			<view class="shopp_tab">
-				<view class="shopp_list">
-					<image src="../../static/image/secondary/shopp1.png" mode="widthFix"></image>
+				<view class="shopp_list" v-for="(item,index) in data_list_1" :key='item.id' @click="jump('../subindex/threeindex/integral_details?id='+item.id)">
+					<image :src="item.images" mode=""></image>
 					<view class="list_one">
-						洁丽雅毛巾2条装 纯棉洗脸洗澡家用成人男女帕 
+						{{item.title}}
 					</view>
 					<view class="list_two">
-						1000积分兑换
+						{{item.money}}兑换
 					</view>
 					<view class="list_three">
-						￥100
-					</view>
-				</view>
-				<view class="shopp_list">
-					<image src="../../static/image/secondary/shopp2.png" mode="widthFix"></image>
-					<view class="list_one">
-						心选超轻削光紗弯柄三折晴雨伞遮阳伞  
-					</view>
-					<view class="list_two">
-						1000积分+50版通兑换
-					</view>
-					<view class="list_three">
-						￥100
+						￥{{item.original_price}}
 					</view>
 				</view>
 			</view>
@@ -84,28 +72,16 @@
 		</view>
 		<view class="shopp">
 			<view class="shopp_tab">
-				<view class="shopp_list">
-					<image src="../../static/image/secondary/shopp1.png" mode="widthFix"></image>
+				<view class="shopp_list" v-for="(item,index) in data_list_2" :key='item.id' @click="jump('../subindex/threeindex/integral_details?id='+item.id)">
+					<image :src="item.images" mode=""></image>
 					<view class="list_one">
-						洁丽雅毛巾2条装 纯棉洗脸洗澡家用成人男女帕 
+						{{item.title}}
 					</view>
 					<view class="list_two">
-						1000积分兑换
+						{{item.money}}兑换
 					</view>
 					<view class="list_three">
-						￥100
-					</view>
-				</view>
-				<view class="shopp_list">
-					<image src="../../static/image/secondary/shopp2.png" mode="widthFix"></image>
-					<view class="list_one">
-						心选超轻削光紗弯柄三折晴雨伞遮阳伞  
-					</view>
-					<view class="list_two">
-						1000积分+50版通兑换
-					</view>
-					<view class="list_three">
-						￥100
+						￥{{item.original_price}}
 					</view>
 				</view>
 			</view>
@@ -121,7 +97,9 @@
 		},
 		data() {
 			return {
-				integral:uni.getStorageSync('user').integral
+				integral:uni.getStorageSync('user').integral,
+				data_list_1:'',
+				data_list_2:'',
 			}
 		},
 		methods:{
@@ -143,7 +121,24 @@
 		},
 		
 		onShow() {
-			
+			this.service.entire(this, 'get', this.service.api_root.subindex.int_list, {  //猜你喜欢
+				is_home_recommended: 1
+			}, function(self, res) {
+				// console.log(res)
+				let data = res.data.data
+				for (let s of data) {
+					let money = []
+					if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
+					if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
+					if(Number(s.price) != 0) money.push('￥'+Number(s.price))
+					s.money = money.join('+')
+				}
+				self.data_list_1 = data.slice(0,2)
+				self.data_list_2 = data.slice(2,4)
+				console.log(data)
+				console.log(self.data_list_1)
+				console.log(self.data_list_2)
+			})
 		}
 	}
 </script>
@@ -245,6 +240,14 @@
 	.shopp .shopp_tab .shopp_list{
 		text-align: center;
 		width: 50%;
+	}
+	.shopp .shopp_tab .shopp_list .list_one{
+		height: 76rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 	.shopp .shopp_tab .shopp_list .list_two{
 		color: #FF431D;

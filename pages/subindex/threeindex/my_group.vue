@@ -16,7 +16,7 @@
 			<view class="notice">
 				<view class="notice_content">
 					<text>订单号:{{item.orderno}}</text>
-					<text class="ing">团购进行中</text>
+					<!-- <text class="ing">团购进行中</text> -->
 				</view>
 			</view>
 			<!--  -->
@@ -29,7 +29,7 @@
 						{{item.title}}
 					</view>
 					<view class="price">
-						<text class="h1">¥{{item.price}}/<text class="h2">2件x1</text></text>
+						<text class="h1">¥{{item.price}}/<text class="h2">x{{item.goodsnum}}</text></text>
 					</view>
 				</view>
 			</view>
@@ -40,12 +40,15 @@
 					<image src="../../static/icon/arrow.png" mode="widthFix"></image>
 				</view>
 				<view class="button">
-					<view class="button_content" @click="jump('./group_details?id='+item.id)">
+					<view class="button_content" @click="jump('./group_details?id='+item.teamid)">
 						查看团详情
 					</view>
 					<image src="../../static/icon/arrow.png" mode="widthFix"></image>
 				</view>
 			</view>
+		</view>
+		<view class="mask" v-if="data == ''">
+			<image src="../../../static/image/no_data.png" mode="widthFix" ></image>
 		</view>
 		<!--  -->
 	</view>
@@ -66,6 +69,7 @@
 		},
 		methods:{
 			choice(type){
+				
 				this.show = type
 				this.service.entire(this,'get',this.service.api_root.subindex.threeindex.my_teams,{
 					token:uni.getStorageSync('token'),
@@ -216,5 +220,13 @@
 		width: 28rpx;
 		height: 28rpx;
 		margin-left: 20rpx;
+	}
+	.mask{
+		background: #fff;
+		text-align: center;
+	}
+	.mask image{
+		height: 310rpx;
+		width: 310rpx;
 	}
 </style>

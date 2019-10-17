@@ -280,6 +280,12 @@
 		font-weight: bold;
 		padding: 0 10rpx;
 		margin-bottom: 20rpx;
+		overflow: hidden;
+		-o-text-overflow: ellipsis;
+		   text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2;
 }
 .tips.data-v-28ce0af7 {
 		color: #00D3B3;
@@ -335,6 +341,7 @@
 }
 .bottom_tab .tab_list.data-v-28ce0af7{
 		text-align: center;
+		width: 100%;
 }
 .bottom_tab .tab_mid.data-v-28ce0af7{
 		margin-left: -80rpx !important;
@@ -351,16 +358,15 @@
 		color: #fff;
 }
 .bottom_tab .tab_right text.data-v-28ce0af7{
-		display: inline-block;
+		display: block;
 		height: 80rpx;
 		line-height: 80rpx;
-		padding: 0 30rpx;
+		margin: 0 30rpx;
 		font-size: 30rpx;
 }
 .bottom_tab .tab_right text.data-v-28ce0af7:nth-of-type(1){
 		background: #1D9DFF;
 		border-radius: 20rpx;
-		width: 320rpx;
 }
 .bottom_tab button.data-v-28ce0af7{
 		width: 100%;

@@ -35,7 +35,7 @@
 </script>
 
 <style scoped>
-	uni-page-body{
+	page{
 		width: 100%;
 		height: 100%;
 	}
@@ -46,7 +46,7 @@
 	.img{
 		width: 100%;
 		height: 100%;
-		position: relative;
+		position: fixed;
 	}
 	.img image{
 		width: 100%;

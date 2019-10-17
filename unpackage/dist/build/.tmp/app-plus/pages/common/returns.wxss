@@ -1,5 +1,5 @@
 
-.top.data-v-5484581a{
+.top.data-v-09641422{
 	height: 105rpx;
 	padding: 0 44rpx;
 	display: -webkit-box;
@@ -14,18 +14,18 @@
 	-webkit-align-items: center;
 	    -ms-flex-align: center;
 	        align-items: center;
-	font-size: 36rpx;
+	font-size: 32rpx;
 	font-weight: bold;
 	color: #333333;
 	background: #fff;
 	-webkit-box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
 	        box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
 }
-.top image.data-v-5484581a{
+.top image.data-v-09641422{
 	height: 40rpx;
 	width: 40rpx;
 }
-.top text.data-v-5484581a:nth-of-type(2){
+.top text.data-v-09641422:nth-of-type(2){
 	width: 40rpx;
 	display: inline-block;
 }

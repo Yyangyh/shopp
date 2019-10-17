@@ -47,6 +47,9 @@
 						<view class="top2 stayComment" v-if="item.status == 3">
 							{{item.status_name}}
 						</view>
+						<view class="top2 stayComment" v-if="item.status == 4">
+							{{item.status_name}}
+						</view>
 					</view>
 					
 					<view class="list_middle" v-for="(items,indexs) in item.items" :key='indexs'>
@@ -108,7 +111,8 @@
 				})
 			},
 			chiose(status){
-				this.data = ''
+				this.more = 'loading'
+				this.data = []
 				this.show = status
 				this.loadRecord = true
 				this.service.entire(this,'post',this.service.api_root.subuser.order_Index,{
@@ -133,16 +137,18 @@
 					status:this.show,
 					page:page
 				},function(self,res){
+					
+					let data = self.data
+					
+					data.push(...res.data.data)
+					self.data = data
+					self.page = page + 1
+					self.more = 'more'
 					if(res.data.data.length < 10){
 						self.more = 'noMore'
 						self.loadRecord = false
 						return
 					}
-					let data = self.data
-					data.push(...res.data.data)
-					self.data = data
-					self.page = page + 1
-					self.more = 'more'
 				})
 			}
 		},

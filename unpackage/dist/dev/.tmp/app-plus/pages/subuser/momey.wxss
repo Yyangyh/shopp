@@ -84,6 +84,7 @@
 .avatar image.data-v-89ea2c3e{
 	width: 90rpx;
 	height: 90rpx;
+	border-radius: 45rpx;
 }
 .myname.data-v-89ea2c3e{
 	margin-left: 30rpx;

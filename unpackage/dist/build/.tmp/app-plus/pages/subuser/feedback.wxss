@@ -1,18 +1,18 @@
 
-.content.data-v-09004c80{
+.content.data-v-15783150{
 	overflow: hidden;
 }
-.fe_top.data-v-09004c80{
+.fe_top.data-v-15783150{
 	margin: 0 46rpx;
 }
-.fe_test.data-v-09004c80{
+.fe_test.data-v-15783150{
 	color: #333333;
 	font-size: 34rpx;
 	padding: 0 6rpx;
 	margin: 36rpx 0 42rpx 0;
 	font-weight: bold;
 }
-.fe_top .tab_box.data-v-09004c80{
+.fe_top .tab_box.data-v-15783150{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -25,7 +25,7 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.fe_top .tab_box .tab_list.data-v-09004c80{
+.fe_top .tab_box .tab_list.data-v-15783150{
 	width: 196rpx;
 	height: 66rpx;
 	line-height: 66rpx;
@@ -36,14 +36,14 @@
 	margin-bottom: 34rpx;
 	font-size: 30rpx;
 }
-.fe_bottom.data-v-09004c80{
+.fe_bottom.data-v-15783150{
 	margin: 0 40rpx;
 }
-.textarea.data-v-09004c80{
+.textarea.data-v-15783150{
 	background: #F2F2F2;
 	padding: 42rpx 34rpx;
 }
-button.data-v-09004c80{
+button.data-v-15783150{
 	background: #1D74FF;
 	color: #FFFFFF;
 	height: 88rpx;
@@ -53,5 +53,47 @@ button.data-v-09004c80{
 	/* width: 84%; */
 	margin:80rpx 36rpx;
 }
-
+.log.data-v-15783150{
+	width: 100%;
+	/* height: 90rpx; */
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	margin: 20rpx 0;
+	padding: 0 40rpx;
+	/* background: #F2F2F2; */
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: start;
+	-webkit-align-items: flex-start;
+	    -ms-flex-align: start;
+	        align-items: flex-start;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.log text.data-v-15783150{
+	color: #333333;
+	font-size: 17px;
+	padding: 0 3px;
+	margin: 18px 0 21px 0;
+	font-weight: bold;
+	margin-bottom:20rpx;
+}
+.log input.data-v-15783150{
+	width: 100%;
+	height: 90rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 0 20rpx;
+	background: #F2F2F2;
+	border-radius: 10rpx;
+}
 

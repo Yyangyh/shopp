@@ -18,7 +18,8 @@
 			returns(){
 				// #ifdef H5  
 				let canBack = true  
-				const pages = getCurrentPages()  
+				const pages = getCurrentPages()
+				console.log(pages)
 				// 有可返回的页面则直接返回，uni.navigateBack默认返回失败之后会自动刷新页面 ，无法继续返回  
 				if (pages.length > 1) {  
 					uni.navigateBack(1)  
@@ -45,6 +46,11 @@
 	.top{
 		height: 105rpx;
 		padding: 0 44rpx;
+		width: 100%;
+		box-sizing: border-box;
+		position: fixed;
+		top: var(--status-bar-height);
+		left: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

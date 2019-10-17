@@ -10,9 +10,10 @@
 			<view class="personal">
 				<image :src="user.avatar" mode="widthFix"></image>
 				<view class="name">
-					<text class="h1">{{user.nickname}}</text>
+					<text class="h1" v-if="user.nickname">{{user.nickname}}</text>
+					<text class="h1" v-else>未修改昵称</text>
 					<text class="h2">推荐人:{{data.myreferrer}}</text>
-					<text class="level">等级{{user_data.name}}</text>
+					<text class="level">{{user_data.name}}</text>
 				</view>
 			</view>
 		</view>
@@ -120,7 +121,7 @@
 		background: #F2F2F2;
 		position: relative;
 	}
-	.top{
+	.content>>>.top{
 		position: relative;
 		z-index: 99;
 	}
@@ -161,12 +162,13 @@
 		font-size: 30rpx;
 	}
 	.level{
-		width: 120rpx;
+		/* width: 120rpx; */
 		height: 44rpx;
 		border: 2rpx solid #1D9DFF;
 		border-radius: 44rpx;
 		font-size: 24rpx;
 		color: #666666;
+		flex-grow: 1;
 		text-align: center;
 		line-height: 44rpx;
 	}

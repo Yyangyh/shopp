@@ -13,7 +13,7 @@ page.data-v-b4221cd6 {
 	height: 105rpx;
 	width:100%;
 	position: fixed;
-	top: var(--status-bar-height);
+	top:var(--status-bar-height);
 	left: 0;
 	background: #FFF;
 	z-index: 888;

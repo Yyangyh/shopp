@@ -1,0 +1,168 @@
+
+.content.data-v-0cb009f6{
+	padding-bottom: 120rpx;
+}
+.top.data-v-0cb009f6{
+	height: 105rpx;
+	padding: 0 44rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	font-size: 32rpx;
+	font-weight: bold;
+	color: #333333;
+	background: #fff;
+	-webkit-box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
+	        box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
+}
+.top image.data-v-0cb009f6{
+	height: 40rpx;
+	width: 40rpx;
+}
+.top .show_test.data-v-0cb009f6{
+	font-size: 28rpx;
+	color: #666666;
+	font-weight: 400;
+	display: inline-block;
+}
+.collect_test.data-v-0cb009f6{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	text-align: center;
+	font-size: 28rpx;
+	color: #333333;
+	font-weight: 600;
+	margin-bottom: 20rpx;
+}
+.collect_test view.data-v-0cb009f6{
+	width: 50%;
+	height: 80rpx;
+	line-height: 80rpx;
+	border-bottom: 4rpx solid #fff;
+}
+.show.data-v-0cb009f6{
+	border-bottom-color: #1D74FF !important;
+	color: #666666;
+}
+.tab_list.data-v-0cb009f6 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding-left: 30rpx;
+	margin-right: 30rpx;
+	margin-bottom: 20rpx;
+}
+.tab_list .list_box.data-v-0cb009f6{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	width: 100%;
+	height: 154rpx;
+	border-radius:20rpx;
+	padding: 14rpx 28rpx;
+	-webkit-box-shadow: 2rpx 0rpx 10rpx #eee;
+	        box-shadow: 2rpx 0rpx 10rpx #eee;
+}
+.tab_list .list_box image.data-v-0cb009f6{
+	height: 150rpx;
+	width: 150rpx;
+	margin-right: 30rpx;
+}
+.tab_list .list_box .tab_right.data-v-0cb009f6{
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	    -ms-flex-positive: 2;
+	        flex-grow: 2;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+}
+.tab_list .list_box .tab_right .test_two.data-v-0cb009f6{
+	font-size: 30rpx;
+	color: #333333;
+	font-weight: 500;
+}
+.tab_list .list_box .tab_right .test_three.data-v-0cb009f6{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: end;
+	-webkit-justify-content: flex-end;
+	    -ms-flex-pack: end;
+	        justify-content: flex-end;
+	margin-right: 20rpx;
+}
+.tab_list .list_box .tab_right .test_three .test_left.data-v-0cb009f6{
+	color: #FF431D;
+	font-size: 26rpx;
+}
+.tab_list .list_box .tab_right .test_three .test_left text.data-v-0cb009f6{
+	font-size: 36rpx;
+	font-weight: 600;
+}
+.collect_bottom.data-v-0cb009f6 {
+	background: #fff;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	border-top: 2rpx solid #ECECEC;
+	font-size: 34rpx;
+	color: #666666;
+	padding: 0 20rpx 0 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	width: 100%;
+	height: 120rpx;
+	line-height: 120rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.collect_bottom .right.data-v-0cb009f6{
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 36rpx;
+	width: 224rpx;
+	color: #fff;
+	background: #1D74FF;
+	text-align: center;
+	border-radius: 90rpx;
+}
+

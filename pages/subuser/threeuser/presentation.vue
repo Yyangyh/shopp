@@ -7,7 +7,7 @@
 		
 		<!-- 分销订单 -->
 		<view class="pre_box">
-			<view class="box_list" v-for="(item,index) in data">
+			<view class="box_list" v-for="(item,index) in data" :key='item.id'>
 				<view class="list_one">
 					<image :src="item.avatar" mode="widthFix"></image>
 					<view class="">
@@ -58,15 +58,16 @@
 					page:page
 				},function(self,res){
 					console.log(res)
-					let data = res.data.data
-					self.data.push(...data)
-					self.page = page + 1
-					
-					if(res.data.data.length < 10){
+					if(res.data.data.length = 10){
 						self.more = 'noMore'
 						self.loadRecord = false
 						return
 					}
+					let data = res.data.data
+					self.data.push(...data)
+					self.page = page + 1
+					
+					
 					self.more = 'more'
 				})
 			}
@@ -75,7 +76,7 @@
 			if(this.loadRecord == false) return
 			this.loadMore()
 		},
-		onShow() {
+		onLoad() {
 			this.loadMore()
 		}
 	}

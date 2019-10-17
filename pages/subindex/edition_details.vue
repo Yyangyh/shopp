@@ -97,56 +97,17 @@
 				猜你喜欢
 			</view>
 			<view class="spot">
-				<view class="sp_list">
-					<image src="../../static/image/duck1.png" mode=""></image>
-					<view class="ticket">
+				<view class="sp_list" v-for="(item,index) in data_guess" :key='item.id' @click="jumps(item.id)">
+					<image :src="item.images" mode=""></image>
+					<!-- <view class="ticket">
 						武汉-特色产品
-					</view>
+					</view> -->
 					<view class="address">
-						鸭脖武汉特产鸭肉食品
+						{{item.title}}
 					</view>
 					<view class="bottom">
-						<text class="price">￥100</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../static/image/duck2.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥500</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../static/image/duck1.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥100</text>
-						<text class='data'>300人购买</text>
-					</view>
-				</view>
-				<view class="sp_list">
-					<image src="../../static/image/duck2.png" mode=""></image>
-					<view class="ticket">
-						武汉-特色产品
-					</view>
-					<view class="address">
-						鸭脖武汉特产鸭肉食品
-					</view>
-					<view class="bottom">
-						<text class="price">￥500</text>
-						<text class='data'>300人购买</text>
+						<text class="price">￥{{item.price}}</text>
+						<!-- <text class='data'>300人购买</text> -->
 					</view>
 				</view>
 			</view>
@@ -165,7 +126,7 @@
 					购物车
 				</view>
 			</view> -->
-			<view class="tab_list tab_mid"  @click="collect()">
+			<view class="tab_list"  @click="collect()">
 				<image v-if="is_favor == 0" src="../../static/image/collection.png" mode="widthFix"></image>
 				<image v-else src="../../static/image/collect.png" mode="widthFix"></image>
 				<view class="">
@@ -181,7 +142,7 @@
 
 
 		<view class="mask_black" v-show="show == 1" @click="show = 0">
-
+		
 		</view>
 		<view class="mask_white" :class="show===0 ? 'mask_none' : show===1 ? 'mask_show' : ''">
 			<view class="wh_top">
@@ -244,7 +205,8 @@
 				price:'',
 				type:'',
 				inventory:'',
-				is_favor:''
+				is_favor:'',
+				data_guess:''
 			}
 		},
 		methods: {
@@ -366,6 +328,11 @@
 					})
 				}
 				
+			},
+			jumps(id){
+				uni.navigateTo({
+					url:'./edition_details?id='+id
+				})
 			}
 		},
 		onLoad(options) {
@@ -391,6 +358,13 @@
 					}
 				}
 				self.choose_list = list
+			})
+			
+			this.service.entire(this,'post',this.service.api_root.subindex.Category_list,{is_home_recommended:1},function(self,res){ //猜你喜欢
+				
+				self.data_guess = res.data.data
+				self.data_guess.length = 4
+				console.log(self.data_guess)
 			})
 		}
 	}
@@ -667,6 +641,12 @@
 		font-weight: bold;
 		padding: 0 10rpx;
 		margin-bottom: 20rpx;
+		height: 68rpx;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 	
 	.tips {
@@ -680,6 +660,7 @@
 	}
 	
 	.spot .sp_list .bottom {
+		
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -711,10 +692,9 @@
 	}
 	.bottom_tab .tab_list{
 		text-align: center;
+		flex-grow: 2;
 	}
-	.bottom_tab .tab_mid{
-		margin-left: -80rpx !important;
-	}
+	
 	.bottom_tab .tab_list image{
 		height: 44rpx;
 		width: 44rpx;

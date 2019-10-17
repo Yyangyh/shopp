@@ -50,6 +50,9 @@
 						<view class="top2 stayGoods" v-if="item.status == 3">
 							{{item.statusstr}}
 						</view>
+						<view class="top2 obligation" v-if="item.status == 4">
+							{{item.statusstr}}
+						</view>
 					</view>
 					
 					<view class="list_middle">
@@ -109,6 +112,7 @@
 				})
 			},
 			chiose(status){
+				this.data = []
 				this.show = status
 				this.loadRecord = true
 				this.page = 1

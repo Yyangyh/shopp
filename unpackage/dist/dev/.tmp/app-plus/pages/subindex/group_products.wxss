@@ -1,7 +1,7 @@
 
 .content.data-v-6a4219a7{
 	background: #F1F1F1;
-	padding-bottom: 100rpx;
+	padding-bottom: 120rpx;
 }
 .top_img.data-v-6a4219a7{
 	width: 100%;
@@ -378,12 +378,13 @@
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	width: 100%;
 }
 .bottom_tab .tab_right .single.data-v-6a4219a7{
 	background: #1D9DFF;
 	color: #fff;
 	font-size: 24rpx;
-	width: 208rpx;
+	width: 50%;
 	height: 80rpx;
 	border-bottom-left-radius: 40rpx;
 	border-top-left-radius: 40rpx;
@@ -395,7 +396,7 @@
 	background: #1D74FF;
 	color: #fff;
 	font-size: 24rpx;
-	width: 208rpx;
+	width: 50%;
 	height: 80rpx;
 	border-bottom-right-radius: 40rpx;
 	border-top-right-radius: 40rpx;

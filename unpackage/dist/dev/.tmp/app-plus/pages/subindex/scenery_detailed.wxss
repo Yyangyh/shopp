@@ -481,5 +481,100 @@
 	height: 600rpx;
 	width: 100%;
 }
+.mask.data-v-c69f5942{
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 100;
+}
+.pop-ups.data-v-c69f5942{
+	width: 100%;
+	height: 848rpx;
+	background: #FFFFFF;
+	position: fixed;
+	bottom: 0;
+	z-index: 101;
+}
+.h1.data-v-c69f5942{
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 36rpx 54rpx 50rpx 14rpx;
+	color: #333333;
+	line-clamp: 2;
+	word-wrap: break-word;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	font-size: 32rpx;
+	font-weight: bold;
+}
+.description.data-v-c69f5942{
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding: 0 16rpx;
+}
+.h2.data-v-c69f5942{
+	color: #333333;
+	font-size: 26rpx;
+}
+.h2.data-v-c69f5942:first-of-type{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding-left: 14rpx;
+	border-left: 4rpx solid #1F9EFF;
+}
+.h3.data-v-c69f5942{
+	color: #333333;
+	font-size: 24rpx;
+	color-rendering: ;
+	padding-left: 18rpx;
+	padding-top: 36rpx;
+}
+.h3.data-v-c69f5942:first-of-type{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+}
+.cc.data-v-c69f5942{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+}
+.point.data-v-c69f5942{
+	padding: 0 16rpx;
+	font-size: 24rpx;
+	background: -webkit-gradient(linear,left top, left bottom,from(#FFAA1C),to(#FF8402));
+	background: -o-linear-gradient(top,#FFAA1C,#FF8402);
+	background: linear-gradient(top,#FFAA1C,#FF8402);
+}
 
 

@@ -6,8 +6,8 @@
 		<view class="top">
 			<image src="/static/image/return.png" mode="widthFix" @click="returns()"></image>
 			<text>收藏</text>
-			<text class="show_test" v-show="show_test == true" @click="show_test = !show_test">编辑</text>
-			<text class="show_test" v-show="show_test == false" @click="show_test = !show_test">完成</text>
+			<text class="show_test" v-if="show_test == true" @click="show_test = !show_test">编辑</text>
+			<text class="show_test" v-else @click="show_test = !show_test">完成</text>
 		</view>
 		<view class="collect_test">
 			<view :class="{show:show == 0}" @click="show = 0">
@@ -19,7 +19,7 @@
 		</view>
 		<view class="collect_box">
 			<view class="tab_list" v-for="(item,index) in data" :key='item.id'>
-				<view class="tab_left">
+				<view class="tab_left" v-show="show_test == false">
 					<label class="radio" @click="singleElection(index)"><radio value="r1" :checked="item.choice" /></label>
 				</view>
 				<view class="list_box" @click="jump(type,item.goods_id)">
@@ -42,7 +42,7 @@
 				</view>
 			</view>
 		</view>
-		<view class="collect_bottom" v-show="show_test == false">
+		<view class="collect_bottom" v-if="show_test == false">
 			<view class="left">
 				<label class="radio" @click="whole()"><radio value="r1"  :checked="whole_choice"/>全选</label>
 			</view>
@@ -145,6 +145,11 @@
 	.top{
 		height: 105rpx;
 		padding: 0 44rpx;
+		width: 100%;
+		box-sizing: border-box;
+		position: fixed;
+		left: 0;
+		top: var(--status-bar-height);
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
@@ -211,7 +216,12 @@
 	.tab_list .list_box .tab_right .test_two{
 		font-size: 30rpx;
 		color: #333333;
-		font-weight: 500;
+		/* font-weight: 500; */
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 	.tab_list .list_box .tab_right .test_three{
 		display: flex;
