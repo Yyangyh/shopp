@@ -548,6 +548,16 @@
 		    }
 		},
 		{
+			"path": "pages/threeLayers/order_pay",
+		    "style" : {
+		        "navigationBarTitleText" : "订单支付",
+		        "app-plus" : {
+		            "bounce" : "none",
+		            "titleNView" : false
+		        }
+		    }
+		},
+		{
 			"path": "pages/threeLayers/policy_facilities",
 			"style": {
 				"navigationBarTitleText": "政策设施",

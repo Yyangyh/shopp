@@ -86,7 +86,7 @@
 				<text>需支付</text>
 				<text class="h5">￥100</text>
 			</view>
-			<button class="btn" type="primary">去结算</button>
+			<button class="btn" type="primary" @click="jump()">去结算</button>
 		</view>
 	</view>
 </template>
@@ -100,6 +100,13 @@
 		data(){
 			return{
 				title:'订单填写',
+			}
+		},
+		methods:{
+			jump(){
+				uni.navigateTo({
+					url:'/pages/threeLayers/order_pay'
+				})
 			}
 		}
 	}
