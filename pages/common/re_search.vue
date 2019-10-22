@@ -1,10 +1,10 @@
 <template>
 	<view class="return">
-		<image class="return_img" src="../../static/image/return.png" mode="" @click="returns()"></image>
+		<image class="return_img" src="/static//image/return.png" mode="" @click="returns()"></image>
 		<view class="search">
 			<text>广州</text>
-			<image class="dorp" src="../../static/image/dorp.png" mode=""></image>
-			<image class="search1" src="../../static/image/search1.png" mode=""></image>
+			<image class="dorp" src="/static//image/dorp.png" mode=""></image>
+			<image class="search1" src="/static//image/search1.png" mode=""></image>
 			<input type="text" value="" placeholder="武汉周黑鸭"/>
 		</view>
 	</view>

@@ -4,7 +4,10 @@ page.data-v-9acc343a{
 	padding-bottom: 40rpx;
 }
 .status_bar.data-v-9acc343a{
-	background: rgba(0,0,0,0);
+	/* background: rgba(0,0,0,0); */
+}
+.content.data-v-9acc343a{
+	padding-top: 0;
 }
 .int_back.data-v-9acc343a{
 	position: absolute;

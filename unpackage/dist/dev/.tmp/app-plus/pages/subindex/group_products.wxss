@@ -2,6 +2,7 @@
 .content.data-v-6a4219a7{
 	background: #F1F1F1;
 	padding-bottom: 120rpx;
+	padding-top: 0;
 }
 .top_img.data-v-6a4219a7{
 	width: 100%;

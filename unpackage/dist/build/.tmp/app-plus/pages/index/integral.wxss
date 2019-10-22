@@ -1,8 +1,8 @@
 
-.content.data-v-4c8b25fe{
+.content.data-v-695a5728{
 	padding-top: 105rpx;
 }
-.top.data-v-4c8b25fe{
+.top.data-v-695a5728{
 	height: 105rpx;
 	line-height: 105rpx;
 	text-align: center;
@@ -18,7 +18,7 @@
 	background: #fff;
 	z-index: 888;
 }
-.table.data-v-4c8b25fe {
+.table.data-v-695a5728 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -33,27 +33,27 @@
 	padding-bottom: 40rpx;
 	border-bottom: 6rpx solid #F5F5F5;
 }
-.table .tab_list.data-v-4c8b25fe {
+.table .tab_list.data-v-695a5728 {
 	width: 20%;
 	text-align: center;
 	margin-top: 30rpx;
 	font-size: 28rpx;
 	color: #333;
 }
-.table .tab_list image.data-v-4c8b25fe {
+.table .tab_list image.data-v-695a5728 {
 	width: 56rpx;
 	height: 56rpx;
 }
-.guess.data-v-4c8b25fe{
+.guess.data-v-695a5728{
 	
 	padding: 20rpx 20rpx;
 }
-.guess .guess_test.data-v-4c8b25fe{
+.guess .guess_test.data-v-695a5728{
 	font-size: 32rpx;
 	font-weight: bold;
 	margin-bottom: 20rpx;
 }
-.guess .guess_box.data-v-4c8b25fe{
+.guess .guess_box.data-v-695a5728{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -66,15 +66,16 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.guess .guess_box .box_list.data-v-4c8b25fe{
+.guess .guess_box .box_list.data-v-695a5728{
 	width: 49%;
 	font-size: 28rpx;
 	margin-bottom: 20rpx;
 }
-.guess .guess_box .box_list .list_one.data-v-4c8b25fe{
+.guess .guess_box .box_list .list_one.data-v-695a5728{
 	font-weight: bold;
 	clolr: #333;
 	margin-bottom: 20rpx;
+	height: 76rpx;
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
@@ -82,15 +83,15 @@
 	-webkit-box-orient:vertical; 
 	-webkit-line-clamp:2;
 }
-.guess .guess_box .box_list .list_two.data-v-4c8b25fe{
+.guess .guess_box .box_list .list_two.data-v-695a5728{
 	color: #FF431D;
 }
-.guess .guess_box .box_list .list_three.data-v-4c8b25fe{
+.guess .guess_box .box_list .list_three.data-v-695a5728{
 	color: #999999;
 	font-size: 24rpx;
 	text-decoration:line-through;
 }
-.guess .guess_box image.data-v-4c8b25fe{
+.guess .guess_box image.data-v-695a5728{
 	width: 100%;
 	height: 224rpx;
 	margin-bottom: 20rpx;

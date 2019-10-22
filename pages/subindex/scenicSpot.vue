@@ -13,7 +13,7 @@
 		<scroll-view scroll-x class="scroll-view_H">
 			<view class="scroll-view_box">
 				<view class="table" v-for="(item,index) in data">
-					<view class="tab_list" v-for="(items,indexs) in data[index]"  @click="jump('../threeLayers/allclass?type=scenic&id='+items.id)">
+					<view class="tab_list" v-for="(items,indexs) in data[index]"  @click="jump('./threeindex/scenic_class?id='+items.id)">
 						<image :src="items.icon" mode=""></image>
 						<view class="">
 							{{items.name}}
@@ -45,34 +45,35 @@
 					景点推荐
 				</view> -->
 				<view class="" class="show">
-					一日游
+					景点推荐
 				</view>
 			</view>
 			<view class="spot_box">
 				<view class="guess_spot" v-for="(item,index) in data_guess" @click="detailed('../subindex/product_detailed',item.id)">
 					<view class="spot_left">
-						<image :src="item.images" mode=""></image>
+						<image :src="item.image_url" mode=""></image>
 						<text>多地出发</text>
 					</view>
 					<view class="spot_right">
 						<view class="spot_one">
-							北京故宫
+							{{item.name}}
 						</view>
-						<!-- <view class="spot_two">
-							<text>5.0分</text>
-							<text>300条点评</text>
-						</view> -->
 						<view class="spot_three">
-							{{item.region_name}}
+							{{item.address}}
 						</view>
+						<view class="spot_two">
+							<text>{{item.comment_grade}}分</text>
+							<!-- <text>条点评</text> -->
+						</view>
+						
 						<view class="spot_four">
 							<view class="">
-								{{item.simple_desc}}
-								<!-- <text>{{item.simple_desc}}</text> -->
-								<!-- <text>湖畔</text> -->
+								<!-- {{item.simple_desc}}
+								<text>{{item.simple_desc}}</text>
+								<text>{{item.name}}</text> -->
 							</view>
 							<view class="">
-								<text>￥{{item.min_price}}</text>起
+								<text>￥{{item.price}}</text>起
 							</view>
 						</view>
 					</view>
@@ -278,7 +279,7 @@
 			detailed(url,id) {
 				//景点
 				uni.navigateTo({
-					url: './edition_details?id=' + id
+					url: './scenery_detailed?id=' + id
 				})
 				
 			}
@@ -304,9 +305,14 @@
 				self.data = result
 			})
 			
-			this.service.entire(this,'get',this.service.api_root.subindex.scen_redspot,{},function(self,res){
+			// this.service.entire(this,'get',this.service.api_root.subindex.scen_redspot,{},function(self,res){
+			// 	console.log(res)
+			// 	self.data_guess = res.data
+			// })
+			
+			this.service.entire(this,'get',this.service.api_root.subindex.scen_list,{is_home_recommended:1},function(self,res){ //景点-猜你喜欢
 				console.log(res)
-				self.data_guess = res.data
+				self.data_guess = res.data.data
 			})
 		},
 
@@ -455,11 +461,13 @@
 	}
 	.guess .guess_spot{
 		display: flex;
-		margin-bottom: 42rpx;
+		align-items: center;
+		height: 200rpx;
+		/* margin-bottom: 42rpx; */
+		border-bottom: 2rpx solid #F1F1F1;
 	}
 	.guess .guess_spot:last-child{
 		margin-bottom: 0rpx;
-		padding-bottom: 28rpx;
 	}
 	.guess .guess_spot .spot_left{
 		position: relative;
@@ -485,6 +493,8 @@
 	}
 	.guess .guess_spot .spot_right{
 		flex-grow: 2;
+		height: 100%;
+		position: relative;
 	}
 	.guess .guess_spot .spot_right .spot_one{
 		font-size: 28rpx;
@@ -507,10 +517,10 @@
 		font-size: 24rpx;
 	}
 	.guess .guess_spot .spot_right .spot_four{
-		display: flex;
-		justify-content: space-between;
-		color: #999999;
-		align-items: center;
+		
+		position: absolute;
+		right: 10rpx;
+		bottom: 10rpx;
 		
 	}
 	.guess .guess_spot .spot_right .spot_four view:nth-of-type(1){

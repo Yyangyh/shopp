@@ -373,6 +373,7 @@
 <style scoped>
 	.content {
 		background: #F1F1F1;
+		padding-top: 0;
 		padding-bottom: 100rpx;
 	}
 	

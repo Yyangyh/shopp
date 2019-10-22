@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "景点分类",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/re_search"
+  }
+}

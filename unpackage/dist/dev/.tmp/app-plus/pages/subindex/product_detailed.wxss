@@ -2,6 +2,7 @@
 .content.data-v-3477307a {
 	background: #F1F1F1;
 	padding-bottom: 100rpx;
+	padding-top: 0;
 }
 .top_img.data-v-3477307a {
 	width: 100%;

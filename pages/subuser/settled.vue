@@ -161,7 +161,12 @@
 				入驻成功！
 			</view>
 		</view>
-		
+		<view class="process" v-else-if="status == 2">
+			<image src="../../static/image/secondary/submit.png" mode="widthFix"></image>
+			<view class="">
+				{{msg}}！
+			</view>
+		</view>
 	</view>
 </template>
 
@@ -190,7 +195,8 @@
 				treaty_show:false,
 				treaty:'',
 				open_protocol:'',
-				checked:true
+				checked:true,
+				msg:''
 			}
 		},
 		methods:{
@@ -271,10 +277,16 @@
 		onShow() {
 			this.service.entire(this,'post',this.service.api_root.subuser.merchRegister,{},function(self,res){
 				console.log(res)
-				self.status = res.data.status
-				self.reason = res.data.reason
-				self.treaty = res.data.applycontent
-				self.open_protocol = res.data.open_protocol
+				if(res.code == 0){
+					self.status = res.data.status
+					self.reason = res.data.reason
+					self.treaty = res.data.applycontent
+					self.open_protocol = res.data.open_protocol
+				}else{
+					self.status = 2
+					self.msg = res.msg
+				}
+				
 			})
 		}
 		
@@ -290,10 +302,7 @@
 		font-size: 28rpx;
 		height: 100%;
 	}
-	.content>>>.top{
-		position: relative;
-		z-index: 99;
-	}
+	
 	.uni-input-placeholder{
 		color: #999;
 	}

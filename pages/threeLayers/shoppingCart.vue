@@ -93,17 +93,18 @@
 			
 			stock(type,index){ //改变数量
 				let all = []
+				console.log(this.data[index].choice)
 				if(type == 0){
 					if(this.data[index].stock == 1) return
 					this.data[index].stock --
 					for (let s of this.data) {
-						all.push(s.stock * s.price)
+						if(this.data[index].choice === true)all.push(s.stock * s.price)
 					}
 					if(all != '')this.allPrice = all.reduce((n,m) => n+m)
 				}else{
 					this.data[index].stock ++
 					for (let s of this.data) {
-						all.push(s.stock * s.price)
+						if(this.data[index].choice === true)all.push(s.stock * s.price)
 					}
 					if(all != '')this.allPrice = all.reduce((n,m) => n+m)
 				}
@@ -225,6 +226,11 @@
 		
 	}
 	.top{
+		position: fixed;
+		width: 100%;
+		box-sizing: border-box;
+		top: var(--status-bar-height);
+		left: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

@@ -27,6 +27,7 @@
     "pages/subindex/threeindex/works_detailed",
     "pages/subindex/threeindex/integral_details",
     "pages/subindex/threeindex/int_order",
+    "pages/subindex/threeindex/scenic_class",
     "pages/subuser/set",
     "pages/subuser/feedback",
     "pages/subuser/notice",
@@ -48,6 +49,7 @@
     "pages/subuser/threeuser/modify_name",
     "pages/subuser/threeuser/int_order_list",
     "pages/subuser/threeuser/int_detailed",
+    "pages/subuser/threeuser/int_explain",
     "pages/subuser/threeuser/int_order_detailed",
     "pages/subuser/threeuser/order_details",
     "pages/subuser/threeuser/assembleDetails",
@@ -56,9 +58,11 @@
     "pages/subuser/threeuser/team",
     "pages/subuser/threeuser/mycode",
     "pages/subuser/threeuser/withdrawal",
+    "pages/subuser/threeuser/ed_detailed",
     "pages/threeLayers/classification",
     "pages/threeLayers/order",
     "pages/threeLayers/fill_in",
+    "pages/threeLayers/order_pay",
     "pages/threeLayers/policy_facilities",
     "pages/threeLayers/allclass",
     "pages/threeLayers/shoppingCart",
@@ -121,6 +125,6 @@
     "autoclose": false
   },
   "appname": "文旅世家",
-  "compilerVersion": "2.3.3",
+  "compilerVersion": "2.3.5",
   "usingComponents": {}
 }

@@ -2,6 +2,7 @@
 .content.data-v-28ce0af7 {
 		background: #F1F1F1;
 		padding-bottom: 100rpx;
+		padding-top: 0;
 }
 .top_img.data-v-28ce0af7 {
 		width: 100%;
@@ -311,6 +312,7 @@
 }
 .spot .sp_list .bottom .price.data-v-28ce0af7 {
 		color: #FF431D;
+		font-size: 28rpx;
 }
 .spot .sp_list .bottom .data.data-v-28ce0af7 {
 		color: #999999;

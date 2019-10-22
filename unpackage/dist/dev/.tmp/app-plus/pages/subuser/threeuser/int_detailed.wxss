@@ -3,8 +3,11 @@ page.data-v-6134b018{
 	background: #F1F1F1;
 	padding-bottom: 40rpx;
 }
+.content.data-v-6134b018{
+	padding-top: 0;
+}
 .status_bar.data-v-6134b018{
-	background: rgba(0,0,0,0);
+	/* background: rgba(0,0,0,0); */
 }
 .int_back.data-v-6134b018{
 	position: absolute;

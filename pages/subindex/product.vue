@@ -118,15 +118,15 @@
 </script>
 
 <style scoped>
-	.content{
+	/* .content{
 		padding-top: 105rpx;
-	}
+	} */
 	.uni-input-placeholder{
 		color: #cccccc;
 	}
 	.return{
 		position: fixed;
-		top: 0;
+		top: var(--status-bar-height);
 		left: 0;
 		width: 100%;
 		z-index: 888;

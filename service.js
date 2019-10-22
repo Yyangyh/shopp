@@ -1,8 +1,8 @@
 
 
 
-// const api = ''
-const api = 'http://wx.huanqiutongmall.com'
+const api = ''
+// const api = 'http://wx.huanqiutongmall.com'
 
 
 
@@ -51,7 +51,7 @@ const api_root = {
 		SpecDetail:api+'/api/goods/SpecDetail',//规格信息处理结果	
 		scen_Category:api+'/api/Scenicspot/Category',//景点分类
 		scen_list:api+'/api/Scenicspot/ScenicspotList',//景点列表
-		scen_redspot:api+'/api/scenicspot/redspot',//景点猜你喜欢	
+		scen_Detail:api+'/api/Scenicspot/Detail',//景点详情
 		threeindex:{
 			grou_Confirm:api+'/api/groupgoods/Confirm',//确认订单-拼团商品
 			ConfirmDetail:api+'/api/groupgoods/ConfirmDetail',//拼团下订单数据确认
@@ -98,6 +98,7 @@ const api_root = {
 			dis_team:api+'/api/Distribution/team',//分销团队
 			dis_profit:api+'/api/Distribution/profit',//分销佣金
 			dis_order:api+'/api/Distribution/order',//分销订单
+			UserBtInfo:api+'/api/User/UserBtInfo',//版通明细
 		},
 		
 		
@@ -110,6 +111,7 @@ const api_root = {
 		buy_Index:api+'/api/buy/Index',//下订单数据确认
 		Add:api+'/api/buy/Add',//订单确定（生成订单号）
 		Pay:api+'/api/order/Pay',//支付订单
+		scen_ConfirmDetail:api+'/api/Ctripspot/ConfirmDetail',//景点下单确定表单+时间数据+资源详情
 		
 		
 	}

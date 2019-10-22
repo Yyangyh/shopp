@@ -156,8 +156,9 @@
 	}
 	.tab_bottom .list_bottom{
 		display: flex;
-		justify-content: space-between;
+		justify-content: flex-end;
 		margin-top: 22rpx;
+		
 	}
 	.tab_bottom .list_bottom .time{
 		color: #999999;

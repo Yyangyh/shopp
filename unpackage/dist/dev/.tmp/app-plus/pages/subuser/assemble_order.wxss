@@ -15,6 +15,13 @@
 	color: #F09B22;
 }
 .top.data-v-61cf2e2f{
+	position: fixed;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	top: var(--status-bar-height);
+	left: 0;
+	z-index: 99;
 	height: 105rpx;
 	padding: 0 44rpx;
 	display: -webkit-box;

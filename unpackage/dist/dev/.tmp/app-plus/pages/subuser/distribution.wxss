@@ -8,10 +8,6 @@ page.data-v-9d4893dc{
 	background: #F2F2F2;
 	position: relative;
 }
-.content.data-v-9d4893dc .top{
-	position: relative;
-	z-index: 99;
-}
 .avatar.data-v-9d4893dc{
 	width: 100%;
 	height: 280rpx;

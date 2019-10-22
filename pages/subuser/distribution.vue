@@ -121,10 +121,7 @@
 		background: #F2F2F2;
 		position: relative;
 	}
-	.content>>>.top{
-		position: relative;
-		z-index: 99;
-	}
+	
 	.avatar{
 		width: 100%;
 		height: 280rpx;

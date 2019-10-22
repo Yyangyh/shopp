@@ -84,7 +84,7 @@
 
 <style scoped>
 	.content{
-		
+		padding-top: 0;
 	}
 	.top{
 		height: 105rpx;

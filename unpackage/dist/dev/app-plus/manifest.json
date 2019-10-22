@@ -11,7 +11,7 @@
     "code": "100"
   },
   "description": "",
-  "launch_path": "__uniapptabbar.html",
+  "launch_path": "__uniappview.html",
   "developer": {
     "name": "",
     "email": "",
@@ -25,7 +25,7 @@
   },
   "plus": {
     "useragent": {
-      "value": "uni-app appservice",
+      "value": "uni-app",
       "concatenate": true
     },
     "splashscreen": {
@@ -35,7 +35,11 @@
       "delay": 0
     },
     "popGesture": "close",
-    "launchwebview": {},
+    "launchwebview": {
+      "id": "1",
+      "kernel": "WKWebview",
+      "uni-app": "auto"
+    },
     "statusbar": {
       "immersed": "supportedDevice",
       "style": "dark",
@@ -127,18 +131,53 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.3.3",
+      "compilerVersion": "2.3.6",
       "control": "v8",
       "nvueCompiler": "weex",
       "renderer": "auto"
     },
-    "secondwebview": {
-      "id": "1",
-      "launch_path": "__uniappview.html",
-      "kernel": "WKWebview",
-      "mode": "child",
-      "top": 0,
-      "bottom": 56
+    "tabBar": {
+      "color": "#999999",
+      "selectedColor": "#1D9DFF",
+      "borderStyle": "rgba(0,0,0,0.4)",
+      "backgroundColor": "#ffffff",
+      "list": [
+        {
+          "pagePath": "pages/index/index",
+          "iconPath": "static/image/index.png",
+          "selectedIconPath": "static/image/indexHL.png",
+          "text": "首页"
+        },
+        {
+          "pagePath": "pages/index/integral",
+          "iconPath": "static/image/integral.png",
+          "selectedIconPath": "static/image/integralHL.png",
+          "text": "积分商城"
+        },
+        {
+          "pagePath": "pages/index/touristCard",
+          "iconPath": "static/image/touristCard.png",
+          "selectedIconPath": "static/image/touristCardHL.png",
+          "text": "旅游卡"
+        },
+        {
+          "pagePath": "pages/index/strategy",
+          "iconPath": "static/image/strategy.png",
+          "selectedIconPath": "static/image/strategyHL.png",
+          "text": "攻略游记"
+        },
+        {
+          "pagePath": "pages/index/user",
+          "iconPath": "static/image/my.png",
+          "selectedIconPath": "static/image/myHL.png",
+          "text": "我的"
+        }
+      ],
+      "height": "50px",
+      "child": [
+        "lauchwebview"
+      ],
+      "selected": 0
     }
   }
 }

@@ -2,6 +2,7 @@
 .content.data-v-a07914fa{
 	background: #F1F1F1;
 	padding-bottom: 100rpx;
+	padding-top: 0;
 }
 .countdown.data-v-a07914fa{
 	/* color: #F01F38; */

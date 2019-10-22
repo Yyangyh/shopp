@@ -145,10 +145,15 @@
 
 <style scoped>
 	.top{
-		position: relative;
+		position: fixed;
+		width: 100%;
+		box-sizing: border-box;
+		z-index: 998;
+		background: #fff;
 		height: 105rpx;
 		padding: 0 44rpx;
-		
+		top: var(--status-bar-height);
+		left: 0;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;

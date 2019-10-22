@@ -1,22 +1,22 @@
 
-uni-page-body.data-v-5167fe25{
+page.data-v-c73999a2{
 	width: 100%;
 	height: 100%;
 }
-.content.data-v-5167fe25{
+.content.data-v-c73999a2{
 	width: 100%;
 	height: 100%;
 }
-.img.data-v-5167fe25{
+.img.data-v-c73999a2{
 	width: 100%;
 	height: 100%;
-	position: relative;
+	position: fixed;
 }
-.img image.data-v-5167fe25{
+.img image.data-v-c73999a2{
 	width: 100%;
 	height: 100%;
 }
-.img .code.data-v-5167fe25{
+.img .code.data-v-c73999a2{
 	position: absolute;
 	top:60%;
 	left: 50%;
@@ -27,7 +27,7 @@ uni-page-body.data-v-5167fe25{
 	height: 342rpx;
 	width:  342rpx;
 }
-.img .code image.data-v-5167fe25{
+.img .code image.data-v-c73999a2{
 	height: 342rpx;
 	width:  342rpx;
 }

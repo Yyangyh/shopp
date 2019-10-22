@@ -1,15 +1,18 @@
 
 .top.data-v-1f77578c{
-	position: relative;
+	position: fixed;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	z-index: 998;
+	background: #fff;
 	height: 105rpx;
 	padding: 0 44rpx;
-	
+	top: var(--status-bar-height);
+	left: 0;
 	display: -webkit-box;
-	
 	display: -webkit-flex;
-	
 	display: -ms-flexbox;
-	
 	display: flex;
 	-webkit-box-pack: justify;
 	-webkit-justify-content: space-between;

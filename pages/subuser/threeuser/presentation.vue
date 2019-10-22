@@ -58,7 +58,7 @@
 					page:page
 				},function(self,res){
 					console.log(res)
-					if(res.data.data.length = 10){
+					if(res.data.data.length == 0){
 						self.more = 'noMore'
 						self.loadRecord = false
 						return

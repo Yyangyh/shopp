@@ -5,7 +5,7 @@
 		</view>
 		<returns :titles='title'></returns>
 		
-		<view class="top">
+		<view class="top_add">
 			<view class="name" v-if="show_add == 1"  @click="jump('../subuser/address')">
 				<view class="info">
 					<text>{{address.name}}</text>
@@ -267,7 +267,7 @@
 		height: 10rpx;
 		background: #F2F2F2;
 	}
-	.top{
+	.top_add{
 		width: 100%;
 		padding: 0;
 		margin: 0;

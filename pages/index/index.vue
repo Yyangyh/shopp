@@ -248,7 +248,63 @@
 		},
 		
 		onLoad() {
-			
+			// this.service.entire(this,'post','https://sopenservice.ctrip.com/OpenService/ServiceProxy.ashx',{
+			// 	"AID": "1064816",
+			// 	    "AllianceID": "1064816",
+			// 	    "SID": "1920595",
+			// 	    "ICODE": "eedc35f1ca1b4751b477496ac00b6f21",
+			// 	    "E": "R3",
+			// 	    "Mode": "1",
+			// 	    "Format": "JSON",
+			// 	    "token": "933976229ffc4aa4ba47a67ca7b9a482",
+			// 	    "ResourceInfoList": [
+			// 	        {
+			// 	            "ResourceID": "15263120",
+			// 	            "Quantity": "1",
+			// 	            "UseDate": "2019-10-22",
+			// 	            "Price": "181.5"
+			// 	        }
+			// 	    ],
+			// 	    "UID": "71d04495-6a86-4919-b770-4c6ccb3fe7e9",
+			// 	    "ContactInfo": {
+			// 	        "Name": "小白兔",
+			// 	        "Mobile": "13025304562",
+			// 	        "Email": "",
+			// 	        "Tel": "",
+			// 	        "Fax": "",
+			// 	        "Address": "",
+			// 	        "MobileIntlCode": ""
+			// 	    },
+			// 	    "PassenerInfoList": [
+			// 	        {
+			// 	            "Cname": "小黑板",
+			// 	            "ContactInfo": "13025304562",
+			// 	            "IdCardType": "",
+			// 	            "IdCardNo": "",
+			// 	            "AgeType": "",
+			// 	            "BirthDate": "",
+			// 	            "BirthCity": "",
+			// 	            "CardCity": "",
+			// 	            "Ename": "",
+			// 	            "Gender": "",
+			// 	            "VisaOrgan": "",
+			// 	            "PassportDate": "",
+			// 	            "VisaCountry": "",
+			// 	            "PassportNo": "",
+			// 	            "IssueDate": "",
+			// 	            "IdCardTimelimit": "",
+			// 	            "PassportType": "",
+			// 	            "Nationality": "",
+			// 	            "MobileIntlCode": "",
+			// 	            "ResourceID": "15263120"
+			// 	        }
+			// 	    ],
+			// 	    "Amount": 181.5,
+			// 	    "PayMode": "P",
+			// 	    "DistributionChannelID": 9
+			// },function(self,res){
+			// 	console.log(res)
+			// })
 		},
 		onShow() {
 			uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false

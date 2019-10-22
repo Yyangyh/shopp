@@ -338,6 +338,7 @@
 	.content{
 		background: #F1F1F1;
 		padding-bottom: 100rpx;
+		padding-top: 0;
 	}
 	.countdown{
 		/* color: #F01F38; */

@@ -7,6 +7,7 @@
 	        box-sizing: border-box;
 	position: fixed;
 	top: var(--status-bar-height);
+	z-index: 99;
 	left: 0;
 	display: -webkit-box;
 	display: -webkit-flex;

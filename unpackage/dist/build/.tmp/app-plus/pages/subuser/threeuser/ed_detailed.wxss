@@ -1,0 +1,18 @@
+
+.tab_box.data-v-d1b6efd2{
+	font-size: 28rpx;
+	color: #333333;
+}
+.tab_box .box_list.data-v-d1b6efd2{
+	padding: 20rpx;
+	border-bottom: 2rpx solid #F1F1F1;
+}
+.tab_box .box_list view.data-v-d1b6efd2{
+	margin-bottom: 10rpx;
+}
+.tab_box .box_list .time.data-v-d1b6efd2{
+	text-align: right;
+	font-size: 24rpx;
+	color: #999999;
+}
+

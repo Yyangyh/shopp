@@ -2,6 +2,12 @@
 .content.data-v-3025f93e{
 }
 .top.data-v-3025f93e{
+	position: fixed;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	top: var(--status-bar-height);
+	left: 0;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;

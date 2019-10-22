@@ -112,6 +112,11 @@
 		flex-direction: column;
 	}
 	.top{
+		position: fixed;
+		width: 100%;
+		box-sizing: border-box;
+		top: var(--status-bar-height);
+		left: 0;
 		height: 105rpx;
 		width:100%;
 		padding: 0 40rpx;

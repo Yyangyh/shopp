@@ -108,6 +108,14 @@
 					url:'/pages/threeLayers/order_pay'
 				})
 			}
+		},
+		onLoad(options) {
+			this.service.entire(this,'get',this.service.api_root.threeLayers.scen_ConfirmDetail,{
+				ResourceIDList:options.id,
+				end_date:'2019-10-25'
+			},function(self,res){
+				console.log(res)
+			})
 		}
 	}
 </script>
@@ -119,9 +127,7 @@
 		overflow: hidden;
 		background: #F1F1F1;
 	}
-	.content>>>.top{
-		position: relative;
-	}
+	
 	.date {
 		width: 100%;
 		background: #FFFFFF;

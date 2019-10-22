@@ -23,11 +23,16 @@
 	        flex-direction: column;
 }
 .top.data-v-0d969bd6{
+	position: fixed;
+	width: 100%;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	top: var(--status-bar-height);
+	left: 0;
 	height: 105rpx;
 	width:100%;
 	padding: 0 40rpx;
-	-webkit-box-sizing: border-box;
-	        box-sizing: border-box;
+	box-sizing: border-box;
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;

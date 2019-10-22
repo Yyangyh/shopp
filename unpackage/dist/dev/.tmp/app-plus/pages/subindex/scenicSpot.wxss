@@ -162,11 +162,16 @@
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
-	margin-bottom: 42rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	height: 200rpx;
+	/* margin-bottom: 42rpx; */
+	border-bottom: 2rpx solid #F1F1F1;
 }
 .guess .guess_spot.data-v-026890f8:last-child{
 	margin-bottom: 0rpx;
-	padding-bottom: 28rpx;
 }
 .guess .guess_spot .spot_left.data-v-026890f8{
 	position: relative;
@@ -195,6 +200,8 @@
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
 	        flex-grow: 2;
+	height: 100%;
+	position: relative;
 }
 .guess .guess_spot .spot_right .spot_one.data-v-026890f8{
 	font-size: 28rpx;
@@ -217,19 +224,10 @@
 	font-size: 24rpx;
 }
 .guess .guess_spot .spot_right .spot_four.data-v-026890f8{
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
-	color: #999999;
-	-webkit-box-align: center;
-	-webkit-align-items: center;
-	    -ms-flex-align: center;
-	        align-items: center;
+	
+	position: absolute;
+	right: 10rpx;
+	bottom: 10rpx;
 }
 .guess .guess_spot .spot_right .spot_four view.data-v-026890f8:nth-of-type(1){
 	font-size: 24rpx;

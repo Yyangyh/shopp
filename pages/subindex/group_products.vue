@@ -233,7 +233,7 @@
 	.content{
 		background: #F1F1F1;
 		padding-bottom: 120rpx;
-		
+		padding-top: 0;
 	}
 	.top_img{
 		width: 100%;

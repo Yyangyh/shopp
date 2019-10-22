@@ -246,6 +246,15 @@
 				}
 			}
 		},
+		{
+			"path": "pages/subindex/threeindex/scenic_class",
+			"style": {
+				"navigationBarTitleText": "景点分类",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
 		
 		{
 			"path": "pages/subuser/set",
@@ -514,6 +523,15 @@
 			"path": "pages/subuser/threeuser/withdrawal",
 			"style": {
 				"navigationBarTitleText": "佣金提现",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/ed_detailed",
+			"style": {
+				"navigationBarTitleText": "版通明细",
 				"app-plus" : {
 				    "titleNView" : false
 				}

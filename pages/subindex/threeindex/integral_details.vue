@@ -346,6 +346,7 @@
 	.content {
 		background: #F1F1F1;
 		padding-bottom: 100rpx;
+		padding-top: 0;
 	}
 	
 	.top_img {
@@ -640,6 +641,7 @@
 	
 	.spot .sp_list .bottom .price {
 		color: #FF431D;
+		font-size: 28rpx;
 	}
 	
 	.spot .sp_list .bottom .data {

@@ -5,11 +5,11 @@
 		</view>
 		<returns></returns>
 		<view class="top_class">
-			<view class="class_list">
+			<view class="class_list"  @click="show_class = !show_class">
 				<text>全部分类</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
-			<view class="class_list">
+			<view class="class_list"  @click="show_region = !show_region">
 				<text>全部地区</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
@@ -18,7 +18,30 @@
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
 		</view>
-
+		
+		<view class="sort_box" :class="show_class===false ? 'hide' : show_class===true ? 'show' : ''">
+			<view class="box_class">
+				<view class="class_left">
+					<view :class="{show_class_list:show_class_list == index}"  v-for="(item,index) in data_class" :key='item.id' @click="choice_class(index)">
+						{{item.name}}
+					</view>
+				</view>
+				<view class="class_right">
+					<view class="right_list" v-for="(item,index) in data_class_list"  :key='item.id'>
+						<image :src="item.icon" mode="scaleToFill"></image>
+						<view class="">
+							{{item.name}}
+						</view>
+					</view>
+				</view>
+				
+			</view>
+		</view>
+		
+		<view class="sort_box" :class="show_region===false ? 'hide' : show_region===true ? 'show' : ''">
+			345
+		</view>
+		
 		<view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
 			<view class="sort_list" v-for="(item,index) in sort" :key='index' @click="hook(index,item.name,item.order)">
 				<view class="">
@@ -26,9 +49,11 @@
 				</view>
 				<image v-show="item.chiose" src="../../static/image/threeLayers/hook.png" mode="widthFix"></image>
 			</view>
-
 		</view>
-		<view class="sort" v-show="show === true">
+		
+		
+		
+		<view class="sort" v-show="show === true" @click="show = false">
 		</view>
 		<view class="product">
 			<view class="pr_list" v-for="item in data" :key='item.id'>
@@ -60,6 +85,11 @@
 			return {
 				data: '',
 				show: false,
+				show_class:false,
+				show_class_list:0,
+				data_class:'',
+				data_class_list:'',
+				show_region:false,
 				type: '',
 				id: '',
 				list_test:'智能排序',
@@ -92,6 +122,10 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			choice_class(index){ //分类选择
+				this.data_class_list = this.data_class[index].items
+				this.show_class_list = index
 			},
 			hook(index, name, order) {
 				console.log(index)
@@ -149,12 +183,15 @@
 			this.type = options.type
 			this.id = options.id
 			if (options.type == 'works') {
-				this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list, { //文创
+				this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list, { //文创商品列表
 					category_id: options.id
 				}, function(self, res) {
 					console.log(res)
 					self.data = res.data.data
 				})
+				
+				
+				
 			} else if (options.type == 'edition') { //版通
 				this.service.entire(this, 'get', this.service.api_root.subindex.Category_list, {
 					category_id: options.id
@@ -170,12 +207,23 @@
 					self.data = res.data.data
 				})
 			} else {
-				this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList, { //特色
+				this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList, { //特色产品列表
 					category_id: options.id
 				}, function(self, res) {
 					console.log(res)
 					self.data = res.data.data
 				})
+				
+				this.service.entire(this,'get',this.service.api_root.subindex.goods_Category,{},function(self,res){//特色产品分类
+					console.log(res.data[0])
+					self.data_class = res.data
+					self.data_class_list = res.data[0].items
+					
+					// console.log(self.data)
+				})
+				
+				
+				
 			}
 
 		}
@@ -240,15 +288,15 @@
 		position: fixed;
 		top: calc(var(--status-bar-height) + 205rpx);
 		z-index: 900;
-		padding: 0 20rpx;
+		/* padding: 0 20rpx; */
 		box-sizing: border-box;
 		width: 100%;
 		font-size: 30rpx;
 
 	}
-
 	.sort_box .sort_list {
 		height: 100rpx;
+		padding: 0 20rpx;
 		border-bottom: 2rpx solid #F1F1F1;
 		display: flex;
 		align-items: center;
@@ -267,7 +315,44 @@
 	.show {
 		transform: translateY(0%);
 	}
-
+	
+	.box_class{
+		display: flex;
+	}
+	.box_class .class_left{
+		
+	}
+	.box_class .class_left view{
+		height: 88rpx;
+		line-height: 88rpx;
+		width: 210rpx;
+		text-align: center;
+		font-size: 28rpx;
+		color: #6F6F6F;
+		background: #F1F1F1;
+	}
+	.box_class .class_right{
+		display: flex;
+		justify-content: flex-start;
+		/* align-items: center; */
+		align-items: flex-start;
+		flex-wrap: wrap;
+		height: 100%;
+	}
+	.box_class .class_right image{
+		width: 134rpx;
+		height: 124rpx;
+	}
+	.box_class .class_right .right_list{
+		text-align: center;
+		font-size: 24rpx;
+		width: 33.3%;
+		height: 180rpx;
+	}
+	.show_class_list{
+		color: #000000 !important;
+		background: #fff !important;
+	}
 	.product {
 		background: #F1F1F1;
 		overflow: hidden;
@@ -320,7 +405,7 @@
 		font-size: 30rpx;
 		font-weight: bold;
 		padding: 0 10rpx;
-		margin-bottom: 20rpx;
+		margin-bottom: 20rpx;	
 	}
 
 	.tips {

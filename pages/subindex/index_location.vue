@@ -59,9 +59,7 @@
 				
 			},
 			returns(){
-				uni.navigateBack({
-					delta:1
-				})
+				this.common.returns(this)
 			}
 		},
 	}
@@ -73,6 +71,13 @@
 		color: #ccc;
 	}
 	.top{
+		width:100%;
+		position: fixed;
+		top:var(--status-bar-height);
+		left: 0;
+		background: #FFF;
+		z-index: 888;
+		box-sizing: border-box;
 		box-shadow: 0px 0px 6px #CCCCCC;
 	}
 	.top .choice{

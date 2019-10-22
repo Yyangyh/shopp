@@ -84,7 +84,10 @@
 		padding-bottom: 40rpx;
 	}
 	.status_bar{
-		background: rgba(0,0,0,0);
+		/* background: rgba(0,0,0,0); */
+	}
+	.content{
+		padding-top: 0;
 	}
 	.int_back{
 		position: absolute;

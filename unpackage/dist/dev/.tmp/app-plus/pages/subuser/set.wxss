@@ -1,5 +1,6 @@
 
 .content.data-v-0ecbeb78{
+	padding-top: 0;
 }
 .top.data-v-0ecbeb78{
 	height: 105rpx;

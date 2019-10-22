@@ -14,10 +14,10 @@
 				<view :class="{show:show == -1}" @click="choice(-1)">
 					全部
 				</view>
-				<view :class="{show:show == 0}" @click="choice(0)">
+				<view :class="{show:show == 1}" @click="choice(1)">
 					获得
 				</view>
-				<view :class="{show:show == 1}" @click="choice(1)">
+				<view :class="{show:show == 0}" @click="choice(0)">
 					消耗
 				</view>
 			</view>
@@ -101,6 +101,7 @@
 					self.data = data
 					self.page = page + 1
 					self.more = 'more'
+					console.log(self.page)
 					if(res.data.data.length < 10){
 						self.more = 'noMore'
 						self.loadRecord = false
@@ -124,8 +125,11 @@
 		background: #F1F1F1;
 		padding-bottom: 40rpx;
 	}
+	.content{
+		padding-top: 0;
+	}
 	.status_bar{
-		background: rgba(0,0,0,0);
+		/* background: rgba(0,0,0,0); */
 	}
 	.int_back{
 		position: absolute;

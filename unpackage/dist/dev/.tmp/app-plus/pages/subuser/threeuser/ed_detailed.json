@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "版通明细",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

@@ -6,9 +6,9 @@
 		</view>
 		<returns :titles='title'></returns>
 	<view class="team_level">
-		<view :class="['team_level_box', current == 0?'active':'']" v-if="data != ''" @click="change(0)">一级（{{data.length}}）</view>
-		<view :class="['team_level_box', current == 1?'active':'']" v-if="son != ''" @click="change(1)">二级（{{son.length}}）</view>
-		<view :class="['team_level_box', current == 2?'active':'']" v-if="grandson != ''" @click="change(2)">三级（{{grandson.length}}）</view>
+		<view :class="['team_level_box', current == 0?'active':'']" v-if="data" @click="change(0)">一级（{{data.length}}）</view>
+		<view :class="['team_level_box', current == 1?'active':'']" v-if="son" @click="change(1)">二级（{{son.length}}）</view>
+		<view :class="['team_level_box', current == 2?'active':'']" v-if="grandson" @click="change(2)">三级（{{grandson.length}}）</view>
 	</view>
 	
 	<view class="team_list" v-for="(item,index) in data_list" :key='item.id'>

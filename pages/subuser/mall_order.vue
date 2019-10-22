@@ -1,5 +1,5 @@
 <template>
-	<view class="">
+	<view class="content">
 		<view class="status_bar">
 		            <!-- 这里是状态栏 -->
 		</view>
@@ -184,6 +184,12 @@
 		color: #F09B22;
 	}
 	.top{
+		position: fixed;
+		width: 100%;
+		box-sizing: border-box;
+		top: var(--status-bar-height);
+		left: 0;
+		z-index: 99;
 		height: 105rpx;
 		padding: 0 44rpx;
 		display: flex;

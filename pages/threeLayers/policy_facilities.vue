@@ -357,6 +357,14 @@
 		width: 100%;
 	}
 	.top{
+		
+		width:100%;
+		position: fixed;
+		top:var(--status-bar-height);
+		left: 0;
+		background: #FFF;
+		z-index: 888;
+		box-sizing: border-box;
 		height: 105rpx;
 		padding: 0 44rpx;
 		display: flex;
