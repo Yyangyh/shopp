@@ -52,6 +52,8 @@ const api_root = {
 		scen_Category:api+'/api/Scenicspot/Category',//景点分类
 		scen_list:api+'/api/Scenicspot/ScenicspotList',//景点列表
 		scen_Detail:api+'/api/Scenicspot/Detail',//景点详情
+		scen_ConfirmDetail:api+'/api/Ctripspot/ConfirmDetail',//景点下单确定表单+时间数据+资源详情
+		scen_Favor:api+'/api/scenicspot/Favor',//景点收藏/取消
 		threeindex:{
 			grou_Confirm:api+'/api/groupgoods/Confirm',//确认订单-拼团商品
 			ConfirmDetail:api+'/api/groupgoods/ConfirmDetail',//拼团下订单数据确认
@@ -83,7 +85,8 @@ const api_root = {
 		UserIntegral:api+'/api/user/UserIntegral',//用户积分
 		dis_index:api+'/api/Distribution/index',//分销首页
 		Userfavor:api+'/api/user/Userfavor',//商品收藏列表
-		UserfavorDelete:api+'/api/user/UserfavorDelete',//商品收藏列表
+		Userspotfavor:api+'/api/user/Userspotfavor',//景点收藏列表
+		UserfavorDelete:api+'/api/user/UserfavorDelete',//商品收藏列表删除
 		merchUpload:api+'/api/merch/Upload',//证件图片上传
 		merchSubmit:api+'/api/merch/Submit',//提交商户申请
 		merchRegister:api+'/api/merch/Register',//个人申请信息获取（检查申请状态）
@@ -111,7 +114,6 @@ const api_root = {
 		buy_Index:api+'/api/buy/Index',//下订单数据确认
 		Add:api+'/api/buy/Add',//订单确定（生成订单号）
 		Pay:api+'/api/order/Pay',//支付订单
-		scen_ConfirmDetail:api+'/api/Ctripspot/ConfirmDetail',//景点下单确定表单+时间数据+资源详情
 		
 		
 	}

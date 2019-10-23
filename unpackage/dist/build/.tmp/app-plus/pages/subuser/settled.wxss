@@ -1,31 +1,31 @@
 
-page.data-v-60069035{
+page.data-v-711d6fa5{
 	background: #F1F1F1;
 	height: 100%;
 }
-.content.data-v-60069035{
+.content.data-v-711d6fa5{
 	font-size: 28rpx;
 	height: 100%;
 }
-.uni-input-placeholder.data-v-60069035{
+.uni-input-placeholder.data-v-711d6fa5{
 	color: #999;
 }
-.reason.data-v-60069035{
+.reason.data-v-711d6fa5{
 	padding: 20rpx;
 	background: #F76464;
 	color: #fff;
 	font-size: 28rpx;
 }
-.settled_top.data-v-60069035{
+.settled_top.data-v-711d6fa5{
 	width: 100%;
 	height: 280rpx;
 	margin-bottom: 20rpx;
 }
-.settled_box.data-v-60069035{
+.settled_box.data-v-711d6fa5{
 	background: #fff;
 	margin-bottom: 20rpx;
 }
-.settled_box .box_list.data-v-60069035{
+.settled_box .box_list.data-v-711d6fa5{
 	height: 100rpx;
 	padding: 0 20rpx;
 	display: -webkit-box;
@@ -38,11 +38,11 @@ page.data-v-60069035{
 	        align-items: center;
 	border-bottom: 1rpx solid #F1F1F1;
 }
-.settled_box .box_list .list_test.data-v-60069035{
+.settled_box .box_list .list_test.data-v-711d6fa5{
 	font-size: 24rpx;
 	width: 100%;
 }
-.settled_box .box_list>view.data-v-60069035{
+.settled_box .box_list>view.data-v-711d6fa5{
 	width: 140rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -53,7 +53,7 @@ page.data-v-60069035{
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.settled_box .box_list input.data-v-60069035{
+.settled_box .box_list input.data-v-711d6fa5{
 	font-size: 28rpx;
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
@@ -61,10 +61,10 @@ page.data-v-60069035{
 	        flex-grow: 2;
 	color: #333;
 }
-.settled_box .box_list text.data-v-60069035{
+.settled_box .box_list text.data-v-711d6fa5{
 	color: #FF431D;
 }
-.upload.data-v-60069035{
+.upload.data-v-711d6fa5{
 	margin-bottom: 20rpx;
 	height: 100rpx;
 	padding: 0 20rpx;
@@ -82,7 +82,7 @@ page.data-v-60069035{
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.upload .upload_img.data-v-60069035{
+.upload .upload_img.data-v-711d6fa5{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -92,16 +92,16 @@ page.data-v-60069035{
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.upload image.data-v-60069035:nth-of-type(1){
+.upload image.data-v-711d6fa5:nth-of-type(1){
 	width: 50rpx;
 	height: 50rpx;
 	margin-right: 20rpx;
 }
-.upload image.data-v-60069035:nth-of-type(2){
+.upload image.data-v-711d6fa5:nth-of-type(2){
 	width: 32rpx;
 	height: 32rpx;
 }
-.Mask.data-v-60069035{
+.Mask.data-v-711d6fa5{
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -110,7 +110,7 @@ page.data-v-60069035{
 	z-index: 888;
 	background: rgba(0,0,0,.6);
 }
-.treaty.data-v-60069035{
+.treaty.data-v-711d6fa5{
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -123,10 +123,10 @@ page.data-v-60069035{
 	height: 100rpx;
 	padding: 0 20rpx;
 }
-.treaty text.data-v-60069035{
+.treaty text.data-v-711d6fa5{
 	color: #1D74FF;
 }
-.treaty_box.data-v-60069035{
+.treaty_box.data-v-711d6fa5{
 	position: fixed;
 	z-index: 999;
 	height: 780rpx;
@@ -141,15 +141,15 @@ page.data-v-60069035{
 	    -ms-transform: translate(-50%,-50%);
 	        transform: translate(-50%,-50%);
 }
-.treaty_box .box_top.data-v-60069035{
+.treaty_box .box_top.data-v-711d6fa5{
 	text-align: center;
 	font-size: 36rpx;
 }
-.treaty_box .box_conent.data-v-60069035{
+.treaty_box .box_conent.data-v-711d6fa5{
 	margin: 20rpx 0;
 	height: 560rpx;
 }
-.treaty_box button.data-v-60069035{
+.treaty_box button.data-v-711d6fa5{
 	position: absolute;
 	width: 90%;
 	height: 80rpx;
@@ -160,7 +160,7 @@ page.data-v-60069035{
 	    -ms-transform: translateX(-50%);
 	        transform: translateX(-50%);
 }
-button.data-v-60069035{
+button.data-v-711d6fa5{
 	text-align: center;
 	height: 80rpx;
 	line-height: 80rpx;
@@ -170,7 +170,7 @@ button.data-v-60069035{
 	background: #1D74FF;
 	margin: 30rpx 20rpx;
 }
-.process.data-v-60069035{
+.process.data-v-711d6fa5{
 	text-align: center;
 	height: 100%;
 	background: #fff;
@@ -179,11 +179,11 @@ button.data-v-60069035{
 	width: 100%;
 	padding-top: 120rpx;
 }
-.process view.data-v-60069035{
+.process view.data-v-711d6fa5{
 	text-align: center;
 	font-size: 28rpx;
 }
-.process image.data-v-60069035{
+.process image.data-v-711d6fa5{
 	height: 290rpx;
 	width: 290rpx;
 }

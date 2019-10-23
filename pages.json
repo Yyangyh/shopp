@@ -257,6 +257,16 @@
 		},
 		
 		{
+			"path": "pages/substrategy/str_user",
+			"style": {
+				"navigationBarTitleText": "我的游记",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
 			"path": "pages/subuser/set",
 			"style": {
 				"navigationBarTitleText": "设置",

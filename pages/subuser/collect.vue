@@ -10,10 +10,11 @@
 			<text class="show_test" v-else @click="show_test = !show_test">完成</text>
 		</view>
 		<view class="collect_test">
-			<view :class="{show:show == 0}" @click="show = 0">
+			<!-- <view :class="{show:show == 0}" @click="show = 0,page = 1"> -->
+			<view :class="{show:show == 0}" @click="chiose(0)">
 				商品收藏
 			</view>
-			<view :class="{show:show == 1}" @click="show = 1">
+			<view :class="{show:show == 1}" @click="chiose(1)">
 				景点收藏
 			</view>
 		</view>
@@ -24,14 +25,18 @@
 				</view>
 				<view class="list_box" @click="jump(type,item.goods_id)">
 					<view class="list_img">
-						<image :src="item.images" mode="scaleToFill"></image>
+						<image v-if="item.images" :src="item.images" mode="scaleToFill"></image>
+						<image v-else :src="item.image_url" mode="scaleToFill"></image>
 					</view>
 					<view class="tab_right">
 						<!-- <view class="test_one">
 							武汉-特色产品
 						</view> -->
-						<view class="test_two">
+						<view class="test_two" v-if="item.title">
 							{{item.title}}
+						</view>
+						<view class="test_two" v-else>
+							{{item.name}}
 						</view>
 						<view class="test_three">
 							<view class="test_left">
@@ -50,28 +55,39 @@
 				删除
 			</view>
 		</view>
+		<uni-load-more :status="more"></uni-load-more>
 	</view>
 </template>
 
 <script>
 	import returns from '../common/returns.vue'
+	import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue'
 	export default{
 		components:{
-			returns
+			returns,
+			uniLoadMore
 		},
 		data() {
 			return {
 				show:0,
-				data:'',
+				data:[],
 				show_test:true,
-				whole_choice:false
+				whole_choice:false,
+				more:'more',
+				page:1,
+				loadRecord:true
 			}
 		},
 		methods:{
 			returns(){
 				this.common.returns(this)
 			},
-			
+			chiose(index){
+				this.page = 1
+				this.show = index
+				this.data.length = 0
+				this.loadMore()
+			},
 			singleElection(index){  //单选
 				this.data[index].choice = !this.data[index].choice
 				if(this.data[index].choice == true){ //全选
@@ -108,33 +124,79 @@
 				for (let s of this.data) {
 					if(s.choice == true)all.push(s.id)
 				}
-				this.service.entire(this,'post',this.service.api_root.subuser.UserfavorDelete,{
-					id:all.join(',')
-				},function(self,res){
-					if(res.code == 0){
-						let data = self.data
-						for(let i=data.length-1;i>=0;i--){  //倒序删除
-							if(data[i].choice == true){
-								data.splice(i,1);
+				if(this.show == 0){
+					this.service.entire(this,'post',this.service.api_root.subuser.UserfavorDelete,{
+						id:all.join(',')
+					},function(self,res){
+						if(res.code == 0){
+							let data = self.data
+							for(let i=data.length-1;i>=0;i--){  //倒序删除
+								if(data[i].choice == true){
+									data.splice(i,1);
+								}
 							}
+							
 						}
-						
-					}
-				})
+					})
+				}else{
+					
+				}
+				
+			},
+			loadMore(){
+				let page = this.page
+				this.more = 'loading'
+				if(this.show == 0){
+					this.service.entire(this,'post',this.service.api_root.subuser.Userfavor,{
+						page:page
+					},function(self,res){
+						let list = self.data
+						for (let s of list) {
+							s.choice = false
+						}
+						list.push(...res.data.data)
+						self.data =list
+						console.log(self.data)
+						self.page = page + 1
+						self.more = 'more'
+						if(res.data.data.length < 10){
+							self.more = 'noMore'
+							self.loadRecord = false
+							return
+						}
+					})
+				}else{
+					this.service.entire(this,'post',this.service.api_root.subuser.Userspotfavor,{
+						page:page
+					},function(self,res){
+						console.log(res)
+						let list = self.data
+						for (let s of list) {
+							s.choice = false
+						}
+						list.push(...res.data.data)
+						self.data =list
+						console.log(self.data)
+						self.page = page + 1
+						self.more = 'more'
+						if(res.data.data.length < 10){
+							self.more = 'noMore'
+							self.loadRecord = false
+							return
+						}
+					})
+				}
+				
 			}
 		},
-		onShow() {
-			this.service.entire(this,'post',this.service.api_root.subuser.Userfavor,{
-				page:1
-			},function(self,res){
-				let list = res.data.data
-				for (let s of list) {
-					s.choice = false
-				}
-				self.data =list
-				console.log(list)
-			})
+		onReachBottom(){
+			if(this.loadRecord == false) return
+			this.loadMore()
+		},
+		onLoad() {
+			this.loadMore()
 		}
+		
 	}
 </script>
 
@@ -148,6 +210,7 @@
 		width: 100%;
 		box-sizing: border-box;
 		position: fixed;
+		z-index: 111;
 		left: 0;
 		top: var(--status-bar-height);
 		display: flex;

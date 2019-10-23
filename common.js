@@ -129,7 +129,7 @@ const returns = function(that){
 	uni.navigateBack(1)
 }
 
-const collection = function(that,id){
+const collection = function(that,id){  //收藏
 	that.service.entire(that,'get',that.service.api_root.common.Favor,{
 		id:id,
 		token:uni.getStorageSync('token')
@@ -140,9 +140,38 @@ const collection = function(that,id){
 	})
 }
 
+
+const scen_collection = function(that,id){  //收藏
+	that.service.entire(that,'post',that.service.api_root.subindex.scen_Favor,{
+		id:id,
+		token:uni.getStorageSync('token')
+	},function(self,res){
+		console.log(res)
+		if(res.code == 0){
+			that.is_favor = !that.is_favor
+		}
+	})
+}
+
+
+
+const Test = function(time){ //修改时间格式
+	let t = time.slice(6, 19)
+	let NewDtime = new Date(parseInt(t));
+	return formatDate(NewDtime);
+}
+function formatDate(dt) {
+	let year = dt.getFullYear();
+	let month = dt.getMonth() + 1;
+	let date = dt.getDate();
+	return year + "-" + month + "-" + date;
+}
+
+
 export default{
 	order,
 	returns,
-	collection
-	
+	collection,
+	Test,
+	scen_collection
 }

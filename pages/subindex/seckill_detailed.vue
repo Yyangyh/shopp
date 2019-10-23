@@ -398,18 +398,14 @@
 	}
 	.product_price{
 		background: #fff;
-		width: 96%;
 		font-size: 32rpx;
-		position: relative;
-		top: -20rpx;
-		left: 2%;
-		border-radius: 10rpx;
+		margin-bottom: 20rpx;
+		border-top: 2rpx solid #F1F1F1;
 	}
 	.product_price .pr_top{
 		/* font-weight: bold; */
 		font-size: 32rpx;
 		padding: 20rpx;
-		
 	}
 	.product_price .price{
 		display: flex;
@@ -443,6 +439,8 @@
 		height: 32rpx;
 	}
 	.product_price .pr_bottom .pr_coupon{
+		display: flex;
+		align-items: center;
 		color: #999;
 		font-size: 24rpx;
 	}

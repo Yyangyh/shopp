@@ -26,9 +26,9 @@
               <view
                 v-if="lunar"
                 class="uni-calender__lunar">{{ day.lunar }}</view>
-              <view
+              <!-- <view
                 v-if="day.have"
-                class="uni-calender__data-circle" />
+                class="uni-calender__data-circle" /> -->
               <view
                 v-if="day.have && !lunar"
                 class="uni-calender__lunar">{{ day.clockinfo.info }}</view>
@@ -107,7 +107,7 @@ export default {
 		z-index: 2;
 		.uni-calender__lunar {
 			font-size: 20upx;
-			color: #000;
+			color: #fd2e32;
 			line-height: 1.2;
 		}
 
@@ -142,10 +142,10 @@ export default {
 		// }
 
 		&.uni-calender__is-day {
-			color: #fd2e32;
-			.uni-calender__lunar {
-				color: #fd2e32;
-			}
+			// color: #fd2e32;
+			// .uni-calender__lunar {
+			// 	color: #fd2e32;
+			// }
 		}
 
 		// 当前选中

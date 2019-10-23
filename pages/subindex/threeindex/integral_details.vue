@@ -395,25 +395,26 @@
 	
 	.product_price {
 		background: #fff;
-		width: 96%;
+		/* width: 96%; */
 		font-size: 32rpx;
-		position: relative;
-		top: -20rpx;
-		left: 2%;
-		border-radius: 10rpx;
+		/* position: relative; */
+		/* top: -20rpx; */
+		/* left: 2%; */
+		margin-bottom: 20rpx;
+		border-top: 2rpx solid #F1F1F1;
+		/* border-radius: 10rpx; */
 	}
 	
 	.product_price .pr_top {
 		/* font-weight: bold; */
 		font-size: 30rpx;
 		padding: 20rpx;
-	
 	}
 	
 	.product_price .price {
 		display: flex;
 		/* justify-content: space-between; */
-		font-size: 36rpx;
+		font-size: 28rpx;
 		padding-left: 12rpx;
 		padding-bottom: 20rpx;
 		border-bottom: 2rpx solid #F4F4F4;
@@ -430,6 +431,7 @@
 	.product_price .pr_bottom {
 		display: flex;
 		justify-content: space-between;
+		align-items: center;
 		padding: 20rpx;
 	}
 	
@@ -439,6 +441,8 @@
 	}
 	
 	.product_price .pr_bottom .pr_coupon {
+		display: flex;
+		align-items: center;
 		color: #999;
 		font-size: 30rpx;
 	}

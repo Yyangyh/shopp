@@ -8,7 +8,8 @@
 			<view class="top_operation">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<image class="love" v-if="is_favor === false" src="../../static/image/love.png" mode="widthFix"  @click="collection()"></image>
+					<image class="love" v-else-if = "is_favor === true" src="../../static/image/loves.png" mode="widthFix"  @click="collection()"></image>
 					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -245,7 +246,7 @@
 				</view>
 				<view class="payment">
 					<!-- <image src="../../static/image/collect.png" mode="widthFix"></image> -->
-					<image src="../../static/image/collection.png" mode="widthFix"></image>
+					<!-- <image src="../../static/image/collection.png" mode="widthFix"></image> -->
 					<button type="primary" @click="chiose_date()">立即购买</button>
 				</view>
 			</view>
@@ -256,26 +257,23 @@
 			<view class="buy_date_test">
 				<text>{{buy_name}}</text>
 			</view>
-			<view class="buy_date_price">￥{{buy_money}}</view>
+			<!-- <view class="buy_date_price">￥{{buy_money}}</view> -->
 			<view class="date_test">日期选择</view>
 			<view class="chiose_date">
-				<view class="date_one" :class="{buy_show:buy_show == 0,prohibit:buy_status != 0}" @click="buy_chiose_date(0)" >
-					<view class="">今天</view>
-					<view class="">{{buy_today}}</view>
+				<view class="date_one" v-for="(item,index) in arr_date" :class="{buy_show:buy_show == index,prohibit:buy_status > index}" @click="buy_chiose_date(index)" >
+					<view class="">{{item.name}}</view>
+					<view class="">{{item.show_date}}</view>
+					<view class="Price">{{item.Price}}</view>
 				</view>
-				<view class="date_one" :class="{buy_show:buy_show == 1,prohibit:buy_status > 1}" @click="buy_chiose_date(1)">
-					<view class="">明天</view>
-					<view class="">{{buy_tomorrow}}</view>
-				</view>
-				<view class="date_one" :class="{buy_show:buy_show == 2,prohibit:buy_status > 2}" @click="buy_chiose_date(2)">
-					<view class="">后天</view>
-					<view class="">{{buy_acquired}}</view>
-				</view>
-				<view class="date_one">
-					<view class="">其他日期</view>
+				
+				<view class="date_one"  :class="{buy_show:buy_show == 3}" >
+					<view class=""  @click="open">其他日期</view>
+					<view class="">
+						{{other_time}}
+					</view>
 				</view>
 			</view>
-			<button class="buy"  @click="jump('/pages/threeLayers/fill_in?id='+buy_id)">立即购买</button>
+			<button class="buy"  @click="jump('/pages/threeLayers/fill_in?id='+buy_id+'&date='+chiose_time)">立即购买</button>
 		</view>
 
 		
@@ -284,22 +282,26 @@
 		    ref="calendar"
 		    :insert="false"
 		    @confirm="confirm"
+			:startDate = "startDate"
+			:endDate = "endDate"
+			:selected = 'buy_selected'
 		     ></uni-calendar>
-		     <button @click="open">打开日历</button>
 		</view>
 		
 	</view>
 </template>
 
 <script>
-	import {uniCalendar} from "../../components/uni-calendar/uni-calendar.vue"
+	import uniCalendar from "../../components/uni-calendar/uni-calendar.vue"
 	export default {
-		components: {
+		components:{
 		    uniCalendar
 		},
 		data() {
 			return {
 				show: 0,
+				scen_id:'',
+				is_favor:'',//景点收藏
 				mid_show: 0,
 				box: false,
 				page: 0,
@@ -315,20 +317,42 @@
 				buy_show:99,
 				buy_box:false,
 				buy_date:'',
-				buy_today:'',//今天
-				buy_tomorrow:'',//明天
-				buy_acquired:'',//后天
-				buy_status:''
+				arr_date:'', //今天明天后天
+				other_time:'',
+				buy_status:'',
+				startDate:'',//日历开始时间
+				endDate:'',//日历结束时间
+				chiose_time:'',//选中的日期
+				sure_date:'',//携程可选日期
+				buy_selected:[]
 			}
 		},
 		methods: {
 			open(){
 				this.$refs.calendar.open();
 			},
-			confirm(e) {
+			confirm(e) {  //日历表选择日期时间
 				console.log(e);
+				let Arr_data = []
+				for (let s of this.sure_date) {
+					Arr_data.push(s.Date)
+				}
+				if(Arr_data.indexOf(e.fulldate) != -1){
+					this.other_time = e.month+'月'+e.date+'日'
+					this.chiose_time = 	e.fulldate
+					this.buy_show = 3
+				}else{
+					uni.showToast({
+						icon:'none',
+						title:'该时间段暂无票可售，请重新选择'
+					})
+				}
+				
 			},
-			returns() {
+			collection(){
+				this.common.scen_collection(this,this.scen_id)
+			},
+			returns() { //返回
 				this.common.returns(this)
 			},
 			jump(url) {
@@ -340,11 +364,34 @@
 			chiose_date(){ //选择日期
 				this.box = false
 				this.buy_box = true
-				
+				this.service.entire(this,'get',this.service.api_root.subindex.scen_ConfirmDetail,{
+					ResourceIDList:this.buy_id,
+					end_date:this.endDate,
+				},function(self,res){
+					console.log(res)
+					let date = res.data.date.ResourceList[0].DateList
+					
+					for (let s of date) {
+						let Obj = {}
+						
+						s.Date = self.common.Test(s.Date)
+						Obj.date = s.Date
+						Obj.info = '￥'+s.Price
+						self.buy_selected.push(Obj)
+						for (let k of self.arr_date) {
+							if(s.Date == k.date){
+								k.Price = '￥'+s.Price
+							}
+						}
+					}
+					self.sure_date = date
+					
+				})
 			},
 			buy_chiose_date(index){
 				if(this.buy_status >index) return
 				this.buy_show = index
+				this.chiose_time = this.arr_date[index].date
 			},
 			show_box(index) {
 				this.box = true;
@@ -352,12 +399,10 @@
 				this.buy_money = this.data_three[index].Price
 				this.buy_id = this.data_three[index].ID
 				this.buy_status = this.data_three[index].time_status
-				console.log(this.buy_status)
 				let data = this.data_three[index].ResourceAddInfoList
 				let Arr_data = []
 				let Obj_data = {}
 				data.forEach((s, index, item) => { //处理购买须知数据格式
-
 					if (Obj_data.name == s.Title) {
 						let aa = {}
 						aa.names = s.SubTitle
@@ -404,7 +449,6 @@
 			load_more() { //加载更多景点
 				this.more_test = '加载中...'
 				this.page += 3
-
 				if (this.data_three.length - this.page <= 3) {
 					this.more_test = '暂无更多'
 					return
@@ -415,6 +459,7 @@
 		},
 		onLoad(options) {
 			//获取当前时间
+			this.scen_id = options.id
 			let date = new Date();
 			console.log(date)
 			let year = date.getFullYear();
@@ -427,19 +472,18 @@
 				day = "0" + day;
 			}
 			let nowDate = year + "-" + month + "-" + day;
-			this.buy_today = month + "月" + day+ "日"; //今天
 			// console.log(nowDate)
 			
 			function addDate(date, days) {
-			        if (days == undefined || days == '') {
-			            days = 1;
-			        }
-			        var date = new Date(date);
-			        date.setDate(date.getDate() + days);
-			        var month = date.getMonth() + 1;
-			        var day = date.getDate();
-			        return  getFormatDate(month) + '月' + getFormatDate(day)+ "日";
-			    }
+				if (days == undefined || days == '') {
+					days = 1;
+				}
+				var date = new Date(date);
+				date.setDate(date.getDate() + days);
+				var month = date.getMonth() + 1;
+				var day = date.getDate();
+				return date.getFullYear() + '-' + getFormatDate(month) + '-' + getFormatDate(day);
+			}
 			 
 			    // 日期月份/天的显示，如果是1位数，则在前面加上'0'
 			function getFormatDate(arg) {
@@ -450,25 +494,50 @@
 				if (re.length < 2) {
 					re = '0' + re;
 				}
-				
 				return re;
 			}
-			this.buy_tomorrow = addDate(nowDate,1)//明天
-			this.buy_acquired = addDate(nowDate,2)//后天
-			
+			function changeDate(data){
+				let a = data.split('-')
+				a = a[1]+'月'+a[2]+'日'
+				return a
+			}
+			let arr_date = [ 
+				{
+					show_date:month + "月" + day+ "日",
+					name:'今天',
+					date:nowDate,
+					Price:''
+				},
+				{
+					show_date:changeDate(addDate(nowDate,1)),
+					name:'明天',
+					date:addDate(nowDate,1),
+					Price:''
+				},
+				{
+					show_date:changeDate(addDate(nowDate,2)),
+					name:'后天',
+					date:addDate(nowDate,2),
+					Price:''
+				},
+			]
+			this.arr_date = arr_date
+			this.startDate = addDate(nowDate,3) //日历表开始时间
+			this.endDate = addDate(nowDate,30) //日历表结束时间
 
 			this.service.entire(this, 'get', this.service.api_root.subindex.scen_Detail, {
 				id: options.id
 			}, function(self, res) {
-				// console.log(res.data.ResourceList)
+				res.data.is_favor == 0 ? self.is_favor = false :self.is_favor = true
+				console.log(res.data.is_favor)
 				if (res.data.ResourceList.length > 0) {
 					for (let s of res.data.ResourceList) {
 						for (let n of s.data) {
 							for (let m of n.data) {
-								m.FirstBookingDate = Test(m.FirstBookingDate)
+								m.FirstBookingDate = self.common.Test(m.FirstBookingDate)
 								let day1 = new Date(nowDate);
 								let day2 = new Date(m.FirstBookingDate);
-								if ((day2 - day1) / (1000 * 60 * 60 * 24) == 0) {
+								if ((day2 - day1) / (1000 * 60 * 60 * 24) == 0) { //根据相差天数分配状态
 									m.time_status = 0
 								} else if ((day2 - day1) / (1000 * 60 * 60 * 24) == 1) {
 									m.time_status = 1
@@ -480,35 +549,27 @@
 							}
 						}
 					}
-					console.log(self.data_one)
 					self.data_one = res.data.ResourceList
+					// console.log(self.data_one)
 					self.data_two = res.data.ResourceList[0].data
 					self.data_three = res.data.ResourceList[0].data[0].data
 				}
 
 				self.data = res.data.goods.ScenicSpotInfoList[0]
-				// let result = [];
-				// for(let i=0;i<self.data_three.length;i+=3){
-				//     result.push(self.data_three.slice(i,i+3));
-				// }
-				// self.data_three = result
-				// console.log(self.data_three)
 				let data = res.data.goods.ScenicSpotInfoList[0].ProductInfo.ResourceList
 
-
-				function formatDate(dt) {
-					let year = dt.getFullYear();
-					let month = dt.getMonth() + 1;
-					let date = dt.getDate();
-					return year + "-" + month + "-" + date;
-				}
-
-				function Test(time) {
-					let t = time.slice(6, 19)
-					let NewDtime = new Date(parseInt(t));
-					return formatDate(NewDtime);
-				}
+				
 			})
+		},
+		watch:{
+			buy_box(news,old){
+				if(news == false) {
+					this.buy_show = 99
+					for (let s of this.arr_date) {
+						s.Price = ''
+					}
+				}
+			}
 		}
 	}
 </script>
@@ -564,16 +625,17 @@
 	}
 
 	.scenery {
-		height: 560rpx;
+		height: 500rpx;
 		font-size: 28rpx;
 		background: #fff;
-		width: 94%;
-		position: relative;
-		top: -50rpx;
-		left: 3%;
-		border-radius: 20rpx;
+		/* width: 94%; */
+		/* position: relative; */
+		/* top: -50rpx; */
+		/* margin: 0 20rpx; */
+		/* border-radius: 20rpx; */
 		overflow: hidden;
-		box-shadow: 20rpx 0 28rpx #eee;
+		margin-bottom: 20rpx;
+		/* box-shadow: 0 0 20rpx #eee; */
 	}
 
 	.scenery .sc_top .top_test {
@@ -710,15 +772,16 @@
 		margin: 0 4%;
 		/* padding: 0 38rpx; */
 	}
-
+	
 	.details .sc_details .de_top view:nth-of-type(1) {
 		margin-right: 10rpx;
 	}
-
+	
 	.details .sc_details .de_top text {
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
+		flex-grow: 2;
 	}
 
 	.details .sc_details .de_bottom image {
@@ -1015,7 +1078,7 @@
 	.mask {
 		width: 100%;
 		height: 100%;
-		background: rgba(0, 0, 0, .5);
+		background: rgba(0, 0, 0, .4);
 		position: fixed;
 		top: 0;
 		left: 0;
@@ -1070,6 +1133,7 @@
 	.h2 {
 		color: #333333;
 		font-size: 26rpx;
+		margin-top: 10rpx;
 	}
 
 	.h2:first-of-type {
@@ -1220,7 +1284,7 @@
 		flex-direction: column;
 		justify-content: center;
 		font-size: 28rpx;
-		height: 70rpx;
+		height: 120rpx;
 		width: 20%;
 		text-align: center;
 		border-radius: 10rpx;
@@ -1231,9 +1295,14 @@
 		font-size: 24rpx;
 		/* color: #666; */
 	}
+	.buy_date .chiose_date .date_one .Price{
+		color: #FF431D;
+	}
 	.buy_date .buy{
 		background: #007AFF;
 		color: #fff;
+		height: 90rpx;
+		line-height: 90rpx;
 		font-size: 28rpx;
 		border-radius: 0;
 	}

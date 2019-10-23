@@ -116,9 +116,9 @@
 					购物车
 				</view>
 			</view>
-			<view class="tab_list" @click="collect()">
-				<image v-if="is_favor == 0" src="../../static/image/collection.png" mode="widthFix"></image>
-				<image v-else src="../../static/image/collect.png" mode="widthFix"></image>
+			<view class="tab_list" @click="jump('../subuser/collect')">
+				<image src="../../static/image/collection.png" mode="widthFix"></image>
+				<!-- <image src="../../static/image/collect.png" mode="widthFix"></image> -->
 				<view class="">
 					收藏
 				</view>
@@ -421,12 +421,9 @@
 
 	.product_price {
 		background: #fff;
-		width: 96%;
+		border-top: 2rpx solid #F1F1F1;
 		font-size: 32rpx;
-		position: relative;
-		top: -20rpx;
-		left: 2%;
-		border-radius: 10rpx;
+		margin-bottom: 20rpx;
 	}
 
 	.product_price .pr_top {

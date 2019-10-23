@@ -6,7 +6,7 @@
 		<view class="top">
 			<text></text>
 			<text>游记攻略</text>
-			<image src="../../static/image/index/user4.png" mode="widthFix"></image>
+			<image @click="jump('../substrategy/str_user')" src="../../static/image/index/user4.png" mode="widthFix"></image>
 		</view>
 		<view class="search">
 			<view class="search_top">
@@ -129,6 +129,11 @@
 				</view>
 			</view>
 		</view>
+		
+		<view class="add_str">
+			<image src="../../static/image/index/add.png" mode=""></image>
+		</view>
+		
 	</view>
 </template>
 
@@ -139,6 +144,13 @@
 				show: 0
 			}
 		},
+		methods:{
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			}
+		}
 	}
 </script>
 
@@ -277,5 +289,15 @@
 	.bottom .list_bottom .list_three image{
 		height: 236rpx;
 		width: 236rpx;
+	}
+	.add_str{
+		position: fixed;
+		bottom: 110rpx;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.add_str image{
+		width: 96rpx;
+		height: 96rpx;
 	}
 </style>

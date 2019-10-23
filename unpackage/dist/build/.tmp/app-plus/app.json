@@ -28,6 +28,7 @@
     "pages/subindex/threeindex/integral_details",
     "pages/subindex/threeindex/int_order",
     "pages/subindex/threeindex/scenic_class",
+    "pages/substrategy/str_user",
     "pages/subuser/set",
     "pages/subuser/feedback",
     "pages/subuser/notice",
@@ -125,6 +126,6 @@
     "autoclose": false
   },
   "appname": "文旅世家",
-  "compilerVersion": "2.3.5",
+  "compilerVersion": "2.3.6",
   "usingComponents": {}
 }
