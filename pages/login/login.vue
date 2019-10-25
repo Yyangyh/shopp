@@ -76,7 +76,8 @@
 					success(res) {
 						console.log(res)
 						let data = res.data 
-						console.log(data)
+						console.log(data,'6666')
+						uni.setStorageSync('uid',data.data.id)
 						uni.showToast({
 							icon:'none',
 							title:data.msg

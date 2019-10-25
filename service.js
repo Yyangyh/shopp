@@ -116,6 +116,10 @@ const api_root = {
 		Pay:api+'/api/order/Pay',//支付订单
 		
 		
+	},
+	// 游记攻略
+	substrategy:{
+		list:api+'/api/travels/person',//游记攻略----个人游记
 	}
 }
 const entire = function(self,type,url,data,func){
