@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "景点订单",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns",
+    "uni-load-more": "/components/uni-load-more/uni-load-more"
+  }
+}

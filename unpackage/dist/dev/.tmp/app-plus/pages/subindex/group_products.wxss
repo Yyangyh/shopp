@@ -51,12 +51,9 @@
 }
 .product_price.data-v-6a4219a7{
 	background: #fff;
-	width: 96%;
 	font-size: 32rpx;
-	position: relative;
-	top: -20rpx;
-	left: 2%;
-	border-radius: 10rpx;
+	border-top: 2rpx solid #F1F1F1;
+	margin-bottom: 20rpx;
 }
 .product_price .pr_top.data-v-6a4219a7{
 	/* font-weight: bold; */
@@ -123,6 +120,14 @@
 	height: 32rpx;
 }
 .product_price .pr_bottom .pr_coupon.data-v-6a4219a7{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
 	color: #333333;
 	font-size: 30rpx;
 }

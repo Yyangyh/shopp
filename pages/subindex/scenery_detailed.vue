@@ -3,13 +3,15 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
+		<Load v-if = 'load_show'></Load>
+		
 		<view class="top_img">
 			<image :src="data.ImageURL" mode="scaleToFill"></image>
-			<view class="top_operation">
+			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
-				<view class="">
-					<image class="love" v-if="is_favor === false" src="../../static/image/love.png" mode="widthFix"  @click="collection()"></image>
-					<image class="love" v-else-if = "is_favor === true" src="../../static/image/loves.png" mode="widthFix"  @click="collection()"></image>
+				<view class="top_fixed">
+					<image class="love" v-if="is_favor == false" src="../../static/image/love.png" mode="widthFix"  @click="collection()"></image>
+					<image class="love" v-else-if = "is_favor == true" src="../../static/image/loves.png" mode="widthFix"  @click="collection()"></image>
 					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -260,7 +262,7 @@
 			<!-- <view class="buy_date_price">￥{{buy_money}}</view> -->
 			<view class="date_test">日期选择</view>
 			<view class="chiose_date">
-				<view class="date_one" v-for="(item,index) in arr_date" :class="{buy_show:buy_show == index,prohibit:buy_status > index}" @click="buy_chiose_date(index)" >
+				<view class="date_one" v-for="(item,index) in arr_date" :class="{buy_show:buy_show == index,prohibit:item.Price == ''}" @click="buy_chiose_date(index)" >
 					<view class="">{{item.name}}</view>
 					<view class="">{{item.show_date}}</view>
 					<view class="Price">{{item.Price}}</view>
@@ -273,7 +275,7 @@
 					</view>
 				</view>
 			</view>
-			<button class="buy"  @click="jump('/pages/threeLayers/fill_in?id='+buy_id+'&date='+chiose_time)">立即购买</button>
+			<button class="buy"  @click="buy()">立即购买</button>
 		</view>
 
 		
@@ -293,13 +295,19 @@
 
 <script>
 	import uniCalendar from "../../components/uni-calendar/uni-calendar.vue"
+	import Load from '../../components/load/load.vue'
 	export default {
 		components:{
-		    uniCalendar
+		    uniCalendar,
+			Load
 		},
 		data() {
 			return {
 				show: 0,
+				load_show:true,
+				show_bottom:{
+					background:'rgba(255,255,255,0)'
+				},
 				scen_id:'',
 				is_favor:'',//景点收藏
 				mid_show: 0,
@@ -319,13 +327,23 @@
 				buy_date:'',
 				arr_date:'', //今天明天后天
 				other_time:'',
-				buy_status:'',
 				startDate:'',//日历开始时间
 				endDate:'',//日历结束时间
 				chiose_time:'',//选中的日期
 				sure_date:'',//携程可选日期
-				buy_selected:[]
+				buy_selected:[],
+				transparency:0,
+				windowHeight:''
 			}
+		},
+		onPageScroll(e){
+			console.log(e)
+			if(e.scrollTop >= 150) return
+			this.transparency  = e.scrollTop/150
+		},
+		onLoad() {
+			this.windowHeight = uni.getSystemInfoSync().windowHeight
+			console.log(this.windowHeight)
 		},
 		methods: {
 			open(){
@@ -349,6 +367,27 @@
 				}
 				
 			},
+			buy(url){
+				if(this.chiose_time == ''){
+					uni.showToast({
+						icon:'none',
+						title:'请选择使用日期'
+					})
+					return
+				}
+				let Price
+				for (let s of this.sure_date) {
+					console.log(s)
+					if(s.Date == this.chiose_time){
+						Price = s.Price
+						break
+					}
+				}
+				this.box = false;
+				uni.navigateTo({
+					url: '/pages/threeLayers/fill_in?id='+this.buy_id+'&endDate='+this.endDate+'&chiose_time='+this.chiose_time+'&Price='+Price+'&scen_id='+this.scen_id
+				})
+			},
 			collection(){
 				this.common.scen_collection(this,this.scen_id)
 			},
@@ -356,10 +395,7 @@
 				this.common.returns(this)
 			},
 			jump(url) {
-				this.box = false;
-				uni.navigateTo({
-					url: url
-				})
+				
 			},
 			chiose_date(){ //选择日期
 				this.box = false
@@ -373,7 +409,6 @@
 					
 					for (let s of date) {
 						let Obj = {}
-						
 						s.Date = self.common.Test(s.Date)
 						Obj.date = s.Date
 						Obj.info = '￥'+s.Price
@@ -389,7 +424,7 @@
 				})
 			},
 			buy_chiose_date(index){
-				if(this.buy_status >index) return
+				if(this.arr_date[index].Price == '') return
 				this.buy_show = index
 				this.chiose_time = this.arr_date[index].date
 			},
@@ -398,7 +433,7 @@
 				this.buy_name = this.data_three[index].Name
 				this.buy_money = this.data_three[index].Price
 				this.buy_id = this.data_three[index].ID
-				this.buy_status = this.data_three[index].time_status
+				// this.buy_status = this.data_three[index].time_status
 				let data = this.data_three[index].ResourceAddInfoList
 				let Arr_data = []
 				let Obj_data = {}
@@ -541,10 +576,8 @@
 									m.time_status = 0
 								} else if ((day2 - day1) / (1000 * 60 * 60 * 24) == 1) {
 									m.time_status = 1
-								}else if ((day2 - day1) / (1000 * 60 * 60 * 24) == 2) {
+								} else {
 									m.time_status = 2
-								}  else {
-									m.time_status = 3
 								}
 							}
 						}
@@ -558,7 +591,7 @@
 				self.data = res.data.goods.ScenicSpotInfoList[0]
 				let data = res.data.goods.ScenicSpotInfoList[0].ProductInfo.ResourceList
 
-				
+				self.load_show = false
 			})
 		},
 		watch:{
@@ -594,19 +627,25 @@
 
 	.top_img .top_operation {
 		width: 100%;
-		position: absolute;
+		/* position: absolute; */
 		z-index: 99;
 		top: 0;
 		height: 60rpx;
 		padding: 20rpx 0;
 		display: flex;
+		position: fixed;
+		width: 100%;
+		top:var(--status-bar-height);
+		left: 0;
 		/* flex-direction: column; */
 		/* flex-wrap: wrap; */
 		justify-content: space-between;
 		align-items: center;
 		/* margin: 0 20rpx; */
 	}
-
+	.top_img .top_operation .top_fixed{
+		
+	}
 	.top_img .top_operation image {
 		height: 50rpx;
 		width: 50rpx;

@@ -87,17 +87,20 @@ const api_root = {
 		Userfavor:api+'/api/user/Userfavor',//商品收藏列表
 		Userspotfavor:api+'/api/user/Userspotfavor',//景点收藏列表
 		UserfavorDelete:api+'/api/user/UserfavorDelete',//商品收藏列表删除
+		UserspotfavorDelete:api+'/api/user/UserspotfavorDelete',//景点收藏删除
 		merchUpload:api+'/api/merch/Upload',//证件图片上传
 		merchSubmit:api+'/api/merch/Submit',//提交商户申请
 		merchRegister:api+'/api/merch/Register',//个人申请信息获取（检查申请状态）
 		message:api+'/api/user/message',//系统通知
 		Answer:api+'/api/user/Answer',//反馈
+		scen_orders:api+'/api/Ctripspot/orders',//景点订单列表
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
 			Order_detail:api+'/api/order/Detail',//更改昵称
 			int_orders:api+'/api/creditshop/orders',//积分订单列表
 			int_OrderDetail:api+'/api/creditshop/OrderDetail',//积分订单详情
+			scen_orders_Detail:api+'/api/Ctripspot/Detail',//景点订单详情
 			dis_team:api+'/api/Distribution/team',//分销团队
 			dis_profit:api+'/api/Distribution/profit',//分销佣金
 			dis_order:api+'/api/Distribution/order',//分销订单
@@ -114,6 +117,9 @@ const api_root = {
 		buy_Index:api+'/api/buy/Index',//下订单数据确认
 		Add:api+'/api/buy/Add',//订单确定（生成订单号）
 		Pay:api+'/api/order/Pay',//支付订单
+		scen_Confirm:api+'/api/Ctripspot/Confirm',//创建景点订单
+		scen_Confirm_Detail:api+'/api/Ctripspot/Detail',//景点订单支付信息
+		scen_pay:api+'/api/Ctripspot/pay',//景点订单支付
 		
 		
 	}

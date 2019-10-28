@@ -170,4 +170,16 @@
 	height: 236rpx;
 	width: 236rpx;
 }
+.add_str.data-v-dadd90cc{
+	position: fixed;
+	bottom: 110rpx;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+.add_str image.data-v-dadd90cc{
+	width: 96rpx;
+	height: 96rpx;
+}
 

@@ -338,7 +338,15 @@
 				}
 			}
 		},
-		
+		{
+			"path": "pages/subuser/scen_order",
+			"style": {
+				"navigationBarTitleText": "景点订单",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
 		{
 			"path": "pages/subuser/mall_order",
 			"style": {
@@ -488,6 +496,16 @@
 			"path": "pages/subuser/threeuser/assembleDetails",
 			"style": {
 				"navigationBarTitleText": "拼团订单详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subuser/threeuser/scen_order_detailed",
+			"style": {
+				"navigationBarTitleText": "订单详情",
 				"app-plus" : {
 				    "titleNView" : false
 				}

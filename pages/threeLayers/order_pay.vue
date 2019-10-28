@@ -4,14 +4,14 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="top">
+		<view class="top_test">
 			<view class="detail">
-				<text class="h1">广州长隆野生动物世界</text>
+				<text class="h1">{{name}}</text>
 				<text class="h2">需在60分钟内完成订单支付，否则该订单将自动取消。</text>
 			</view>
 			<view class="amount">
 				<text>应付总额：</text>
-				<text class="digital">￥200</text>
+				<text class="digital">￥{{data.price}}</text>
 			</view>
 		</view>
 		<view class="interval">
@@ -21,25 +21,16 @@
 			<view class="log">
 				<text class="h10">支付方式</text>
 			</view>
-			<view class="log">			
-				<image src="" mode="widthFix"></image>
-				<view class="h9">银行卡</view>
-			</view>
-			<view class="log">
-				<image src="" mode="widthFix"></image>
-				<view class="h9">微信支付</view>
-			</view>
-			<view class="log">
-				<image src="" mode="widthFix"></image>
-				<view class="h9">支付宝</view>
-			</view>
-			<view class="log">
-				<image src="" mode="widthFix"></image>
-				<view class="h9">版通</view>
+			<view class="log_list" v-for="(item,index) in payment_list" :key='item.id' @click="choice(index)">			
+				<view class="list_one">
+					<image :src="item.logo" mode="widthFix"></image>
+					<view class="h9">{{item.name}}</view>
+				</view>
+				<image v-show="item.choice" class="choice" src="../../static/image/threeLayers/choice.png" mode="widthFix"></image>
 			</view>
 		</view>
 		<view class="btn">
-			<button type="primary">立即支付</button>
+			<button type="primary" @click="payment()">立即支付</button>
 		</view>
 		
 	</view>
@@ -54,7 +45,75 @@
 		data(){
 			return{
 				title:'订单支付',
+				name:'',
+				price:'',
+				payment_list:'',
+				payment_id:'',
+				payment_name:'',
+				data:''
 			}
+		},
+		methods:{
+			choice(index){
+				for (let s of this.payment_list) {
+					s.choice = false
+				}
+				this.payment_list[index].choice = true
+				this.payment_list = JSON.parse(JSON.stringify(this.payment_list))
+				this.payment_id = this.payment_list[index].id
+				this.payment_name = this.payment_list[index].payment
+			},
+			payment(){
+				let that = this
+				if(!this.payment_id){
+					uni.showToast({
+						icon:'none',
+						title:'请选择支付方式'
+					})
+					return
+				}
+				if(this.data.status != 0){
+					uni.showToast({
+						icon:'none',
+						title:'订单已过期，请重新下单'
+					})
+					return
+				}
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定支付？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            // console.log('用户点击确定');
+							that.service.entire(that,'get',that.service.api_root.threeLayers.scen_pay,{
+								orderid:that.orderid,
+								payment_id:that.payment_id
+							},function(self,ref){
+								console.log(ref)
+								self.common.order(ref,self,'../subuser/scen_order?status=-2','pages/subuser/scen_order?status=-2')
+							})	
+				        } else if (res.cancel) {
+				            // console.log('用户点击取消');
+							return
+				        }
+				    }
+				});
+			}
+		},
+		onLoad(e) {
+			this.name = e.name
+			this.orderid = e.id
+			this.service.entire(this,'get',this.service.api_root.threeLayers.scen_Confirm_Detail,{
+				orderid:e.id
+			},function(self,res){
+				console.log(res)
+				self.data = res.data
+				let data = res.data.payment_list
+				for (let s of data) {
+					s.choice = false
+				}
+				self.payment_list = data
+			})
 		}
 	}
 </script>
@@ -64,7 +123,7 @@
 		width: 100%;
 		/* background: #F1F1F1; */
 	}
-	.top{
+	.top_test{
 		width: 100%;
 		box-sizing: border-box;
 		margin-top: 20rpx;
@@ -115,10 +174,6 @@
 		width: 100%;
 		box-sizing: border-box;
 		padding: 0 20rpx;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
 	}
 	.log{
 		width: 100%;
@@ -132,20 +187,33 @@
 		border-bottom: 2rpx solid #F1F1F1;
 	}
 	.h9{
-		width: calc(100% - 58rpx);
 		height: 100%;
-		margin-left: 38rpx;
-		display: flex;
-		justify-content: space-between;
 		align-items: center;
-		border-bottom: 2rpx solid #F1F1F1;
+		font-size: 30rpx;
+		color: #333333;
 	}
 	.h10{
 		color: #000000;
 	}
-	.log image{
+	.log_list{
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		border-bottom: 2rpx solid #F1F1F1;
+		height: 100rpx;
+	}
+	.log_list .list_one{
+		display: flex;
+	}
+	.list_one image{
 		width: 52rpx;
 		height: 52rpx;
+		margin-right: 38rpx;
+	}
+	.choice{
+		height: 36rpx !important;
+		width: 36rpx !important;
 	}
 	.btn{
 		width: 100%;

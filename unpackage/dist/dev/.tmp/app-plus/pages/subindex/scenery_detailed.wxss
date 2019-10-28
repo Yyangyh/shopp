@@ -14,7 +14,7 @@
 }
 .top_img .top_operation.data-v-c69f5942 {
 	width: 100%;
-	position: absolute;
+	/* position: absolute; */
 	z-index: 99;
 	top: 0;
 	height: 60rpx;
@@ -23,6 +23,10 @@
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	position: fixed;
+	width: 100%;
+	top:var(--status-bar-height);
+	left: 0;
 	/* flex-direction: column; */
 	/* flex-wrap: wrap; */
 	-webkit-box-pack: justify;
@@ -34,6 +38,8 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 	/* margin: 0 20rpx; */
+}
+.top_img .top_operation .top_fixed.data-v-c69f5942{
 }
 .top_img .top_operation image.data-v-c69f5942 {
 	height: 50rpx;
@@ -49,15 +55,17 @@
 	margin-right: 30rpx;
 }
 .scenery.data-v-c69f5942 {
-	height: 560rpx;
+	height: 500rpx;
 	font-size: 28rpx;
 	background: #fff;
-	width: 94%;
-	position: relative;
-	top: -50rpx;
-	left: 3%;
-	border-radius: 20rpx;
+	/* width: 94%; */
+	/* position: relative; */
+	/* top: -50rpx; */
+	/* margin: 0 20rpx; */
+	/* border-radius: 20rpx; */
 	overflow: hidden;
+	margin-bottom: 20rpx;
+	/* box-shadow: 0 0 20rpx #eee; */
 }
 .scenery .sc_top .top_test.data-v-c69f5942 {
 	font-weight: bold;
@@ -197,7 +205,7 @@
 	margin: 0 4%;
 	/* padding: 0 38rpx; */
 }
-.details .sc_details .de_top view.data-v-c69f5942:nth-of-type(1){
+.details .sc_details .de_top view.data-v-c69f5942:nth-of-type(1) {
 	margin-right: 10rpx;
 }
 .details .sc_details .de_top text.data-v-c69f5942 {
@@ -205,6 +213,10 @@
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
 	white-space: nowrap;
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	    -ms-flex-positive: 2;
+	        flex-grow: 2;
 }
 .details .sc_details .de_bottom image.data-v-c69f5942 {
 	height: 18rpx;
@@ -284,7 +296,7 @@
 	width: 160rpx;
 	text-align: center;
 }
-.scenery_mid.data-v-c69f5942{
+.scenery_mid.data-v-c69f5942 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -301,7 +313,7 @@
 	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.scenery_mid view.data-v-c69f5942{
+.scenery_mid view.data-v-c69f5942 {
 	color: #666;
 	background: #FFFAD3;
 	height: 50rpx;
@@ -310,15 +322,14 @@
 	padding: 0 30rpx;
 	margin-right: 20rpx;
 }
-.mid_show.data-v-c69f5942{
+.mid_show.data-v-c69f5942 {
 	background: #FFD300 !important;
 	color: #333 !important;
 }
 .scenery_bottom.data-v-c69f5942 {
 	background: #fff;
 }
-.scenery_bottom .scenery_ticket .ticket.data-v-c69f5942 {
-}
+.scenery_bottom .scenery_ticket .ticket.data-v-c69f5942 {}
 .scenery_bottom .scenery_ticket .ticket .sc_common.data-v-c69f5942 {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -440,7 +451,7 @@
 	line-height: 50rpx;
 	border-radius: 50rpx;
 }
-.load_more.data-v-c69f5942{
+.load_more.data-v-c69f5942 {
 	height: 80rpx;
 	line-height: 80rpx;
 	color: #333333;
@@ -526,7 +537,7 @@
 .mask.data-v-c69f5942 {
 	width: 100%;
 	height: 100%;
-	background: rgba(0, 0, 0, .5);
+	background: rgba(0, 0, 0, .4);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -542,7 +553,26 @@
 	position: fixed;
 	bottom: 0;
 	z-index: 101;
-	overflow-y: auto;
+	padding-bottom: 120rpx;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	-webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	        transform: translateY(100%);
+}
+.mask_none.data-v-c69f5942 {
+	-webkit-transform: translateY(100%) !important;
+	    -ms-transform: translateY(100%) !important;
+	        transform: translateY(100%) !important;
+}
+.mask_show.data-v-c69f5942 {
+	-webkit-transform: translateY(0) !important;
+	    -ms-transform: translateY(0) !important;
+	        transform: translateY(0) !important;
+}
+.overflowY.data-v-c69f5942 {
+	height: 627rpx;
 }
 .h1.data-v-c69f5942 {
 	width: 100%;
@@ -551,6 +581,7 @@
 	padding: 36rpx 54rpx 0rpx 14rpx;
 	color: #333333;
 	line-clamp: 2;
+	padding-bottom: 20rpx;
 	word-wrap: break-word;
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
@@ -566,7 +597,7 @@
 .h2.data-v-c69f5942 {
 	color: #333333;
 	font-size: 26rpx;
-	margin-top: 50rpx;
+	margin-top: 10rpx;
 }
 .h2.data-v-c69f5942:first-of-type {
 	display: -webkit-box;
@@ -597,6 +628,9 @@
 	-webkit-align-items: flex-start;
 	    -ms-flex-align: start;
 	        align-items: flex-start;
+}
+.h3 .h3_text.data-v-c69f5942 {
+	white-space: nowrap;
 }
 .cc.data-v-c69f5942 {
 	display: -webkit-box;
@@ -720,5 +754,93 @@
 	height: 90rpx;
 	border-radius: 90rpx;
 	text-align: center;
+}
+.buy_date.data-v-c69f5942 {
+	position: fixed;
+	background: #fff;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	/* height: 450rpx; */
+	font-size: 32rpx;
+	z-index: 998;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	-webkit-transition: .3s;
+	-o-transition: .3s;
+	transition: .3s;
+	-webkit-transform: translateY(100%);
+	    -ms-transform: translateY(100%);
+	        transform: translateY(100%);
+}
+.buy_date .buy_date_test.data-v-c69f5942{
+	font-size: 28rpx;
+	padding: 20rpx;
+}
+.buy_date .buy_date_price.data-v-c69f5942{
+	color: #FF431D;
+	padding: 0 20rpx 20rpx 20rpx;
+}
+.buy_date .date_test.data-v-c69f5942{
+	padding-left: 20rpx;
+}
+.buy_date .chiose_date.data-v-c69f5942{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	padding: 20rpx;
+}
+.buy_date .chiose_date .date_one.data-v-c69f5942{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-orient: vertical;
+	-webkit-box-direction: normal;
+	-webkit-flex-direction: column;
+	    -ms-flex-direction: column;
+	        flex-direction: column;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	font-size: 28rpx;
+	height: 120rpx;
+	width: 20%;
+	text-align: center;
+	border-radius: 10rpx;
+	background: #F5F5F5;
+	border: 2rpx solid #EEEEEE;
+}
+.buy_date .chiose_date .date_one view.data-v-c69f5942:nth-of-type(2){
+	font-size: 24rpx;
+	/* color: #666; */
+}
+.buy_date .chiose_date .date_one .Price.data-v-c69f5942{
+	color: #FF431D;
+}
+.buy_date .buy.data-v-c69f5942{
+	background: #007AFF;
+	color: #fff;
+	height: 90rpx;
+	line-height: 90rpx;
+	font-size: 28rpx;
+	border-radius: 0;
+}
+.prohibit.data-v-c69f5942{
+	opacity: 0.3;
+}
+.buy_show.data-v-c69f5942{
+	background: #4395ff !important;
+	color: #fff !important;
 }
 

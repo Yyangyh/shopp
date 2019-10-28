@@ -206,7 +206,6 @@
 				</view>
 			</view>
 		</view>
-		<!-- <Load v-show = 'show'></Load> -->
 		
 		<view class="eject" v-show="eject_show">
 			<view class="eject_test">
@@ -219,17 +218,20 @@
 			</view>
 			<image src="../../static/image/index/close.png" mode="widthFix" @click="close()"></image>
 		</view>
+		
+		<!-- <Load v-show = 'show'></Load> -->
 	</view>
 </template>
 
 <script>
 	
 	import service from '../../service.js'
-	// import Load from '../../components/load/load.vue'
+	import Load from '../../components/load/load.vue'
 	import bwSwiper from '../../components/wxcomponents/bw-swiper/bw-swiper.vue'
 	export default {
 		components: {
-			bwSwiper
+			bwSwiper,
+			Load
 		},
 		data() {
 			return {
@@ -238,7 +240,7 @@
 				w_h: 2, //宽高比
 				swiperType: true,
 				//轮播
-				show: false,
+				show: true,
 				group_list:'',
 				eject_show:'',
 				item_data_guess:'',
@@ -248,63 +250,7 @@
 		},
 		
 		onLoad() {
-			// this.service.entire(this,'post','https://sopenservice.ctrip.com/OpenService/ServiceProxy.ashx',{
-			// 	"AID": "1064816",
-			// 	    "AllianceID": "1064816",
-			// 	    "SID": "1920595",
-			// 	    "ICODE": "eedc35f1ca1b4751b477496ac00b6f21",
-			// 	    "E": "R3",
-			// 	    "Mode": "1",
-			// 	    "Format": "JSON",
-			// 	    "token": "933976229ffc4aa4ba47a67ca7b9a482",
-			// 	    "ResourceInfoList": [
-			// 	        {
-			// 	            "ResourceID": "15263120",
-			// 	            "Quantity": "1",
-			// 	            "UseDate": "2019-10-22",
-			// 	            "Price": "181.5"
-			// 	        }
-			// 	    ],
-			// 	    "UID": "71d04495-6a86-4919-b770-4c6ccb3fe7e9",
-			// 	    "ContactInfo": {
-			// 	        "Name": "小白兔",
-			// 	        "Mobile": "13025304562",
-			// 	        "Email": "",
-			// 	        "Tel": "",
-			// 	        "Fax": "",
-			// 	        "Address": "",
-			// 	        "MobileIntlCode": ""
-			// 	    },
-			// 	    "PassenerInfoList": [
-			// 	        {
-			// 	            "Cname": "小黑板",
-			// 	            "ContactInfo": "13025304562",
-			// 	            "IdCardType": "",
-			// 	            "IdCardNo": "",
-			// 	            "AgeType": "",
-			// 	            "BirthDate": "",
-			// 	            "BirthCity": "",
-			// 	            "CardCity": "",
-			// 	            "Ename": "",
-			// 	            "Gender": "",
-			// 	            "VisaOrgan": "",
-			// 	            "PassportDate": "",
-			// 	            "VisaCountry": "",
-			// 	            "PassportNo": "",
-			// 	            "IssueDate": "",
-			// 	            "IdCardTimelimit": "",
-			// 	            "PassportType": "",
-			// 	            "Nationality": "",
-			// 	            "MobileIntlCode": "",
-			// 	            "ResourceID": "15263120"
-			// 	        }
-			// 	    ],
-			// 	    "Amount": 181.5,
-			// 	    "PayMode": "P",
-			// 	    "DistributionChannelID": 9
-			// },function(self,res){
-			// 	console.log(res)
-			// })
+			
 		},
 		onShow() {
 			uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
@@ -350,8 +296,8 @@
 				self.works_data_guess = res.data.data
 			})
 			this.service.entire(this,'post',this.service.api_root.index.btscale,{},function(self,res){  //版通比例
-				
 				self.set_price = res.data.set_price
+				self.show = false
 			})
 		},
 		
@@ -374,6 +320,8 @@
 			},
 
 
+		},
+		onReady(){
 		}
 	}
 </script>

@@ -4,9 +4,6 @@
 	height: 100%;
 	background: #F2F2F2;
 }
-.content.data-v-47fbad4f .top{
-	position: relative;
-}
 .shop.data-v-47fbad4f{
 	width: 100%;
 	height: 250rpx;

@@ -43,7 +43,7 @@
 				</view> -->
 				<view class="price">
 					<view class="momey">
-						￥{{shopp.price}}
+						￥{{type == 'single'?shopp.groupsprice : shopp.price}}
 					</view>
 					<view class="number">
 						数量：x{{shopp.goodsnum}}
@@ -115,6 +115,7 @@
 			return {
 				title: '确认订单',
 				data:'',
+				type:'',
 				address:'',
 				shopp:'',
 				payment:'',

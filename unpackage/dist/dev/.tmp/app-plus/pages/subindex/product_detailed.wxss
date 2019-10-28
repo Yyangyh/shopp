@@ -51,12 +51,9 @@
 }
 .product_price.data-v-3477307a {
 	background: #fff;
-	width: 96%;
+	border-top: 2rpx solid #F1F1F1;
 	font-size: 32rpx;
-	position: relative;
-	top: -20rpx;
-	left: 2%;
-	border-radius: 10rpx;
+	margin-bottom: 20rpx;
 }
 .product_price .pr_top.data-v-3477307a {
 	/* font-weight: bold; */

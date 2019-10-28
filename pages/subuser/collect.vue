@@ -23,7 +23,7 @@
 				<view class="tab_left" v-show="show_test == false">
 					<label class="radio" @click="singleElection(index)"><radio value="r1" :checked="item.choice" /></label>
 				</view>
-				<view class="list_box" @click="jump(type,item.goods_id)">
+				<view class="list_box" @click="jump(item.type,item.goods_id)">
 					<view class="list_img">
 						<image v-if="item.images" :src="item.images" mode="scaleToFill"></image>
 						<image v-else :src="item.image_url" mode="scaleToFill"></image>
@@ -111,11 +111,11 @@
 			jump(type,id){
 				if(type == 3){
 					uni.navigateTo({
-						url:'../subindex/edition_details?id='+id
+						url:'../subindex/edition_details?id='+id+'&type='+type
 					})
 				}else{
 					uni.navigateTo({
-						url:'../subindex/product_detailed?id='+id
+						url:'../subindex/product_detailed?id='+id+'&type='+type
 					})
 				}
 			},
@@ -125,7 +125,7 @@
 					if(s.choice == true)all.push(s.id)
 				}
 				if(this.show == 0){
-					this.service.entire(this,'post',this.service.api_root.subuser.UserfavorDelete,{
+					this.service.entire(this,'post',this.service.api_root.subuser.UserfavorDelete,{ //商品
 						id:all.join(',')
 					},function(self,res){
 						if(res.code == 0){
@@ -135,26 +135,41 @@
 									data.splice(i,1);
 								}
 							}
-							
 						}
+						self.whole_choice = false
+						// self.loadMore()
 					})
 				}else{
-					
+					this.service.entire(this,'post',this.service.api_root.subuser.UserspotfavorDelete,{ //景点
+						id:all.join(',')
+					},function(self,res){
+						if(res.code == 0){
+							let data = self.data
+							for(let i=data.length-1;i>=0;i--){  //倒序删除
+								if(data[i].choice == true){
+									data.splice(i,1);
+								}
+							}
+						}
+						self.whole_choice = false
+						// self.loadMore()
+					})
 				}
 				
 			},
 			loadMore(){
 				let page = this.page
 				this.more = 'loading'
+				this.whole_choice = false
 				if(this.show == 0){
-					this.service.entire(this,'post',this.service.api_root.subuser.Userfavor,{
+					this.service.entire(this,'post',this.service.api_root.subuser.Userfavor,{//商品
 						page:page
 					},function(self,res){
 						let list = self.data
+						list.push(...res.data.data)
 						for (let s of list) {
 							s.choice = false
 						}
-						list.push(...res.data.data)
 						self.data =list
 						console.log(self.data)
 						self.page = page + 1
@@ -166,15 +181,16 @@
 						}
 					})
 				}else{
-					this.service.entire(this,'post',this.service.api_root.subuser.Userspotfavor,{
+					this.service.entire(this,'post',this.service.api_root.subuser.Userspotfavor,{//景点
 						page:page
 					},function(self,res){
 						console.log(res)
 						let list = self.data
+						
+						list.push(...res.data.data)
 						for (let s of list) {
 							s.choice = false
 						}
-						list.push(...res.data.data)
 						self.data =list
 						console.log(self.data)
 						self.page = page + 1

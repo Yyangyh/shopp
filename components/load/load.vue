@@ -1,7 +1,10 @@
 <template>
 	<view class="load">
-		<view class="">
-			<image src="../../static/image/loader.png" mode=""></image>
+		<view class="load_box">
+			<image src="../../static/image/index/load.gif" mode="widthFix"></image>
+			<view class="">
+				努力加载中...
+			</view>
 		</view>
 	</view>
 </template>
@@ -33,6 +36,7 @@
 </script>
 
 <style scoped>
+	
 	.load{
 		height: 100%;
 		width: 100%;
@@ -40,20 +44,26 @@
 		top: 0;
 		left: 0;
 		z-index: 1000;
-		background: rgba(0,0,0,.7);
+		background:#FFFFFF;
 		/* position: relative; */
 	}
-	.load image{
-		width: 80rpx;
-		height: 80rpx;
+	.load .load_box{
+		font-size: 30rpx;
+		color: #333333;
+		text-align: center;
 		position: absolute;
 		left: 50%;
 		top: 50%;
-		margin-left: -40rpx;
-		margin-top: -40rpx;
-		-webkit-animation:haha1 1.5s linear infinite
+		transform: translate(-50%,-50%);	
 	}
-	@-webkit-keyframes haha1{
+	.load image{
+		width: 320rpx;
+		height: 180rpx;
+		
+		
+		/* -webkit-animation:haha1 1.5s linear infinite */
+	}
+	/* @-webkit-keyframes haha1{
 	 
 			0%{-webkit-transform:rotate(0deg);}
 	 
@@ -64,5 +74,5 @@
 			75%{-webkit-transform:rotate(270deg);}
 	 
 			100%{-webkit-transform:rotate(360deg);}
-	 }
+	 } */
 	</style>

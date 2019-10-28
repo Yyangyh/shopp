@@ -7,7 +7,7 @@
     "transformPx" : false,
     /* 5+App特有相关 */
     "app-plus" : {
-        "usingComponents" : true,
+        "usingComponents" : true, //是否启用`自定义组件模式`，为true表示新的`自定义组件模式` ，否则为`template模板模式`
         "splashscreen" : {
             "alwaysShowBeforeRender" : true,
             "waiting" : true,
@@ -127,6 +127,7 @@
             "proxy" : {
                 "/api" : {
                     "target" : "http://wx.huanqiutongmall.com",
+                    // "target" : "http://192.168.0.225:160",
                     "changeOrigin" : true,
                     "secure" : false
                 }

@@ -109,31 +109,31 @@
 					<view class="tab_top">
 						门票玩乐订单
 					</view>
-					<view class="more">
+					<view class="more" @click="jump('../subuser/scen_order?status=-2')">
 						查看更多
 					</view>
 				</view>
 				
 				<view class="tab_box">
 					<view class="tab_list">
-						<image src="../../static/image/behalf1.png" mode="widthFix"></image>
+						<image src="../../static/image/behalf1.png" mode="widthFix"  @click="jump('../subuser/scen_order?status=0')"></image>
 						<view class="">
 							待付款
 						</view>
 					</view>
-					<view class="tab_list">
+					<view class="tab_list" @click="jump('../subuser/scen_order?status=1')">
 						<image src="../../static/image/stay_use.png" mode="widthFix"></image>
 						<view class="">
-							待使用
+							已付款
 						</view>
 					</view>
-					<view class="tab_list">
+					<view class="tab_list" @click="jump('../subuser/scen_order?status=-1')">
 						<image src="../../static/image/stay_comment1.png" mode="widthFix"></image>
 						<view class="">
-							待评论
+							已取消
 						</view>
 					</view>
-					<view class="tab_list">
+					<view class="tab_list" @click="jump('../subuser/scen_order?status=2')">
 						<image src="../../static/image/refund1.png" mode="widthFix"></image>
 						<view class="">
 							退款

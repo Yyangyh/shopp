@@ -37,6 +37,7 @@
     "pages/subuser/register",
     "pages/subuser/integral",
     "pages/subuser/coupon",
+    "pages/subuser/scen_order",
     "pages/subuser/mall_order",
     "pages/subuser/address",
     "pages/subuser/addto",
@@ -54,6 +55,7 @@
     "pages/subuser/threeuser/int_order_detailed",
     "pages/subuser/threeuser/order_details",
     "pages/subuser/threeuser/assembleDetails",
+    "pages/subuser/threeuser/scen_order_detailed",
     "pages/subuser/threeuser/dis_commision",
     "pages/subuser/threeuser/presentation",
     "pages/subuser/threeuser/team",
@@ -126,6 +128,6 @@
     "autoclose": false
   },
   "appname": "文旅世家",
-  "compilerVersion": "2.3.6",
+  "compilerVersion": "2.3.7",
   "usingComponents": {}
 }

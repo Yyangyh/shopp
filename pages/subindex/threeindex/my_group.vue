@@ -29,14 +29,14 @@
 						{{item.title}}
 					</view>
 					<view class="price">
-						<text class="h1">¥{{item.price}}/<text class="h2">x{{item.goodsnum}}</text></text>
+						<text class="h1">¥{{item.price}}</text>
 					</view>
 				</view>
 			</view>
 			<!--  -->
 			<view class="details">
 				<view class="details_content">
-					<text>共1个商品 总额:¥{{item.price * item.goodsnum}}元</text>
+					<text>共1个商品 总额:¥{{item.price}}元</text>
 					<image src="../../static/icon/arrow.png" mode="widthFix"></image>
 				</view>
 				<view class="button">

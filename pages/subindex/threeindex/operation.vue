@@ -177,9 +177,7 @@
 		height: 100%;
 		background: #F2F2F2;
 	}
-	.content >>>.top{
-		position: relative;
-	}
+	
 	.shop{
 		width: 100%;
 		height: 250rpx;
