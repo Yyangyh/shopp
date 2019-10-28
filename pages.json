@@ -724,6 +724,42 @@
 			    //     "titleNView" : false
 			    // }
 			}
+		},
+		{
+			"path": "pages/global/travel_card",
+			"style" : {
+			    "navigationBarTitleText" : "旅游卡",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
+		},
+		{
+			"path": "pages/global/card_bag",
+			"style" : {
+			    "navigationBarTitleText" : "我的卡包",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
+		},
+		{
+			"path": "pages/global/tickey",
+			"style" : {
+			    "navigationBarTitleText" : "门票",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
+		},
+		{
+			"path": "pages/global/fill_in",
+			"style" : {
+			    "navigationBarTitleText" : "订单填写",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
 		}
 		
 	],
