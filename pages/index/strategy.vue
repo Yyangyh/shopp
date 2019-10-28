@@ -6,7 +6,7 @@
 		<view class="top">
 			<text></text>
 			<text>游记攻略</text>
-			<image @click="jump('../substrategy/str_user')" src="../../static/image/index/user4.png" mode="widthFix"></image>
+			<image @click="jump('../substrategy/my_travels')" src="../../static/image/index/user4.png" mode="widthFix"></image>
 		</view>
 		<view class="search">
 			<view class="search_top">
@@ -26,7 +26,7 @@
 			<view class="bottom_list">
 				<view class="list_top">
 					<view class="list_left">
-						<image src="../../static/image/index/user5.png" mode="widthFix"></image>
+						<image @click="jump('../substrategy/str_user')"  src="../../static/image/index/user5.png" mode="widthFix"></image>
 						<view class="top_one">
 							<view class="one_name">
 								品品762

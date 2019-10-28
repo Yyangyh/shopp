@@ -122,6 +122,10 @@ const api_root = {
 		scen_pay:api+'/api/Ctripspot/pay',//景点订单支付
 		
 		
+	},
+	// 游记攻略
+	substrategy:{
+		list:api+'/api/travels/person',//游记攻略----个人游记
 	}
 }
 const entire = function(self,type,url,data,func){

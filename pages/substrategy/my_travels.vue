@@ -17,12 +17,9 @@
 					</view>
 				</view>
 			</view>
-			<view class="focus">
-				关注
-			</view>
 		</view>
 		<view class="fans">
-			<view class="fans_box">
+			<view class="fans_box" @click="jump('./my_fans')">
 				<view>17</view>
 				<view>粉丝</view>
 			</view>
@@ -37,7 +34,7 @@
 		</view>
 		<view class="tab">
 			<view class="travels">
-				游记
+				我的发布
 			</view>
 		</view>
 		<view class="travels_details">
@@ -170,16 +167,7 @@
 		flex-direction: column;
 		justify-content: space-around;
 	}
-	.focus{
-		width: 107rpx;
-		height: 56rpx;
-		border-radius: 28rpx;
-		color: #FFFFFF;
-		background: #02A7F0;
-		font-size: 28rpx;
-		text-align: center;
-		line-height: 56rpx;
-	}
+	
 	.fans{
 		width: 100%;
 		height: 99rpx;

@@ -257,15 +257,43 @@
 		},
 		
 		{
-			"path": "pages/substrategy/str_user",
+			"path": "pages/substrategy/my_travels",
 			"style": {
-				"navigationBarTitleText": "我的游记",
+				"navigationBarTitleText": "个人游记",
 				"app-plus" : {
 				    "titleNView" : false
 				}
 			}
 		},
 		
+		{
+			"path": "pages/substrategy/str_user",
+			"style": {
+				"navigationBarTitleText": "游记攻略",
+				"navigationBarBackgroundColor": "#1D9DFF",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/substrategy/my_fans",
+			"style": {
+				"navigationBarTitleText": "我的粉丝",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/substrategy/profile",
+			"style": {
+				"navigationBarTitleText": "个人简介编辑",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
 		{
 			"path": "pages/subuser/set",
 			"style": {
