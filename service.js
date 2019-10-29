@@ -13,12 +13,13 @@ const api_root = {
 		Region: api+'/api/Region/index',//省市地区
 		Auth: api+'/api/user/Auth',//授权
 		Favor: api+'/api/goods/Favor',//用户商品收藏/取消（拼团无效）
+		upload_image: api+'/api/travels/upload_image',//图片上传
 		
 	},
 	reg:{
 		reg: api+'/api/user/Register',//注册
 		WlVerifySend: api+'/api/user/WlVerifySend',//获取注册验证码
-		
+		RegisterAgreement: api+'/api/user/RegisterAgreement',//注册协议
 	},
 	login:{
 		login: api+'/api/user/Login',//账号密码登录
@@ -32,6 +33,8 @@ const api_root = {
 		Redgroupsgoods:api+'/api/groupgoods/Redgroupsgoods',//首页推荐拼团商品
 		int_category:api+'/api/creditshop/category',//积分商城分类列表
 		btscale:api+'/api/index/btscale',//版通比例
+		travels_list:api+'/api/travels/list',//攻略游记首页列表
+		Region_lists:api+'/api/Region/lists',//获取地区字母排序
 		
 	},
 	user:{
@@ -126,6 +129,12 @@ const api_root = {
 	// 游记攻略
 	substrategy:{
 		list:api+'/api/travels/person',//游记攻略----个人游记
+		add_travels:api+'/api/travels/add_travels',//发表个人游记
+		visit:api+'/api/travels/visit',//访客列表
+		my_follow:api+'/api/travels/my_follow',//关注列表
+		follow:api+'/api/travels/follow',//粉丝列表
+		concern:api+'/api/travels/concern',//关注
+
 	}
 }
 const entire = function(self,type,url,data,func){

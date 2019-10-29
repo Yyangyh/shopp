@@ -234,7 +234,7 @@
 			submit(){
 				console.log(this.checked)
 				console.log(this.open_protocol)
-				if(this.checked == true && this.open_protocol == 1){
+				if(this.checked != true && this.open_protocol == 1){
 					uni.showToast({
 						icon:'none',
 						title:'请阅读并同意入驻须知'

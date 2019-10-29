@@ -76,15 +76,15 @@
 					success(res) {
 						console.log(res)
 						let data = res.data 
-						console.log(data,'6666')
-						uni.setStorageSync('uid',data.data.id)
 						uni.showToast({
 							icon:'none',
 							title:data.msg
 						})
 						if(data.code == 0){
-							// uni.setStorageSync('token',data.data.token)
-							that.$store.commit('login',data.data.token)
+							uni.setStorageSync('token',data.data.token)
+							uni.setStorageSync('uid',data.data.id)
+							uni.setStorageSync('user',data.data)
+							// that.$store.commit('login',data.data.token)
 							// #ifdef H5
 							// 	先判断是否在h5打开，再判断是否是在微信浏览器打开
 								let ua = navigator.userAgent.toLowerCase();

@@ -6,57 +6,24 @@
 		</view>
 		<returns :titles='title'></returns>
 		<view class="top_box">
-			<view>
-				<view class="num active2">17</view>
-				<view class="part active">我的粉丝</view>
+			<view @click="show = 1">
+				<view class="part" :class="{active:show == 1}">我的粉丝</view>
 			</view>
-			<view>
-				<view class="num">17</view>
-				<view class="part">我的粉丝</view>
+			<view @click="show = 2">
+				<view class="part" :class="{active:show == 2}">我的关注</view>
 			</view>
-			<view>
-				<view class="num">17</view>
-				<view class="part">我的粉丝</view>
+			<view  @click="show = 3">
+				<view class="part" :class="{active:show == 3}">我的访客</view>
 			</view>
 		</view>
 		<view class="list">
-			<view class="single_list">
+			<view class="single_list" v-for="(item,index) in data">
 				<view class="list_left">
-					<image src="" mode=""></image>
-					<view>品品762</view>
+					<image :src="item.user.avatar" mode="widthFix"></image>
+					<view>{{item.user.user_name_view}}</view>
 				</view>
-				<view class="focus">
-					关注
-				</view>
-			</view>
-			
-			
-			
-			<view class="single_list">
-				<view class="list_left">
-					<image src="" mode=""></image>
-					<view>品品762</view>
-				</view>
-				<view class="focus">
-					关注
-				</view>
-			</view>
-			<view class="single_list">
-				<view class="list_left">
-					<image src="" mode=""></image>
-					<view>品品762</view>
-				</view>
-				<view class="focus">
-					关注
-				</view>
-			</view>
-			<view class="single_list">
-				<view class="list_left">
-					<image src="" mode=""></image>
-					<view>品品762</view>
-				</view>
-				<view class="focus">
-					关注
+				<view class="focus" @click="concern(item.for_uid)">
+					{{item.is_follow === true?'已关注':'关注'}}
 				</view>
 			</view>
 			
@@ -74,7 +41,43 @@
 		},
 		data(){
 			return{
-				title:"我的粉丝"
+				title:"我的粉丝",
+				data:'',
+				show:1,
+				
+			}
+		},
+		methods:{
+			request_data(url){
+				this.service.entire(this,'post',url,{},function(self,res){
+					console.log(res)
+					self.data = res.data
+				})
+			},
+			concern(id){
+				this.common.concern(this,id)
+			}
+		},
+		onLoad(e) {
+			this.show = e.type
+			if(e.type == 1){
+				this.request_data(this.service.api_root.substrategy.follow)//粉丝列表
+			}else if(e.type == 2){
+				this.request_data(this.service.api_root.substrategy.my_follow)//我的关注
+			}else{
+				this.request_data(this.service.api_root.substrategy.visit) //我的访客
+			}
+		},
+		watch:{
+			show(news,old){
+				self.data = ''
+				if(news == 1){
+					this.request_data(this.service.api_root.substrategy.follow)//粉丝列表
+				}else if(news == 2){
+					this.request_data(this.service.api_root.substrategy.my_follow)//我的关注
+				}else{
+					this.request_data(this.service.api_root.substrategy.visit) //我的访客
+				}
 			}
 		}
 	}
@@ -97,7 +100,9 @@
 	.top_box>view{
 		width: 33.33%;
 		height: 120rpx;
-		text-align: center;
+		display: flex;
+		align-items: center;
+		justify-content: center;
 		color: #666666;
 		box-sizing: border-box;
 		padding-top: 20rpx;
@@ -129,6 +134,7 @@
 	.list_left image{
 		width: 100rpx;
 		height: 100rpx;
+		border-radius: 50%;
 		margin-right: 31rpx;
 	}
 	.focus{

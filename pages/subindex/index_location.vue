@@ -32,11 +32,26 @@
 					热门城市
 				</view>
 				<view class="tab">
-					<view class="tab_list" v-for="(item,index) in hot">
+					<view class="tab_list" v-for="(item,index) in hot" :key='index'>
 						{{item}}
 					</view>
 				</view>
 			</view>
+			<view class="city_box" v-for="(item,index) in list" :key='index'>
+				<view class="city_first">
+					{{item.letters}}
+				</view>
+				<view class="city_son" v-for="(items,indexs) in item.data" :key='indexs' @click="choice(index,indexs)">
+					{{items}}
+				</view>
+			</view>
+			
+			<view class="city_right">
+				<view v-for="(item,index) in list" :key='index'>
+					{{item.letters}}
+				</view>
+			</view>
+			
 		</view>
 	</view>
 	
@@ -48,20 +63,30 @@
 		
 		data() {
 			return {
-				list: airport.list,
+				list: '',
 				hot:airport.hot,
-				show:0
+				show:0,
 			}
 		},
 		methods: {
 			bindClick(e) {
 				console.log('点击item，返回数据' + JSON.stringify(e))
-				
+					
 			},
 			returns(){
 				this.common.returns(this)
+			},
+			choice(index,indexs){
+				uni.setStorageSync('city',this.list[index].data[indexs])
+				this.common.returns(this)
 			}
 		},
+		onShow() {
+			this.service.entire(this,'get',this.service.api_root.index.Region_lists,{},function(self,res){
+				console.log(res)
+				self.list = res.data
+			})
+		}
 	}
 </script>
 
@@ -169,5 +194,26 @@
 		align-items: center;
 		justify-content: center;
 		margin: 26rpx 40rpx 0rpx 0;
+	}
+	.city_box view{
+		height: 80rpx;
+		line-height: 80rpx;
+		font-size: 30rpx;
+		color: #333333;
+	}
+	.city_box .city_son{
+		border-bottom: 2rpx solid #F1F1F1;
+	}
+	.city_right{
+		color: #333333;
+		font-size: 30rpx;
+		position: fixed;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		background: #FFFFFF;
+		color: #1D9DFF;
+		right: 10rpx;
+		top: 10rpx;
 	}
 </style>

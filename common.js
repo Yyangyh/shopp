@@ -141,7 +141,7 @@ const collection = function(that,id){  //收藏
 }
 
 
-const scen_collection = function(that,id){  //收藏
+const scen_collection = function(that,id){  //景点收藏
 	that.service.entire(that,'post',that.service.api_root.subindex.scen_Favor,{
 		id:id,
 		token:uni.getStorageSync('token')
@@ -153,7 +153,17 @@ const scen_collection = function(that,id){  //收藏
 	})
 }
 
-
+const concern = function(that,id){  //关注
+	that.service.entire(that,'post',that.service.api_root.substrategy.concern,{
+		for_uid:id,
+		token:uni.getStorageSync('token')
+	},function(self,res){
+		console.log(res)
+		if(res.code == 0){
+			that.is_follow = !that.is_follow
+		}
+	})
+}
 
 const Test = function(time){ //修改时间格式
 	let t = time.slice(6, 19)
@@ -173,5 +183,6 @@ export default{
 	returns,
 	collection,
 	Test,
-	scen_collection
+	scen_collection,
+	concern
 }

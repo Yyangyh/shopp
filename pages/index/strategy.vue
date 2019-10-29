@@ -6,7 +6,8 @@
 		<view class="top">
 			<text></text>
 			<text>游记攻略</text>
-			<image @click="jump('../substrategy/my_travels')" src="../../static/image/index/user4.png" mode="widthFix"></image>
+			<image v-if="user"@click="jump('../substrategy/my_travels')" :src="user.avatar" mode="widthFix"></image>
+			<image  v-else class="user_head" src="../../static/image/state_user.png" mode="widthFix"></image>
 		</view>
 		<view class="search">
 			<view class="search_top">
@@ -23,115 +24,46 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<view class="bottom_list">
+			<view class="bottom_list" v-for="(item,index) in data" :key='item.id'>
 				<view class="list_top">
 					<view class="list_left">
-						<image @click="jump('../substrategy/str_user')"  src="../../static/image/index/user5.png" mode="widthFix"></image>
+						<image @click="jump('../substrategy/str_user')"  :src="item.user.avatar" mode="widthFix"></image>
 						<view class="top_one">
 							<view class="one_name">
-								品品762
+								{{item.user.user_name_view}}
 							</view>
 							<view class="tiem">
-								2019-06-13
+								{{item.create_time_date}}
 							</view>
 						</view>
 					</view>
 					<view class="list_right">
 						<image src="../../static/image/index/new5.png" mode="widthFix"></image>
-						<text>563</text>
+						<text>{{item.comment_count}}</text>
 						<image src="../../static/image/index/eye5.png" mode="widthFix"></image>
-						<text>563</text>
+						<text>{{item.access_count}}</text>
 					</view>
 					
 				</view>
 				<view class="list_bottom">
 					<view class="list_one">
-						一周太短,但足够遇见最美的云
+						{{item.title}}
 					</view>
 					<view class="list_two">
-						 洱海的日光,苍山的云 稀薄欧丽雅的海鸥 由北至南飞了好几千公里,下关的风 上官的花 而你广告在路上 不期而遇
+						 {{item.content}}
 					</view>
-					<view class="list_three">
-						<image src="../../static/image/index/strategy1.png" mode="widthFix"></image>
-						<image src="../../static/image/index/strategy2.png" mode="widthFix"></image>
-						<image src="../../static/image/index/strategy3.png" mode="widthFix"></image>
-					</view>
-				</view>
-			</view>
-			<view class="bottom_list">
-				<view class="list_top">
-					<view class="list_left">
-						<image src="../../static/image/index/user5.png" mode="widthFix"></image>
-						<view class="top_one">
-							<view class="one_name">
-								品品762
-							</view>
-							<view class="tiem">
-								2019-06-13
-							</view>
+					<scroll-view class="scroll-view_H" scroll-x="true" scroll-left="120">
+						<view class="list_three">
+							<image  v-for="(items,indexs) in item.images" :key='indexs' :src="items" mode="aspectFill"></image>
 						</view>
-					</view>
-					<view class="list_right">
-						<image src="../../static/image/index/new5.png" mode="widthFix"></image>
-						<text>563</text>
-						<image src="../../static/image/index/eye5.png" mode="widthFix"></image>
-						<text>563</text>
-					</view>
-					
-				</view>
-				<view class="list_bottom">
-					<view class="list_one">
-						一周太短,但足够遇见最美的云
-					</view>
-					<view class="list_two">
-						 洱海的日光,苍山的云 稀薄欧丽雅的海鸥 由北至南飞了好几千公里,下关的风 上官的花 而你广告在路上 不期而遇
-					</view>
-					<view class="list_three">
-						<image src="../../static/image/index/strategy1.png" mode="widthFix"></image>
-						<image src="../../static/image/index/strategy2.png" mode="widthFix"></image>
-						<image src="../../static/image/index/strategy3.png" mode="widthFix"></image>
-					</view>
+					</scroll-view>
 				</view>
 			</view>
-			<view class="bottom_list">
-				<view class="list_top">
-					<view class="list_left">
-						<image src="../../static/image/index/user5.png" mode="widthFix"></image>
-						<view class="top_one">
-							<view class="one_name">
-								品品762
-							</view>
-							<view class="tiem">
-								2019-06-13
-							</view>
-						</view>
-					</view>
-					<view class="list_right">
-						<image src="../../static/image/index/new5.png" mode="widthFix"></image>
-						<text>563</text>
-						<image src="../../static/image/index/eye5.png" mode="widthFix"></image>
-						<text>563</text>
-					</view>
-					
-				</view>
-				<view class="list_bottom">
-					<view class="list_one">
-						一周太短,但足够遇见最美的云
-					</view>
-					<view class="list_two">
-						 洱海的日光,苍山的云 稀薄欧丽雅的海鸥 由北至南飞了好几千公里,下关的风 上官的花 而你广告在路上 不期而遇
-					</view>
-					<view class="list_three">
-						<image src="../../static/image/index/strategy1.png" mode="widthFix"></image>
-						<image src="../../static/image/index/strategy2.png" mode="widthFix"></image>
-						<image src="../../static/image/index/strategy3.png" mode="widthFix"></image>
-					</view>
-				</view>
-			</view>
+		
 		</view>
 		
 		<view class="add_str">
-			<image src="../../static/image/index/add.png" mode=""></image>
+			<image @click="jump('../substrategy/strategy_issue')" src="../../static/image/index/add.png" mode=""></image>
 		</view>
 		
 	</view>
@@ -141,7 +73,9 @@
 	export default{
 		data() {
 			return {
-				show: 0
+				show: 0,
+				user:'',
+				data:''
 			}
 		},
 		methods:{
@@ -150,7 +84,17 @@
 					url:url
 				})
 			}
+		},
+		onShow() {
+			this.user = uni.getStorageSync('user')
+			this.service.entire(this,'post',this.service.api_root.index.travels_list,{
+				page:1
+			},function(self,res){
+				console.log(res)
+				self.data = res.data
+			})
 		}
+		
 	}
 </script>
 
@@ -187,7 +131,7 @@
 	.top image{
 		height: 82rpx;
 		width: 82rpx;
-		
+		border-radius: 50%;
 	}
 	.search{
 		padding-top: 24rpx;
@@ -241,6 +185,7 @@
 		height: 70rpx;
 		width: 70rpx;
 		margin-right: 18rpx;
+		border-radius: 50%;
 	}
 	.bottom .list_top .list_left{
 		display: flex;
@@ -281,14 +226,19 @@
 		color: #666666;
 		margin-bottom: 26rpx;
 		padding: 0 12rpx;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
 	}
 	.bottom .list_bottom .list_three{
-		display: flex;
-		justify-content: space-between;
+		white-space: nowrap;
+		width: 100%;
 	}
 	.bottom .list_bottom .list_three image{
 		height: 236rpx;
 		width: 236rpx;
+		border: 2rpx solid #eee;
 	}
 	.add_str{
 		position: fixed;

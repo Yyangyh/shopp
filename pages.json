@@ -295,6 +295,15 @@
 			}
 		},
 		{
+			"path": "pages/substrategy/strategy_issue",
+			"style": {
+				"navigationBarTitleText": "发布编辑",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/set",
 			"style": {
 				"navigationBarTitleText": "设置",

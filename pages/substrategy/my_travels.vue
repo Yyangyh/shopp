@@ -7,10 +7,10 @@
 		<returns :titles='title'></returns>
 		<view class="img">
 			<view class="img_left">
-				<image src="../../static/image/assemble.png" mode=""></image>
+				<image :src="avatar" mode=""></image>
 				<view class="user">
 					<view class="user_name">
-						品品
+						{{data.user_name_view}}
 					</view>
 					<view class="user_date" @click="jump('./profile')">
 						点击编辑个人简介
@@ -19,16 +19,16 @@
 			</view>
 		</view>
 		<view class="fans">
-			<view class="fans_box" @click="jump('./my_fans')">
-				<view>17</view>
+			<view class="fans_box" @click="jump('./my_fans?type=1')">
+				<view>{{data.follow_count}}</view>
 				<view>粉丝</view>
 			</view>
-			<view class="fans_box">
-				<view>23</view>
+			<view class="fans_box" @click="jump('./my_fans?type=2')">
+				<view>{{data.my_follow_count}}</view>
 				<view>关注</view>
 			</view>
-			<view class="fans_box">
-				<view>123</view>
+			<view class="fans_box" @click="jump('./my_fans?type=3')">
+				<view>{{data.visit_count}}</view>
 				<view>访客</view>
 			</view>
 		</view>
@@ -37,51 +37,26 @@
 				我的发布
 			</view>
 		</view>
-		<view class="travels_details">
+		<view class="travels_details" v-for="(item,index) in strategy_list">
 			<view class="travels_title">
-				一周太短,但足够遇见最美的云
+				{{item.title}}
 			</view>
-			<view class="travels_pic">
-				<view class="pics">
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
+			<scroll-view class="scroll-view_H" scroll-x="true"  scroll-left="120">
+				<view class="travels_pic">
+					<view class="pics">
+						<image v-for="(items,indexs) in item.images" :src="items" mode="aspectFill"></image>
+					</view>
 				</view>
-			</view>
+			</scroll-view>
+			
 			<view class="travels_time">
 				<view class="day">
 					2019-06-13
 				</view>
 				<view class="comment">
-					<image src="" mode=""></image>
+					<image src="../../static/image/index/new5.png" mode=""></image>
 					<text>563</text>
-					<image src="" mode=""></image>
-					<text>563</text>
-				</view>
-			</view>
-		</view>
-		
-		
-		
-		<view class="travels_details">
-			<view class="travels_title">
-				一周太短,但足够遇见最美的云
-			</view>
-			<view class="travels_pic">
-				<view class="pics">
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
-				</view>
-			</view>
-			<view class="travels_time">
-				<view class="day">
-					2019-06-13
-				</view>
-				<view class="comment">
-					<image src="" mode=""></image>
-					<text>563</text>
-					<image src="" mode=""></image>
+					<image src="../../static/image/index/eye5.png" mode=""></image>
 					<text>563</text>
 				</view>
 			</view>
@@ -96,7 +71,10 @@
 			return {
 				title: '游记攻略',
 				token:uni.getStorageSync('token'),
-				uid:uni.getStorageSync('uid')
+				uid:uni.getStorageSync('uid'),
+				data:'',
+				avatar:'',
+				strategy_list:''
 			}
 		},
 		components: {
@@ -110,16 +88,21 @@
 			}
 		},
 		onShow() {
-			uni.request({
-				url:this.service.api_root.substrategy.list,
-				method:'POST',
-				data:{
-					token:this.token,
-					uid:this.uid
-				},
-				success:res=>{
-					console.log(res);
-				}
+			this.service.entire(this,'post',this.service.api_root.substrategy.list,{
+				token:this.token,
+				uid:this.uid
+			},function(self,res){
+				console.log(res)
+				self.data = res.data
+				self.avatar = res.data.user.avatar
+			})
+			
+			this.service.entire(this,'post',this.service.api_root.index.travels_list,{  //我的发布
+				page:1,
+				uid:this.uid
+			},function(self,res){
+				console.log(res)
+				self.strategy_list = res.data
 			})
 		}
 	}
@@ -144,6 +127,7 @@
 	.img image {
 		width: 103rpx;
 		height: 103rpx;
+		border-radius: 50%;
 	}
 
 	.img_left {
@@ -219,8 +203,9 @@
 		
 	}
 	.pics {
-		display: flex;
-		justify-content: space-between;
+		white-space: nowrap;
+		/* display: flex;
+		justify-content: space-between; */
 	}
 	.pics image{
 		width: 226rpx;
