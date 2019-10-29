@@ -6,7 +6,7 @@
 		<view class="top">
 			<text></text>
 			<text>全球旅游卡</text>
-			<image src="../../static/image/card.png" mode="widthFix"></image>
+			<image src="../../static/image/card.png" mode="widthFix" @click="jump('/pages/global/card_bag')"></image>
 		</view>
 		<view class="top_img">
 			
@@ -23,7 +23,7 @@
 				<image src="../../static/image/fire.png" mode="widthFix"></image>
 				<text>疯狂热销</text>
 			</view>
-			<view class="discount">
+			<view class="discount"  @click="jump('/pages/global/travel_card')">
 				<view class="dis_left">
 					<view class="left_top">
 						北京旅游卡套餐优惠卡
@@ -40,7 +40,7 @@
 					￥<text>2988</text>
 				</view>
 			</view>
-			<view class="discount">
+			<view class="discount" @click="jump('/pages/global/tickey')">
 				<view class="dis_left">
 					<view class="left_top">
 						北京旅游卡套餐优惠卡
@@ -57,7 +57,7 @@
 					￥<text>2988</text>
 				</view>
 			</view>
-			<view class="discount">
+			<view class="discount" @click="jump('/pages/global/fill_in')">
 				<view class="dis_left">
 					<view class="left_top">
 						北京旅游卡套餐优惠卡
@@ -124,6 +124,13 @@
 				self.swiperList = datas
 			})
 		},
+		methods:{
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			}
+		}
 	}
 </script>
 
