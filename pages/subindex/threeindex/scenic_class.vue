@@ -3,7 +3,7 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
-		<returns></returns>
+		<returns :city = 'city'></returns>
 		<view class="top_class">
 			<view class="class_list"  @click="show_class = !show_class">
 				<text>全部分类</text>
@@ -95,6 +95,7 @@
 				data: '',
 				show: false,
 				show_class:false,
+				city:'',
 				show_class_list:0,
 				data_class:'',
 				data_class_list:'',
@@ -170,6 +171,7 @@
 				
 			}
 		},
+		
 		onLoad(options) {
 			
 			this.id = options.id
@@ -182,7 +184,12 @@
 				})
 			
 
-		}
+		},
+		onShow() {
+			
+			this.city = uni.getStorageSync('city')
+			console.log(this.city)
+		},
 	}
 </script>
 

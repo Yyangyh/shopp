@@ -2,7 +2,8 @@
 	<view class="return">
 		<image class="return_img" src="/static//image/return.png" mode="" @click="returns()"></image>
 		<view class="search">
-			<text>广州</text>
+			<text v-if="city"  @click="jump()">{{city}}</text>
+			<text v-else @click="jump()">定位</text>
 			<image class="dorp" src="/static//image/dorp.png" mode=""></image>
 			<image class="search1" src="/static//image/search1.png" mode=""></image>
 			<input type="text" value="" placeholder="武汉周黑鸭"/>
@@ -12,6 +13,7 @@
 
 <script>
 	export default{
+		props:['city'],
 		data() {
 			return {
 				
@@ -38,7 +40,16 @@
 				return;  
 				// #endif  
 				uni.navigateBack(1)
+			},
+			jump(){
+				uni.navigateTo({
+					url:'/pages/subindex/index_location'
+				})
 			}
+			
+		},
+		onShow() {
+			// console.log(123)
 		}
 		
 	}
@@ -72,6 +83,10 @@
 		margin: 0 20rpx;
 		color: #666666;
 		font-size: 32rpx;
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap; 
+		width: 100rpx;
 	}
 	.return .search .dorp{
 		width: 12rpx;

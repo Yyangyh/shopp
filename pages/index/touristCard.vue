@@ -105,14 +105,16 @@
 		data() {
 			return {
 				//轮播
-				    swiperList:[{}],
-				    w_h:2, //宽高比
-				    swiperType:true,
-				    //轮播
+				swiperList:[{}],
+				w_h:2, //宽高比
+				swiperType:true,
+				//轮播
+				data:''
 			}
 		},
 		onShow() {
-			this.service.entire(this,'get',this.service.api_root.index.banner,{},function(self,res){
+			
+			this.service.entire(this,'get',this.service.api_root.index.banner,{},function(self,res){ //轮播图
 				self.img_list = res.data
 				let datas = []
 				res.data.forEach((value,index) => {
@@ -123,6 +125,13 @@
 				})
 				self.swiperList = datas
 			})
+			
+			
+			this.service.entire(this,'post',this.service.api_root.index.Traveslcard_list,{},function(self,res){
+				console.log(res)
+				self.data = res.data
+			})
+			
 		},
 		methods:{
 			jump(url){

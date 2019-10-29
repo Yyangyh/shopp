@@ -22,10 +22,13 @@
 				+
 			</view>
 		</view>
-		<view class="iss_bottom">
+		<view class="iss_bottom" @click="jump('../subindex/index_location')">
 			<view class="iss_left">
 				<image src="../../static/image/secondary/position.png" mode="widthFix"></image>
-				<view class="">
+				<view class="" v-if="city">
+					{{city}}
+				</view>
+				<view class="" v-else>
 					所在位置
 				</view>
 			</view>
@@ -46,7 +49,8 @@
 				image_list:[],
 				iss_title:'',
 				content:'',
-				images:[]
+				images:[],
+				city:''
 			}
 		},
 		components:{
@@ -69,7 +73,7 @@
 						    success: (ref) => {
 								console.log(ref)
 						        if(JSON.parse(ref.data).code == 0){
-									console.log(JSON.parse(ref.data))
+									// console.log(JSON.parse(ref.data))
 									 that.image_list.push(res.tempFilePaths[0])
 									 that.images.push(JSON.parse(ref.data).data.file)
 								}
@@ -80,6 +84,11 @@
 			},
 			deletes(index){
 				this.image_list.splice(index,1)	
+			},
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
 			},
 			release(){
 				if(!this.iss_title){
@@ -100,12 +109,23 @@
 					title:this.iss_title,
 					content:this.content,
 					images:this.images,
-					address:'广州'
+					address:uni.getStorageSync('city')
 				},function(self,res){
-					
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0){
+						setTimeout(function(){
+							self.common.returns(self)
+						},1500)
+					}
 				})
 			}
 		},
+		onShow() {
+			this.city = uni.getStorageSync('city')
+		}
 	}
 </script>
 

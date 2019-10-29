@@ -35,6 +35,7 @@ const api_root = {
 		btscale:api+'/api/index/btscale',//版通比例
 		travels_list:api+'/api/travels/list',//攻略游记首页列表
 		Region_lists:api+'/api/Region/lists',//获取地区字母排序
+		Traveslcard_list:api+'/api/Traveslcard/list',//旅游卡列表
 		
 	},
 	user:{

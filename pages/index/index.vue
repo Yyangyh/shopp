@@ -6,12 +6,13 @@
 		<view class="top_search">
 			<view class="navigation">
 				<view class="coordinate"  @click="jump('../subindex/index_location')">
-					<text>广州</text>
+					<text v-if="city">{{city}}</text>
+					<text v-else>定位</text>
 					<image src="../../static/image/down.png" mode="widthFix"></image>
 				</view>
 				<view class="search">
 					<image src="../../static/image/search.png" mode="widthFix"></image>
-					<input type="text" value="" placeholder="广州" />
+					<input type="text" value="" placeholder="" />
 				</view>
 				<view class="shopp" @click="jump('../threeLayers/shoppingCart')">
 					<image src="../../static/image/shopp.png" mode="widthFix"></image>
@@ -245,7 +246,8 @@
 				eject_show:'',
 				item_data_guess:'',
 				works_data_guess:'',
-				set_price:''
+				set_price:'',
+				city:''
 			}
 		},
 		
@@ -266,7 +268,7 @@
 			}
 			// #endif  
 			
-			
+			this.city = uni.getStorageSync('city')
 			
 			service.entire(this, 'get', service.api_root.index.banner, {}, function(self, res) { //轮播图
 				
@@ -369,8 +371,14 @@
 		margin: 0 22rpx;
 		display: flex;
 		align-items: center;
+		
 	}
-
+	.top_search .navigation .coordinate text{
+		overflow:hidden;
+		text-overflow:ellipsis;
+		white-space:nowrap; 
+		width: 140rpx;
+	}
 	.top_search .navigation .coordinate image {
 		width: 30rpx;
 		height: 30rpx;

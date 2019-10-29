@@ -59,7 +59,6 @@
 					</scroll-view>
 				</view>
 			</view>
-		
 		</view>
 		
 		<view class="add_str">

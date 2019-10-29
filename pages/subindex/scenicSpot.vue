@@ -3,7 +3,7 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
-		<returns></returns>
+		<returns :city = 'city'></returns>
 		<view class="top_img">
 			<bw-swiper :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
 			
@@ -285,6 +285,7 @@
 			}
 		},
 		onShow() {
+			this.city = uni.getStorageSync('city')
 			this.service.entire(this, 'get', this.service.api_root.index.banner, {}, function(self, res) { //轮播图
 				self.img_list = res.data
 				let datas = []
