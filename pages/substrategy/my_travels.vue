@@ -10,10 +10,10 @@
 				<image :src="avatar" mode=""></image>
 				<view class="user">
 					<view class="user_name">
-						{{data.user_name_view}}
+						{{username}}
 					</view>
 					<view class="user_date" @click="jump('./profile')">
-						点击编辑个人简介
+						{{desc}}
 					</view>
 				</view>
 			</view>
@@ -37,7 +37,7 @@
 				我的发布
 			</view>
 		</view>
-		<view class="travels_details" v-for="(item,index) in strategy_list">
+		<view class="travels_details" v-for="(item,index) in strategy_list" @click="jumping('/pages/global/strategy_details',item.id)">
 			<view class="travels_title">
 				{{item.title}}
 			</view>
@@ -51,13 +51,13 @@
 			
 			<view class="travels_time">
 				<view class="day">
-					2019-06-13
+					{{item.create_time_date}}
 				</view>
 				<view class="comment">
 					<image src="../../static/image/index/new5.png" mode=""></image>
-					<text>563</text>
+					<text>{{item.comment_count}}</text>
 					<image src="../../static/image/index/eye5.png" mode=""></image>
-					<text>563</text>
+					<text>{{item.access_count}}</text>
 				</view>
 			</view>
 		</view>
@@ -74,6 +74,8 @@
 				uid:uni.getStorageSync('uid'),
 				data:'',
 				avatar:'',
+				username:'',
+				desc:'',
 				strategy_list:''
 			}
 		},
@@ -85,6 +87,11 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			jumping(url,id){
+				uni.navigateTo({
+					url:url+'?i='+id
+				})
 			}
 		},
 		onShow() {
@@ -95,6 +102,8 @@
 				console.log(res)
 				self.data = res.data
 				self.avatar = res.data.user.avatar
+				self.username = res.data.user.user_name_view;
+				self.desc = res.data.user.desc;
 			})
 			
 			this.service.entire(this,'post',this.service.api_root.index.travels_list,{  //我的发布

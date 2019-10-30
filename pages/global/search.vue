@@ -3,25 +3,14 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
-		<view class="top">
-			<text></text>
-			<text>游记攻略</text>
-			<image v-if="user" @click="jump('../substrategy/my_travels')" :src="user.avatar" mode="widthFix"></image>
-			<image v-else class="user_head" src="../../static/image/state_user.png" mode="widthFix"></image>
-		</view>
-		<view class="search">
-			<view class="search_top" @click="jump('/pages/global/search')">
-				<image src="../../static/image/index/search4.png" mode="widthFix"></image>
-				搜索攻略游记
-				<!-- <input type="text" value="" placeholder="搜索攻略游记" /> -->
+		<view class="sea_top">
+			<image @click="returns()" src="../../static/image/return.png" mode=""></image>
+			<view class="sea_one">
+				<image src="../../static/image/search1.png" mode=""></image>
+				<input type="text" @input="onKeyInput()" v-model="test" value="" focus />
 			</view>
-			<view class="search_bottom">
-				<view :class="{show:show == 0}" @click="changeList(0)">
-					发现
-				</view>
-				<view :class="{show:show == 1}" @click="changeList(1)">
-					当前地区
-				</view>
+			<view class="search">
+				搜索
 			</view>
 		</view>
 		<view class="bottom">
@@ -61,11 +50,6 @@
 				</view>
 			</view>
 		</view>
-
-		<view class="add_str">
-			<image @click="jump('../substrategy/strategy_issue')" src="../../static/image/index/add.png" mode=""></image>
-		</view>
-
 	</view>
 </template>
 
@@ -73,10 +57,9 @@
 	export default {
 		data() {
 			return {
-				show: 0,
-				user: '',
+				test: '',
 				data: '',
-				address: uni.getStorageSync('city')
+				timer: ''
 			}
 		},
 		methods: {
@@ -93,120 +76,71 @@
 					url: url+'?i='+i
 				})
 			},
-			changeList(i) {
-				this.show = i;
-				if(i==0){
-					this.load()
-				}else{
-					// 当前地区 
-					console.log(this.address);
-					if(!uni.getStorageSync('city')){
-						uni.navigateTo({
-							url:'/pages/subindex/index_location'
-						})
-					}
-					this.load({address:this.address})
-				}
-				
+			returns() {
+				this.common.returns(this)
 			},
-			load(address) {
-				this.user = uni.getStorageSync('user')
-				this.service.entire(this, 'post', this.service.api_root.index.travels_list, {
-					page: 1,
-					...address
-				}, function(self, res) {
-					console.log(res)
-					self.data = res.data
-				})
-			}
-		},
-		onShow() {
-			this.show = 0;
-			this.load()
-		}
+			onKeyInput() {
 
+				if (this.timer) clearTimeout(this.timer); //如果500毫秒内又一次触发，则会重新计算时间
+				this.timer = setTimeout(() => {
+					console.log('dddd')
+					this.service.entire(this, 'post', this.service.api_root.index.travels_list, {
+						keywords: this.test
+					}, function(self, res) {
+						console.log(res)
+						self.data = res.data
+					})
+				}, 500)
+
+			} //,
+			// feature(keywords){//特色商品
+
+			// }
+
+		}
 	}
 </script>
 
 <style scoped>
 	.content {
-		background: #F4F4F4;
-		padding-top: 105rpx;
+		padding-top: 0;
 	}
 
-	.top {
-		text-align: center;
-		height: 105rpx;
-		font-size: 32rpx;
-		padding: 0 20rpx;
-		box-sizing: border-box;
-		background: #fff;
-		font-weight: bold;
-		display: flex;
-		position: relative;
-		justify-content: space-between;
-		align-items: center;
-		padding: 0 22rpx;
-		box-shadow: 0px 1rpx 20rpx 0px #eee;
-		position: fixed;
-		top: var(--status-bar-height);
-		left: 0;
-		width: 100%;
-		background: #fff;
-		z-index: 888;
-	}
-
-	.top text:first-child {
-		width: 82rpx;
-		display: inline-block;
-	}
-
-	.top image {
-		height: 82rpx;
-		width: 82rpx;
-		border-radius: 50%;
-	}
-
-	.search {
-		padding-top: 24rpx;
-		background: #fff;
-	}
-
-	.search .search_top {
+	page {
 		background: #F1F1F1;
-		color: #CCCCCC;
-		font-size: 30rpx;
-		height: 70rpx;
-		line-height: 70rpx;
-		border-radius: 70rpx;
-		margin: 0 20rpx;
+	}
+
+	.sea_top {
+		height: 105rpx;
+		padding: 0 20rpx;
+		display: flex;
+		align-items: center;
+		box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
+	}
+
+	.sea_top image {
+		height: 50rpx;
+		width: 50rpx;
+	}
+
+	.sea_top .sea_one {
+		background: #FFFFFF;
+		height: 60rpx;
+		border-radius: 30rpx;
+		flex-grow: 2;
 		display: flex;
 		align-items: center;
 	}
 
-	.search .search_top image {
-		height: 38rpx;
-		width: 38rpx;
-		margin: 0 16rpx 0 34rpx;
+	.sea_top .sea_one image {
+		width: 40rpx;
+		height: 40rpx;
+		margin: 0 10rpx;
 	}
 
-	.search .search_bottom {
-		display: flex;
-		margin: 0 20rpx;
-		color: #333333;
-		font-size: 30rpx;
-	}
-
-	.search .search_bottom view {
-		width: 50%;
-		text-align: center;
-		padding: 24rpx 0;
-
-	}
-
-	.show {
-		color: #02A7F0;
-		border-bottom: 4rpx solid #1D9DFF;
+	.sea_top .search {
+		margin-left: 20rpx;
+		font-size: 32rpx;
 	}
 
 	.bottom {
@@ -294,17 +228,5 @@
 		height: 236rpx;
 		width: 236rpx;
 		border: 2rpx solid #eee;
-	}
-
-	.add_str {
-		position: fixed;
-		bottom: 110rpx;
-		left: 50%;
-		transform: translateX(-50%);
-	}
-
-	.add_str image {
-		width: 96rpx;
-		height: 96rpx;
 	}
 </style>

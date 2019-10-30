@@ -5,16 +5,17 @@
 		</view>
 		<returns :titles='title'></returns>
 		<view class="intro">
-			<input type="text" value="" placeholder="输入文字……" maxlength="15" v-model="words"/>
+			<input type="text" value="" placeholder="输入文字……" maxlength="15" v-model="words" />
 			<view class="count">
 				{{wordCount}}/15
 			</view>
 		</view>
 		<view class="submit">
 			<view class="smile">
+				<!-- <image src="../../static/image/bingo.png" mode=""></image> -->
 				<image src="../../static/image/smile.png" mode=""></image>
 			</view>
-			<view class="comfirm">
+			<view class="comfirm" @click="submit">
 				确定
 			</view>
 		</view>
@@ -24,20 +25,32 @@
 <script>
 	import returns from '../common/returns.vue';
 	export default {
-		data(){
-			return{
-				title:'个人简介编辑',
-				words:''
+		data() {
+			return {
+				title: '个人简介编辑',
+				words: ''
 			}
 		},
-		components:{
+		components: {
 			returns
 		},
-		methods:{
-			
+		methods: {
+			submit() {
+				this.service.entire(this, 'post',this.service.api_root.substrategy.introdu, {
+					desc: this.words
+				}, function(self, res) {
+					console.log(res);
+					if(res.code==0){
+						uni.showToast({
+							image:'../../static/image/bingo.png',
+							title:res.msg
+						})
+					}
+				})
+			}
 		},
-		computed:{
-			wordCount(){
+		computed: {
+			wordCount() {
 				var arr = this.words.split('');
 				return arr.length
 			}
@@ -46,7 +59,7 @@
 </script>
 
 <style scoped>
-	.intro{
+	.intro {
 		position: relative;
 		width: 710rpx;
 		height: 150rpx;
@@ -58,36 +71,42 @@
 		padding: 23rpx;
 		border-radius: 10rpx;
 	}
-	.intro input{
+
+	.intro input {
 		font-size: 24rpx;
 	}
-	.count{
+
+	.count {
 		position: absolute;
 		right: 21rpx;
 		bottom: 21rpx;
 	}
-	.submit{
+
+	.submit {
 		width: 710rpx;
 		margin: 0 20rpx;
 		display: flex;
 		justify-content: space-between;
 	}
-	.submit .smile{
+
+	.submit .smile {
 		width: 40rpx;
 		height: 40rpx;
 		/* vertical-align: middle; */
 		margin-top: 12rpx;
 	}
-	.submit image{
+
+	.submit image {
 		width: 40rpx;
 		height: 40rpx;
 	}
-	.submit .comfirm{
+
+	.submit .comfirm {
 		width: 100rpx;
 		height: 60rpx;
 		text-align: center;
 		line-height: 60rpx;
-		background: linear-gradient(90deg,#3E8FF3,#64C5F9);
+		background: linear-gradient(90deg, #3E8FF3, #64C5F9);
 		font-size: 28rpx;
 		color: #FFFFFF;
 		border-radius: 16rpx;

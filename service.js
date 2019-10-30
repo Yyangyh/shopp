@@ -135,7 +135,10 @@ const api_root = {
 		my_follow:api+'/api/travels/my_follow',//关注列表
 		follow:api+'/api/travels/follow',//粉丝列表
 		concern:api+'/api/travels/concern',//关注
-
+		introdu:api+'/api/travels/person_desc', // 提交个人简介
+		comment:api+'/api/travels/comment', //评论游记
+		comment_list:api+'/api/travels/comment_list' ,// 获取评论
+		star:api+'/api/travels/star' //点赞
 	}
 }
 const entire = function(self,type,url,data,func){

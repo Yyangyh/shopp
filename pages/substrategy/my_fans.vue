@@ -22,8 +22,11 @@
 					<image :src="item.user.avatar" mode="widthFix"></image>
 					<view>{{item.user.user_name_view}}</view>
 				</view>
-				<view class="focus" @click="concern(item.for_uid)">
-					{{item.is_follow === true?'已关注':'关注'}}
+				<view class="focus" @click="concern(item.for_uid,index)" v-if="item.is_follow===false">
+					关注
+				</view>
+				<view class="focus" @click="concern(item.for_uid,index)" v-else>
+					已关注
 				</view>
 			</view>
 			
@@ -43,8 +46,7 @@
 			return{
 				title:"我的粉丝",
 				data:'',
-				show:1,
-				
+				show:1
 			}
 		},
 		methods:{
@@ -54,8 +56,19 @@
 					self.data = res.data
 				})
 			},
-			concern(id){
-				this.common.concern(this,id)
+			concern(id,index){
+				var that = this;
+				that.service.entire(that,'post',that.service.api_root.substrategy.concern,{
+					for_uid:id,
+					token:uni.getStorageSync('token')
+				},function(self,res){
+					console.log(res)
+					if(res.code == 0){
+						// that.is_follow = !that.is_follow
+						that.data[index].is_follow = !that.data[index].is_follow
+						that.data = JSON.parse(JSON.stringify(that.data))
+					}
+				})
 			}
 		},
 		onLoad(e) {

@@ -303,6 +303,7 @@
 				}
 			}
 		},
+		
 		{
 			"path": "pages/subuser/set",
 			"style": {
@@ -765,6 +766,33 @@
 			"path": "pages/global/fill_in",
 			"style" : {
 			    "navigationBarTitleText" : "订单填写",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
+		},
+		{
+			"path": "pages/global/strategy_details",
+			"style" : {
+			    "navigationBarTitleText" : "游记攻略",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
+		},
+		{
+			"path": "pages/global/comment",
+			"style" : {
+			    "navigationBarTitleText" : "评论",
+			    "app-plus" : {
+			        "titleNView" : false
+			    }
+			}
+		},
+		{
+			"path": "pages/global/search",
+			"style" : {
+			    "navigationBarTitleText" : "搜索",
 			    "app-plus" : {
 			        "titleNView" : false
 			    }
