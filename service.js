@@ -1,8 +1,8 @@
 
 
 
-const api = ''
-// const api = 'http://wx.huanqiutongmall.com'
+// const api = ''
+const api = 'http://wx.huanqiutongmall.com'
 
 
 
@@ -134,8 +134,9 @@ const api_root = {
 		my_follow:api+'/api/travels/my_follow',//关注列表
 		follow:api+'/api/travels/follow',//粉丝列表
 		concern:api+'/api/travels/concern',//关注
-<<<<<<< HEAD
-
+		star:api+'/api/travels/star' ,//点赞
+		comment:api+'/api/travels/comment', //评论游记
+		comment_list:api+'/api/travels/comment_list' ,// 获取评论
 	},
 	global:{
 		card_detail:api+'/api/travelscard/detail',//旅游卡详情
@@ -144,12 +145,8 @@ const api_root = {
 		mytravelscard:api+'/api/travelscard/mytravelscard',//我的卡包
 		mytravelscarddetail:api+'/api/travelscard/mytravelscarddetail',//我的卡包门票
 		use_ctrip:api+'/api/Travelscard/use_ctrip',//门票使用
-=======
 		introdu:api+'/api/travels/person_desc', // 提交个人简介
-		comment:api+'/api/travels/comment', //评论游记
-		comment_list:api+'/api/travels/comment_list' ,// 获取评论
-		star:api+'/api/travels/star' //点赞
->>>>>>> 97d74371d8a7ce8d299d8ef56e3b50bcf026e81d
+		
 	}
 }
 const entire = function(self,type,url,data,func){

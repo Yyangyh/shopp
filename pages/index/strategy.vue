@@ -5,7 +5,7 @@
 		</view>
 		<view class="top">
 			<text></text>
-			<text>游记攻略</text>
+			<text>攻略游记</text>
 			<image v-if="user" @click="jump('../substrategy/my_travels')" :src="user.avatar" mode="widthFix"></image>
 			<image v-else class="user_head" src="../../static/image/state_user.png" mode="widthFix"></image>
 		</view>
@@ -76,7 +76,7 @@
 				show: 0,
 				user: '',
 				data: '',
-				address: uni.getStorageSync('city')
+				address: ''
 			}
 		},
 		methods: {
@@ -123,6 +123,7 @@
 		onShow() {
 			this.show = 0;
 			this.load()
+			this.address = uni.getStorageSync('city')
 		}
 
 	}

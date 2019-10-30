@@ -44,7 +44,7 @@
 		},
 		data(){
 			return{
-				title:"我的粉丝",
+				title:"个人游记",
 				data:'',
 				show:1
 			}
