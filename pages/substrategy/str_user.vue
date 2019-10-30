@@ -7,31 +7,32 @@
 		<returns :titles='title'></returns>
 		<view class="img">
 			<view class="img_left">
-				<image src="../../static/image/assemble.png" mode=""></image>
+				<image :src="avatar" mode=""></image>
 				<view class="user">
 					<view class="user_name">
-						品品
+						{{username}}
 					</view>
-					<view class="user_date" @click="jump('./profile')">
-						点击编辑个人简介
+					<view class="user_date">
+						{{desc}}
 					</view>
 				</view>
 			</view>
-			<view class="focus">
-				关注
+			<view class="focus" @click="concern">
+				{{userDate.is_follow===true?'已关注':'关注'}}
 			</view>
+		
 		</view>
 		<view class="fans">
 			<view class="fans_box">
-				<view>17</view>
+				<view>{{userDate.follow_count}}</view>
 				<view>粉丝</view>
 			</view>
 			<view class="fans_box">
-				<view>23</view>
+				<view>{{userDate.my_follow_count}}</view>
 				<view>关注</view>
 			</view>
 			<view class="fans_box">
-				<view>123</view>
+				<view>{{userDate.visit_count}}</view>
 				<view>访客</view>
 			</view>
 		</view>
@@ -40,55 +41,30 @@
 				游记
 			</view>
 		</view>
-		<view class="travels_details">
+		<view class="travels_details" v-for="(item,index) in strategy_list" :key="index">
 			<view class="travels_title">
-				一周太短,但足够遇见最美的云
+				{{item.title}}
 			</view>
-			<view class="travels_pic">
-				<view class="pics">
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
+			<scroll-view class="scroll-view_H" scroll-x="true"  scroll-left="120">
+				<view class="travels_pic">
+					<view class="pics">
+						<image v-for="(items,indexs) in item.images" :src="items" mode="aspectFill" :key="indexs"></image>
+					</view>
 				</view>
-			</view>
+			</scroll-view>
 			<view class="travels_time">
 				<view class="day">
-					2019-06-13
+					{{item.create_time_date}}
 				</view>
 				<view class="comment">
-					<image src="" mode=""></image>
-					<text>563</text>
-					<image src="" mode=""></image>
-					<text>563</text>
+					<image src="../../static/image/index/new5.png" mode=""></image>
+					<text>{{item.comment_count}}</text>
+					<image src="../../static/image/index/eye5.png" mode=""></image>
+					<text>{{item.access_count}}</text>
 				</view>
 			</view>
 		</view>
 		
-		
-		
-		<view class="travels_details">
-			<view class="travels_title">
-				一周太短,但足够遇见最美的云
-			</view>
-			<view class="travels_pic">
-				<view class="pics">
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
-					<image src="" mode=""></image>
-				</view>
-			</view>
-			<view class="travels_time">
-				<view class="day">
-					2019-06-13
-				</view>
-				<view class="comment">
-					<image src="" mode=""></image>
-					<text>563</text>
-					<image src="" mode=""></image>
-					<text>563</text>
-				</view>
-			</view>
-		</view>
 	</view>
 </template>
 
@@ -99,7 +75,13 @@
 			return {
 				title: '游记攻略',
 				token:uni.getStorageSync('token'),
-				uid:uni.getStorageSync('uid')
+				uid:uni.getStorageSync('uid'),
+				userDate:{},
+				avatar:'',
+				username:'',
+				desc:'',
+				strategy_list:[],
+				other_uid:''
 			}
 		},
 		components: {
@@ -110,6 +92,9 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			concern(){
+				this.common.concern(this,this.other_uid)
 			}
 		},
 		onShow() {
@@ -123,6 +108,26 @@
 				success:res=>{
 					console.log(res);
 				}
+			})
+		},
+		onLoad(option) {
+			this.other_uid = option.uid
+			const uid = option.i;
+			this.service.entire(this,'post',this.service.api_root.substrategy.list,{uid},function(self,res){
+				// console.log(res)
+				self.userDate = res.data
+				self.avatar = res.data.user.avatar;
+				self.username = res.data.user.user_name_view;
+				self.desc = res.data.user.desc;
+			})
+			
+			this.service.entire(this,'post',this.service.api_root.index.travels_list,{  //我的发布
+				page:1,
+				uid:uid
+			},function(self,res){
+				console.log(res)
+				self.strategy_list = res.data
+				console.log(self.strategy_list);
 			})
 		}
 	}
@@ -152,7 +157,10 @@
 	.img_left {
 		display: flex;
 	}
-
+	.img_left image{
+		border-radius: 50%;
+		overflow: hidden;
+	}
 	.user_name {
 		font-size: 32rpx;
 		color: #333333;
@@ -231,10 +239,12 @@
 		
 	}
 	.pics {
-		display: flex;
-		justify-content: space-between;
+		white-space: nowrap;
+		/* display: flex;
+		justify-content: space-between; */
 	}
 	.pics image{
+		margin: 0 8rpx;
 		width: 226rpx;
 		height: 226rpx;
 	}
