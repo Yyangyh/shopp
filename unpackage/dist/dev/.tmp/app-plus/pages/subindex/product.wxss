@@ -118,6 +118,13 @@
 
 
 
+
+
+
+
+
+
+
 /* .content{
 	padding-top: 105rpx;
 } */
@@ -174,6 +181,11 @@
 	margin: 0 20rpx;
 	color: #666666;
 	font-size: 32rpx;
+	overflow:hidden;
+	-o-text-overflow:ellipsis;
+	   text-overflow:ellipsis;
+	white-space:nowrap; 
+	width: 140rpx;
 }
 .return .search .dorp.data-v-ab807708{
 	width: 12rpx;

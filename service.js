@@ -14,7 +14,6 @@ const api_root = {
 		Auth: api+'/api/user/Auth',//授权
 		Favor: api+'/api/goods/Favor',//用户商品收藏/取消（拼团无效）
 		upload_image: api+'/api/travels/upload_image',//图片上传
-		
 	},
 	reg:{
 		reg: api+'/api/user/Register',//注册
@@ -35,7 +34,7 @@ const api_root = {
 		btscale:api+'/api/index/btscale',//版通比例
 		travels_list:api+'/api/travels/list',//攻略游记首页列表
 		Region_lists:api+'/api/Region/lists',//获取地区字母排序
-		Traveslcard_list:api+'/api/Traveslcard/list',//旅游卡列表
+		Traveslcard_list:api+'/api/Travelscard/list',//旅游卡列表
 		
 	},
 	user:{
@@ -54,7 +53,7 @@ const api_root = {
 		grou_Detail:api+'/api/groupgoods/Detail',//拼团商品详情
 		SpecDetail:api+'/api/goods/SpecDetail',//规格信息处理结果	
 		scen_Category:api+'/api/Scenicspot/Category',//景点分类
-		scen_list:api+'/api/Scenicspot/ScenicspotList',//景点列表
+		scen_list:api+'/api/Scenicspot/ScenicspotList',//景点列表（搜索-分类）
 		scen_Detail:api+'/api/Scenicspot/Detail',//景点详情
 		scen_ConfirmDetail:api+'/api/Ctripspot/ConfirmDetail',//景点下单确定表单+时间数据+资源详情
 		scen_Favor:api+'/api/scenicspot/Favor',//景点收藏/取消
@@ -114,7 +113,7 @@ const api_root = {
 		
 	},
 	threeLayers:{
-		goodsList:api+'/api/goods/goodsList',//特色产品分类
+		goodsList:api+'/api/goods/goodsList',//特色产品列表（搜索-分类）
 		Index:api+'/api/cart/Index',//购物车列表
 		Stock:api+'/api/cart/Stock',//更新购物车购买数量
 		Delete:api+'/api/cart/Delete',//购物车删除商品
@@ -136,6 +135,14 @@ const api_root = {
 		follow:api+'/api/travels/follow',//粉丝列表
 		concern:api+'/api/travels/concern',//关注
 
+	},
+	global:{
+		card_detail:api+'/api/travelscard/detail',//旅游卡详情
+		card_buy:api+'/api/travelscard/buy',//获取支付方式
+		card_pay:api+'/api/travelscard/pay',//支付
+		mytravelscard:api+'/api/travelscard/mytravelscard',//我的卡包
+		mytravelscarddetail:api+'/api/travelscard/mytravelscarddetail',//我的卡包门票
+		use_ctrip:api+'/api/Travelscard/use_ctrip',//门票使用
 	}
 }
 const entire = function(self,type,url,data,func){

@@ -3,18 +3,18 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
-		<returns :city = 'city'></returns>
+		<returns :city = 'city' :type='type'></returns>
 		<view class="top_class">
-			<view class="class_list"  @click="show_class = !show_class">
+			<view class="class_list"  @click="show_class = !show_class,show_region = false,show=false">
 				<text>全部分类</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
-			<view class="class_list"  @click="show_region = !show_region">
-				<text>全部地区</text>
+			<view class="class_list"  @click="show_region = !show_region,show_class=false,show=false">
+				<text>销量</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
-			<view class="class_list" @click="show = !show">
-				<text>{{list_test}}</text>
+			<view class="class_list" @click="show = !show,show_region = false,show_class=false">
+				<text>价格</text>
 				<image src="../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
 		</view>
@@ -27,7 +27,7 @@
 					</view>
 				</view>
 				<view class="class_right">
-					<view class="right_list" v-for="(item,index) in data_class_list"  :key='item.id'>
+					<view class="right_list" v-for="(item,index) in data_class_list" :key='item.id' @click="choice_goods(index)">
 						<image :src="item.icon" mode="scaleToFill"></image>
 						<view class="">
 							{{item.name}}
@@ -39,11 +39,16 @@
 		</view>
 		
 		<view class="sort_box" :class="show_region===false ? 'hide' : show_region===true ? 'show' : ''">
-			345
+			<view class="sort_list" v-for="(item,index) in sales_sort" :key='index' @click="hook(index,item.name,item.order,'sales')">
+				<view class="">
+					{{item.title}}
+				</view>
+				<image v-show="item.chiose" src="../../static/image/threeLayers/hook.png" mode="widthFix"></image>
+			</view>
 		</view>
 		
 		<view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
-			<view class="sort_list" v-for="(item,index) in sort" :key='index' @click="hook(index,item.name,item.order)">
+			<view class="sort_list" v-for="(item,index) in price_sort" :key='index' @click="hook(index,item.name,item.order,'price')">
 				<view class="">
 					{{item.title}}
 				</view>
@@ -53,8 +58,9 @@
 		
 		
 		
-		<view class="sort" v-show="show === true" @click="show = false">
+		<view class="sort" v-show="show === true || show_region === true ||show_class === true" @click="show = false,show_region = false,show_class = false">
 		</view>
+		
 		<view class="product">
 			<view class="pr_list" v-for="item in data" :key='item.id'>
 				<image :src="item.images" mode="aspectFill" @click="detailed('../subindex/product_detailed',item.id,item.type)"></image>
@@ -93,8 +99,8 @@
 				show_region:false,
 				type: '',
 				id: '',
-				list_test:'智能排序',
-				sort: [{
+				// list_test:'价格',
+				price_sort: [{
 						title: '价格最低',
 						chiose: false,
 						name: 'min_price',
@@ -106,8 +112,15 @@
 						name: 'min_price',
 						order: 'desc'
 					},
-					{
+				],
+				sales_sort: [{
 						title: '销量最多',
+						chiose: false,
+						name: 'sales_count',
+						order: 'desc '
+					},
+					{
+						title: '销量最低',
 						chiose: false,
 						name: 'sales_count',
 						order: 'asc'
@@ -128,98 +141,94 @@
 				this.data_class_list = this.data_class[index].items
 				this.show_class_list = index
 			},
-			hook(index, name, order) {
-				console.log(index)
-				this.list_test = this.sort[index].title
+			choice_goods(index){
+				console.log(this.data_class_list)
+				let id = this.data_class_list[index].id
+				let data = {
+					category_id: id,
+				}
+				if (this.type == 'works') {
+					this.works(data)
+				} else if (this.type == 'edition') { //版通
+					this.edition(data)
+				} else {
+					this.feature(data)
+				}
+				[this.show,this.show_region,this.show_class] = [false,false,false]
+			},
+			hook(index, name, order,type) {
 				let data = {
 					category_id: this.id,
 					order_by_field:name,
 					order_by_type:order
 				}
-				console.log(data)
 				if (this.type == 'works') {
-					this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list, data, function(self, res) { //文创
-						console.log(res)
-						self.data = res.data.data
-						self.show = false
-					})
+					this.works(data)
 				} else if (this.type == 'edition') { //版通
-					this.service.entire(this, 'get', this.service.api_root.subindex.Category_list, data, function(self, res) {
-						console.log(res)
-						self.data = res.data.data
-						self.show = false
-					})
-				} else if (this.type == 'scenic') { //景点
-					this.service.entire(this, 'get', this.service.api_root.subindex.scen_list, data, function(self, res) {
-						console.log(res)
-						self.data = res.data.data
-						self.show = false
-					})
+					this.edition(data)
 				} else {
-					this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList, data, function(self, res) { //特色
-						console.log(res)
-						self.data = res.data.data
-						self.show = false
-					})
+					this.feature(data)
 				}
+				[this.show,this.show_region,this.show_class] = [false,false,false]
+				
 			},
 			detailed(url, id, type) {
 				if (type == 3) {
 					uni.navigateTo({
 						url: '../subindex/edition_details?id=' + id
 					})
-				} else if (type == 1) { //景点
-					uni.navigateTo({
-						url: '../subindex/edition_details?id=' + id
-					})
-				} else {
+				}else {
 					uni.navigateTo({
 						url: '../subindex/product_detailed?id=' + id + '&type=' + type
 					})
 				}
+			},
+			works(data){//文创
+				this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list,data, function(self, res) {
+					console.log(res)
+					self.data = res.data.data
+				})
+			},
+			edition(data){//版通
+				this.service.entire(this, 'get', this.service.api_root.subindex.Category_list,data, function(self, res) {
+					console.log(res)
+					self.data = res.data.data
+				})
+			},
+			feature(data){//特色产品
+				this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList,data, function(self, res) {
+					console.log(res)
+					self.data = res.data.data
+				})
 			}
 		},
 		onLoad(options) {
 			console.log(options.type)
 			this.type = options.type
 			this.id = options.id
-			if (options.type == 'works') {
-				this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list, { //文创商品列表
-					category_id: options.id
-				}, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
+			let data = {
+				category_id: this.id,
+			}
+			if (options.type == 'works') {//文创
+				this.works(data)
+				this.service.entire(this,'get',this.service.api_root.subindex.org_category,{},function(self,res){
+					console.log(res.data[0])
+					self.data_class = res.data
+					self.data_class_list = res.data[0].items
 				})
-				
-				
-				
 			} else if (options.type == 'edition') { //版通
-				this.service.entire(this, 'get', this.service.api_root.subindex.Category_list, {
-					category_id: options.id
-				}, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
+				this.edition(data)
+				this.service.entire(this,'get',this.service.api_root.subindex.Category,{},function(self,res){
+					console.log(res.data[0])
+					self.data_class = res.data
+					self.data_class_list = res.data[0].items
 				})
-			} else if (options.type == 'scenic') { //景点
-				this.service.entire(this, 'get', this.service.api_root.subindex.scen_list, {
-					category_id: options.id
-				}, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
-				})
-			} else {
-				this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList, { //特色产品列表
-					category_id: options.id
-				}, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
-				})
-				
+			}else {//特色产品
+				this.feature(data)
 				this.service.entire(this,'get',this.service.api_root.subindex.goods_Category,{},function(self,res){//特色产品分类
 					console.log(res.data[0])
 					self.data_class = res.data
 					self.data_class_list = res.data[0].items
-					
 					// console.log(self.data)
 				})
 				
@@ -345,8 +354,8 @@
 		height: 100%;
 	}
 	.box_class .class_right image{
-		width: 134rpx;
-		height: 124rpx;
+		width: 114rpx;
+		height: 104rpx;
 	}
 	.box_class .class_right .right_list{
 		text-align: center;

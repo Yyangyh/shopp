@@ -57,13 +57,14 @@
 				this.common.returns(this)
 			},
 			deletes(id,index){//删除
+				let that = this
 				uni.showModal({
 					title: '确定删除此地址？',
 					content: '删除地址，此操作不可恢复',
 					confirmText:'删除',
 					success: function (res) {
 						if (res.confirm) {
-							this.service.entire(this,'get',this.service.api_root.subuser.add_Delete,{
+							that.service.entire(that,'get',that.service.api_root.subuser.add_Delete,{
 								token:uni.getStorageSync('token'),
 								id:id
 							},function(self,res){

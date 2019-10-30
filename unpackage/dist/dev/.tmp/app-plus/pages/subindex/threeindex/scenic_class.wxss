@@ -1,7 +1,7 @@
 
 .content.data-v-e3d17458 {
 	position: relative;
-	padding-top: 210rpx;
+	padding-top: 130rpx;
 }
 .content.data-v-e3d17458 .return {
 	position: fixed;
@@ -178,6 +178,7 @@
 .guess_spot .spot_left image.data-v-e3d17458{
 	height: 168rpx;
 	width: 230rpx;
+	border-radius: 10rpx;
 }
 .guess_spot .spot_right.data-v-e3d17458{
 	-webkit-box-flex: 2;

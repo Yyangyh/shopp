@@ -3,7 +3,7 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
-		<returns :city = 'city'></returns>
+		<returns :city = 'city' :type="'scenic'"></returns>
 		<view class="top_img">
 			<bw-swiper :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
 			

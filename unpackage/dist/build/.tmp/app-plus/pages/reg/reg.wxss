@@ -1,11 +1,12 @@
 
-.content.data-v-c87fce56{
+.content.data-v-814f7c76{
 	overflow: hidden;
+	padding-top: 0;
 }
-.uni-input-placeholder.data-v-c87fce56{
+.uni-input-placeholder.data-v-814f7c76{
 	color: #C5C5C5;
 }
-.ipt.data-v-c87fce56{
+.ipt.data-v-814f7c76{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -14,24 +15,85 @@
 	border-bottom: 2rpx solid #EEEEEE;
 	padding: 20rpx 20rpx;
 }
-.ipt image.data-v-c87fce56{
+.ipt image.data-v-814f7c76{
 	margin-right: 20rpx;
 	width: 35rpx;
 	height: 45rpx;
 }
-.ipt input.data-v-c87fce56{
+.ipt input.data-v-814f7c76{
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
 	        flex-grow: 2;
 }
-.ipt text.data-v-c87fce56{
+.ipt text.data-v-814f7c76{
 	font-size: 32rpx;
 	width: 160rpx;
 	text-align: center;
 	white-space: nowrap;
 }
-button.data-v-c87fce56{
+.Mask.data-v-814f7c76{
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 888;
+	background: rgba(0,0,0,.6);
+}
+.treaty.data-v-814f7c76{
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	height: 100rpx;
+	padding: 0 20rpx;
+	font-size: 30rpx;
+}
+.treaty text.data-v-814f7c76{
+	color: #1D74FF;
+}
+.treaty_box.data-v-814f7c76{
+	position: fixed;
+	z-index: 999;
+	height: 780rpx;
+	padding: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	width: 80%;
+	background: #fff;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
+}
+.treaty_box .box_top.data-v-814f7c76{
+	text-align: center;
+	font-size: 36rpx;
+}
+.treaty_box .box_conent.data-v-814f7c76{
+	margin: 20rpx 0;
+	height: 560rpx;
+}
+.treaty_box button.data-v-814f7c76{
+	position: absolute;
+	width: 90%;
+	height: 80rpx;
+	bottom: 20rpx;
+	font-size: 30rpx;
+	left: 50%;
+	margin: 0;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
+}
+button.data-v-814f7c76{
 	background: #1D74FF;
 	color: #FFFFFF;
 	height: 90rpx;
@@ -40,7 +102,7 @@ button.data-v-c87fce56{
 	width: 84%;
 	margin:60rpx 8% 30rpx 8%;
 }
-.test.data-v-c87fce56{
+.test.data-v-814f7c76{
 	text-align: center;
 	font-size: 32rpx;
 	color: #1D74FF;

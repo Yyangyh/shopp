@@ -20,6 +20,15 @@
 			}
 		},
 		{
+			"path": "pages/common/search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/index/integral",
 			"style": {
 				"navigationBarTitleText": "积分商城",

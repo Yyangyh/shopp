@@ -1,9 +1,9 @@
 
-.content.data-v-0a526f3e {
+.content.data-v-52241bec {
 	position: relative;
 	padding-top: 210rpx;
 }
-.content.data-v-0a526f3e .return {
+.content.data-v-52241bec .return {
 	position: fixed;
 	z-index: 999;
 	top: var(--status-bar-height);
@@ -11,7 +11,7 @@
 	width: 100%;
 	background: #fff;
 }
-.top_class.data-v-0a526f3e {
+.top_class.data-v-52241bec {
 	position: fixed;
 	top: calc(var(--status-bar-height) + 105rpx);
 	left: 0;
@@ -28,7 +28,7 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.top_class .class_list.data-v-0a526f3e {
+.top_class .class_list.data-v-52241bec {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -40,12 +40,12 @@
 	padding: 30rpx 20rpx;
 	font-size: 32rpx;
 }
-.top_class .class_list image.data-v-0a526f3e {
+.top_class .class_list image.data-v-52241bec {
 	height: 20rpx;
 	width: 20rpx;
 	margin-left: 10rpx;
 }
-.sort.data-v-0a526f3e {
+.sort.data-v-52241bec {
 	overflow: hidden;
 	left: 0;
 	top: 0;
@@ -55,7 +55,7 @@
 	background: rgba(0, 0, 0, 0.6);
 	height: 100%;
 }
-.sort_box.data-v-0a526f3e {
+.sort_box.data-v-52241bec {
 	-webkit-transition: 0.3s;
 	-o-transition: 0.3s;
 	transition: 0.3s;
@@ -69,7 +69,7 @@
 	width: 100%;
 	font-size: 30rpx;
 }
-.sort_box .sort_list.data-v-0a526f3e {
+.sort_box .sort_list.data-v-52241bec {
 	height: 100rpx;
 	padding: 0 20rpx;
 	border-bottom: 2rpx solid #F1F1F1;
@@ -86,29 +86,29 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.sort_box .sort_list image.data-v-0a526f3e {
+.sort_box .sort_list image.data-v-52241bec {
 	height: 38rpx;
 	width: 38rpx;
 }
-.hide.data-v-0a526f3e {
+.hide.data-v-52241bec {
 	-webkit-transform: translateY(-100%);
 	    -ms-transform: translateY(-100%);
 	        transform: translateY(-100%);
 }
-.show.data-v-0a526f3e {
+.show.data-v-52241bec {
 	-webkit-transform: translateY(0%);
 	    -ms-transform: translateY(0%);
 	        transform: translateY(0%);
 }
-.box_class.data-v-0a526f3e{
+.box_class.data-v-52241bec{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 }
-.box_class .class_left.data-v-0a526f3e{
+.box_class .class_left.data-v-52241bec{
 }
-.box_class .class_left view.data-v-0a526f3e{
+.box_class .class_left view.data-v-52241bec{
 	height: 88rpx;
 	line-height: 88rpx;
 	width: 210rpx;
@@ -117,7 +117,7 @@
 	color: #6F6F6F;
 	background: #F1F1F1;
 }
-.box_class .class_right.data-v-0a526f3e{
+.box_class .class_right.data-v-52241bec{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -136,47 +136,47 @@
 	        flex-wrap: wrap;
 	height: 100%;
 }
-.box_class .class_right image.data-v-0a526f3e{
+.box_class .class_right image.data-v-52241bec{
 	width: 134rpx;
 	height: 124rpx;
 }
-.box_class .class_right .right_list.data-v-0a526f3e{
+.box_class .class_right .right_list.data-v-52241bec{
 	text-align: center;
 	font-size: 24rpx;
 	width: 33.3%;
 	height: 180rpx;
 }
-.show_class_list.data-v-0a526f3e{
+.show_class_list.data-v-52241bec{
 	color: #000000 !important;
 	background: #fff !important;
 }
-.product.data-v-0a526f3e {
+.product.data-v-52241bec {
 	background: #F1F1F1;
 	overflow: hidden;
 }
-.product .pr_list.data-v-0a526f3e {
+.product .pr_list.data-v-52241bec {
 	margin: 20rpx;
 	padding: 20rpx;
 	background: #fff;
 	border-radius: 10rpx;
 }
-.product .bottom .price.data-v-0a526f3e {
+.product .bottom .price.data-v-52241bec {
 	color: #FF431D;
 	margin-right: 20rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 }
-.product .bottom .data.data-v-0a526f3e {
+.product .bottom .data.data-v-52241bec {
 	color: #999999;
 	font-size: 26rpx;
 	height: 70rpx;
 	line-height: 70rpx;
 }
-.product image.data-v-0a526f3e {
+.product image.data-v-52241bec {
 	width: 100%;
 	height: 300rpx;
 }
-.product .info.data-v-0a526f3e {
+.product .info.data-v-52241bec {
 	float: right;
 	color: #FF431D;
 	border: 1rpx solid #FF431D;
@@ -184,20 +184,20 @@
 	font-size: 30rpx;
 	padding: 10rpx;
 }
-.ticket.data-v-0a526f3e {
+.ticket.data-v-52241bec {
 	color: #666666;
 	font-size: 28rpx;
 	margin: 10rpx 0;
 	padding: 0 10rpx;
 }
-.address.data-v-0a526f3e {
+.address.data-v-52241bec {
 	color: #333;
 	font-size: 30rpx;
 	font-weight: bold;
 	padding: 0 10rpx;
 	margin-bottom: 20rpx;
 }
-.tips.data-v-0a526f3e {
+.tips.data-v-52241bec {
 	color: #00D3B3;
 	font-size: 24rpx;
 	border: 1rpx solid #00D3B3;

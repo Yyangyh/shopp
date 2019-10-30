@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "个人简介编辑",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

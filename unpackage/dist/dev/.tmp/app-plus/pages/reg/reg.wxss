@@ -1,6 +1,7 @@
 
 .content.data-v-b8beec02{
 	overflow: hidden;
+	padding-top: 0;
 }
 .uni-input-placeholder.data-v-b8beec02{
 	color: #C5C5C5;
@@ -30,6 +31,67 @@
 	width: 160rpx;
 	text-align: center;
 	white-space: nowrap;
+}
+.Mask.data-v-b8beec02{
+	position: fixed;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 888;
+	background: rgba(0,0,0,.6);
+}
+.treaty.data-v-b8beec02{
+	background: #fff;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	height: 100rpx;
+	padding: 0 20rpx;
+	font-size: 30rpx;
+}
+.treaty text.data-v-b8beec02{
+	color: #1D74FF;
+}
+.treaty_box.data-v-b8beec02{
+	position: fixed;
+	z-index: 999;
+	height: 780rpx;
+	padding: 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	width: 80%;
+	background: #fff;
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	    -ms-transform: translate(-50%,-50%);
+	        transform: translate(-50%,-50%);
+}
+.treaty_box .box_top.data-v-b8beec02{
+	text-align: center;
+	font-size: 36rpx;
+}
+.treaty_box .box_conent.data-v-b8beec02{
+	margin: 20rpx 0;
+	height: 560rpx;
+}
+.treaty_box button.data-v-b8beec02{
+	position: absolute;
+	width: 90%;
+	height: 80rpx;
+	bottom: 20rpx;
+	font-size: 30rpx;
+	left: 50%;
+	margin: 0;
+	-webkit-transform: translateX(-50%);
+	    -ms-transform: translateX(-50%);
+	        transform: translateX(-50%);
 }
 button.data-v-b8beec02{
 	background: #1D74FF;

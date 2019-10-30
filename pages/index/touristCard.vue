@@ -23,74 +23,26 @@
 				<image src="../../static/image/fire.png" mode="widthFix"></image>
 				<text>疯狂热销</text>
 			</view>
-			<view class="discount"  @click="jump('/pages/global/travel_card')">
+			<view class="discount"  v-for="(item,index) in data" :key='item.id' @click="jump('/pages/global/travel_card?id='+item.id)">
 				<view class="dis_left">
 					<view class="left_top">
-						北京旅游卡套餐优惠卡
+						{{item.title}}
 					</view>
 					<view class="left_bottom">
-						<text>套卡</text>
-						<text>套卡</text>
+						<text v-for="(items,indexs) in item.tag" :key='indexs'>{{items}}</text>
+						<!-- <text>套卡</text> -->
 					</view>
 					<view class="left_time">
-						使用期限：2019-06-15至2020-06-16
+						使用期限：{{item.start_time}}至{{item.end_time}}
 					</view>
 				</view>
 				<view class="dis_right">
-					￥<text>2988</text>
+					￥<text>{{item.price}}</text>
 				</view>
 			</view>
-			<view class="discount" @click="jump('/pages/global/tickey')">
-				<view class="dis_left">
-					<view class="left_top">
-						北京旅游卡套餐优惠卡
-					</view>
-					<view class="left_bottom">
-						<text>套卡</text>
-						<text>套卡</text>
-					</view>
-					<view class="left_time">
-						使用期限：2019-06-15至2020-06-16
-					</view>
-				</view>
-				<view class="dis_right">
-					￥<text>2988</text>
-				</view>
-			</view>
-			<view class="discount" @click="jump('/pages/global/fill_in')">
-				<view class="dis_left">
-					<view class="left_top">
-						北京旅游卡套餐优惠卡
-					</view>
-					<view class="left_bottom">
-						<text>套卡</text>
-						<text>套卡</text>
-					</view>
-					<view class="left_time">
-						使用期限：2019-06-15至2020-06-16
-					</view>
-				</view>
-				<view class="dis_right">
-					￥<text>2988</text>
-				</view>
-			</view>
-			<view class="discount">
-				<view class="dis_left">
-					<view class="left_top">
-						北京旅游卡套餐优惠卡
-					</view>
-					<view class="left_bottom">
-						<text>套卡</text>
-						<text>套卡</text>
-					</view>
-					<view class="left_time">
-						使用期限：2019-06-15至2020-06-16
-					</view>
-				</view>
-				<view class="dis_right">
-					￥<text>2988</text>
-				</view>
-			</view>
+			
+			
+			
 		</view>
 		
 	</view>
@@ -129,6 +81,7 @@
 			
 			this.service.entire(this,'post',this.service.api_root.index.Traveslcard_list,{},function(self,res){
 				console.log(res)
+				
 				self.data = res.data
 			})
 			

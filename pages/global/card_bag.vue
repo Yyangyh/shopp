@@ -4,51 +4,32 @@
 			<!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="card">
-			<image src="../../static/image/beijing.png" mode=""></image>
-			<view class="card_word">
+		<view class="card" v-for="(item,index) in data" :key='item.id'>
+			<image :src="item.images" mode=""></image>
+			<view class="card_word" @click="jump('./tickey?id='+item.id+'&order='+item.order_no)">
 				<view class="card_word_top">
-					<image src="../../static/image/bjavatar.png" mode=""></image>
+					<!-- <image src="../../static/image/bjavatar.png" mode=""></image> -->
 					<view class="theme">
-						北京旅游卡套餐优惠卡
+						{{item.title}}
 					</view>
 				</view>
 				<view class="card_word_bottom">
 					<view class="price">
 						<image src="../../static/image/price.png" mode=""></image>
-						<text>￥2988</text>
+						<text>￥{{item.price}}</text>
 					</view>
 					<view class="data">
-						有效期至2020-06-01
+						有效期至{{item.end_time}}
 					</view>
 				</view>
 			</view>
 		</view>
-		<view class="card">
-			<image src="../../static/image/beijing.png" mode=""></image>
-			<view class="card_word">
-				<view class="card_word_top">
-					<image src="../../static/image/bjavatar.png" mode=""></image>
-					<view class="theme">
-						北京旅游卡套餐优惠卡
-					</view>
-				</view>
-				<view class="card_word_bottom">
-					<view class="price">
-						<image src="../../static/image/price.png" mode=""></image>
-						<text>￥2988</text>
-					</view>
-					<view class="data">
-						有效期至2020-06-01
-					</view>
-				</view>
-			</view>
-		</view>
-		<view class="more">
+		
+		<!-- <view class="more">
 			<text>没有更多卡片</text>
 			<text class="margin">|</text>
 			<text class="check">查看失效卡</text>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -57,11 +38,25 @@
 	export default {
 		data() {
 			return {
-				title: '我的卡包'
+				title: '我的卡包',
+				data:''
 			}
 		},
 		components: {
 			returns
+		},
+		methods:{
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			}
+		},
+		onShow() {
+			this.service.entire(this,'post',this.service.api_root.global.mytravelscard,{time:0},function(self,res){
+				console.log(res)
+				self.data = res.data
+			})
 		}
 	}
 </script>

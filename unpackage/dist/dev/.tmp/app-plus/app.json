@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
+    "pages/common/search",
     "pages/index/integral",
     "pages/index/touristCard",
     "pages/index/strategy",
@@ -28,7 +29,11 @@
     "pages/subindex/threeindex/integral_details",
     "pages/subindex/threeindex/int_order",
     "pages/subindex/threeindex/scenic_class",
+    "pages/substrategy/my_travels",
     "pages/substrategy/str_user",
+    "pages/substrategy/my_fans",
+    "pages/substrategy/profile",
+    "pages/substrategy/strategy_issue",
     "pages/subuser/set",
     "pages/subuser/feedback",
     "pages/subuser/notice",
@@ -75,7 +80,11 @@
     "pages/threeLayers/modifyPwd",
     "pages/login/message_login",
     "pages/reg/reg",
-    "pages/reg/forget"
+    "pages/reg/forget",
+    "pages/global/travel_card",
+    "pages/global/card_bag",
+    "pages/global/tickey",
+    "pages/global/fill_in"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/index",
     "pages/login/login",
+    "pages/common/search",
     "pages/index/integral",
     "pages/index/touristCard",
     "pages/index/strategy",
@@ -79,7 +80,11 @@
     "pages/threeLayers/modifyPwd",
     "pages/login/message_login",
     "pages/reg/reg",
-    "pages/reg/forget"
+    "pages/reg/forget",
+    "pages/global/travel_card",
+    "pages/global/card_bag",
+    "pages/global/tickey",
+    "pages/global/fill_in"
   ],
   "window": {
     "navigationBarTextStyle": "black",

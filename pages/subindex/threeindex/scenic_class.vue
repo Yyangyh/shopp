@@ -3,8 +3,8 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
-		<returns :city = 'city'></returns>
-		<view class="top_class">
+		<returns :city = 'city' :type="'scenic'"></returns>
+		<!-- <view class="top_class">
 			<view class="class_list"  @click="show_class = !show_class">
 				<text>全部分类</text>
 				<image src="../../../static/image/dorp.png" mode="widthFix"></image>
@@ -17,9 +17,9 @@
 				<text>{{list_test}}</text>
 				<image src="../../../static/image/dorp.png" mode="widthFix"></image>
 			</view>
-		</view>
+		</view> -->
 		
-		<view class="sort_box" :class="show_class===false ? 'hide' : show_class===true ? 'show' : ''">
+		<!-- <view class="sort_box" :class="show_class===false ? 'hide' : show_class===true ? 'show' : ''">
 			<view class="box_class">
 				<view class="class_left">
 					<view :class="{show_class_list:show_class_list == index}"  v-for="(item,index) in data_class" :key='item.id' @click="choice_class(index)">
@@ -36,20 +36,20 @@
 				</view>
 				
 			</view>
-		</view>
+		</view> -->
 		
-		<view class="sort_box" :class="show_region===false ? 'hide' : show_region===true ? 'show' : ''">
+		<!-- <view class="sort_box" :class="show_region===false ? 'hide' : show_region===true ? 'show' : ''">
 			345
-		</view>
+		</view> -->
 		
-		<view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
+		<!-- <view class="sort_box" :class="show===false ? 'hide' : show===true ? 'show' : ''">
 			<view class="sort_list" v-for="(item,index) in sort" :key='index' @click="hook(index,item.name,item.order)">
 				<view class="">
 					{{item.title}}
 				</view>
 				<image v-show="item.chiose" src="../../../static/image/threeLayers/hook.png" mode="widthFix"></image>
 			</view>
-		</view>
+		</view> -->
 		
 		
 		
@@ -196,7 +196,7 @@
 <style scoped>
 	.content {
 		position: relative;
-		padding-top: 210rpx;
+		padding-top: 130rpx;
 	}
 
 	.content>>>.return {
@@ -338,6 +338,7 @@
 	.guess_spot .spot_left image{
 		height: 168rpx;
 		width: 230rpx;
+		border-radius: 10rpx;
 	}
 	.guess_spot .spot_right{
 		flex-grow: 2;

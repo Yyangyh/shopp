@@ -1,5 +1,6 @@
 {
-  "navigationBarTitleText": "我的游记",
+  "navigationBarTitleText": "游记攻略",
+  "navigationBarBackgroundColor": "#1D9DFF",
   "titleNView": false,
   "usingComponents": {
     "returns": "/pages/common/returns"

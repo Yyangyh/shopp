@@ -12,7 +12,7 @@
 				</view>
 				<view class="search">
 					<image src="../../static/image/search.png" mode="widthFix"></image>
-					<input type="text" value="" placeholder="" />
+					<input @focus="search()" type="text" value=""  />
 				</view>
 				<view class="shopp" @click="jump('../threeLayers/shoppingCart')">
 					<image src="../../static/image/shopp.png" mode="widthFix"></image>
@@ -208,7 +208,7 @@
 			</view>
 		</view>
 		
-		<view class="eject" v-show="eject_show">
+		<!-- <view class="eject" v-show="eject_show">
 			<view class="eject_test">
 				<view class="ej_top">
 					版通（AWT）
@@ -218,7 +218,7 @@
 				</view>
 			</view>
 			<image src="../../static/image/index/close.png" mode="widthFix" @click="close()"></image>
-		</view>
+		</view> -->
 		
 		<!-- <Load v-show = 'show'></Load> -->
 	</view>
@@ -320,7 +320,11 @@
 					url: url
 				})
 			},
-
+			search(){
+				uni.navigateTo({
+					url: '/pages/common/search?type=scenic'
+				})
+			}
 
 		},
 		onReady(){

@@ -137,8 +137,8 @@
 	height: 100%;
 }
 .box_class .class_right image.data-v-4658dc30{
-	width: 134rpx;
-	height: 124rpx;
+	width: 114rpx;
+	height: 104rpx;
 }
 .box_class .class_right .right_list.data-v-4658dc30{
 	text-align: center;

@@ -51,6 +51,13 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
+.top_search .navigation .coordinate text.data-v-4c99c1bb{
+	overflow:hidden;
+	-o-text-overflow:ellipsis;
+	   text-overflow:ellipsis;
+	white-space:nowrap; 
+	width: 140rpx;
+}
 .top_search .navigation .coordinate image.data-v-4c99c1bb {
 	width: 30rpx;
 	height: 30rpx;

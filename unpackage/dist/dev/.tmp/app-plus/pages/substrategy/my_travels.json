@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "个人游记",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

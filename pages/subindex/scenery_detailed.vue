@@ -337,9 +337,13 @@
 			}
 		},
 		onPageScroll(e){
-			console.log(e)
-			if(e.scrollTop >= 150) return
-			this.transparency  = e.scrollTop/150
+			// console.log(e)
+			if(e.scrollTop >= 150){
+				this.transparency  = 1
+			}else{
+				this.transparency  = 0
+			}
+			
 		},
 		onLoad() {
 			this.windowHeight = uni.getSystemInfoSync().windowHeight
@@ -496,7 +500,6 @@
 			//获取当前时间
 			this.scen_id = options.id
 			let date = new Date();
-			console.log(date)
 			let year = date.getFullYear();
 			let month = date.getMonth() + 1;
 			let day = date.getDate();

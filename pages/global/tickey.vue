@@ -9,14 +9,14 @@
 			<!-- 顶部图片 -->
 		</view>
 		<view class="cou_box">
-			<view class="cou_list">
+			<view class="cou_list" :class="[item.status == 0 ? 'show':'notsh']" @click="jump('./fill_in?id='+item.resouce_id+'&spot_id='+item.spot_id+'&detail_id='+item.id+'&order='+order,item.status)" v-for="(item,index) in data" :key='item.id'>
 				<view class="cou_test">
 					<view class="cou_left">
 						<view class="left_one">
-							长隆野生动物世界
+							{{item.resouce_name}}
 						</view>
 						<view class="left_two">
-							使用期限：2019-06-15至2020-06-16
+							使用期限：{{item.start_time}}至{{item.end_time}}
 						</view>
 						<view class="left_two">
 							张数：1张
@@ -24,36 +24,16 @@
 					</view>
 					
 					<view class="cou_right">
-						待使用
+						{{item.status == 0?'待使用':'已使用'}}
 					</view>
 				</view>
 				
 			</view>
-			<!-- 灰色背景图 -->
-			<view class="cou_list_two">
-				<view class="cou_test">
-					<view class="cou_left">
-						<view class="left_one">
-							长隆野生动物世界
-						</view>
-						<view class="left_two">
-							使用期限：2019-06-15至2020-06-16
-						</view>
-						<view class="left_two">
-							张数：1张
-						</view>
-					</view>
-					
-					<view class="cou_right">
-						已使用
-					</view>
-				</view>
-				
-			</view>
+			
 			
 			
 		</view>	
-		<view class="box" v-if="isShow">
+		<!-- <view class="box" v-if="isShow">
 			<view class="code">
 				<view class="code_top">
 					<view class="bigword">长隆野生动物世界成人门票*1</view>
@@ -65,7 +45,7 @@
 			<view class="close" @click="isShow = !isShow">
 				<image src="../../static/image/secondary/circle.png" mode=""></image>
 			</view>
-		</view>
+		</view> -->
 	</view>
 </template>
 
@@ -75,11 +55,31 @@
 		data() {
 			return {
 				title: '门票',
-				isShow:true
+				isShow:true,
+				data:''
 			}
 		},
 		components: {
 			returns
+		},
+		methods:{
+			jump(url,status){
+				if(status != 0) return
+				uni.navigateTo({
+					url:url
+				})
+			}
+		},
+		onShow() {
+			this.service.entire(this,'post',this.service.api_root.global.mytravelscarddetail,{id:this.id},function(self,res){
+				console.log(res)
+				self.data = res.data
+			})
+		},
+		onLoad(e) {
+			this.order = e.order
+			this.id = e.id
+			
 		}
 	}
 </script>
@@ -88,9 +88,16 @@
 	.cou_box{
 		margin-top: 10rpx;
 	}
+	.show{
+		background: url('../../static/image/secondary/coupon.png') no-repeat;
+		color: #1D9DFF;
+	}
+	.notsh{
+		background: url('../../static/image/secondary/gray.png') no-repeat;
+		color: #999;
+	}
 	.cou_box .cou_list{
 		/* position: relative; */
-		background: url('../../static/image/secondary/coupon.png') no-repeat;
 		background-size: 100% 100%;
 		width: 710rpx;
 		height: 182rpx;
@@ -101,9 +108,13 @@
 	}
 	.left_one{
 		margin-bottom: 12rpx;
-		font-size: 32rpx;
-		color: #1D9DFF;
+		font-size: 30rpx;
 		font-weight: bold;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display:-webkit-box; 
+		-webkit-box-orient:vertical; 
+		-webkit-line-clamp:2; 
 	}
 	.cou_box .cou_list .cou_test{
 		/* position: absolute; */
@@ -114,7 +125,7 @@
 		padding: 0 40rpx;
 	}
 	.cou_box .cou_list .cou_test .cou_left{
-		color: #1D9DFF;
+		width: 534rpx;
 		font-size: 28rpx;
 	}
 	.cou_box .cou_list .cou_test .cou_left .left_two{
@@ -128,14 +139,14 @@
 		/* border-radius: 60rpx; */
 		text-align: center;
 		font-size: 32rpx;
-		color:#1D9DFF;
+		width: 96rpx;
+		white-space: nowrap;
 		/* background: #1D9DFF; */
 	}
 	
 	/* 灰色背景图部分开始 */
 	.cou_list_two{
 		/* position: relative; */
-		background: url('../../static/image/secondary/gray.png') no-repeat;
 		background-size: 100% 100%;
 		width: 710rpx;
 		height: 182rpx;

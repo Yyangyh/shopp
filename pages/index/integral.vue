@@ -2,7 +2,7 @@
 	<view class="content">
 		<view class="status_bar">
 		            <!-- 这里是状态栏 -->
-		  </view>
+		</view>
 		<view class="top">
 			积分商城
 		</view>

@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "订单填写",
+  "titleNView": false,
+  "usingComponents": {
+    "uni-calendar": "/components/uni-calendar/uni-calendar",
+    "returns": "/pages/common/returns"
+  }
+}

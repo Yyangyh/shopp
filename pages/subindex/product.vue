@@ -10,7 +10,7 @@
 				<text v-else @click="jump('/pages/subindex/index_location')">定位</text>
 				<image class="dorp" src="../../static/image/dorp.png" mode=""></image>
 				<image class="search1" src="../../static/image/search1.png" mode=""></image>
-				<input type="text" value="" placeholder="武汉周黑鸭"/>
+				<input @focus="search()" type="text" value="" placeholder="" />
 			</view>
 		</view>
 		<!-- <view class="scroll-view_box"> -->
@@ -89,6 +89,11 @@
 			jump(url){
 				uni.navigateTo({
 					url:url
+				})
+			},
+			search(){
+				uni.navigateTo({
+					url: '/pages/common/search?type=scenic'
 				})
 			}
 		},

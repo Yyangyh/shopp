@@ -6,14 +6,14 @@
 			<text v-else @click="jump()">定位</text>
 			<image class="dorp" src="/static//image/dorp.png" mode=""></image>
 			<image class="search1" src="/static//image/search1.png" mode=""></image>
-			<input type="text" value="" placeholder="武汉周黑鸭"/>
+			<input  @focus="search()" type="text" value="" placeholder=""/>
 		</view>
 	</view>
 </template>
 
 <script>
 	export default{
-		props:['city'],
+		props:['city','type'],
 		data() {
 			return {
 				
@@ -44,6 +44,12 @@
 			jump(){
 				uni.navigateTo({
 					url:'/pages/subindex/index_location'
+				})
+			},
+			search(){
+				console.log(this.type)
+				uni.navigateTo({
+					url: '/pages/common/search?type='+this.type
 				})
 			}
 			

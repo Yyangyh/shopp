@@ -1,5 +1,8 @@
 <template>
 	<view class="content">
+		<view class="status_bar">
+			<!-- 这里是状态栏 -->
+		</view>
 		<view class="top">
 			<view class="return">
 				<view class="search">
@@ -27,30 +30,35 @@
 					<text>广州</text>
 				</view>
 			</view> -->
-			<view class="hot_bottom">
-				<view class="bottom_test">
-					热门城市
-				</view>
-				<view class="tab">
-					<view class="tab_list" v-for="(item,index) in hot" :key='index' @click="chiose_hot(index)">
-						{{item}}
+			
+			<!-- <scroll-view  scroll-y :scroll-top='top'> -->
+				
+				<view class="hot_bottom">
+					<view class="bottom_test">
+						热门城市
+					</view>
+					<view class="tab">
+						<view class="tab_list" v-for="(item,index) in hot" :key='index' @click="chiose_hot(index)">
+							{{item}}
+						</view>
 					</view>
 				</view>
-			</view>
-			<view class="city_box" v-for="(item,index) in list" :key='index'>
-				<view class="city_first">
-					{{item.letters}}
+				<view class="city_box" v-for="(item,index) in list" :key='index'>
+					<view class="city_first">
+						{{item.letters}}
+					</view>
+					<view class="city_son" v-for="(items,indexs) in item.data" :key='indexs' @click="choice(index,indexs)">
+						{{items}}
+					</view>
 				</view>
-				<view class="city_son" v-for="(items,indexs) in item.data" :key='indexs' @click="choice(index,indexs)">
-					{{items}}
+				
+				<view class="city_right">
+					<view v-for="(item,index) in list" :key='index' @click="chiose_first(index)">
+						{{item.letters}}
+					</view>
 				</view>
-			</view>
+			<!-- </scroll-view> -->
 			
-			<view class="city_right">
-				<view v-for="(item,index) in list" :key='index' @click="chiose_first(index)">
-					{{item.letters}}
-				</view>
-			</view>
 			
 		</view>
 	</view>
@@ -65,6 +73,7 @@
 			return {
 				list: '',
 				hot:airport.hot,
+				// top:3122,
 				show:0,
 			}
 		},
@@ -89,6 +98,7 @@
 					top += Number(this.list[i].data.length)
 				}
 				top = top*40+120+index*40
+				console.log(this.top)
 				uni.pageScrollTo({
 				    scrollTop: top,
 				    duration: 100
@@ -239,7 +249,7 @@
 		background: #FFFFFF;
 		color: #1D9DFF;
 		right: 10rpx;
-		top: 200rpx;
+		top: calc(200rpx + var(--status-bar-height));
 	}
 	.city_right view{
 		width: 45rpx;
