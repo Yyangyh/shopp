@@ -22,7 +22,7 @@
 				<text>￥{{data.price}}</text>
 				<text>已售{{data.sales_count}}</text>
 			</view>
-			<view class="pr_bottom">
+			<!-- <view class="pr_bottom">
 				<view class="pr_coupon">
 					<image src="../../static/image/coupon.png" mode="widthFix"></image>
 					<text>优惠券</text>
@@ -31,7 +31,7 @@
 					<text>领券</text>
 					<image src="../../static/image/go.png" mode=""></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<!-- <view class="pr_shop">
 			<view class="sh_top">

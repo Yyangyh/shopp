@@ -77,13 +77,14 @@
 	page {
 		height: 100%;
 		width: 100%;
-		background: #F4F4F4;
+		background: #F4F4F4 ;
 	}
 	
 	.content{
 		padding-top: 105rpx;
-		/* height: 100%; */
+		height: 100%;
 		width: 100%;
+		background: #F4F4F4 ;
 	}
 	.top{
 		height: 105rpx;

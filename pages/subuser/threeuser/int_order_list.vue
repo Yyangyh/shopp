@@ -19,12 +19,16 @@
 				<view class="top_list" :class="{show:show == 2}" @click="chiose(2)">
 					待发货
 				</view>
-				<view class="top_list" :class="{show:show == 4}" @click="chiose(4)">
-					待评论
+				<view class="top_list" :class="{show:show == 3}" @click="chiose(3)">
+					待收货
 				</view>
-				<view class="top_list" :class="{show:show == -1}" @click="show = -1">
+				<view class="top_list" :class="{show:show == 4}" @click="chiose(4)">
 					已完成
 				</view>
+				<!-- <view class="top_list" :class="{show:show == 5}" @click="chiose(5)">
+					退款
+				</view> -->
+				
 			</view>
 			<view class="box_bottom">
 				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'  @click="jump('./int_order_detailed?id='+item.id)">
@@ -115,6 +119,7 @@
 				})
 			},
 			chiose(status){
+				this.more = 'loading'
 				this.data = []
 				this.show = status
 				this.loadRecord = true
@@ -124,7 +129,15 @@
 					status:status,
 					page:this.page
 				},function(self,res){
-					self.data = res.data.data
+					let data = res.data.data
+					for (let s of data) {
+						let money = []
+						if(Number(s.total_bt) != 0) money.push(Number(s.total_bt)+'版通')
+						if(Number(s.total_credit) != 0) money.push(Number(s.total_credit)+'积分')
+						if(Number(s.total_price) != 0) money.push('￥'+Number(s.total_price))
+						s.money = money.join('+')
+					}
+					self.data = data
 					if(res.data.data.length < 10){
 						self.more = 'noMore'
 						self.loadRecord = false
@@ -141,7 +154,6 @@
 				},function(self,res){
 					
 					let data = self.data
-					console.log()
 					data.push(...res.data.data)
 					
 					for (let s of data) {
@@ -154,11 +166,13 @@
 					self.data = data
 					self.page = page + 1
 					self.more = 'more'
+					
 					if(res.data.data.length < 10){
 						self.more = 'noMore'
 						self.loadRecord = false
 						return
 					}
+					
 				})
 			}
 		},

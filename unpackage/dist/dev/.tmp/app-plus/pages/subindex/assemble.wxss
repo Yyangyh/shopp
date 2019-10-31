@@ -2,12 +2,13 @@
 page.data-v-b4221cd6 {
 	height: 100%;
 	width: 100%;
-	background: #F4F4F4;
+	background: #F4F4F4 ;
 }
 .content.data-v-b4221cd6{
 	padding-top: 105rpx;
-	/* height: 100%; */
+	height: 100%;
 	width: 100%;
+	background: #F4F4F4 ;
 }
 .top.data-v-b4221cd6{
 	height: 105rpx;

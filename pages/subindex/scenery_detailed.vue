@@ -34,13 +34,13 @@
 				<text class="score_test">
 					{{data.CommentGrade}}评分
 				</text>
-				<text class="comment">
+				<!-- <text class="comment">
 					<text>49107条评论</text>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
-				</text>
+				</text> -->
 			</view>
 
-			<view class="recommend">
+			<!-- <view class="recommend">
 				<view class="recommend_test">
 					特色产品推荐<text>(6)</text>
 				</view>
@@ -64,7 +64,7 @@
 						</view>
 					</view>
 				</view>
-			</view>
+			</view> -->
 		</view>
 
 		<view class="details">
@@ -75,7 +75,7 @@
 					</view>
 					<text>{{data.OpenTimeDesc}}</text>
 					<view class="">
-						<image class="go" src="../../static/image/go.png" mode="widthFix"></image>
+						<!-- <image class="go" src="../../static/image/go.png" mode="widthFix"></image> -->
 					</view>
 				</view>
 				<!-- <view class="de_bottom">
@@ -98,15 +98,15 @@
 					<image src="../../static/image/coordinate.png" mode="widthFix"></image>
 					<text>{{data.Address}}</text>
 				</view>
-				<image src="../../static/image/go.png" mode="widthFix"></image>
+				<!-- <image src="../../static/image/go.png" mode="widthFix"></image> -->
 			</view>
-			<view class="coordinate">
+			<!-- <view class="coordinate">
 				<view class="co_top">
 					<image src="../../static/image/coupon.png" mode="widthFix"></image>
 					<text>优惠券</text>
 				</view>
 				<image src="../../static/image/go.png" mode="widthFix"></image>
-			</view>
+			</view> -->
 		</view>
 
 

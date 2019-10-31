@@ -9,10 +9,12 @@
 				<image :src="user.avatar" mode=""></image>
 				<text>{{user.user_name_view}}</text>
 			</view>
-			<view class="focus">
-				关注
+			<view class="focus" @click="follow()">
+				{{is_follow?'已关注':'关注'}}
 			</view>
 		</view>
+		<bw-swiper :videoAutoplay='videoAutoplay' :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
+		
 		
 		<rich-text :nodes="richtext"></rich-text>
 		
@@ -55,24 +57,32 @@
 
 <script>
 	import returns from '../common/returns.vue'
+	import bwSwiper from '../../components/wxcomponents/bw-swiper/bw-swiper.vue'
 	export default {
 		components:{
-			returns
+			returns,
+			bwSwiper
 		},
 		data(){
 			return{
 				title:"游记攻略",
+				//轮播
+				swiperList: [{}],
+				w_h: 1, //宽高比
+				videoAutoplay:false,
+				swiperType: false,
+				//轮播
 				isShow:true,
 				richtext:'',
 				data:'',
 				user:'',
 				id:'',
-				say:''
+				say:'',
+				is_follow:''
 			}
 		},
 		methods:{
 			show(){
-				console.log(2222);
 				//点击content 控制评论盒子隐藏
 				this.isShow = true
 				
@@ -86,6 +96,9 @@
 				uni.navigateTo({
 					url:url+'?id='+this.id
 				})
+			},
+			follow(){
+				this.common.concern(this,this.data.uid)
 			},
 			// 发表评论
 			submitComment(){
@@ -122,16 +135,26 @@
 					id:id  //拿到单条攻略
 				},function(self,res){
 					console.log(res)
+					let datas = []
+					res.data[0].images.forEach((value, index) => {
+						// console.log(value)
+						let data = {
+							img: value
+						}
+						datas.push(data)
+					})
+					self.swiperList = datas
 					self.data = res.data[0]
-					    let richtext=  res.data[0].content
-						self.user = res.data[0].user
-					    const regex = new RegExp('<img', 'gi');
-					    const regexP = new RegExp('<p', 'gi');
-					    const regexspan = new RegExp('<span', 'gi')
-					    richtext= richtext.replace(regex, `<img style="max-width: 100%;"`);
-					    richtext= richtext.replace(regexP, `<p style="word-wrap:break-word;word-break:normal;"`);
-					    richtext= richtext.replace(regexspan, `<span style="word-wrap:break-word;word-break:normal;white-space: pre-wrap;"`);
-					    self.richtext = richtext;
+					self.is_follow = res.data[0].is_follow
+					let richtext=  res.data[0].content
+					self.user = res.data[0].user
+					const regex = new RegExp('<img', 'gi');
+					const regexP = new RegExp('<p', 'gi');
+					const regexspan = new RegExp('<span', 'gi')
+					richtext= richtext.replace(regex, `<img style="max-width: 100%;"`);
+					richtext= richtext.replace(regexP, `<p style="word-wrap:break-word;word-break:normal;"`);
+					richtext= richtext.replace(regexspan, `<span style="word-wrap:break-word;word-break:normal;white-space: pre-wrap;"`);
+					self.richtext = richtext;
 				})
 			}
 		},

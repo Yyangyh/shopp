@@ -9,11 +9,11 @@
 			<view class="tab_list" :class="{show:show == 0}" @click="show = 0">
 				全部
 			</view>
-			<view class="tab_list" :class="{show:show == 1}" @click="show = 1">
+			<!-- <view class="tab_list" :class="{show:show == 1}" @click="show = 1">
 				景点
-			</view>
+			</view> -->
 			<view class="tab_list" :class="{show:show == 2}" @click="show = 2">
-				商城
+				我的
 			</view>
 		</view>
 		<view class="cou_box">
@@ -90,7 +90,7 @@
 		
 	}
 	.tab .tab_list{
-		width: 33%;
+		width: 50%;
 		text-align: center;
 		height: 90rpx;
 		line-height: 90rpx;

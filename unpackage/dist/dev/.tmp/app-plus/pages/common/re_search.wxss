@@ -58,8 +58,12 @@
 	height: 38rpx;
 	margin-right: 20rpx;
 }
-.return .search input.data-v-4a40651a{
-	height: 140rpx;
+.return .search view.data-v-4a40651a{
+	height: 90rpx;
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	    -ms-flex-positive: 2;
+	        flex-grow: 2;
 	font-size: 30rpx;
 }
 

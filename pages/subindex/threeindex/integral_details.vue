@@ -5,7 +5,7 @@
 		</view>
 		<view class="top_img">
 			<image :src="data.images" mode="aspectFill"></image>
-			<view class="top_operation">
+			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
 				<image src="../../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
 					<!-- <image class="love" src="../../../static/image/love.png" mode="widthFix"></image> -->
@@ -195,9 +195,18 @@
 				price:'',
 				type:'',
 				inventory:'',
-				data_list:''
-				
+				data_list:'',
+				transparency:0
 			}
+		},
+		onPageScroll(e){
+			// console.log(e)
+			if(e.scrollTop >= 150){
+				this.transparency  = 1
+			}else{
+				this.transparency  = 0
+			}
+			
 		},
 		methods: {
 			returns() {
@@ -363,12 +372,16 @@
 	
 	.top_img .top_operation {
 		width: 100%;
-		position: absolute;
+		/* position: absolute; */
 		z-index: 99;
 		top: 0;
 		height: 60rpx;
 		padding: 20rpx 0;
 		display: flex;
+		position: fixed;
+		width: 100%;
+		top:var(--status-bar-height);
+		left: 0;
 		/* flex-direction: column; */
 		/* flex-wrap: wrap; */
 		justify-content: space-between;
@@ -403,6 +416,8 @@
 		margin-bottom: 20rpx;
 		border-top: 2rpx solid #F1F1F1;
 		/* border-radius: 10rpx; */
+		
+		
 	}
 	
 	.product_price .pr_top {

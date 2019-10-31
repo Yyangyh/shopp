@@ -10,7 +10,7 @@
 				<view class="">
 					<image v-if="is_favor == 0" @click="collect()" class="love" src="../../static/image/love.png" mode="widthFix"></image>
 					<image v-else  @click="collect()" class="love" src="../../static/image/collect.png" mode="widthFix"></image>
-					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
+					<image @click="tips()" class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
 		</view>
@@ -22,7 +22,7 @@
 				<text>￥{{data.price}}</text>
 				<text>已售{{data.sales_count}}</text>
 			</view>
-			<view class="pr_bottom">
+			<!-- <view class="pr_bottom">
 				<view class="pr_coupon">
 					<image src="../../static/image/coupon.png" mode="widthFix"></image>
 					<text>优惠券</text>
@@ -31,7 +31,7 @@
 					<text>领券</text>
 					<image src="../../static/image/go.png" mode=""></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view class="pr_shop">
 			<view class="sh_top">
@@ -197,7 +197,8 @@
 				inventory:'',
 				is_favor:'',
 				data_guess:'',
-				transparency:0
+				transparency:0,
+				share_arr:{}
 			}
 		},
 		onPageScroll(e){
@@ -217,6 +218,27 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			tips(){ //分享
+				
+			
+				// #ifdef H5
+				uni.showModal({
+				    title: '提示',
+				    content: '请点击右上角选择分享！',
+					showCancel:false,
+				    success: function (res) {
+				       
+				    }
+				});
+				// #endif
+				
+				
+				// #ifdef APP-PLUS
+				nvMask.show()
+				nvImageMenu.show() //5+应支持从底部向上弹出的动画
+				// #endif
+				
 			},
 			collect(){ //收藏
 				this.common.collection(this,this.id)
@@ -338,11 +360,19 @@
 			}
 		},
 		onLoad(options) {
+			
+			this.share_arr.Url = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/product_detailed?type=0&id='+options.id
 			this.id = options.id
 			this.service.entire(this, 'get', this.service.api_root.subindex.Detail, {
 				goods_id: options.id
 			}, function(self, res) {
 				self.data = res.data.goods
+				self.share_arr.Title = res.data.goods.title
+				self.share_arr.ImageUrl = res.data.goods.images
+				self.share_arr.Summary = ''
+				console.log(self.share_arr)
+				self.common.share(self.share_arr)
+				
 				self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory //总库存
 				self.is_favor = res.data.goods.is_favor //是否收藏

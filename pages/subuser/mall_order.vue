@@ -16,15 +16,16 @@
 				<view class="top_list" :class="{show:show == 1}" @click="chiose(1)">
 					待付款
 				</view>
+				<view class="top_list" :class="{show:show == 2}" @click="chiose(2)">
+					待发货
+				</view>
 				<view class="top_list" :class="{show:show == 3}" @click="chiose(3)">
 					待收货
 				</view>
 				<view class="top_list" :class="{show:show == 4}" @click="chiose(4)">
 					已完成
 				</view>
-				<view class="top_list" :class="{show:show == 6}" @click="chiose(6)">
-					退款
-				</view>
+				
 			</view>
 			<view class="box_bottom">
 				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'>

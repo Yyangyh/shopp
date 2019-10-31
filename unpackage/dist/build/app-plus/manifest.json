@@ -19,6 +19,7 @@
   },
   "permissions": {
     "Payment": {},
+    "Share": {},
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -115,6 +116,12 @@
           },
           "alipay": {},
           "appleiap": {}
+        },
+        "share": {
+          "weixin": {
+            "appid": "wxf16e136b7fcc8d00",
+            "UniversalLinks": ""
+          }
         },
         "audio": {
           "mp3": {
