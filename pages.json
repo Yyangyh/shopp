@@ -659,6 +659,16 @@
 		    }
 		},
 		{
+			"path": "pages/threeLayers/comment_success",
+		    "style" : {
+		        "navigationBarTitleText" : "评论成功",
+		        "app-plus" : {
+		            "bounce" : "none",
+		            "titleNView" : false
+		        }
+		    }
+		},
+		{
 			"path": "pages/threeLayers/order_pay",
 		    "style" : {
 		        "navigationBarTitleText" : "订单支付",
