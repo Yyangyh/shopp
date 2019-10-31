@@ -622,6 +622,15 @@
 			}
 		},
 		{
+			"path": "pages/threeLayers/order_comment",
+			"style": {
+				"navigationBarTitleText": "发布评价",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/threeLayers/order",
 			"style": {
 				"navigationBarTitleText": "确认订单",

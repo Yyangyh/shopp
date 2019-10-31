@@ -69,7 +69,8 @@
 		<view class="bottom">
 			<input type="text" value="" placeholder="这一刻,我想说..." v-model="say"/>
 			<view class="b_right">
-				<image src="../../static/image/smile.png" mode=""></image>
+				<text></text>
+				<!-- <image src="../../static/image/smile.png" mode=""></image> -->
 				<view @click="submitComment">发表</view>
 			</view>
 		</view>

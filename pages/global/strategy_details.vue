@@ -42,7 +42,8 @@
 			<view class="comment" v-if="isShow==false" @click.stop="">
 			<textarea v-model="say" />
 			<view class="confirm">
-				<image src="../../static/image/smile.png" mode=""></image>
+				<view></view>
+				<!-- <image src="../../static/image/smile.png" mode=""></image> -->
 				<view class="submit" @click="submitComment">
 					发表
 				</view>
@@ -72,6 +73,7 @@
 		methods:{
 			show(){
 				console.log(2222);
+				//点击content 控制评论盒子隐藏
 				this.isShow = true
 				
 			},
