@@ -1,8 +1,8 @@
 
 
 
-// const api = ''
-const api = 'http://wx.huanqiutongmall.com'
+const api = ''
+// const api = 'http://wx.huanqiutongmall.com'
 
 
 

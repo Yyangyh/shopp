@@ -126,8 +126,8 @@
             "disableHostCheck" : true,
             "proxy" : {
                 "/api" : {
-                    "target" : "http://wx.huanqiutongmall.com",
-                    // "target" : "http://192.168.0.225:160",
+                    // "target" : "http://wx.huanqiutongmall.com",
+                    "target" : "http://192.168.0.225:160",
                     "changeOrigin" : true,
                     "secure" : false
                 }
