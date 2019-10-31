@@ -8,22 +8,22 @@
 			<view class="shop">
 				<image src="../../static/image/secondary/shop.png" mode=""></image>
 				<view class="shop_name">
-					折木奉太郎
+					店铺名
 				</view>
 				<image src="../../static/image/arrowright.png" mode=""></image>
 			</view>
-			<view class="goods_detail">
-				<image src="" mode=""></image>
+			<view class="goods_detail" v-for="(item,index) in data" :key="index">
+				<image :src="item.images" mode=""></image>
 				<view class="detail_right">
 					<view class="words">
-						洁丽雅毛巾2条装 纯棉洗脸洗澡家用成人男女帕
+						{{item.title}}
 					</view>
 					<view class="amount">
 						<view class="num">
-							两条装
+							<!-- 两条装 -->
 						</view>
 						<view class="count">
-							x1
+							x{{item.buy_number}}
 						</view>
 					</view>
 				</view>
@@ -34,7 +34,7 @@
 				整单评价
 			</view>
 			<view class="star">
-				<view class="left" >评分</view>
+				<view class="left">评分</view>
 				<image :src="item.src" mode="" v-for="(item,index) in imgList" :key="index" @click="choose(index)"></image>
 				<view :class="[active>=0?'col':'']">
 					{{amount}}
@@ -46,10 +46,13 @@
 					晒图
 				</view>
 				<view class="pics">
-					<view class="pic_box" >
-						<image src="" mode=""></image>
+				
+					<view class="pic_box"  v-for="(item,index) in image_list">
+						<image :src="item" mode="aspectFill" :key='index' ></image>
+						<image class="close" @click="deletes(index)" src="../../static/image/secondary/close2.png" mode=""></image>
 					</view>
-					<image src="../../static/image/addpic.png" mode=""></image>
+					<image src="../../static/image/addpic.png" mode="" @click="add_image"></image>
+				
 				</view>
 			</view>
 			<!-- 评论 -->
@@ -57,10 +60,10 @@
 				<view class="left">
 					评论
 				</view>
-				<textarea value="" placeholder="说点什么吧" />
-			</view>
+				<textarea value="" placeholder="说点什么吧" v-model="content" />
+				</view>
 		</view>
-		<view class="submit">
+		<view class="submit" @click="submit">
 			发布
 		</view>
 	</view>
@@ -72,6 +75,13 @@
 		data() {
 			return {
 				title: '发布评价',
+				index:'',
+				goodsId:[], //商品id
+				id:[], // 订单id
+				rating:[], // 星级
+				content:'', // textarea
+				image_list:[], // 上传的图片
+				images:[],
 				imgList:[
 					{src:'../../static/image/star1.png'},
 					{src:'../../static/image/star1.png'},
@@ -79,13 +89,16 @@
 					{src:'../../static/image/star1.png'},
 					{src:'../../static/image/star1.png'}
 				],
-				active:-1,
+				active:-1, // 评分等级文字变色
 				level:['1分','2分','3分','4分','5分'],
-				amount:"没有评分"
+				amount:"没有评分",
+				data:[],  // 商品列
+				//details:{}
 			}
 		},
 		methods:{
-			choose(index){
+			choose(index){ // 选择星级
+			this.rating = []
 				for (var j = 0; j<this.imgList.length;j++) {
 					this.imgList[j].src = '../../static/image/star1.png'
 				}
@@ -94,7 +107,78 @@
 					this.amount = this.level[i]
 					this.active = i
 				}
+				this.rating.push(index+1) ;
+				console.log(this.rating);
+			},
+			submit(){ // 提交评论
+				// 评论的内容转化为数组
+				var cont = []
+				cont.push(this.content)
+				// 
+				this.service.entire(this, 'post', this.service.api_root.threeLayers.goods_Comment, {
+					goods_id:this.goodsId, //商品id
+					id:this.id, // 订单id
+					rating:this.rating, // 星级
+					content: cont, // textarea
+					images:this.images, // 上传的图片
+				}, function(self, res) {
+					console.log(res);
+					if(res.code==0){
+						uni.showToast({
+							title: res.msg
+						});
+						setTimeout(()=>{
+							uni.navigateTo({
+								url:'/pages/threeLayers/comment_success'
+							})
+						},2000)
+					}	
+				})
+			},
+			add_image(){ // 上传图片
+				let that = this
+				uni.chooseImage({
+				    count: 1, //默认9
+				    sourceType: ['album'], //从相册选择
+				    success: function (res) {
+						uni.uploadFile({
+						    url: that.service.api_root.common.upload_image,
+						    filePath: res.tempFilePaths[0],
+						    name: 'file',
+						    formData: {
+						        token: uni.getStorageSync('token')
+						    },
+						    success: (ref) => {
+								console.log(ref)
+						        if(JSON.parse(ref.data).code == 0){
+									// console.log(JSON.parse(ref.data))
+									 that.image_list.push(res.tempFilePaths[0])
+									 that.images.push(JSON.parse(ref.data).data.file)
+								}
+						    }
+						});
+				    }
+				});
+			},
+			deletes(index){ //删除图片
+				this.image_list.splice(index,1)	
+				this.images.splice(index,1)
 			}
+		},
+		onLoad(options) {
+			this.id=options.id // 订单id
+			this.index = options.index
+			this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
+				id: options.id,
+				token: uni.getStorageSync('token')
+			}, function(self, res) {
+				console.log(res.data.items[self.index]);
+				self.data.push(res.data.items[self.index]);
+				self.goodsId.push(self.data[0].goods_id) ; // 获取商品id
+				console.log(self.goodsId);
+				
+				// console.log(self.data,self.id,self.goodsId);
+			})
 		},
 		components: {
 			returns
@@ -149,13 +233,25 @@
 	}
 
 	.goods .goods_detail image {
-		width: 260rpx;
+		width: 240rpx;
 		height: 166rpx;
+		margin-right: 20rpx;
 	}
-
+	.goods .detail_right{
+		width: 410rpx;
+		
+	}
 	.goods .detail_right .words {
 		color: #333333;
+		width: 410rpx;
 		font-size: 28rpx;
+		 text-overflow: -o-ellipsis-lastline;
+		  overflow: hidden;
+		  text-overflow: ellipsis;
+		  display: -webkit-box;
+		  -webkit-line-clamp: 2;
+		  line-clamp: 2;
+		  -webkit-box-orient: vertical;
 	}
 
 	.goods .detail_right .amount {
@@ -212,9 +308,12 @@
 	}
 	.pic .pics {
 		display: flex;
+		flex-wrap: wrap;
+		width:596rpx ;
 	}
 	.pic .pics .pic_box{
-		margin-right: 20rpx;
+		margin-right: 10rpx;
+		position: relative;
 	}
 	.say{
 		display: flex;
@@ -245,5 +344,12 @@
 	}
 	.col{
 		color: #1D9DFF;
+	}
+	.pic .pics .close{
+		height: 40rpx;
+		width: 40rpx;
+		position: absolute;
+		top: 5rpx;
+		right: 5rpx;
 	}
 </style>

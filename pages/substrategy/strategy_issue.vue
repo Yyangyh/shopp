@@ -84,6 +84,7 @@
 			},
 			deletes(index){
 				this.image_list.splice(index,1)	
+				this.images.splice(index,1)
 			},
 			jump(url){
 				uni.navigateTo({
