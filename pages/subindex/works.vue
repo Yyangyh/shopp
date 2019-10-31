@@ -20,7 +20,7 @@
 			
 		</scroll-view>
 		
-		
+		<!-- 
 		<view class="exhibition">
 			<view class="left">
 				<image src="../../static/image/secondary/literature1.png" mode="scaleToFill"></image>
@@ -33,7 +33,7 @@
 					<image src="../../static/image/secondary/literature3.png" mode="scaleToFill"></image>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="guess">
 			<view class="gu_top">
 				猜你喜欢

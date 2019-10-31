@@ -155,7 +155,7 @@
 							待付款
 						</view>
 					</view>
-					<view class="tab_list" @click="jump('../subuser/mall_order?status=2')">
+					<view class="tab_list" @click="jump('../subuser/mall_order?status=3')">
 						<image src="../../static/image/stay_goods.png" mode="widthFix"></image>
 						<view class="">
 							待收货
@@ -164,10 +164,10 @@
 					<view class="tab_list" @click="jump('../subuser/mall_order?status=4')">
 						<image src="../../static/image/stay_comment2.png" mode="widthFix"></image>
 						<view class="">
-							待评论
+							已完成
 						</view>
 					</view>
-					<view class="tab_list" @click="jump('../subuser/mall_order?status=5')">
+					<view class="tab_list" @click="jump('../subuser/mall_order?status=6')">
 						<image src="../../static/image/refund2.png" mode="widthFix"></image>
 						<view class="">
 							退款

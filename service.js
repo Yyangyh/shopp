@@ -1,8 +1,8 @@
 
 
 
-// const api = ''
-const api = 'http://wx.huanqiutongmall.com'
+const api = ''
+// const api = 'http://wx.huanqiutongmall.com'
 
 
 
@@ -108,6 +108,10 @@ const api_root = {
 			dis_profit:api+'/api/Distribution/profit',//分销佣金
 			dis_order:api+'/api/Distribution/order',//分销订单
 			UserBtInfo:api+'/api/User/UserBtInfo',//版通明细
+			Cancel:api+'/api/order/Cancel',//商城订单取消
+			Collect:api+'/api/order/Collect',//商城订单收货
+			cred_Cancel:api+'/api/creditshop/Cancel',//积分订单取消
+			cred_Collect:api+'/api/creditshop/Collect',//积分订单收货
 		},
 		
 		

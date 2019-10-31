@@ -100,11 +100,17 @@
 
 
 		<view class="order_bottom" v-if="data.status == 1">
-			<text>修改地址</text>
-			<text>取消订单</text>
+			<!-- <text>修改地址</text> -->
+			<text @click="cancel()">取消订单</text>
 			<text class="or_pay" @click="show = !show">付款</text>
 		</view>
-
+		
+		<view class="order_bottom" v-else-if="data.status == 3">
+			<!-- <text>修改地址</text>
+			<text>取消订单</text> -->
+			<text class="or_pay" @click="determine()">确定收货</text>
+		</view>
+		
 		<view class="mask" v-if="show" @click="show = !show">
 
 		</view>
@@ -153,6 +159,56 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			determine(){//确定收货
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定收货？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that,'get',that.service.api_root.subuser.threeuser.Collect,{id:that.data.id},function(self,res){
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+				            	if(res.code == 0){
+									setTimeout(function(){
+										self.common.returns(self)
+									},1500)
+								}
+				            })
+				        } else if (res.cancel) {
+				           return
+				        }
+				    }
+				});
+			},
+			cancel(){//取消订单
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定取消？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that,'get',that.service.api_root.subuser.threeuser.Cancel,{id:that.data.id},function(self,res){
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+				            	if(res.code == 0){
+									setTimeout(function(){
+										self.common.returns(self)
+									},1500)
+								}
+				            })
+				        } else if (res.cancel) {
+				           return
+				        }
+				    }
+				});
+				
+				
 			},
 			detailed( id, type) {
 				if (type == 3) {

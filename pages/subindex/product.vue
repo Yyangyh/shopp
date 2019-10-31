@@ -10,7 +10,10 @@
 				<text v-else @click="jump('/pages/subindex/index_location')">定位</text>
 				<image class="dorp" src="../../static/image/dorp.png" mode=""></image>
 				<image class="search1" src="../../static/image/search1.png" mode=""></image>
-				<input @focus="search()" type="text" value="" placeholder="" />
+				<!-- <input @focus="search()" type="text" value="" placeholder="" /> -->
+				<view class="" @click="search()">
+					
+				</view>
 			</view>
 		</view>
 		<!-- <view class="scroll-view_box"> -->
@@ -158,8 +161,9 @@
 		margin: 0 20rpx;
 		border-radius: 34rpx;
 	}
-	.return .search input{
-		height: 140rpx;
+	.return .search view{
+		height: 90rpx;
+		flex-grow: 2;
 	}
 	.return .search text{
 		margin: 0 20rpx;

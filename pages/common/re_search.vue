@@ -6,7 +6,10 @@
 			<text v-else @click="jump()">定位</text>
 			<image class="dorp" src="/static//image/dorp.png" mode=""></image>
 			<image class="search1" src="/static//image/search1.png" mode=""></image>
-			<input  @focus="search()" type="text" value="" placeholder=""/>
+			<!-- <input  @focus="search()" type="text" value="" placeholder=""/> -->
+			<view class="" @click="search()">
+				
+			</view>
 		</view>
 	</view>
 </template>
@@ -104,8 +107,9 @@
 		height: 38rpx;
 		margin-right: 20rpx;
 	}
-	.return .search input{
-		height: 140rpx;
+	.return .search view{
+		height: 90rpx;
+		flex-grow: 2;
 		font-size: 30rpx;
 	}
 </style>

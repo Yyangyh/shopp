@@ -53,6 +53,9 @@
 						<view class="top2 obligation" v-if="item.status == 4">
 							{{item.statusstr}}
 						</view>
+						<view class="top2 refund" v-if="item.status == 5">
+							已取消
+						</view>
 					</view>
 					
 					<view class="list_middle">

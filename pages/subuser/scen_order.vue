@@ -56,7 +56,7 @@
 						<image :src="item.thumb" mode="aspectFill"></image>
 						<view class="middle1">
 							<view class="">{{item.name}}</view>
-							<view>套装</view>
+							<!-- <view>套装</view> -->
 						</view>
 						<view class="middle2">x1</view>
 					</view>

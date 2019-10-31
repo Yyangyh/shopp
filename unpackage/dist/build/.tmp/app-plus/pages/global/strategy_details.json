@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "游记攻略",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

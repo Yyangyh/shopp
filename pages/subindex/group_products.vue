@@ -47,7 +47,7 @@
 			</view>
 		</view> -->
 		
-		<view class="user_comment">
+		<!-- <view class="user_comment">
 			<view class="user_top">
 				用户评论
 			</view>
@@ -76,7 +76,7 @@
 					查看更多评论
 				</view>
 			</view>
-		</view>
+		</view> -->
 		
 		<view class="pro_img">
 			<view class="img_test">

@@ -6,26 +6,26 @@
 		<returns :titles='title'></returns>
 		
 		<view class="name">
-			<view class="back">
+			<!-- <view class="back">
 				<image src="../../static/me/back.png" mode="widthFix"></image>
 				<text>账单</text>
-			</view>
+			</view> -->
 			<view class="name_back">
 				<view class="avatar">
 					<image :src="user.avatar" mode="widthFix"></image>
 					<text class="myname">{{user.nickname}}</text>
 				</view>
-				<view class="button">
+				<!-- <view class="button">
 					去实名
-				</view>
+				</view> -->
 			</view>
 		</view>
 		<view class="wallet">
-			<view class="commission">
+			<!-- <view class="commission">
 				<image src="../../static/image/secondary/commission.png" mode="widthFix"></image>
 				<text class="h1">佣金</text>
-				<text class="h2">￥00.00</text>
-			</view>
+				<text class="h2">￥0.00</text>
+			</view> -->
 			<view class="balance">
 				<image src="../../static/image/secondary/balance.png" mode="widthFix"></image>
 				<text class="h1">余额</text>

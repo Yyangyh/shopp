@@ -84,7 +84,10 @@
     "pages/global/travel_card",
     "pages/global/card_bag",
     "pages/global/tickey",
-    "pages/global/fill_in"
+    "pages/global/fill_in",
+    "pages/global/strategy_details",
+    "pages/global/comment",
+    "pages/global/search"
   ],
   "window": {
     "navigationBarTextStyle": "black",

@@ -13,7 +13,7 @@
 					<text class="h1" v-if="user.nickname">{{user.nickname}}</text>
 					<text class="h1" v-else>未修改昵称</text>
 					<text class="h2">推荐人:{{data.myreferrer}}</text>
-					<text class="level">{{user_data.name}}</text>
+					<!-- <text class="level">{{user_data.name}}</text> -->
 				</view>
 			</view>
 		</view>

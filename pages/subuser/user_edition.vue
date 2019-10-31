@@ -11,12 +11,12 @@
 			<image src="../../static/image/secondary/edition_money.png" mode="widthFix"></image>
 		</view>
 		<view class="edition_bottom">
-			<view class="list">
+			<!-- <view class="list">
 				<image src="../../static/image/secondary/edition_give.png" mode="widthFix"></image>
 				<view class="">
 					赠送版通
 				</view>
-			</view>
+			</view> -->
 			<view class="list" @click="jump('./threeuser/ed_detailed')">
 				<image src="../../static/image/secondary/edition_detailed.png" mode="widthFix"></image>
 				<view class="">

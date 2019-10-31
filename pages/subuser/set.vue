@@ -37,13 +37,13 @@
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
 			</view>
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<view class="">
 					<image src="../../static/image/secondary/edition.png" mode="widthFix"></image>
 					<text>版本</text>
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
-			</view>
+			</view> -->
 		</view>
 		<button  @click="signOut()">退出登录</button>
 		

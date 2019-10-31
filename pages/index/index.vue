@@ -10,9 +10,9 @@
 					<text v-else>定位</text>
 					<image src="../../static/image/down.png" mode="widthFix"></image>
 				</view>
-				<view class="search">
+				<view class="search" @click="search()">
 					<image src="../../static/image/search.png" mode="widthFix"></image>
-					<input @focus="search()" type="text" value=""  />
+					<!-- <input @focus="search()" type="text" value=""  focus= 'false'/> -->
 				</view>
 				<view class="shopp" @click="jump('../threeLayers/shoppingCart')">
 					<image src="../../static/image/shopp.png" mode="widthFix"></image>
@@ -122,28 +122,18 @@
 			</view>
 			<view class="sp_img">
 				<view class="img_top">
-					<view class="" @click="jump('../subindex/scenery_detailed')">
-						<image src="../../static/image/spot1.png" mode="scaleToFill"></image>
-						<text>福建厦门鼓浪屿</text>
+					<view class="" @click="jump('../subindex/scenery_detailed?id='+item.id)" v-for="(item,index) in data_guess_one" :key='item.id'>
+						<image :src="item.image_url" mode="scaleToFill"></image>
+						<text>{{item.name}}</text>
 					</view>
-					<view class="" @click="jump('../subindex/scenery_detailed')">
-						<image src="../../static/image/spot2.png" mode="scaleToFill"></image>
-						<text>迪士尼城堡</text>
-					</view>
+					
 				</view>
 				<view class="img_bottom">
-					<view class="" @click="jump('../subindex/scenery_detailed')">
-						<image src="../../static/image/spot3.png" mode="scaleToFill"></image>
-						<text>福建永定土楼</text>
+					<view class="" @click="jump('../subindex/scenery_detailed?id='+item.id)"  v-for="(item,index) in data_guess_two" :key='item.id'>
+						<image :src="item.image_url" mode="scaleToFill"></image>
+						<text>{{item.name}}</text>
 					</view>
-					<view class="" @click="jump('../subindex/scenery_detailed')">
-						<image src="../../static/image/spot4.png" mode="scaleToFill"></image>
-						<text>朱家角文艺情调</text>
-					</view>
-					<view class="" @click="jump('../subindex/scenery_detailed')">
-						<image src="../../static/image/spot5.png" mode="scaleToFill"></image>
-						<text>摩洛哥蓝色之城</text>
-					</view>
+					
 				</view>
 			</view>
 		</view>
@@ -247,12 +237,22 @@
 				item_data_guess:'',
 				works_data_guess:'',
 				set_price:'',
-				city:''
+				city:'',
+				data_guess_one:[],
+				data_guess_two:[]
 			}
 		},
 		
 		onLoad() {
-			
+			this.service.entire(this,'get',this.service.api_root.subindex.scen_list,{is_home_recommended:1},function(self,res){ //景点-猜你喜欢
+				console.log(res)
+				console.log()
+				self.data_guess_one.push(res.data.data[4]) 
+				self.data_guess_one.push(res.data.data[8]) 
+				self.data_guess_two.push(res.data.data[2]) 
+				self.data_guess_two.push(res.data.data[5]) 
+				self.data_guess_two.push(res.data.data[7]) 
+			})
 		},
 		onShow() {
 			uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
@@ -301,6 +301,9 @@
 				self.set_price = res.data.set_price
 				self.show = false
 			})
+			
+			
+			
 		},
 		
 		methods: {
@@ -547,12 +550,18 @@
 		width: 235rpx;
 		height: 235rpx;
 	}
+	.spot_img .img_top view:nth-of-type(1) text{
+		width: 430rpx;
+	}
 	.spot_img .img_top view text{
 		font-size: 28rpx;
 		color: #fff;
 		position: absolute;
 		left: 20rpx;
+		width: 195rpx;
 		bottom: 20rpx;
+		white-space: nowrap;
+		overflow: hidden;
 	}
 	.spot_img .img_bottom{
 		display: flex;
@@ -570,9 +579,12 @@
 	.spot_img .img_bottom view text{
 		font-size: 28rpx;
 		color: #fff;
+		white-space: nowrap;
+		overflow: hidden;
 		position: absolute;
 		left: 20rpx;
 		bottom: 20rpx;
+		width: 195rpx;
 	}
 	.guess {
 		padding: 20rpx;

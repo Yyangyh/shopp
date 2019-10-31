@@ -1,0 +1,201 @@
+
+page.data-v-21448982{
+	background: #F1F1F1;
+	width: 100%;
+	height: 100%;
+}
+.content.data-v-21448982{
+	width: 100%;
+	height: 100%;
+}
+.top.data-v-21448982{
+	width: 100%;
+	height: 100rpx;
+	/* background: #FFFFFF; */
+	padding-left: 47rpx;
+	padding-right: 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	background: #FFFFFF;
+}
+.top .top_left image.data-v-21448982{
+	width: 72rpx;
+	height: 72rpx;
+	border-radius: 50%;
+	overflow: hidden;
+	margin-right: 13rpx;
+}
+.top .top_left.data-v-21448982{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	font-size: 34rpx;
+	color: #666666;
+}
+.top .focus.data-v-21448982{
+	width: 107rpx;
+	height: 44rpx;
+	border-radius: 20rpx;
+	line-height: 44rpx;
+	font-size: 24rpx;
+	text-align: center;
+	background: #02A7F0;
+	color: #FFFEFE;
+}
+.bottom.data-v-21448982{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 90rpx;
+	padding: 0 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	background: #FFFFFF;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.bottom_left.data-v-21448982{
+	width: 206rpx;
+	height: 50rpx;
+	background: #1D9DFF;
+	border-radius: 30rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	padding-left: 14rpx;
+	color: #FEFFFF;
+	font-size: 24rpx;
+	color: #FEFFFF;
+}
+.bottom_left image.data-v-21448982{
+	width: 34rpx;
+	height: 34rpx;
+	margin: 0 12rpx;
+}
+.bottom_right.data-v-21448982{
+	height: 100%;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: center;
+	-webkit-justify-content: center;
+	    -ms-flex-pack: center;
+	        justify-content: center;
+	font-size: 32rpx;
+	color: #666666;
+}
+.bottom_right .img.data-v-21448982 {
+	width: 120rpx;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	/* margin: 0 12rpx; */
+}
+.bottom_right .img image.data-v-21448982{
+	width: 49rpx;
+	height: 49rpx;
+}
+.sub_comment.data-v-21448982{
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 20;
+}
+.comment.data-v-21448982{
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	z-index: 21;
+	width: 100%;
+	height: 254rpx;
+	background: #FFFFFF;
+	padding: 16rpx 30rpx 0;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+textarea.data-v-21448982{
+	width: 690rpx;
+	height: 150rpx;
+	background: #F2F2F2;
+	line-height: 50rpx;
+	padding: 0 14rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	font-size: 28rpx;
+	color: #333;
+	border-radius: 10rpx;
+}
+.confirm.data-v-21448982 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	margin-top: 22rpx;
+}
+.confirm image.data-v-21448982{
+	width: 44rpx;
+	height: 44rpx;
+}
+.submit.data-v-21448982{
+	width: 96rpx;
+	height: 44rpx;
+	line-height: 44rpx;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 24rpx;
+	background: #1D9DFF;
+	border-radius: 10rpx;
+}
+

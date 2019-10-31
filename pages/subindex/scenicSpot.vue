@@ -23,7 +23,7 @@
 			</view>
 			
 		</scroll-view>
-		<view class="exhibition">
+		<!-- <view class="exhibition">
 			<view class="left">
 				<image src="../../static/image/paradise.png" mode="scaleToFill"></image>
 			</view>
@@ -35,7 +35,7 @@
 					<image src="../../static/image/innovation.png" mode="scaleToFill"></image>
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="guess">
 			<view class="gu_top">
 				猜你喜欢

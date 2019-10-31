@@ -16,18 +16,18 @@
 				<view class="top_list" :class="{show:show == 1}" @click="chiose(1)">
 					待付款
 				</view>
-				<view class="top_list" :class="{show:show == 2}" @click="chiose(2)">
+				<view class="top_list" :class="{show:show == 3}" @click="chiose(3)">
 					待收货
 				</view>
 				<view class="top_list" :class="{show:show == 4}" @click="chiose(4)">
-					待评论
+					已完成
 				</view>
-				<view class="top_list" :class="{show:show == 5}" @click="chiose(5)">
+				<view class="top_list" :class="{show:show == 6}" @click="chiose(6)">
 					退款
 				</view>
 			</view>
 			<view class="box_bottom">
-				<view class="bottom_list" v-for="(item,index) in data" :key='item.id' @click="jump('threeuser/order_details?id='+item.id)">
+				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'>
 					<view class="list_top">
 						<view class="top1">
 							<image src="../../static/image/secondary/shop.png" mode="widthFix"></image>
@@ -50,9 +50,12 @@
 						<view class="top2 stayComment" v-if="item.status == 4">
 							{{item.status_name}}
 						</view>
+						<view class="top2 refund" v-if="item.status == 5">
+							{{item.status_name}}
+						</view>
 					</view>
 					
-					<view class="list_middle" v-for="(items,indexs) in item.items" :key='indexs'>
+					<view class="list_middle" v-for="(items,indexs) in item.items" :key='indexs'  @click="jump('threeuser/order_details?id='+item.id)">
 						<image :src="items.images" mode="aspectFill"></image>
 						<view class="middle1">
 							<view class="">{{items.title}}</view>
@@ -67,9 +70,15 @@
 						<view class="bottom2">
 							订单金额<text>￥{{item.total_price}}</text>
 						</view>
-						<view class="bottom3">
-							详情
+						<view class="bottom_one">
+							<view class="bottom3" v-if= 'item.status == 4'>
+								评论
+							</view>
+							<view class="bottom3"  @click="jump('threeuser/order_details?id='+item.id)">
+								详情
+							</view>
 						</view>
+						
 					</view>
 				</view>
 				
@@ -305,5 +314,6 @@
 		background: #1D9DFF;
 		color: #fff;
 		text-align: center;
+		margin-left: 20rpx;
 	}
 </style>

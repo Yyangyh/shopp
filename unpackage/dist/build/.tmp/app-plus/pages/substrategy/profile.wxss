@@ -1,5 +1,5 @@
 
-.intro.data-v-6dcb5597{
+.intro.data-v-2fd583b1 {
 	position: relative;
 	width: 710rpx;
 	height: 150rpx;
@@ -12,15 +12,15 @@
 	padding: 23rpx;
 	border-radius: 10rpx;
 }
-.intro input.data-v-6dcb5597{
+.intro input.data-v-2fd583b1 {
 	font-size: 24rpx;
 }
-.count.data-v-6dcb5597{
+.count.data-v-2fd583b1 {
 	position: absolute;
 	right: 21rpx;
 	bottom: 21rpx;
 }
-.submit.data-v-6dcb5597{
+.submit.data-v-2fd583b1 {
 	width: 710rpx;
 	margin: 0 20rpx;
 	display: -webkit-box;
@@ -32,24 +32,24 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.submit .smile.data-v-6dcb5597{
+.submit .smile.data-v-2fd583b1 {
 	width: 40rpx;
 	height: 40rpx;
 	/* vertical-align: middle; */
 	margin-top: 12rpx;
 }
-.submit image.data-v-6dcb5597{
+.submit image.data-v-2fd583b1 {
 	width: 40rpx;
 	height: 40rpx;
 }
-.submit .comfirm.data-v-6dcb5597{
+.submit .comfirm.data-v-2fd583b1 {
 	width: 100rpx;
 	height: 60rpx;
 	text-align: center;
 	line-height: 60rpx;
-	background: -webkit-gradient(linear,left top, right top,from(#3E8FF3),to(#64C5F9));
-	background: -o-linear-gradient(left,#3E8FF3,#64C5F9);
-	background: linear-gradient(90deg,#3E8FF3,#64C5F9);
+	background: -webkit-gradient(linear, left top, right top, from(#3E8FF3), to(#64C5F9));
+	background: -o-linear-gradient(left, #3E8FF3, #64C5F9);
+	background: linear-gradient(90deg, #3E8FF3, #64C5F9);
 	font-size: 28rpx;
 	color: #FFFFFF;
 	border-radius: 16rpx;
