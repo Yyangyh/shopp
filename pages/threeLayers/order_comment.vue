@@ -4,6 +4,7 @@
 			<!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
+<view v-for="(item,index) in data" :key="index">
 		<view class="goods">
 			<view class="shop">
 				<image src="../../static/image/secondary/shop.png" mode=""></image>
@@ -12,7 +13,7 @@
 				</view>
 				<image src="../../static/image/arrowright.png" mode=""></image>
 			</view>
-			<view class="goods_detail" v-for="(item,index) in data" :key="index">
+			<view class="goods_detail">
 				<image :src="item.images" mode=""></image>
 				<view class="detail_right">
 					<view class="words">
@@ -30,15 +31,16 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<view class="comment">
+			<!-- <view class="comment">
 				整单评价
-			</view>
+			</view> -->
 			<view class="star">
 				<view class="left">评分</view>
-				<image :src="item.src" mode="" v-for="(item,index) in imgList" :key="index" @click="choose(index)"></image>
+				<!-- <image :src="item.src" mode="" v-for="(item,index) in imgList" :key="index" @click="choose(index)"></image>
 				<view :class="[active>=0?'col':'']">
 					{{amount}}
-				</view>
+				</view> -->
+				<star @star="ratingCount" :index='index'></star>
 			</view>
 			<!-- 晒图 -->
 			<view class="pic">
@@ -46,12 +48,12 @@
 					晒图
 				</view>
 				<view class="pics">
-				
-					<view class="pic_box"  v-for="(item,index) in image_list">
-						<image :src="item" mode="aspectFill" :key='index' ></image>
-						<image class="close" @click="deletes(index)" src="../../static/image/secondary/close2.png" mode=""></image>
+					
+					<view class="pic_box"  v-for="(items,indexs) in image_list[index]">
+						<image :src="items" mode="aspectFill" :key='indexs' ></image>
+						<image class="close" @click="deletes(index,indexs)" src="../../static/image/secondary/close2.png" mode=""></image>
 					</view>
-					<image src="../../static/image/addpic.png" mode="" @click="add_image"></image>
+					<image src="../../static/image/addpic.png" mode="" @click="add_image(index)"></image>
 				
 				</view>
 			</view>
@@ -60,9 +62,11 @@
 				<view class="left">
 					评论
 				</view>
-				<textarea value="" placeholder="说点什么吧" v-model="content" />
+					<text-Area @saying="inputing" :index="index"></text-Area>
 				</view>
 		</view>
+</view>
+		<view class="box"></view>
 		<view class="submit" @click="submit">
 			发布
 		</view>
@@ -70,57 +74,73 @@
 </template>
 
 <script>
+	import star from '../../components/star.vue'
+	import textArea from '../../components/textArea.vue'
 	import returns from '../common/returns.vue'
 	export default {
 		data() {
 			return {
 				title: '发布评价',
-				index:'',
 				goodsId:[], //商品id
 				id:[], // 订单id
 				rating:[], // 星级
-				content:'', // textarea
+				content:[],  //textarea
 				image_list:[], // 上传的图片
 				images:[],
-				imgList:[
-					{src:'../../static/image/star1.png'},
-					{src:'../../static/image/star1.png'},
-					{src:'../../static/image/star1.png'},
-					{src:'../../static/image/star1.png'},
-					{src:'../../static/image/star1.png'}
-				],
-				active:-1, // 评分等级文字变色
-				level:['1分','2分','3分','4分','5分'],
-				amount:"没有评分",
+				// imgList:[
+				// 	{src:'../../static/image/star1.png'},
+				// 	{src:'../../static/image/star1.png'},
+				// 	{src:'../../static/image/star1.png'},
+				// 	{src:'../../static/image/star1.png'},
+				// 	{src:'../../static/image/star1.png'}
+				// ],
+				// active:-1, // 评分等级文字变色
+				// level:['1分','2分','3分','4分','5分'],
+				// amount:"没有评分",
 				data:[],  // 商品列
 				//details:{}
 			}
 		},
 		methods:{
-			choose(index){ // 选择星级
-			this.rating = []
-				for (var j = 0; j<this.imgList.length;j++) {
-					this.imgList[j].src = '../../static/image/star1.png'
-				}
-				for (var i = 0; i<=index; i++) {
-					this.imgList[i].src = '../../static/image/star2.png'
-					this.amount = this.level[i]
-					this.active = i
-				}
-				this.rating.push(index+1) ;
+			inputing(e){ // 
+			    const {index,content} = e
+				this.content[index] = content
+				console.log(this.content);
+			},
+			// choose(index){ // 选择星级
+			// this.rating = []
+			// 	for (var j = 0; j<this.imgList.length;j++) {
+			// 		this.imgList[j].src = '../../static/image/star1.png'
+			// 	}
+			// 	for (var i = 0; i<=index; i++) {
+			// 		this.imgList[i].src = '../../static/image/star2.png'
+			// 		this.amount = this.level[i]
+			// 		this.active = i
+			// 	}
+			// 	this.rating.push(index+1) ;
+			// 	console.log(this.rating);
+			// },
+			ratingCount(e){
+				console.log(e,'eeee');
+				const{rating,index} = e
+				this.rating[index] = rating
 				console.log(this.rating);
 			},
 			submit(){ // 提交评论
+<<<<<<< HEAD
+			console.log(this.images);
+=======
 				// 评论的内容转化为数组
 				var cont = []
 				cont.push(this.content)
 				// 
 				
+>>>>>>> 63a15872d1f9148fef7234ef8126c3bf5c685869
 				this.service.entire(this, 'post', this.service.api_root.threeLayers.goods_Comment, {
 					goods_id:this.goodsId, //商品id
 					id:this.id, // 订单id
 					rating:this.rating, // 星级
-					content: cont, // textarea
+					content: this.content, // textarea
 					images:this.images, // 上传的图片
 				}, function(self, res) {
 					console.log(res);
@@ -136,7 +156,8 @@
 					}	
 				})
 			},
-			add_image(){ // 上传图片
+			add_image(i){ // 上传图片
+			console.log(i);
 				let that = this
 				uni.chooseImage({
 				    count: 1, //默认9
@@ -150,39 +171,57 @@
 						        token: uni.getStorageSync('token')
 						    },
 						    success: (ref) => {
-								console.log(ref)
+								console.log(ref,'ll')
 						        if(JSON.parse(ref.data).code == 0){
 									// console.log(JSON.parse(ref.data))
-									 that.image_list.push(res.tempFilePaths[0])
-									 that.images.push(JSON.parse(ref.data).data.file)
+									// 新建一个数组保存选择的图片
+									if(!that.image_list[i]){ // 如果没有图片 ， 建二维数组
+										var arr = [];
+										var file = []
+										arr.push(res.tempFilePaths[0]) 
+										file.push(JSON.parse(ref.data).data.file)
+										that.image_list[i] = [...arr]
+										that.images[i] = [...file]
+									}else{
+										that.image_list[i].push(res.tempFilePaths[0])
+										that.images[i].push(JSON.parse(ref.data).data.file)
+									}
+									that.image_list = JSON.parse(JSON.stringify(that.image_list))
+									// console.log(that.image_list);
+									console.log(that.images);
+									 // that.image_list.push(res.tempFilePaths[0])
+									 // that.images.push(JSON.parse(ref.data).data.file)
 								}
 						    }
 						});
 				    }
 				});
 			},
-			deletes(index){ //删除图片
-				this.image_list.splice(index,1)	
-				this.images.splice(index,1)
+			deletes(i,index){ //删除图片
+				this.image_list[i].splice(index,1)
+				this.images[i].splice(index,1)
 			}
 		},
 		onLoad(options) {
 			this.id=options.id // 订单id
-			this.index = options.index
 			this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
 				id: options.id,
 				token: uni.getStorageSync('token')
 			}, function(self, res) {
-				console.log(res.data.items[self.index]);
-				self.data.push(res.data.items[self.index]);
-				self.goodsId.push(self.data[0].goods_id) ; // 获取商品id
+				console.log(res.data.items);
+				self.data=res.data.items;
+				for (var i = 0; i<self.data.length; i++) {
+					self.goodsId.push(self.data[i].goods_id) ; // 获取商品id
+				}
 				console.log(self.goodsId);
 				
 				// console.log(self.data,self.id,self.goodsId);
 			})
 		},
 		components: {
-			returns
+			returns,
+			star,
+			textArea
 		}
 	}
 </script>
@@ -321,14 +360,6 @@
 		color:#666666;
 	}
 	
-	textarea{
-		width: 100%;
-		height: 162rpx;
-		color: #CCCCCC;
-		box-sizing: border-box;
-		padding:0 6rpx 6rpx 6rpx;
-		font-size: 28rpx;
-	}
 	.submit{
 		width: 710rpx;
 		height: 80rpx;
@@ -342,6 +373,10 @@
 		left: 20rpx;
 		
 		background: #1D74FF;
+	}
+	.box{
+		width: 100%;
+		height: 140rpx;
 	}
 	.col{
 		color: #1D9DFF;
