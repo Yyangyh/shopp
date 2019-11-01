@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "限时抢购详情",
   "titleNView": false,
-  "usingComponents": {}
+  "usingComponents": {
+    "share": "/pages/common/share"
+  }
 }

@@ -80,6 +80,9 @@
 		},
 		
 		onShow() {
+			this.service.entire(this,'get',this.service.api_root.subuser.CouponList,{},function(self,res){
+				console.log(res)
+			})
 		}
 	}
 </script>

@@ -3,6 +3,7 @@
   "titleNView": false,
   "usingComponents": {
     "uni-calendar": "/components/uni-calendar/uni-calendar",
-    "load": "/components/load/load"
+    "load": "/components/load/load",
+    "share": "/pages/common/share"
   }
 }

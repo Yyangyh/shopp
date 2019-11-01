@@ -3,13 +3,14 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
+		<share ref="share" :datas='share_arr'></share>
 		<view class="top_img">
 			<image :src="data.images" mode="aspectFill"></image>
 			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
 				<image src="../../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
 					<!-- <image class="love" src="../../../static/image/love.png" mode="widthFix"></image> -->
-					<image class="share" src="../../../static/image/share.png" mode="widthFix"></image>
+					<image @click="tips()" class="share" src="../../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
 		</view>
@@ -180,7 +181,11 @@
 </template>
 
 <script>
+	import share from'../../common/share.vue'
 	export default {
+		components:{
+			share
+		},
 		data() {
 			return {
 				show: 0,
@@ -196,7 +201,8 @@
 				type:'',
 				inventory:'',
 				data_list:'',
-				transparency:0
+				transparency:0,
+				share_arr:{}
 			}
 		},
 		onPageScroll(e){
@@ -222,6 +228,21 @@
 			},
 			plus() { //数量加
 				this.num++
+			},
+			tips(){ //分享
+				// #ifdef H5
+				uni.showModal({
+				    title: '提示',
+				    content: '请点击右上角选择分享！',
+					showCancel:false,
+				    success: function (res) {
+				       
+				    }
+				});
+				// #endif
+				// #ifdef APP-PLUS
+				this.$refs.share.share();
+				// #endif
 			},
 			choose(index, indexs) { //选择规格
 				// console.log(this.index_list,index)
@@ -314,12 +335,15 @@
 			
 		},
 		onLoad(options) {
+			this.share_arr.Url = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/threeindex/integral_details?id='+options.id
 			this.id = options.id
 			this.service.entire(this, 'post', this.service.api_root.subindex.threeindex.int_detail, {
 				id:options.id
 			}, function(self, res) {
 				
 				let data =  res.data.goods
+				
+				
 				let money = []
 				if(Number(data.bt) != 0) money.push(Number(data.bt)+'版通')
 				if(Number(data.credit) != 0) money.push(Number(data.credit)+'积分')
@@ -329,6 +353,8 @@
 				// self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory
 				
+				self.share_arr.Title = self.data.title//分享
+				self.share_arr.ImageUrl = self.data.images//分享
 				
 			})
 			

@@ -1,8 +1,8 @@
 
 
 
-const api = ''
-// const api = 'http://wx.huanqiutongmall.com'
+// const api = ''
+const api ='http://wx.huanqiutongmall.com'
 
 
 
@@ -99,6 +99,9 @@ const api_root = {
 		scen_orders:api+'/api/Ctripspot/orders',//景点订单列表
 		getSign:api+'/api/user/getSign',//获取签到记录
 		sign:api+'/api/user/sign',//签到
+		CouponList:api+'/api/coupon/CouponList',//全部优惠券列表
+		CouponUserList:api+'/api/coupon/CouponUserList',//用户优惠券列表
+		Receive:api+'/api/coupon/Receive',//领取优惠券
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称

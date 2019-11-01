@@ -72,6 +72,7 @@
     "pages/threeLayers/order_comment",
     "pages/threeLayers/order",
     "pages/threeLayers/fill_in",
+    "pages/threeLayers/comment_success",
     "pages/threeLayers/order_pay",
     "pages/threeLayers/policy_facilities",
     "pages/threeLayers/allclass",

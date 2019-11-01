@@ -2,14 +2,15 @@
 	<view class="content">
 		<view class="status_bar">
 		            <!-- 这里是状态栏 -->
-		  </view>
+		</view>
+		<share ref="share" :datas='share_arr'></share>
 		<view class="top_img">	
 			<image :src="data.thumb" mode="scaleToFill"></image>
-			<view class="top_operation">
+			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
 					<!-- <image class="love" src="../../static/image/love.png" mode="widthFix"></image> -->
-					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
+					<image @click="tips()" class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
 		</view>
@@ -189,13 +190,28 @@
 </template>
 
 <script>
-	export default{
+	import share from'../common/share.vue'
+	export default {
+		components:{
+			share
+		},
 		data() {
 			return {
 				show: 0,
 				data:'',
-				id:''
+				id:'',
+				transparency:0,
+				share_arr:{}
 			}
+		},
+		onPageScroll(e){
+			// console.log(e)
+			if(e.scrollTop >= 150){
+				this.transparency  = 1
+			}else{
+				this.transparency  = 0
+			}
+			
 		},
 		methods:{
 			returns(){
@@ -205,6 +221,21 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			tips(){ //分享
+				// #ifdef H5
+				uni.showModal({
+				    title: '提示',
+				    content: '请点击右上角选择分享！',
+					showCancel:false,
+				    success: function (res) {
+				       
+				    }
+				});
+				// #endif
+				// #ifdef APP-PLUS
+				this.$refs.share.share();
+				// #endif
 			},
 			purchase(data){
 				if(data == 'single'){
@@ -220,10 +251,16 @@
 			}
 		},
 		onLoad(options) {
+			this.share_arr.Url = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/group_products?id='+options.id
 			this.id = options.id
+			
 			this.service.entire(this,'get',this.service.api_root.subindex.grou_Detail,{id:options.id},function(self,res){
 				console.log(res)
 				self.data = res.data.goods
+				
+				self.share_arr.Title = self.data.title//分享
+				self.share_arr.ImageUrl = self.data.thumb//分享
+				
 			})
 		}
 	}
@@ -247,12 +284,16 @@
 	}
 	.top_img .top_operation{
 		width: 100%;
-		position: absolute;
+		/* position: absolute; */
 		z-index: 99;
 		top: 0;
 		height: 60rpx;
 		padding: 20rpx 0;
 		display: flex;
+		position: fixed;
+		width: 100%;
+		top:var(--status-bar-height);
+		left: 0;
 		/* flex-direction: column; */
 		/* flex-wrap: wrap; */
 		justify-content: space-between;

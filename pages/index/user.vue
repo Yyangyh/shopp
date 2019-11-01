@@ -84,12 +84,12 @@
 						积分
 					</view>
 				</view>
-				<!-- <view class="tab_list" @click="jump('../subuser/coupon')">
+				<view class="tab_list" @click="jump('../subuser/coupon')">
 					<image src="../../static/image/oupon1.png" mode="widthFix"></image>
 					<view class="">
 						优惠券
 					</view>
-				</view> -->
+				</view>
 			</view>
 		</view>
 		

@@ -4,7 +4,7 @@
 			<!-- 这里是状态栏 -->
 		</view>
 		<Load v-if = 'load_show'></Load>
-		
+		<share ref="share" :datas='share_arr'></share>
 		<view class="top_img">
 			<image :src="data.ImageURL" mode="scaleToFill"></image>
 			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
@@ -12,7 +12,7 @@
 				<view class="top_fixed">
 					<image class="love" v-if="is_favor == false" src="../../static/image/love.png" mode="widthFix"  @click="collection()"></image>
 					<image class="love" v-else-if = "is_favor == true" src="../../static/image/loves.png" mode="widthFix"  @click="collection()"></image>
-					<image class="share" src="../../static/image/share.png" mode="widthFix"></image>
+					<image @click="tips()" class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
 		</view>
@@ -296,10 +296,12 @@
 <script>
 	import uniCalendar from "../../components/uni-calendar/uni-calendar.vue"
 	import Load from '../../components/load/load.vue'
+	import share from'../common/share.vue'
 	export default {
 		components:{
 		    uniCalendar,
-			Load
+			Load,
+			share
 		},
 		data() {
 			return {
@@ -333,7 +335,8 @@
 				sure_date:'',//携程可选日期
 				buy_selected:[],
 				transparency:0,
-				windowHeight:''
+				windowHeight:'',
+				share_arr:{}
 			}
 		},
 		onPageScroll(e){
@@ -370,6 +373,21 @@
 					})
 				}
 				
+			},
+			tips(){ //分享
+				// #ifdef H5
+				uni.showModal({
+				    title: '提示',
+				    content: '请点击右上角选择分享！',
+					showCancel:false,
+				    success: function (res) {
+				       
+				    }
+				});
+				// #endif
+				// #ifdef APP-PLUS
+				this.$refs.share.share();
+				// #endif
 			},
 			buy(url){
 				if(this.chiose_time == ''){
@@ -498,6 +516,7 @@
 		},
 		onLoad(options) {
 			//获取当前时间
+			this.share_arr.Url = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/scenery_detailed?id='+options.id
 			this.scen_id = options.id
 			let date = new Date();
 			let year = date.getFullYear();
@@ -592,6 +611,10 @@
 				}
 
 				self.data = res.data.goods.ScenicSpotInfoList[0]
+				
+				self.share_arr.Title = self.data.Name//分享
+				self.share_arr.ImageUrl = self.data.ImageURL//分享
+				
 				let data = res.data.goods.ScenicSpotInfoList[0].ProductInfo.ResourceList
 
 				self.load_show = false
@@ -667,7 +690,7 @@
 	}
 
 	.scenery {
-		height: 500rpx;
+		height: 226rpx;
 		font-size: 28rpx;
 		background: #fff;
 		/* width: 94%; */

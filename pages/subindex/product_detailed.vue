@@ -3,6 +3,7 @@
 		<view class="status_bar">
 			<!-- 这里是状态栏 -->
 		</view>
+		<share ref="share" :datas='share_arr'></share>
 		<view class="top_img">
 			<image :src="data.images" mode="aspectFill"></image>
 			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
@@ -180,7 +181,11 @@
 </template>
 
 <script>
+	import share from'../common/share.vue'
 	export default {
+		components:{
+			share
+		},
 		data() {
 			return {
 				show: 0,
@@ -220,8 +225,6 @@
 				})
 			},
 			tips(){ //分享
-				
-			
 				// #ifdef H5
 				uni.showModal({
 				    title: '提示',
@@ -232,13 +235,9 @@
 				    }
 				});
 				// #endif
-				
-				
 				// #ifdef APP-PLUS
-				nvMask.show()
-				nvImageMenu.show() //5+应支持从底部向上弹出的动画
+				this.$refs.share.share();
 				// #endif
-				
 			},
 			collect(){ //收藏
 				this.common.collection(this,this.id)
@@ -360,18 +359,17 @@
 			}
 		},
 		onLoad(options) {
-			
 			this.share_arr.Url = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/product_detailed?type=0&id='+options.id
 			this.id = options.id
 			this.service.entire(this, 'get', this.service.api_root.subindex.Detail, {
 				goods_id: options.id
 			}, function(self, res) {
 				self.data = res.data.goods
-				self.share_arr.Title = res.data.goods.title
-				self.share_arr.ImageUrl = res.data.goods.images
-				self.share_arr.Summary = ''
-				console.log(self.share_arr)
-				self.common.share(self.share_arr)
+				
+				self.share_arr.Title = res.data.goods.title//分享
+				self.share_arr.ImageUrl = res.data.goods.images//分享
+				
+				
 				
 				self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory //总库存

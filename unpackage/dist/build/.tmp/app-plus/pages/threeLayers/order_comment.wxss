@@ -48,12 +48,26 @@ page {
 	display: flex;
 }
 .goods .goods_detail image {
-	width: 260rpx;
+	width: 240rpx;
 	height: 166rpx;
+	margin-right: 20rpx;
+}
+.goods .detail_right{
+	width: 410rpx;
 }
 .goods .detail_right .words {
 	color: #333333;
+	width: 410rpx;
 	font-size: 28rpx;
+	 -o-text-overflow: -o-ellipsis-lastline;
+	    text-overflow: -o-ellipsis-lastline;
+	  overflow: hidden;
+	  -o-text-overflow: ellipsis;
+	     text-overflow: ellipsis;
+	  display: -webkit-box;
+	  -webkit-line-clamp: 2;
+	  line-clamp: 2;
+	  -webkit-box-orient: vertical;
 }
 .goods .detail_right .amount {
 	display: -webkit-box;
@@ -131,9 +145,14 @@ page {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	-webkit-flex-wrap: wrap;
+	    -ms-flex-wrap: wrap;
+	        flex-wrap: wrap;
+	width:596rpx ;
 }
 .pic .pics .pic_box{
-	margin-right: 20rpx;
+	margin-right: 10rpx;
+	position: relative;
 }
 .say{
 	display: -webkit-box;
@@ -167,5 +186,12 @@ textarea{
 }
 .col{
 	color: #1D9DFF;
+}
+.pic .pics .close{
+	height: 40rpx;
+	width: 40rpx;
+	position: absolute;
+	top: 5rpx;
+	right: 5rpx;
 }
 
