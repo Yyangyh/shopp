@@ -67,8 +67,8 @@
 						</view>
 						<view class="pl_box">
 							<view></view>
-							<view class="pl" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id+'&index='+indexs)">
-								评论
+							<view class="pl" v-if='item.status == 4 ' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
+								评论<!-- && item.user_is_comments ==0 -->
 							</view>
 						</view>
 					</view><!-- 加多一个盒子套住评论 -->
