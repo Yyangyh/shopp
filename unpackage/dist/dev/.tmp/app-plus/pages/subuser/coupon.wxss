@@ -6,7 +6,7 @@
 	display: flex;
 }
 .tab .tab_list.data-v-da92e198{
-	width: 33%;
+	width: 50%;
 	text-align: center;
 	height: 90rpx;
 	line-height: 90rpx;

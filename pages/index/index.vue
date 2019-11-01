@@ -239,7 +239,8 @@
 				set_price:'',
 				city:'',
 				data_guess_one:[],
-				data_guess_two:[]
+				data_guess_two:[],
+				
 			}
 		},
 		
@@ -312,6 +313,7 @@
 				uni.setStorageSync('notice',1)
 			},
 			jump(url) {
+				
 				if(!url){
 					uni.showToast({
 						icon:'none',

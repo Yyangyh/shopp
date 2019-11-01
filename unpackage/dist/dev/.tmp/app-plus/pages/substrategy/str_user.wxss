@@ -33,6 +33,10 @@ page.data-v-2d8aad7f{
 	display: -ms-flexbox;
 	display: flex;
 }
+.img_left image.data-v-2d8aad7f{
+	border-radius: 50%;
+	overflow: hidden;
+}
 .user_name.data-v-2d8aad7f {
 	font-size: 32rpx;
 	color: #333333;
@@ -124,16 +128,12 @@ page.data-v-2d8aad7f{
 .travels_pic.data-v-2d8aad7f{
 }
 .pics.data-v-2d8aad7f {
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	white-space: nowrap;
+	/* display: flex;
+	justify-content: space-between; */
 }
 .pics image.data-v-2d8aad7f{
+	margin: 0 8rpx;
 	width: 226rpx;
 	height: 226rpx;
 }

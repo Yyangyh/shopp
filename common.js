@@ -161,6 +161,11 @@ const concern = function(that,id){  //关注
 		console.log(res)
 		if(res.code == 0){
 			that.is_follow = !that.is_follow
+		}else{
+			uni.showToast({
+				icon:'none',
+				title:res.msg
+			})
 		}
 	})
 }
@@ -176,6 +181,9 @@ function formatDate(dt) {
 	let date = dt.getDate();
 	return year + "-" + month + "-" + date;
 }
+
+
+
 
 
 export default{

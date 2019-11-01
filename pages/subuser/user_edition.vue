@@ -23,7 +23,7 @@
 					版通明细
 				</view>
 			</view>
-			<view class="list">
+			<view class="list" @click="jump('./threeuser/edition_explain')">
 				<image src="../../static/image/secondary/edition_about.png" mode="widthFix"></image>
 				<view class="">
 					关于版通

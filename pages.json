@@ -522,6 +522,15 @@
 			}
 		},
 		{
+			"path": "pages/subuser/threeuser/edition_explain",
+			"style": {
+				"navigationBarTitleText": "关于版通",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/threeuser/int_order_detailed",
 			"style": {
 				"navigationBarTitleText": "订单详情",

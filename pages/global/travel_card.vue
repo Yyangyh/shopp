@@ -55,7 +55,7 @@
 				<view class="menu_title">
 					套餐明细
 				</view>
-				<image src="../../static/image/arrowright.png" mode=""></image>
+				<!-- <image src="../../static/image/arrowright.png" mode=""></image> -->
 			</view>
 			<view class="menu_details">
 				<view class="menu_details_box">

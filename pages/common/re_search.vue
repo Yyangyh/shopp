@@ -1,10 +1,10 @@
 <template>
 	<view class="return">
-		<image class="return_img" src="/static//image/return.png" mode="" @click="returns()"></image>
+		<image class="return_img" src="/static/image/return.png" mode="" @click="returns()"></image>
 		<view class="search">
 			<text v-if="city"  @click="jump()">{{city}}</text>
 			<text v-else @click="jump()">定位</text>
-			<image class="dorp" src="/static//image/dorp.png" mode=""></image>
+			<image class="dorp" src="/static/image/dorp.png" mode=""></image>
 			<image class="search1" src="/static//image/search1.png" mode=""></image>
 			<!-- <input  @focus="search()" type="text" value="" placeholder=""/> -->
 			<view class="" @click="search()">

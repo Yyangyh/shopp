@@ -16,7 +16,8 @@
         },
         /* 模块配置 */
         "modules" : {
-            "Payment" : {}
+            "Payment" : {},
+            "Share" : {}
         },
         /* 应用发布信息 */
         "distribute" : {
@@ -59,6 +60,12 @@
                     },
                     "alipay" : {},
                     "appleiap" : {}
+                },
+                "share" : {
+                    "weixin" : {
+                        "appid" : "wxf16e136b7fcc8d00",
+                        "UniversalLinks" : ""
+                    }
                 }
             },
             "icons" : {

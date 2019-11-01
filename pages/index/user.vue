@@ -20,11 +20,11 @@
 						<view class="left_top">
 							<view v-if="nickname">{{nickname}}</view>
 							<view v-else>未修改昵称</view>
-							<view class="user_right">
+							<!-- <view class="user_right">
 								<image src="../../static/image/id.png" mode="widthFix"></image>
 								<text>实名认证</text>
 								<image src="../../static/image/go1.png" mode="widthFix"></image>
-							</view>
+							</view> -->
 						</view>
 						<view class="left_bottom">
 							<image src="../../static/image/check.png" mode="widthFix"></image>
@@ -155,6 +155,12 @@
 							待付款
 						</view>
 					</view>
+					<view class="tab_list" @click="jump('../subuser/mall_order?status=2')">
+						<image src="../../static/image/refund2.png" mode="widthFix"></image>
+						<view class="">
+							待发货
+						</view>
+					</view>
 					<view class="tab_list" @click="jump('../subuser/mall_order?status=3')">
 						<image src="../../static/image/stay_goods.png" mode="widthFix"></image>
 						<view class="">
@@ -167,12 +173,7 @@
 							已完成
 						</view>
 					</view>
-					<view class="tab_list" @click="jump('../subuser/mall_order?status=6')">
-						<image src="../../static/image/refund2.png" mode="widthFix"></image>
-						<view class="">
-							退款
-						</view>
-					</view>
+					
 				</view>
 				
 			</view>
@@ -208,12 +209,12 @@
 						版通
 					</view>
 				</view>
-				<view class="tab_list">
+				<!-- <view class="tab_list">
 					<image src="../../static/image/realName.png" mode="widthFix"></image>
 					<view class="">
 						实名认证
 					</view>
-				</view>
+				</view> -->
 				<view class="tab_list" @click="jump('../subuser/collect')">
 					<image src="../../static/image/collection2.png" mode="widthFix"></image>
 					<view class="">
@@ -480,7 +481,7 @@
 		align-items: center;
 	}
 	.user_top .user_tab .tab_list{
-		width: 25%;
+		width: 33.3%;
 		text-align: center;
 	}
 	.user_top image{

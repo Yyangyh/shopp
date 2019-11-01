@@ -57,6 +57,7 @@
     "pages/subuser/threeuser/int_order_list",
     "pages/subuser/threeuser/int_detailed",
     "pages/subuser/threeuser/int_explain",
+    "pages/subuser/threeuser/edition_explain",
     "pages/subuser/threeuser/int_order_detailed",
     "pages/subuser/threeuser/order_details",
     "pages/subuser/threeuser/assembleDetails",
@@ -68,8 +69,10 @@
     "pages/subuser/threeuser/withdrawal",
     "pages/subuser/threeuser/ed_detailed",
     "pages/threeLayers/classification",
+    "pages/threeLayers/order_comment",
     "pages/threeLayers/order",
     "pages/threeLayers/fill_in",
+    "pages/threeLayers/comment_success",
     "pages/threeLayers/order_pay",
     "pages/threeLayers/policy_facilities",
     "pages/threeLayers/allclass",
@@ -84,7 +87,10 @@
     "pages/global/travel_card",
     "pages/global/card_bag",
     "pages/global/tickey",
-    "pages/global/fill_in"
+    "pages/global/fill_in",
+    "pages/global/strategy_details",
+    "pages/global/comment",
+    "pages/global/search"
   ],
   "window": {
     "navigationBarTextStyle": "black",

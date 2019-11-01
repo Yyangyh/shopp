@@ -258,12 +258,18 @@
 	width: 235rpx;
 	height: 235rpx;
 }
+.spot_img .img_top view:nth-of-type(1) text.data-v-4c99c1bb{
+	width: 430rpx;
+}
 .spot_img .img_top view text.data-v-4c99c1bb{
 	font-size: 28rpx;
 	color: #fff;
 	position: absolute;
 	left: 20rpx;
+	width: 195rpx;
 	bottom: 20rpx;
+	white-space: nowrap;
+	overflow: hidden;
 }
 .spot_img .img_bottom.data-v-4c99c1bb{
 	display: -webkit-box;
@@ -286,9 +292,12 @@
 .spot_img .img_bottom view text.data-v-4c99c1bb{
 	font-size: 28rpx;
 	color: #fff;
+	white-space: nowrap;
+	overflow: hidden;
 	position: absolute;
 	left: 20rpx;
 	bottom: 20rpx;
+	width: 195rpx;
 }
 .guess.data-v-4c99c1bb {
 	padding: 20rpx;

@@ -130,7 +130,7 @@
 			</view>
 			
 			<view class="treaty" v-if="open_protocol == 1">
-				<label class="radio"><checkbox style="transform: scale(0.8);" :checked="checked" class="checkbox-3"></checkbox></label>
+				<label class="radio"><checkbox style="transform: scale(0.8);" :checked="checked" @click="checked = !checked" class="checkbox-3"></checkbox></label>
 				我已阅读并了解<text  @click="treaty_show = true">【入驻须知】</text>
 			</view>
 			
@@ -232,14 +232,16 @@
 			},
 			
 			submit(){
-				console.log(this.checked)
-				console.log(this.open_protocol)
-				if(this.checked != true && this.open_protocol == 1){
-					uni.showToast({
-						icon:'none',
-						title:'请阅读并同意入驻须知'
-					})
-					return
+				// console.log(this.checked)
+				// console.log(this.open_protocol)
+				if(this.open_protocol == 1){
+					if(this.checked == false){
+						uni.showToast({
+							icon:'none',
+							title:'请阅读并同意入驻须知'	
+						})
+						return
+					}
 				}
 				if(this.confirm_upass != this.upass){
 					uni.showToast({

@@ -10,42 +10,42 @@
 		</view>
 		<view class="register_top">
 			<view class="re_box">
-				<view class="re_top">
-					<text>+5</text>
-					<text>+10</text>
-					<text>+15</text>
-					<text>+20</text>
-					<text>+25</text>
-					<text>+30</text>
-					<text>+35</text>
+				<view class="re_top"  v-if="data !=''">
+					<text>{{data.three_day.data != ''?'+'+data.give_integral:'0'}}</text>
+					<text>{{data.two_day.data != ''?'+'+data.give_integral:'0'}}</text>
+					<text>{{data.one_day.data != ''?'+'+data.give_integral:'0'}}</text>
+					<text>{{data.today.data != ''?'+'+data.give_integral:'0'}}</text>
+					<text>{{data.hind_one_day.data != ''?'+'+data.give_integral:'0'}}</text>
+					<text>{{data.hind_two_day.data != ''?'+'+data.give_integral:'0'}}</text>
+					<text>{{data.hind_three_day.data != ''?'+'+data.give_integral:'0'}}</text>
 				</view>
-				<view class="re_middle">
-					<view><text class="show">1</text></view>
-					<view><text class="show">2</text></view>
-					<view><text class="show">3</text></view>
-					<view><text>4</text></view>
-					<view><text>5</text></view>
-					<view><text>6</text></view>
-					<view><text>7</text></view>
+				<view class="re_middle" v-if="data !=''">
+					<view><text :class="{show:data.three_day.data != ''}" >1</text></view>
+					<view><text :class="{show:data.two_day.data != ''}" >2</text></view>
+					<view><text :class="{show:data.one_day.data != ''}" >3</text></view>
+					<view><text :class="{show:data.today.data != ''}" >4</text></view>
+					<view><text :class="{show:data.hind_one_day.data != ''}" >5</text></view>
+					<view><text :class="{show:data.hind_two_day.data != ''}" >6</text></view>
+					<view><text :class="{show:data.hind_three_day.data != ''}" >7</text></view>
 				</view>
-				<view class="re_bottom">
-					<text>第1天</text>
-					<text>第2天</text>
-					<text>第3天</text>
-					<text>第4天</text>
-					<text>第5天</text>
-					<text>第6天</text>
-					<text>第7天</text>
+				<view class="re_bottom" v-if="data !=''">
+					<text>{{data.three_day.date}}</text>
+					<text>{{data.two_day.date}}</text>
+					<text>{{data.one_day.date}}</text>
+					<text>{{data.today.date}}</text>
+					<text>{{data.hind_one_day.date}}</text>
+					<text>{{data.hind_two_day.date}}</text>
+					<text>{{data.hind_three_day.date}}</text>
 				</view>
 				<view class="progress">
-					<progress percent="35"  stroke-width="4" backgroundColor="#C9E8FF"/>
+					<progress percent="0"  stroke-width="4" backgroundColor="#C9E8FF"/>
 				</view>
 			</view>
 			<view class="">
-				<button @click="show = 1">签到</button>
+				<button  @click="Sign_In()">签到</button>
 			</view>
 		</view>
-		<view class="register_bottom">
+		<!-- <view class="register_bottom">
 			<view class="re_one">
 				<text class="line"></text>
 				<view class="">
@@ -57,7 +57,7 @@
 				<image src="../../static/image/secondary/gold.png" mode="widthFix"></image>
 				<text>+15</text>
 			</view>
-		</view>
+		</view> -->
 		
 		<view class="register" v-show="show == 1">
 			<view class="box">
@@ -66,11 +66,11 @@
 					签到成功
 				</view>
 				<view class="test_two">
-					累计签到<text>3</text>天，今日<image src="../../static/image/secondary/gold.png" mode="widthFix"></image><text>+15</text>
+					今日<image src="../../static/image/secondary/gold.png" mode="widthFix"></image><text>+{{data.give_integral}}</text>
 				</view>
-				<view class="test_three">
+				<!-- <view class="test_three">
 					距领取大礼包还剩4天
-				</view>
+				</view> -->
 			</view>
 			<image class="close" src="../../static/image/secondary/close.png" mode="widthFix"  @click="show = 0"></image>
 		</view>
@@ -88,15 +88,32 @@
 		data() {
 			return {
 				title:'签到',
-				show:0
+				show:0,
+				data:'',
 			}
 		},
 		methods:{
-			
+			Sign_In(){
+				this.service.entire(this,'post',this.service.api_root.subuser.sign,{},function(self,res){
+					console.log(res)
+					if(res.code == 0){
+						self.show = 1
+					}else{
+						uni.showToast({
+							icon:'none',
+							title:res.msg
+						})
+					}
+				})
+			}
 			
 		},
 		
 		onShow() {
+			this.service.entire(this,'post',this.service.api_root.subuser.getSign,{},function(self,res){
+				console.log(res)
+				self.data = res.data
+			})
 		}
 	}
 </script>

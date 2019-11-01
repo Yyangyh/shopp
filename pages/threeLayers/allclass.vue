@@ -7,15 +7,15 @@
 		<view class="top_class">
 			<view class="class_list"  @click="show_class = !show_class,show_region = false,show=false">
 				<text>全部分类</text>
-				<image src="../../static/image/dorp.png" mode="widthFix"></image>
+				<image src="/static/image/dorp.png" mode="widthFix"></image>
 			</view>
 			<view class="class_list"  @click="show_region = !show_region,show_class=false,show=false">
 				<text>销量</text>
-				<image src="../../static/image/dorp.png" mode="widthFix"></image>
+				<image src="/static/image/dorp.png" mode="widthFix"></image>
 			</view>
 			<view class="class_list" @click="show = !show,show_region = false,show_class=false">
 				<text>价格</text>
-				<image src="../../static/image/dorp.png" mode="widthFix"></image>
+				<image src="/static/image/dorp.png" mode="widthFix"></image>
 			</view>
 		</view>
 		

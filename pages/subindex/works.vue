@@ -52,7 +52,8 @@
 					<view class="bottom">
 						<text class="price">￥{{item.price}}</text>
 						<text class='data'>{{item.sales_count}}人购买</text>
-						<text class="info"   @click="jump('./shop')">进入店铺</text>
+						<text class="info"  @click="jump('./product_detailed?id='+item.id)">进入购买</text>
+						<!-- <text class="info"   @click="jump('./shop')">进入店铺</text> -->
 					</view>
 				</view>
 			</view>
