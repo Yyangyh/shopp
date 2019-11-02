@@ -20,6 +20,7 @@
   "permissions": {
     "Payment": {},
     "Share": {},
+    "OAuth": {},
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -120,6 +121,13 @@
         "share": {
           "weixin": {
             "appid": "wxf16e136b7fcc8d00",
+            "UniversalLinks": ""
+          }
+        },
+        "oauth": {
+          "weixin": {
+            "appid": "wxf16e136b7fcc8d00",
+            "appsecret": "b715d41e5458ef2c64560e2013134450",
             "UniversalLinks": ""
           }
         },

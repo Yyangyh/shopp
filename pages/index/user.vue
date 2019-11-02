@@ -20,11 +20,11 @@
 						<view class="left_top">
 							<view v-if="nickname">{{nickname}}</view>
 							<view v-else>未修改昵称</view>
-							<!-- <view class="user_right">
+							<view class="user_right">
 								<image src="../../static/image/id.png" mode="widthFix"></image>
 								<text>实名认证</text>
 								<image src="../../static/image/go1.png" mode="widthFix"></image>
-							</view> -->
+							</view>
 						</view>
 						<view class="left_bottom">
 							<image src="../../static/image/check.png" mode="widthFix"></image>
@@ -154,24 +154,36 @@
 						<view class="">
 							待付款
 						</view>
+						<block v-if="order_status[1]">
+							<text v-if="order_status[1].count != 0">{{order_status[1].count}}</text>
+						</block>
 					</view>
 					<view class="tab_list" @click="jump('../subuser/mall_order?status=2')">
 						<image src="../../static/image/refund2.png" mode="widthFix"></image>
 						<view class="">
 							待发货
 						</view>
+						<block v-if="order_status[2]">
+							<text v-if="order_status[2].count != 0">{{order_status[2].count}}</text>
+						</block>
 					</view>
 					<view class="tab_list" @click="jump('../subuser/mall_order?status=3')">
 						<image src="../../static/image/stay_goods.png" mode="widthFix"></image>
 						<view class="">
 							待收货
 						</view>
+						<block v-if="order_status[3]">
+							<text v-if="order_status[3].count != 0">{{order_status[3].count}}</text>
+						</block>
 					</view>
 					<view class="tab_list" @click="jump('../subuser/mall_order?status=4')">
 						<image src="../../static/image/stay_comment2.png" mode="widthFix"></image>
 						<view class="">
 							已完成
 						</view>
+						<!-- <block v-if="order_status[4]">
+							<text v-if="order_status[4].count != 0">{{order_status[4].count}}</text>
+						</block> -->
 					</view>
 					
 				</view>
@@ -209,12 +221,12 @@
 						版通
 					</view>
 				</view>
-				<!-- <view class="tab_list">
+				<view class="tab_list">
 					<image src="../../static/image/realName.png" mode="widthFix"></image>
 					<view class="">
 						实名认证
 					</view>
-				</view> -->
+				</view>
 				<view class="tab_list" @click="jump('../subuser/collect')">
 					<image src="../../static/image/collection2.png" mode="widthFix"></image>
 					<view class="">
@@ -252,7 +264,8 @@
 				style:'',
 				data:'',
 				nickname:'',
-				state:''
+				state:'',
+				order_status:''
 			}
 		},
 		methods:{
@@ -297,6 +310,8 @@
 					}else{
 						that.state = 1
 						that.data = res.data.data
+						that.order_status = res.data.data.user_order_status
+						console.log(res.data.data)
 						that.nickname = res.data.data.nickname
 						uni.setStorageSync('nickname',res.data.data.nickname)
 						uni.setStorageSync('user',res.data.data)
@@ -559,10 +574,23 @@
 		width: 54rpx;
 		margin-bottom: 13rpx;
 	}
-	 .tab_box .tab_list{
+	.tab_box .tab_list{
 		width: 25%;
+		position: relative;
 	}
-	
+	.tab_box .tab_list text{
+		width: 40rpx;
+		height: 40rpx;
+		border-radius: 50%;
+		font-size: 24rpx;
+		text-align: center;
+		line-height: 40rpx;
+		background: #FF431D;
+		color: #fff;
+		position: absolute;
+		top: 0;
+		right: 0;
+	}
 	.list_bottom{
 		background: #fff;
 		margin: 0 20rpx;

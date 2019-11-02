@@ -198,7 +198,7 @@
 			</view>
 		</view>
 		
-		<!-- <view class="eject" v-show="eject_show">
+		<view class="eject" v-show="eject_show">
 			<view class="eject_test">
 				<view class="ej_top">
 					版通（AWT）
@@ -208,7 +208,7 @@
 				</view>
 			</view>
 			<image src="../../static/image/index/close.png" mode="widthFix" @click="close()"></image>
-		</view> -->
+		</view>
 		
 		<!-- <Load v-show = 'show'></Load> -->
 	</view>
@@ -256,7 +256,19 @@
 			})
 		},
 		onShow() {
-			uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
+			// uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
+			if(uni.getStorageSync('notice') == ''){
+				this.eject_show = true
+			}else{
+				var timestamp = (new Date()).getTime()
+				if(timestamp - uni.getStorageSync('start_notice') > 86400000){
+					this.eject_show = true
+				}else{
+					console.log(timestamp - uni.getStorageSync('start_notice'))
+					this.eject_show = false
+				}
+			}
+			
 			// #ifdef H5  
 			let ua = navigator.userAgent.toLowerCase();
 			if (ua.match(/MicroMessenger/i) == "micromessenger") {  //判断是否是微信浏览器
@@ -310,6 +322,8 @@
 		methods: {
 			close(){
 				this.eject_show = false
+				var timestamp = (new Date()).getTime()
+				if(!uni.getStorageSync('start_notice'))uni.setStorageSync('start_notice',timestamp)
 				uni.setStorageSync('notice',1)
 			},
 			jump(url) {

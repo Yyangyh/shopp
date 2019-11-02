@@ -50,7 +50,7 @@
 	 image{
 		width: 33rpx;
 		height: 33rpx;
-		margin-top: 4rpx;
-		margin-right: 14rpx;
+		padding-top: 4rpx;
+		padding-right: 14rpx;
 	}
 </style>

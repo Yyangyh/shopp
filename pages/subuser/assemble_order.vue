@@ -4,9 +4,11 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<view class="top">
-			<image src="../../static/image/return.png" mode="widthFix" @click="returns()"></image>
+			<view class="">
+				<image src="../../static/image/return.png" mode="widthFix" @click="returns()"></image>
+			</view>
 			<text>拼团订单</text>
-			<text></text>
+			<text @click="jump('../subindex/threeindex/my_group')">我的团</text>
 		</view>
 		<view class="mall_box">
 			<view class="box_top">
@@ -197,7 +199,10 @@
 		width: 40rpx;
 	}
 	.top text:nth-of-type(2){
-		width: 40rpx;
+		/* width: 40rpx; */
+		font-size: 28rpx;
+		color: #666;
+		font-weight: 400;
 		display: inline-block;
 	}
 	.mall_box .box_top{

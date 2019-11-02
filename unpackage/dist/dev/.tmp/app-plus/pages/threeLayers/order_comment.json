@@ -2,6 +2,8 @@
   "navigationBarTitleText": "发布评价",
   "titleNView": false,
   "usingComponents": {
-    "returns": "/pages/common/returns"
+    "returns": "/pages/common/returns",
+    "star": "/components/star",
+    "text-area": "/components/textArea"
   }
 }

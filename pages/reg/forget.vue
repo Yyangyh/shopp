@@ -58,6 +58,7 @@
 
 <style scoped>
 	.content{
+		padding-top: 20rpx;
 		overflow: hidden;
 	}
 	.uni-input-placeholder{

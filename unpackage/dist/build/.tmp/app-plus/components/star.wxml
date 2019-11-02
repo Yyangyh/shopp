@@ -1,0 +1,1 @@
+<view class="star"><block wx:for="{{imgList}}" wx:for-item="item" wx:for-index="index" wx:key="index"><image src="{{item.src}}" mode data-event-opts="{{[['tap',[['choose',[index]]]]]}}" bindtap="__e"></image></block><view class="{{[active>=0?'col':'']}}">{{''+amount+''}}</view></view>

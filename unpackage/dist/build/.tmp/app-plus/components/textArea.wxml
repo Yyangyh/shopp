@@ -1,0 +1,1 @@
+<textarea value="{{content}}" placeholder="说点什么吧" data-event-opts="{{[['input',[['__set_model',['','content','$event',[]]],['saying',['$event']]]]]}}" bindinput="__e"></textarea>

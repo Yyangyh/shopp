@@ -41,8 +41,8 @@
 					<progress percent="0"  stroke-width="4" backgroundColor="#C9E8FF"/>
 				</view>
 			</view>
-			<view class="">
-				<button  @click="Sign_In()">签到</button>
+			<view class="" v-if="data !=''">
+				<button  @click="Sign_In()">{{data.today.data != ''?'已签到':'签到'}}</button>
 			</view>
 		</view>
 		<!-- <view class="register_bottom">
@@ -98,6 +98,7 @@
 					console.log(res)
 					if(res.code == 0){
 						self.show = 1
+						self.data.today.data.push('1')
 					}else{
 						uni.showToast({
 							icon:'none',

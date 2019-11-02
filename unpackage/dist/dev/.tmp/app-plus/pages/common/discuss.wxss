@@ -1,0 +1,63 @@
+
+.user_comment.data-v-80d90d74 {
+	background: #fff;
+	margin-top: 20rpx;
+	padding: 20rpx 30rpx;
+}
+.user_comment .user_top.data-v-80d90d74 {
+	font-weight: bold;
+	font-size: 28rpx;
+}
+.user_comment .user.data-v-80d90d74 {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+	margin: 20rpx 0;
+}
+.user_comment .user .user_img.data-v-80d90d74 {
+	width: 90rpx;
+	height: 90rpx;
+}
+.user_comment .user .user_test.data-v-80d90d74 {
+	margin: 0 20rpx;
+	font-size: 32rpx;
+}
+.user_comment .user .user_test view.data-v-80d90d74 {
+	font-weight: bold;
+	color: #333333;
+	font-size: 28rpx;
+}
+.user_comment .user .user_test text.data-v-80d90d74 {
+	font-size: 24rpx;
+	color: #999999;
+}
+.user_comment .user .user_star.data-v-80d90d74 {
+	-webkit-align-self: flex-start;
+	    -ms-flex-item-align: start;
+	        align-self: flex-start;
+}
+.user_comment .user .user_star image.data-v-80d90d74 {
+	height: 26rpx;
+	width: 26rpx;
+}
+.user_comment .com_content .content_test view.data-v-80d90d74 {
+	font-size: 24rpx;
+	color: #666666;
+}
+.user_comment .com_content .content_img image.data-v-80d90d74 {
+	height: 120rpx;
+	width: 120rpx;
+	margin-right: 20rpx;
+	margin-top: 30rpx;
+}
+.user_comment .com_content .more.data-v-80d90d74 {
+	font-size: 32rpx;
+	color: #666666;
+	margin: 20rpx 0;
+}
+

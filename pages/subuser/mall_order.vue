@@ -70,9 +70,9 @@
 						</view>
 						<view class="pl_box">
 							<view></view>
-							<view class="pl" v-if='item.status == 4 ' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
-								评论<!-- && item.user_is_comments ==0 -->
-							</view>
+							<!-- <view class="pl" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
+								评论
+							</view> -->
 						</view>
 					</view><!-- 加多一个盒子套住评论 -->
 
@@ -82,17 +82,18 @@
 						</view> -->
 						
 						<view class="bottom_one">
-							<!-- <view class="bottom3" v-if= 'item.status == 4'  @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
-								评论
-							</view> -->
-							<view></view>
+							<view class="bottom2">
+								订单金额<text>￥{{item.total_price}}</text>
+							</view>
+							
 							<view>
-								<view class="bottom2">
-									订单金额<text>￥{{item.total_price}}</text>
+								<view class="bottom3" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
+									评论
 								</view>
 								<view class="bottom3" @click="jump('threeuser/order_details?id='+item.id)">
 									详情
 								</view>
+								
 							</view>
 							
 						</view>
@@ -314,6 +315,7 @@
 		display: flex;
 		align-items: center;
 		margin-top: 30rpx;
+		
 	}
 
 	.mall_box .box_bottom .bottom_list .list_middle .middle1 {
@@ -350,7 +352,7 @@
 	}
 
 	.mall_box .box_bottom .bottom_list .list_bottom .bottom2 {
-		display: inline-block;
+		text-align: right;
 		margin: 10rpx 0;
 	}
 
@@ -382,8 +384,8 @@
 		margin-left: 20rpx;
 	}
 	.bottom_one{
-		display: flex;
-		justify-content: space-between;
+		/* display: flex;
+		justify-content: space-between; */
 	}
 	.pl_box{
 		margin-bottom: 10rpx;

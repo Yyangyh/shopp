@@ -107,7 +107,17 @@
 				})
 			},
 			wx(){
-				window.location.href = this.service.api_root.common.Auth
+				// #ifdef H5
+					window.location.href = this.service.api_root.common.Auth
+				// #endif
+				// // #ifdef APP-PLUS
+				// 	uni.login({
+				// 	  provider: 'weixin',
+				// 	  success: function (loginRes) {
+				// 	    console.log(loginRes.authResult);
+				// 	  }
+				// 	});
+				// // #endif
 			}
 		},
 		onShow() {

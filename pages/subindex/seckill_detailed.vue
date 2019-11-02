@@ -45,35 +45,9 @@
 			</view>
 		</view>
 		
-		<view class="user_comment">
-			<view class="user_top">
-				用户评论
-			</view>
-			<view class="user">
-				<image class="user_img" src="../../static/image/portrait.png" mode="widthFix"></image>
-				<view class="user_test">
-					<view >小小纹~</view>
-					<text>2019-05-01</text>
-				</view>
-				<view class="user_star">
-					<image src="../../static/image/star.png" mode="widthFix"></image>
-				</view>
-			</view>
-			<view class="com_content">
-				<view class="content_test">
-					<view class="">
-						这个评论插件叫AntSay，简单三步即可在自己的网站里嵌入，超轻。
-					</view>
-				</view>
-				<view class="content_img">
-					<image src="../../static/image/greenImg.png" mode=""></image>
-					<image src="../../static/image/greenImg.png" mode=""></image>
-					<image src="../../static/image/greenImg.png" mode=""></image>
-				</view>
-				<view class="more">
-					查看更多评论
-				</view>
-			</view>
+		<discuss :comments='comments'></discuss>
+		<view v-if="comments !=''" class="more">
+			查看更多评论
 		</view>
 		
 		<view class="pro_img">
@@ -223,9 +197,11 @@
 
 <script>
 	import share from'../common/share.vue'
+	import discuss from '../common/discuss.vue'
 	export default {
 		components:{
-			share
+			share,
+			discuss
 		},
 		data() {
 			return {
@@ -243,6 +219,7 @@
 				data_list:'',
 				transparency:0,
 				share_arr:{},
+				comments:''
 			}
 		},
 		onPageScroll(e){
@@ -316,6 +293,13 @@
 				self.data = res.data.goods
 				self.share_arr.Title = self.data.title//分享
 				self.share_arr.ImageUrl = self.data.images//分享
+				
+				if(self.data.comments != ''){
+					self.comments = self.data.comments[0]  //评论
+					let rating_num = new Array(Number(self.comments.rating)) //评论
+					self.comments.rating_num = rating_num  //评论
+				}
+				
 				let list =  res.data.goods.specifications.choose
 				for (let s of list) {
 					for (let k of s.value) {
@@ -584,10 +568,11 @@
 		margin-top: 30rpx;
 	}
 	
-	.user_comment .com_content .more {
-		font-size: 32rpx;
+	.more{
+		font-size: 28rpx;
 		color: #666666;
-		margin: 20rpx 0;
+		padding: 20rpx 20rpx;
+		background: #FFFfff;
 	}
 	.pro_img{
 		

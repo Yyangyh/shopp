@@ -44,8 +44,11 @@
 				<image src="../../static/image/go.png" mode="widthFix"></image>
 			</view>
 		</view> -->
-
-		<view class="user_comment">
+		<discuss :comments='comments'></discuss>
+		<view v-if="comments !=''" class="more">
+			查看更多评论
+		</view>
+		<!-- <view class="user_comment">
 			<view class="user_top">
 				用户评论
 			</view>
@@ -83,7 +86,7 @@
 					查看更多评论
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 		<view class="pro_img">
 			<view class="img_test">
@@ -192,9 +195,11 @@
 
 <script>
 	import share from'../common/share.vue'
+	import discuss from '../common/discuss.vue'
 	export default {
 		components:{
-			share
+			share,
+			discuss
 		},
 		data() {
 			return {
@@ -213,7 +218,8 @@
 				is_favor:'',
 				data_guess:'',
 				transparency:0,
-				share_arr:{}
+				share_arr:{},
+				comments:''
 			}
 		},
 		onPageScroll(e){
@@ -377,6 +383,12 @@
 				
 				self.share_arr.Title = self.data.title//分享
 				self.share_arr.ImageUrl = self.data.images//分享
+				
+				if(self.data.comments != ''){
+					self.comments = self.data.comments[0]  //评论
+					let rating_num = new Array(Number(self.comments.rating)) //评论
+					self.comments.rating_num = rating_num  //评论
+				}
 				
 				self.price = res.data.goods.price
 				self.inventory = res.data.goods.inventory
@@ -619,10 +631,11 @@
 		margin-top: 30rpx;
 	}
 	
-	.user_comment .com_content .more {
-		font-size: 32rpx;
+	.more {
+		font-size: 28rpx;
 		color: #666666;
-		margin: 20rpx 0;
+		padding: 20rpx 20rpx;
+		background: #FFFfff;
 	}
 	
 	.pro_img {}

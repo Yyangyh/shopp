@@ -1,0 +1,14 @@
+
+.star{
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+}
+image{
+	width: 33rpx;
+	height: 33rpx;
+	margin-top: 4rpx;
+	margin-right: 14rpx;
+}
+

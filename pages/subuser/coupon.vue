@@ -17,18 +17,18 @@
 			</view>
 		</view>
 		<view class="cou_box">
-			<view class="cou_list">
+			<view class="cou_list" v-for="(item,index) in data" :key='item.id'>
 				<view class="cou_test">
 					<view class="cou_left">
 						<view class="left_one">
-							￥<text>100</text>优惠券名称
+							￥<text>100</text>
 						</view>
 						<view class="left_two">
-							满减 满300减100
+							{{item.use_limit_type_name}}
 						</view>
-						<view class="left_two">
-							有效期：2019-05-04至2019-05-06
-						</view>
+						<!-- <view class="left_two">
+							有效期：{{item.fixed_time_start}}至{{item.fixed_time_end}}
+						</view> -->
 					</view>
 					
 					<view class="cou_right">
@@ -71,7 +71,8 @@
 		data() {
 			return {
 				title:'优惠券',
-				show:''
+				show:'',
+				data:''
 			}
 		},
 		methods:{
@@ -82,6 +83,7 @@
 		onShow() {
 			this.service.entire(this,'get',this.service.api_root.subuser.CouponList,{},function(self,res){
 				console.log(res)
+				self.data = res.data
 			})
 		}
 	}

@@ -140,6 +140,10 @@
 .mall_box .box_bottom .bottom_list .list_middle .middle1 view.data-v-6d2f36f1:nth-of-type(1) {
 	font-size: 28rpx;
 	font-weight: bold;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
 }
 .mall_box .box_bottom .bottom_list .list_middle .middle2.data-v-6d2f36f1 {
 	font-size: 26rpx;
@@ -161,7 +165,7 @@
 	color: #999999;
 }
 .mall_box .box_bottom .bottom_list .list_bottom .bottom2.data-v-6d2f36f1 {
-	display: inline-block;
+	text-align: right;
 	margin: 10rpx 0;
 }
 .mall_box .box_bottom .bottom_list .list_bottom .bottom2 text.data-v-6d2f36f1 {
@@ -192,14 +196,8 @@
 	margin-left: 20rpx;
 }
 .bottom_one.data-v-6d2f36f1{
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	/* display: flex;
+	justify-content: space-between; */
 }
 .pl_box.data-v-6d2f36f1{
 	margin-bottom: 10rpx;

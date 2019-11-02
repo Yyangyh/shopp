@@ -28,7 +28,7 @@
 <style>
 	
 	textarea{
-		width: 100%;
+		width: 590rpx;
 		height: 162rpx;
 		color: #CCCCCC;
 		box-sizing: border-box;
