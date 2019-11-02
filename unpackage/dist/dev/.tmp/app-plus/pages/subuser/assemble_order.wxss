@@ -48,7 +48,10 @@
 	width: 40rpx;
 }
 .top text.data-v-61cf2e2f:nth-of-type(2){
-	width: 40rpx;
+	/* width: 40rpx; */
+	font-size: 28rpx;
+	color: #666;
+	font-weight: 400;
 	display: inline-block;
 }
 .mall_box .box_top.data-v-61cf2e2f{

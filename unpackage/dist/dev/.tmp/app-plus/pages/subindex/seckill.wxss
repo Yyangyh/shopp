@@ -219,4 +219,7 @@ page.data-v-79463ebc {
 	width: 310rpx;
 	height: 310rpx;
 }
+.seckill_image.data-v-79463ebc{
+	text-align: center;
+}
 

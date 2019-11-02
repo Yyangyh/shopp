@@ -17,46 +17,49 @@
 			</view>
 		</view>
 		<view class="cou_box">
-			<view class="cou_list" v-for="(item,index) in data" :key='item.id'>
-				<view class="cou_test">
-					<view class="cou_left">
-						<view class="left_one">
-							￥<text>100</text>
+			<block v-if="show == 0">
+				<view class="cou_list" v-for="(item,index) in data" :key='item.id'>
+					<view class="cou_test">
+						<view class="cou_left">
+							<view class="left_one">
+								￥<text>{{item.discount_value}}</text>{{item.type == 1?'折':'元'}}
+							</view>
+							<view class="left_two">
+								{{item.use_limit_type_name}}
+							</view>
+							<!-- <view class="left_two">
+								有效期：{{item.fixed_time_start}}至{{item.fixed_time_end}}
+							</view> -->
 						</view>
-						<view class="left_two">
-							{{item.use_limit_type_name}}
+						
+						<view class="cou_right" :class="{already:item.is_operable == 0}" @click="receive(index)">
+							{{item.is_operable == 0?'已领取':'领取'}}
 						</view>
-						<!-- <view class="left_two">
-							有效期：{{item.fixed_time_start}}至{{item.fixed_time_end}}
+					</view>
+				</view>
+			</block>
+			<block v-else>
+				<view class="cou_list" v-for="(item,index) in user_data" :key='item.id'>
+					
+					<view class="cou_test">
+						<view class="cou_left">
+							<view class="left_one">
+								￥<text>{{item.coupon.discount_value}}</text>{{item.coupon.type == 1?'折':'元'}}
+							</view>
+							<view class="left_two">
+								{{item.coupon.use_limit_type_name}}
+							</view>
+							<view class="left_two">
+								有效期：{{item.time_start_text}}至{{item.time_end_text}}
+							</view>
+						</view>
+						
+						<!-- <view class="cou_right" :class="{already:item.coupon.is_operable == 0}">
+							{{item.coupon.is_operable == 0?'已领取':'领取'}}
 						</view> -->
 					</view>
-					
-					<view class="cou_right">
-						领取
-					</view>
 				</view>
-				
-			</view>
-			<view class="cou_list">
-				<view class="cou_test">
-					<view class="cou_left">
-						<view class="left_one">
-							￥<text>100</text>优惠券名称
-						</view>
-						<view class="left_two">
-							满减 满300减100
-						</view>
-						<view class="left_two">
-							有效期：2019-05-04至2019-05-06
-						</view>
-					</view>
-					
-					<view class="cou_right already">
-						已领取
-					</view>
-				</view>
-				
-			</view>
+			</block>
 		</view>
 	</view>
 </template>
@@ -72,19 +75,46 @@
 			return {
 				title:'优惠券',
 				show:'',
-				data:''
+				data:'',
+				user_data:''
 			}
 		},
 		methods:{
-			
-			
+			receive(index){
+				this.service.entire(this,'get',this.service.api_root.subuser.Receive,{coupon_id:this.data[index].id},function(self,res){
+					if(res.code == 0){
+						self.data[index].is_operable = 0
+					}else{
+						uni.showToast({
+							icon:'none',
+							title:res.msg
+						})
+					}
+				})
+			},
+			CouponList(){
+				this.service.entire(this,'get',this.service.api_root.subuser.CouponList,{},function(self,res){
+					self.data = res.data
+				})
+			},
+			CouponUserList(){
+				this.service.entire(this,'get',this.service.api_root.subuser.CouponUserList,{},function(self,res){
+					self.user_data = res.data.not_use
+				})
+			}
 		},
 		
 		onShow() {
-			this.service.entire(this,'get',this.service.api_root.subuser.CouponList,{},function(self,res){
-				console.log(res)
-				self.data = res.data
-			})
+			this.CouponList()
+		},
+		watch:{
+			show(){
+				if(this.show == 2){
+					this.CouponUserList()
+				}else{
+					this.CouponList()
+				}
+			}
 		}
 	}
 </script>

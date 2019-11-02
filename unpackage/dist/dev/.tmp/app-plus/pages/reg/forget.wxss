@@ -1,5 +1,6 @@
 
 .content.data-v-21c38f5c{
+	padding-top: 20rpx;
 	overflow: hidden;
 }
 .uni-input-placeholder.data-v-21c38f5c{

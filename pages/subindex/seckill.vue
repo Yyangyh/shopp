@@ -21,7 +21,7 @@
 			</view>
 			<view class="se_countdown">
 				<view class="co_top">
-					抢购中，先下单先得哦！
+					{{data != ''?'抢购中，先下单先得哦！':'暂无抢购'}}
 				</view>
 				<view class="co_bottom" v-show="state == 1">
 					距结束<text>{{hour}}</text>:<text>{{minute}}</text>:<text>{{second}}</text>
@@ -30,41 +30,47 @@
 					距开始<text>{{hour}}</text>:<text>{{minute}}</text>:<text>{{second}}</text>
 				</view>
 			</view>
-			<view class="tab" v-for="(item,index) in data" :key='item.goods_id'>
-				<view class="tab_top">
-					<image :src="item.goods_image" mode="aspectFill"></image>
-					<view class="tab_right">
-						<view class="test_one">
-							{{item.goods_name}}
+			<block v-if="data != ''">
+				<view class="tab" v-for="(item,index) in data" :key='item.goods_id'>
+					<view class="tab_top">
+						<image :src="item.goods_image" mode="aspectFill"></image>
+						<view class="tab_right">
+							<view class="test_one">
+								{{item.goods_name}}
+							</view>
+							<!-- <view class="test_two">
+								{{item.title}}
+							</view> -->
+							<view class="price">
+								<text class="price_one">￥{{item.price}}</text>
+								<text class="price_two">￥{{item.goods_price}}</text>
+							</view>
 						</view>
-						<!-- <view class="test_two">
-							{{item.title}}
-						</view> -->
-						<view class="price">
-							<text class="price_one">￥{{item.price}}</text>
-							<text class="price_two">￥{{item.goods_price}}</text>
+					</view>
+					<view class="tab_bottom">
+						<view class="bo_one">
+							<view class="">
+								已售{{item.percentage}}%
+							</view>
+							<view class="prog">
+								<progress :percent="item.percentage" active stroke-width="3" />
+							</view>
+						</view>
+						<view class="bo_two" v-show="state == 1" v-if="item.percentage == 100">
+							已售完
+						</view>
+						<view class="bo_two" v-show="state == 1" @click="jump('./seckill_detailed',index,item.goods_id)" v-else>
+							去抢购
+						</view>
+						<view class="not" v-show="state == 0">
+							即将开始
 						</view>
 					</view>
 				</view>
-				<view class="tab_bottom">
-					<view class="bo_one">
-						<view class="">
-							已售{{item.percentage}}%
-						</view>
-						<view class="prog">
-							<progress :percent="item.percentage" active stroke-width="3" />
-						</view>
-					</view>
-					<view class="bo_two" v-show="state == 1" v-if="item.percentage == 100">
-						已售完
-					</view>
-					<view class="bo_two" v-show="state == 1" @click="jump('./seckill_detailed',index,item.goods_id)" v-else>
-						去抢购
-					</view>
-					<view class="not" v-show="state == 0">
-						即将开始
-					</view>
-				</view>
+			</block>
+			
+			<view v-else  class="seckill_image">
+				<image src="/static/image/secondary/seckill.png" mode=""></image>
 			</view>
 		</view>
 		
@@ -448,5 +454,8 @@
 		margin-top: 50rpx;
 		width: 310rpx;
 		height: 310rpx;
+	}
+	.seckill_image{
+		text-align: center;
 	}
 </style>

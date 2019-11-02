@@ -233,10 +233,11 @@
 		margin-right: 20rpx;
 		margin-top: 30rpx;
 }
-.user_comment .com_content .more.data-v-59df2b64 {
-		font-size: 32rpx;
+.more.data-v-59df2b64 {
+		font-size: 28rpx;
 		color: #666666;
-		margin: 20rpx 0;
+		padding: 20rpx 20rpx;
+		background: #FFFfff;
 }
 .pro_img.data-v-59df2b64 {}
 .pro_img .img_test.data-v-59df2b64 {

@@ -1,14 +1,14 @@
 
-.content.data-v-347d00d2{
+.content.data-v-24f28bd6{
 	overflow: hidden;
 }
-.register_img image.data-v-347d00d2{
+.register_img image.data-v-24f28bd6{
 	width: 100%;
 	height: 150rpx;
 }
-.register.data-v-347d00d2{
+.register.data-v-24f28bd6{
 }
-.register_top.data-v-347d00d2{
+.register_top.data-v-24f28bd6{
 	width: 700rpx;
 	-webkit-box-sizing: border-box;
 	        box-sizing: border-box;
@@ -23,7 +23,7 @@
 	-webkit-box-shadow:0px 4rpx 6rpx 0px rgba(0, 0, 0, 0.1);
 	        box-shadow:0px 4rpx 6rpx 0px rgba(0, 0, 0, 0.1);
 }
-.register_top .re_box.data-v-347d00d2{
+.register_top .re_box.data-v-24f28bd6{
 	position: relative;
 	height: 124rpx;
 	display: -webkit-box;
@@ -40,18 +40,18 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.register_top .re_box view.data-v-347d00d2{
+.register_top .re_box view.data-v-24f28bd6{
 }
-.register_top .re_box view text.data-v-347d00d2{
+.register_top .re_box view text.data-v-24f28bd6{
 	text-align: center;
 	display: inline-block;
 	width: 100rpx;
 }
-.register_top .re_box .re_top.data-v-347d00d2{
+.register_top .re_box .re_top.data-v-24f28bd6{
 	font-size: 20rpx;
 	color: #999999;
 }
-.register_top .re_box .re_middle.data-v-347d00d2{
+.register_top .re_box .re_middle.data-v-24f28bd6{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -63,11 +63,11 @@
 	        transform: translateY(-50%);
 	z-index: 99;
 }
-.register_top .re_box .re_middle view.data-v-347d00d2{
+.register_top .re_box .re_middle view.data-v-24f28bd6{
 	width: 100rpx;
 	text-align: center;
 }
-.register_top .re_box .re_middle view text.data-v-347d00d2{
+.register_top .re_box .re_middle view text.data-v-24f28bd6{
 	width: 30rpx;
 	height: 30rpx;
 	line-height: 30rpx;
@@ -76,15 +76,15 @@
 	font-size: 22rpx;
 	border-radius: 50%;
 }
-.show.data-v-347d00d2{
+.show.data-v-24f28bd6{
 	background: #1D74FF !important;
 	color: #fff !important;
 }
-.register_top .re_box .re_bottom.data-v-347d00d2{
+.register_top .re_box .re_bottom.data-v-24f28bd6{
 	color: #1D74FF;
 	font-size: 20rpx;
 }
-.register_top .re_box .progress.data-v-347d00d2{
+.register_top .re_box .progress.data-v-24f28bd6{
 	position: absolute;
 	width: 100%;
 	top: 50%;
@@ -93,7 +93,7 @@
 	        transform: translateY(-50%);
 	z-index: 1;
 }
-.register_top button.data-v-347d00d2{
+.register_top button.data-v-24f28bd6{
 	width: 584rpx;
 	height: 80rpx;
 	line-height: 80rpx;
@@ -102,7 +102,7 @@
 	background: #1D74FF;
 	color: #fff;
 }
-.register_bottom .re_one.data-v-347d00d2{
+.register_bottom .re_one.data-v-24f28bd6{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -117,29 +117,29 @@
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.register_bottom .re_one text.data-v-347d00d2{
+.register_bottom .re_one text.data-v-24f28bd6{
 	color: #1D74FF;
 	margin: 0 8rpx;
 }
-.register_bottom .re_one .line.data-v-347d00d2{
+.register_bottom .re_one .line.data-v-24f28bd6{
 	width: 46rpx;
 	display: inline-block;
 	height: 2rpx;
 	background: #333333;
 	margin: 0 38rpx;
 }
-.register_bottom .re_two.data-v-347d00d2{
+.register_bottom .re_two.data-v-24f28bd6{
 	margin-top: 22rpx;
 	text-align: center;
 	font-size: 26rpx;
 	color: #333333;
 }
-.register_bottom image.data-v-347d00d2{
+.register_bottom image.data-v-24f28bd6{
 	height: 30rpx;
 	width: 62rpx;
 	margin-right: 6rpx;
 }
-.register.data-v-347d00d2{
+.register.data-v-24f28bd6{
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -148,7 +148,7 @@
 	z-index: 998;
 	background:rgba(0,0,0,.7);
 }
-.register .close.data-v-347d00d2{
+.register .close.data-v-24f28bd6{
 	width: 74rpx;
 	height: 74rpx;
 	position: absolute;
@@ -157,7 +157,7 @@
 	top: 50%;
 	margin-top: 387rpx;
 }
-.register .box.data-v-347d00d2{
+.register .box.data-v-24f28bd6{
 	background: #fff;
 	height: 680rpx;
 	width: 600rpx;
@@ -172,22 +172,22 @@
 	    -ms-transform: translate(-50%,-50%);
 	        transform: translate(-50%,-50%);
 }
-.register .box .test_one.data-v-347d00d2{
+.register .box .test_one.data-v-24f28bd6{
 	color: #FFD76A;
 	font-size: 54rpx;
 	font-weight: bold;
 }
-.register .box .test_two.data-v-347d00d2{
+.register .box .test_two.data-v-24f28bd6{
 	margin: 32rpx 0 14rpx 0;
 }
-.register .box .test_two text.data-v-347d00d2{
+.register .box .test_two text.data-v-24f28bd6{
 	color: #F09B22;
 }
-.register .box .test_two image.data-v-347d00d2{
+.register .box .test_two image.data-v-24f28bd6{
 	height: 30rpx;
 	width: 62rpx;
 }
-.register .box image.data-v-347d00d2{
+.register .box image.data-v-24f28bd6{
 	width: 448rpx;
 	height: 448rpx;
 }

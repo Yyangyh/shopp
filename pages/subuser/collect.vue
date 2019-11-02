@@ -4,7 +4,9 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<view class="top">
-			<image src="/static/image/return.png" mode="widthFix" @click="returns()"></image>
+			<view class="top_enlarge"  @click="returns()">
+				<image src="/static/image/return.png" mode="widthFix" ></image>
+			</view>
 			<text>收藏</text>
 			<text class="show_test" v-if="show_test == true" @click="show_test = !show_test">编辑</text>
 			<text class="show_test" v-else @click="show_test = !show_test">完成</text>

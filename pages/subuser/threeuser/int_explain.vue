@@ -5,7 +5,9 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<view class="top">
-			<image src="/static/image/threeLayers/return1.png" mode="widthFix" @click="returns()"></image>
+			<view class="top_enlarge"  @click="returns()">
+				<image src="/static/image/threeLayers/return1.png" mode="widthFix" ></image>
+			</view>
 			<text>积分说明</text>
 			<text></text>
 		</view>

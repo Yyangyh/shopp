@@ -1,20 +1,20 @@
 
-page.data-v-e2081e8a{
+page.data-v-7f517438{
 	background: #F1F1F1;
 	padding-bottom: 40rpx;
 }
-.content.data-v-e2081e8a{
+.content.data-v-7f517438{
 	padding-top: 0;
 }
-.status_bar.data-v-e2081e8a{
+.status_bar.data-v-7f517438{
 	/* background: rgba(0,0,0,0); */
 }
-.int_back.data-v-e2081e8a{
+.int_back.data-v-7f517438{
 	position: absolute;
 	z-index: 0;
 	width: 100%;
 }
-.top.data-v-e2081e8a{
+.top.data-v-7f517438{
 	position: relative;
 	height: 105rpx;
 	padding: 0 44rpx;
@@ -38,21 +38,21 @@ page.data-v-e2081e8a{
 	font-weight: bold;
 	color: #fff;
 }
-.top image.data-v-e2081e8a{
+.top image.data-v-7f517438{
 	height: 40rpx;
 	width: 40rpx;
 }
-.top text.data-v-e2081e8a:nth-of-type(2){
+.top text.data-v-7f517438:nth-of-type(2){
 	width: 40rpx;
 	display: inline-block;
 }
-.integral.data-v-e2081e8a{
+.integral.data-v-7f517438{
 	position: relative;
 	margin: 0 20rpx;
 	background: #fff;
 	border-radius: 10rpx;
 }
-.integral .int_top.data-v-e2081e8a{
+.integral .int_top.data-v-7f517438{
 	margin: 0 20rpx;
 	font-size: 32rpx;
 	font-weight: bold;
@@ -65,21 +65,21 @@ page.data-v-e2081e8a{
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.integral .int_top view.data-v-e2081e8a{
+.integral .int_top view.data-v-7f517438{
 	width: 33%;
 	padding: 36rpx 0;
 	text-align: center;
 	border-bottom: 4rpx solid #F5F5F5;
 }
-.show.data-v-e2081e8a{
+.show.data-v-7f517438{
 	color: #1D9DFF;
 	border-bottom-color: #1D9DFF !important;
 }
-.int_box.data-v-e2081e8a{
+.int_box.data-v-7f517438{
 	margin: 0 20rpx;
 	min-height: 900rpx;
 }
-.int_box .box_list.data-v-e2081e8a{
+.int_box .box_list.data-v-7f517438{
 	padding: 28rpx 16rpx;
 	font-size: 28rpx;
 	color: #333333;
@@ -97,11 +97,11 @@ page.data-v-e2081e8a{
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.int_box .box_list .list_left .time.data-v-e2081e8a{
+.int_box .box_list .list_left .time.data-v-7f517438{
 	color: #999999;
 	font-size: 24rpx;
 }
-.int_box .box_list .list_right.data-v-e2081e8a{
+.int_box .box_list .list_right.data-v-7f517438{
 	color: #FF431D;
 	font-weight:500;
 	font-size: 32rpx;

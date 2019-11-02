@@ -80,6 +80,7 @@
     "pages/threeLayers/modify_phone",
     "pages/threeLayers/resetSecond",
     "pages/threeLayers/setSecond",
+    "pages/threeLayers/comment_list",
     "pages/threeLayers/modifyPwd",
     "pages/login/message_login",
     "pages/reg/reg",

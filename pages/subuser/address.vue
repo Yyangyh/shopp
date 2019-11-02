@@ -4,7 +4,9 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<view class="top">
-			<image src="../../static/image/return.png" mode="widthFix" @click="returns()"></image>
+			<view class="top_enlarge"  @click="returns()">
+				<image src="/static/image/return.png" mode="widthFix" ></image>
+			</view>
 			<text>收货地址</text>
 			<text @click="jump('./addto')">新增</text>
 		</view>

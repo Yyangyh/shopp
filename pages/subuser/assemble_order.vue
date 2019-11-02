@@ -4,8 +4,8 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<view class="top">
-			<view class="">
-				<image src="../../static/image/return.png" mode="widthFix" @click="returns()"></image>
+			<view class="top_enlarge"  @click="returns()">
+				<image src="/static/image/return.png" mode="widthFix" ></image>
 			</view>
 			<text>拼团订单</text>
 			<text @click="jump('../subindex/threeindex/my_group')">我的团</text>

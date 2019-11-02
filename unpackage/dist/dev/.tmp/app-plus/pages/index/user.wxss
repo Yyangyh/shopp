@@ -328,6 +328,20 @@ page.data-v-ff13191c{
 }
 .tab_box .tab_list.data-v-ff13191c{
 	width: 25%;
+	position: relative;
+}
+.tab_box .tab_list text.data-v-ff13191c{
+	width: 40rpx;
+	height: 40rpx;
+	border-radius: 50%;
+	font-size: 24rpx;
+	text-align: center;
+	line-height: 40rpx;
+	background: #FF431D;
+	color: #fff;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 .list_bottom.data-v-ff13191c{
 	background: #fff;

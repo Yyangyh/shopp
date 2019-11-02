@@ -32,4 +32,20 @@
 		background: #1D9DFF;
 		position: fixed;
 	}
+	.mask_black {
+		position: fixed;
+		height: 100%;
+		width: 100%;
+		background: rgba(0, 0, 0, 1);
+		opacity: 0.3;
+		top: 0;
+		left: 0;
+		z-index: 998;
+	}
+	.top_enlarge{
+		display: flex;
+		align-items: center;
+		height: 100%;
+		width: 90rpx;
+	}
 </style>

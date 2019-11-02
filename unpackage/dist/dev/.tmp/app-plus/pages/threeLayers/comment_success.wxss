@@ -1,5 +1,5 @@
 
-.all{
+.all {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -14,7 +14,7 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.success{
+.success {
 	margin: 84rpx auto 0;
 	font-size: 32rpx;
 	color: #1D9DFF;
@@ -27,25 +27,25 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.success image{
+.success image {
 	width: 40rpx;
 	height: 40rpx;
 	vertical-align: baseline;
 	margin: 8rpx 15rpx 0 0;
 }
-.word{
+.word {
 	font-size: 24rpx;
 	color: #333333;
 	margin-top: 26rpx;
 	margin-bottom: 78rpx;
 }
-.btn{
+.btn {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 }
-.btn1{
+.btn1 {
 	width: 210rpx;
 	height: 75rpx;
 	border-radius: 40rpx;
@@ -57,7 +57,65 @@
 	line-height: 75rpx;
 	text-align: center;
 }
-.btn1:first-child{
-	margin-right: 60rpx;
+.list {
+	width: 100%;
+	height: 120rpx;
+	padding: 0 20rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	-webkit-box-pack: justify;
+	-webkit-justify-content: space-between;
+	    -ms-flex-pack: justify;
+	        justify-content: space-between;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.list .left {
+	display: -webkit-box;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+	display: flex;
+	height: 120rpx;
+	-webkit-box-align: center;
+	-webkit-align-items: center;
+	    -ms-flex-align: center;
+	        align-items: center;
+}
+.list .left image {
+	width: 98rpx;
+	height: 62rpx;
+	margin-right: 14rpx;
+}
+.list .left .words {
+	font-size: 24rpx;
+	color: #333333;
+	width: 330rpx;
+	-o-text-overflow: -o-ellipsis-lastline;
+	   text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	   text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+.list .right {
+	width: 150rpx;
+	height: 60rpx;
+	line-height: 60rpx;
+	text-align: center;
+	color: #333333;
+	font-size: 24rpx;
+	border-radius: 30rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+	border: 2rpx solid #333333;
 }
 

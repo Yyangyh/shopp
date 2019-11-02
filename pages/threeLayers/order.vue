@@ -74,9 +74,14 @@
 			</view>
 			<view class="list">
 				<text>优惠券</text>
-				<text>无</text>
+				<view class="discount" v-if="coupon_list != ''" @click="show = !show">
+					<text>{{recording}}</text>
+					<image src="../../static/image/coupon.png" mode="widthFix"></image>
+				</view>
+				
+				<text v-else>无</text>
 			</view>
-		</view>
+		</view>	
 		
 		<view class="void"></view>
 		<!-- 空隙 -->
@@ -107,6 +112,51 @@
 				<button @click="payments()">支付订单</button>
 			</view>
 		</view>
+		
+		<view class="mask_black" @click="show = !show" v-show="show">
+		</view>
+		<view class="discount_box"  :class="show===false ? 'mask_none' : show===true ? 'mask_show' : ''">
+			<view class="box_top">
+				优惠详情
+			</view>
+			<view class="box_list">
+				<scroll-view  scroll-y="true" class="scroll-Y">
+					<view class="cou_list" v-for="(item,index) in coupon_list" :key='index' @click="discount_choice(index)">
+						<block v-if="item.coupon">
+							<view class="cou_test">
+								<view class="cou_left">
+									<view class="left_one">
+										￥<text>{{item.coupon.discount_value}}</text>{{item.coupon.type == 1?'折':'元'}}
+									</view>
+									<view class="left_two">
+										{{item.coupon.use_limit_type_name}}
+									</view>
+									<view class="left_two">
+										<view class="">
+											有效期：{{item.time_start_text}}
+										</view>
+										<view class="">
+											-{{item.time_end_text}}
+										</view>
+									</view>
+								</view>
+								<image v-show="item.choice" src="/static/image/threeLayers/choice.png" mode="widthFix"></image>
+							</view>
+						</block>
+						<block v-else>
+							<view class="cou_test">
+								<view class="">
+									{{item.not_coupon}}
+								</view>
+								<image v-show="item.choice" src="/static/image/threeLayers/choice.png" mode="widthFix"></image>
+							</view>
+						</block>
+					</view>
+				</scroll-view>
+			</view>
+			<button @click="finish()">完成</button>
+		</view>
+		
 	</view>
 </template>
 
@@ -124,7 +174,10 @@
 				id:'',
 				payment_id:'',
 				show_add:3,
-				require_data:''
+				require_data:'',
+				coupon_list:'',
+				show:false,
+				recording:'未选择'
 			}
 		},
 		components:{
@@ -143,6 +196,60 @@
 				this.payment[index].choice = true
 				this.payment_id = this.payment[index].id
 				this.payment_name = this.payment[index].payment
+			},
+			discount_choice(index){
+				for (let s of this.coupon_list) {
+					s.choice = false
+				}
+				this.coupon_list[index].choice = true
+				console.log(this.coupon_list)
+			},
+			finish(){
+				this.show = false
+				this.coupon_list.forEach((item,index) => {
+					if(item.choice == true){
+						if(item.id){
+							this.require_data.coupon_id = this.coupon_list[index].id
+							this.coupon_list[index].coupon.type == 0?this.recording = '￥'+this.coupon_list[index].coupon.discount_value+'元':this.recording = '￥'+this.coupon_list[index].coupon.discount_value+'折'
+						}else{
+							this.require_data.coupon_id = ''
+							this.recording = '不使用'
+						}
+					}
+				})
+				console.log(this.require_data)
+				this.Index()
+			},
+			Index(){ //下单时间确定
+				this.service.entire(this,'post',this.service.api_root.threeLayers.buy_Index,this.require_data,function(self,res){//订单信息
+					self.data = res.data.base
+					if(res.data.coupon_data.coupon_list != ''){
+						let not_coupon = {
+							not_coupon:'不使用'
+						}
+						let coupon_data = res.data.coupon_data.coupon_list
+						coupon_data.push(not_coupon)
+						for (let s of coupon_data) {
+							s.choice = false
+						}
+						console.log(coupon_data)
+						self.coupon_list = coupon_data
+					}
+					if(!res.data.base.address){
+						self.show_add = 0
+					}else{
+						self.show_add = 1
+					}
+					self.address = res.data.base.address
+					self.shopp = res.data.goods_list
+					let data = res.data.payment_list
+					console.log(self.shopp)
+					for (let s of data) {
+						s.choice = false
+					}
+					self.payment = data
+				})
+				
 			},
 			payments(){  //提交
 				let that = this
@@ -163,6 +270,7 @@
 				uni.showModal({
 				    title: '提示',
 				    content: '是否确定支付？',
+					
 				    success: function (res) {
 				        if (res.confirm) {
 				            // console.log('用户点击确定');
@@ -236,23 +344,7 @@
 			this.require_data = require_data
 		},
 		onShow() {
-			let options = this.options
-			this.service.entire(this,'post',this.service.api_root.threeLayers.buy_Index,this.require_data,function(self,res){//订单信息
-				self.data = res.data.base
-				if(!res.data.base.address){
-					self.show_add = 0
-				}else{
-					self.show_add = 1
-				}
-				self.address = res.data.base.address
-				self.shopp = res.data.goods_list
-				let data = res.data.payment_list
-				console.log(self.shopp)
-				for (let s of data) {
-					s.choice = false
-				}
-				self.payment = data
-			})
+			this.Index()
 		}
 	}
 </script>
@@ -456,6 +548,17 @@
 		align-items: center;
 		border-bottom: 2rpx solid #F2F2F2;
 	}
+	.list view{
+		display: flex;
+		align-items: center;
+		font-size: 28rpx;
+		color: #666666;
+	}
+	.list image{
+		height: 45rpx;
+		width: 45rpx;
+		margin-left: 10rpx;
+	}
 	.pay{
 		width: 100%;
 		height: 120rpx;
@@ -485,5 +588,91 @@
 		border-radius: 45rpx;
 		background: #1D74FF;
 		color: #fff;
+	}
+	.discount_box{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		min-height: 860rpx;
+		background: #fff;
+		z-index: 999;
+		transition: .3s;
+		transform: translateY(100%);
+	}
+	.discount_box .box_top{
+		text-align: center;
+		font-size: 28rpx;
+		padding: 20rpx 0;
+		color: #333333;
+	}
+	.discount_box .box_list{
+		height: 660rpx;
+	}
+	.cou_list{
+		/* position: relative; */
+		background: url('../../static/image/secondary/coupon.png') no-repeat;
+		background-size: 100% 100%;
+		width: 710rpx;
+		height: 182rpx;
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
+		margin-top: 30rpx;
+		color: #1D9DFF;
+	}
+	.cou_list .cou_test{
+		/* position: absolute; */
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 40rpx;
+		
+	}
+	.cou_list .cou_test .cou_left{
+		color: #1D9DFF;
+		font-size: 28rpx;
+	}
+	.cou_list .cou_test .cou_left text{
+		font-size:48rpx;
+		margin-right: 16rpx;
+	}
+	.cou_list .cou_test .cou_left .left_two{
+		font-size: 24rpx;
+	}
+	
+	.cou_list .cou_test .cou_right{
+		width: 142rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+		border-radius: 60rpx;
+		text-align: center;
+		font-size: 30rpx;
+		color: #FFFFFF;
+		background: #1D9DFF;
+	}
+	.cou_list image{
+		width: 45rpx;
+		height: 45rpx;
+	}
+	.scroll-Y{
+		height: 660rpx;
+	}
+	.discount_box button{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		font-size: 30rpx;
+		color: #fff;
+		background: #1D74FF;
+	}
+	.mask_none {
+		transform: translateY(100%) !important;
+	}
+	
+	.mask_show {
+		transform: translateY(0) !important;
 	}
 </style>

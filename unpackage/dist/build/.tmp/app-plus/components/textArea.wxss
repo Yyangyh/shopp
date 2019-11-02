@@ -1,6 +1,6 @@
 
 textarea{
-	width: 100%;
+	width: 590rpx;
 	height: 162rpx;
 	color: #CCCCCC;
 	-webkit-box-sizing: border-box;

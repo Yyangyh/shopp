@@ -1,5 +1,5 @@
 
-.content.data-v-9528e09c{
+.content.data-v-623131e8{
 	width: 100%;
 	height: 100%;
 	/* padding-top: 50rpx; */
@@ -22,7 +22,7 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.top.data-v-9528e09c{
+.top.data-v-623131e8{
 	position: fixed;
 	width: 100%;
 	-webkit-box-sizing: border-box;
@@ -52,17 +52,17 @@
 	-webkit-box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
 	        box-shadow:0px 2rpx 4rpx 0px rgba(0, 0, 0, 0.1);
 }
-.top image.data-v-9528e09c{
+.top image.data-v-623131e8{
 	height: 40rpx;
 	width: 40rpx;
 }
-.top text.data-v-9528e09c:nth-of-type(2){
+.top text.data-v-623131e8:nth-of-type(2){
 	color: #666666;
 	font-size: 28rpx;
 	font-weight: 400;
 	display: inline-block;
 }
-.list.data-v-9528e09c{
+.list.data-v-623131e8{
 	width: 90%;
 	/* height: 240rpx; */
 	margin-top: 20rpx;
@@ -70,27 +70,27 @@
 	-webkit-box-shadow: 0rpx 10rpx 20rpx #eee;
 	        box-shadow: 0rpx 10rpx 20rpx #eee;
 }
-.name.data-v-9528e09c{
+.name.data-v-623131e8{
 	width: 90%;
 	margin: 0 5%;
 	padding: 32rpx 0;
 	border-bottom: 2rpx solid #F4F4F4;
 }
-.info.data-v-9528e09c{
+.info.data-v-623131e8{
 	width: 100%;
 	font-size: 30rpx;
 	color: #333333;
 }
-.info text.data-v-9528e09c:first-of-type{
+.info text.data-v-623131e8:first-of-type{
 	margin-right: 40rpx;
 }
-.address.data-v-9528e09c{
+.address.data-v-623131e8{
 	width: 100%;
 	/* margin-top: 10rpx; */
 	font-size: 28rpx;
 	color: #666666;
 }
-.operating.data-v-9528e09c{
+.operating.data-v-623131e8{
 	width: 90%;
 	height: 80rpx;
 	margin: auto;
@@ -107,11 +107,11 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.radio.data-v-9528e09c{
+.radio.data-v-623131e8{
 	color: #333333;
 	font-size: 28rpx;
 }
-.operat.data-v-9528e09c{
+.operat.data-v-623131e8{
 	/* width: 40%;	 */
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -126,7 +126,7 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.write.data-v-9528e09c,.delete.data-v-9528e09c{
+.write.data-v-623131e8,.delete.data-v-623131e8{
 	
 	color: #999999;
 	font-size: 28rpx;
@@ -136,7 +136,7 @@
 	justify-content: center;
 	align-items: center; */
 }
-.write image.data-v-9528e09c,.delete image.data-v-9528e09c{
+.write image.data-v-623131e8,.delete image.data-v-623131e8{
 	width: 36rpx;
 	height: 36rpx;
 	margin-right: 10rpx;
