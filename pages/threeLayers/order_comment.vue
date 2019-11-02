@@ -136,7 +136,10 @@
 				console.log(this.images);
 				// 评论的内容转化为数组
 				// 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9e8c074473478cb55fc7c583623f710ccc67efec
 				this.service.entire(this, 'post', this.service.api_root.threeLayers.goods_Comment, {
 					goods_id: this.goodsId, //商品id
 					id: this.id, // 订单id
@@ -151,7 +154,11 @@
 						});
 						setTimeout(() => {
 							uni.navigateTo({
+<<<<<<< HEAD
 								url: '/pages/threeLayers/comment_success'
+=======
+								url:'/pages/threeLayers/comment_success?id='+self.id
+>>>>>>> 9e8c074473478cb55fc7c583623f710ccc67efec
 							})
 						}, 2000)
 					}

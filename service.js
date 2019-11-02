@@ -132,7 +132,8 @@ const api_root = {
 		scen_Confirm:api+'/api/Ctripspot/Confirm',//创建景点订单
 		scen_Confirm_Detail:api+'/api/Ctripspot/Detail',//景点订单支付信息
 		scen_pay:api+'/api/Ctripspot/pay',//景点订单支付
-		goods_Comment:api+'/api/goods/Comments'  //商品评论
+		goods_Comment:api+'/api/goods/Comments',  //商品评论
+		goood_Comment_List:api+'/api/goods/Comment'
 		
 	},
 	// 游记攻略

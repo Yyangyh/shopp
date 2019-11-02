@@ -31,9 +31,9 @@
 					<view>{{data.comment_count}}</view>
 				</view>
 				<view class="img" @click="zan">
-					<image src="../../static/image/hand.png" mode="" v-if="data.is_star==false"></image>
+					<image src="../../static/image/hand.png" mode="" v-if="is_star==false"></image>
 					<image src="../../static/image/finger.png" mode="" v-else></image>
-					<view>{{data.star_count}}</view>
+					<view>{{star_count}}</view>
 				</view>
 				<view class="img">
 					<image src="../../static/image/eys.png" mode=""></image>
@@ -78,7 +78,9 @@
 				user:'',
 				id:'',
 				say:'',
-				is_follow:''
+				is_follow:'',
+				is_star:false,
+				star_count:'' // 点赞数
 			}
 		},
 		methods:{
@@ -120,13 +122,16 @@
 			},
 			// 点赞
 			zan(){
+				this.is_star = !this.is_star
+				if(this.is_star){
+					this.star_count = this.star_count+1
+				}else{
+					this.star_count = this.star_count-1
+				}
 				this.service.entire(this,'post',this.service.api_root.substrategy.star,{
 					tid:this.id, // 攻略id
 				},function(self,res){
 					console.log(res)
-					if(res.code == 0){
-						self.load(self.id)
-					}
 				})
 			},
 			load(id){
@@ -146,6 +151,8 @@
 					self.swiperList = datas
 					self.data = res.data[0]
 					self.is_follow = res.data[0].is_follow
+					self.star_count = res.data[0].star_count
+					self.is_star = res.data[0].is_star
 					let richtext=  res.data[0].content
 					self.user = res.data[0].user
 					const regex = new RegExp('<img', 'gi');

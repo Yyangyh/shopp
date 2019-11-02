@@ -70,9 +70,15 @@
 						</view>
 						<view class="pl_box">
 							<view></view>
+<<<<<<< HEAD
 							<!-- <view class="pl" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
 								评论
 							</view> -->
+=======
+							<view class="pl" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
+								评论<!-- && item.user_is_comments ==0 -->
+							</view>
+>>>>>>> 9e8c074473478cb55fc7c583623f710ccc67efec
 						</view>
 					</view><!-- 加多一个盒子套住评论 -->
 
