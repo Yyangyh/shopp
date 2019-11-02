@@ -58,7 +58,9 @@
 					<view  v-for="(items,indexs) in item.items" :key='indexs'>
 						<!-- 加多一个盒子套住评论 -->
 						<view class="list_middle" @click="jump('threeuser/order_details?id='+item.id)">
-							<image :src="items.images" mode="aspectFill"></image>
+							<view class="">
+								<image :src="items.images" mode="aspectFill"></image>
+							</view>
 							<view class="middle1">
 								<view class="">{{items.title}}</view>
 								<view>套装</view>
@@ -322,6 +324,10 @@
 	.mall_box .box_bottom .bottom_list .list_middle .middle1 view:nth-of-type(1) {
 		font-size: 28rpx;
 		font-weight: bold;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
 	}
 
 	.mall_box .box_bottom .bottom_list .list_middle .middle2 {

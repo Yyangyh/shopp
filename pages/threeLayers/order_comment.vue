@@ -130,7 +130,11 @@
 			console.log(this.images);
 				// 评论的内容转化为数组
 				// 
+<<<<<<< HEAD
 				
+=======
+		
+>>>>>>> 1934dd30f9451520bab925e9fbf989a8c5a9f8e2
 				this.service.entire(this, 'post', this.service.api_root.threeLayers.goods_Comment, {
 					goods_id:this.goodsId, //商品id
 					id:this.id, // 订单id
