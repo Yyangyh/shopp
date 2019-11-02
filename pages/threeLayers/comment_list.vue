@@ -14,7 +14,25 @@
 					<view class="detail">
 						<view class="name">
 							<view style="margin-right: 27rpx;">{{item.user.user_name_view}}</view>
-							<view>
+							<view v-if="item.rating==1">
+								<image src="../../static/image/littlestar.png" mode=""></image>
+							</view>
+							<view v-if="item.rating==2">
+								<image src="../../static/image/littlestar.png" mode=""></image>
+								<image src="../../static/image/littlestar.png" mode=""></image>
+							</view>
+							<view v-if="item.rating==3">
+								<image src="../../static/image/littlestar.png" mode=""></image>
+								<image src="../../static/image/littlestar.png" mode=""></image>
+								<image src="../../static/image/littlestar.png" mode=""></image>
+							</view>
+							<view v-if="item.rating==4">
+								<image src="../../static/image/littlestar.png" mode=""></image>
+								<image src="../../static/image/littlestar.png" mode=""></image>
+								<image src="../../static/image/littlestar.png" mode=""></image>
+								<image src="../../static/image/littlestar.png" mode=""></image>
+							</view>
+							<view v-if="item.rating==5">
 								<image src="../../static/image/littlestar.png" mode=""></image>
 								<image src="../../static/image/littlestar.png" mode=""></image>
 								<image src="../../static/image/littlestar.png" mode=""></image>
