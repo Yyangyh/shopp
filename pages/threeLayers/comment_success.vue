@@ -16,9 +16,20 @@
 				<view class="btn1" @click="jump('/pages/index/index')">
 					返回首页
 				</view>
-				<view class="btn1">
+				<!-- 	<view class="btn1">
 					查看评论
+				</view> -->
+			</view>
+		</view>
+		<view class="list" v-for="(item,index) in list" :key="index">
+			<view class="left">
+				<image :src="item.images" mode=""></image>
+				<view class="words">
+					{{item.title}}
 				</view>
+			</view>
+			<view class="right" @click="toDetail(item.goods_id)">
+				查看评价
 			</view>
 		</view>
 	</view>
@@ -27,54 +38,75 @@
 <script>
 	import returns from '../common/returns.vue'
 	export default {
-		data(){
-			return{
-				title:'评论成功'
+		data() {
+			return {
+				title: '评论成功',
+				id: '',
+				list: []
 			}
 		},
-		methods:{
-			jump(url){
+		methods: {
+			jump(url) {
 				uni.reLaunch({
 					url: url
 				});
+			},
+			toDetail(goods_id){
+				uni.navigateTo({
+					url:'/pages/threeLayers/comment_list'+'?goods_id='+goods_id
+				})
 			}
 		},
-		components:{
+		components: {
 			returns
+		},
+		onLoad(options) {
+			this.id = options.id // 订单id
+			this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
+				id: options.id
+			}, function(self, res) {
+				console.log(res.data.items);
+				self.list = res.data.items
+			})
 		}
 	}
 </script>
 
 <style>
-	.all{
+	.all {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
 	}
-	.success{
+
+	.success {
 		margin: 84rpx auto 0;
 		font-size: 32rpx;
 		color: #1D9DFF;
 		display: flex;
 		align-items: center;
 	}
-	.success image{
+
+	.success image {
 		width: 40rpx;
 		height: 40rpx;
 		vertical-align: baseline;
 		margin: 8rpx 15rpx 0 0;
 	}
-	.word{
+
+	.word {
 		font-size: 24rpx;
 		color: #333333;
 		margin-top: 26rpx;
 		margin-bottom: 78rpx;
 	}
-	.btn{
+
+	.btn {
 		display: flex;
-		
+
 	}
-	.btn1{
+
+	.btn1 {
 		width: 210rpx;
 		height: 75rpx;
 		border-radius: 40rpx;
@@ -85,7 +117,52 @@
 		line-height: 75rpx;
 		text-align: center;
 	}
-	.btn1:first-child{
-		margin-right: 60rpx;
+
+	.list {
+		width: 100%;
+		height: 120rpx;
+		padding: 0 20rpx;
+		box-sizing: border-box;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.list .left {
+		display: flex;
+		height: 120rpx;
+		align-items: center;
+
+	}
+
+	.list .left image {
+		width: 98rpx;
+		height: 62rpx;
+		margin-right: 14rpx;
+	}
+
+	.list .left .words {
+		font-size: 24rpx;
+		color: #333333;
+		width: 330rpx;
+		text-overflow: -o-ellipsis-lastline;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-line-clamp: 2;
+		line-clamp: 2;
+		-webkit-box-orient: vertical;
+	}
+
+	.list .right {
+		width: 150rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+		text-align: center;
+		color: #333333;
+		font-size: 24rpx;
+		border-radius: 30rpx;
+		box-sizing: border-box;
+		border: 2rpx solid #333333;
 	}
 </style>

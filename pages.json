@@ -734,6 +734,15 @@
 			}
 		},
 		{
+			"path": "pages/threeLayers/comment_list",
+			"style": {
+				"navigationBarTitleText": "评论",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/threeLayers/modifyPwd",
 			"style": {
 				"navigationBarTitleText": "修改密码",
