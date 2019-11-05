@@ -90,6 +90,9 @@
 								<view class="bottom3" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
 									评论
 								</view>
+								<view class="bottom3" v-if='item.status == 3' @click="jump('/pages/threeLayers/logistics?id='+item.express_id+'&number='+item.express_number)">
+									查看物流
+								</view>
 								<view class="bottom3" @click="jump('threeuser/order_details?id='+item.id)">
 									详情
 								</view>
@@ -140,15 +143,29 @@
 				})
 			},
 			deletes(id,index){ //删除订单
-				this.service.entire(this, 'get', this.service.api_root.subuser.Delete_order, {
-					id:id
-				}, function(self, res) {
-					uni.showToast({
-						icon:'none',
-						title:res.msg
-					})
-					if(res.code == 0)self.data.splice(index,1)
-				})
+				let that = this
+				uni.showModal({
+					title: '提示',
+					content: '是否确定删除订单？',
+					success: function (res) {
+						if (res.confirm) {
+							that.service.entire(that, 'get', that.service.api_root.subuser.Delete_order, {
+								id:id
+							}, function(self, res) {
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+								if(res.code == 0)self.data.splice(index,1)
+							})
+						} else if (res.cancel) {
+							// console.log('用户点击取消');
+							return
+						}
+					}
+				});
+			
+				
 			},
 			chiose(status) {
 				this.more = 'loading'

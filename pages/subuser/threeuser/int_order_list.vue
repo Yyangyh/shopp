@@ -33,7 +33,7 @@
 				
 			</view>
 			<view class="box_bottom">
-				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'  @click="jump('./int_order_detailed?id='+item.id)">
+				<view class="bottom_list" v-for="(item,index) in data" :key='item.id' >
 					<view class="list_top">
 						<view class="top1">
 							<image src="../../static/image/secondary/shop.png" mode="widthFix"></image>
@@ -64,7 +64,7 @@
 						</view>
 					</view>
 					
-					<view class="list_middle">
+					<view class="list_middle"  @click="jump('./int_order_detailed?id='+item.id)">
 						<image :src="item.images" mode="aspectFill"></image>
 						<view class="middle1">
 							<view class="">{{item.title}}</view>
@@ -79,7 +79,10 @@
 						<view class="bottom2">
 							订单金额<text>{{item.money}}</text>
 						</view>
-						<view class="bottom3">
+						<view class="bottom3" v-if="item.status == 4 || item.status == 5" @click="deletes(item.id,index)">
+							删除订单
+						</view>
+						<view class="bottom3"  @click="jump('./int_order_detailed?id='+item.id)">
 							详情
 						</view>
 					</view>
@@ -119,6 +122,33 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			deletes(id,index){
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定删除订单？',
+				    success: function (res) {
+				        if (res.confirm) {
+							that.service.entire(that,'post',that.service.api_root.subuser.threeuser.cred_Delete,{
+								id:id
+							},function(self,res){
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+								
+								if(res.code == 0)self.data.splice(index,1)
+								
+							})
+						} else if (res.cancel) {
+				            // console.log('用户点击取消');
+							return
+				        }
+				    }
+				});
+				
+				
 			},
 			chiose(status){
 				this.more = 'loading'
@@ -327,5 +357,6 @@
 		background: #1D9DFF;
 		color: #fff;
 		text-align: center;
+		margin-left: 20rpx;
 	}
 </style>

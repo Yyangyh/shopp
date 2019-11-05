@@ -20,7 +20,7 @@
 					发现
 				</view>
 				<view :class="{show:show == 1}" @click="changeList(1)">
-					当前地区
+					{{address != ''?address:'选择地区'}}
 				</view>
 			</view>
 		</view>

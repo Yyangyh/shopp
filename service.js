@@ -76,6 +76,7 @@ const api_root = {
 		org_category:api+'/api/Originality/Category',//文创产品品分类
 		org_category_list:api+'/api/Originality/goodsList',//文创商品列表
 		int_list:api+'/api/creditshop/lists',//积分商品列表
+		index_searcht:api+'/api/index/search',//首页搜索
 	},
 	subuser:{
 		Useraddress:api+'/api/Useraddress/Index',//地址列表
@@ -122,6 +123,7 @@ const api_root = {
 			AftersaleCancel:api+'/api/order/AftersaleCancel',//退货申请取消
 			cred_Cancel:api+'/api/creditshop/Cancel',//积分订单取消
 			cred_Collect:api+'/api/creditshop/Collect',//积分订单收货
+			cred_Delete:api+'/api/creditshop/Delete',//积分订单删除
 		},
 		
 		
@@ -141,6 +143,7 @@ const api_root = {
 		goood_Comment_List:api+'/api/goods/Comment',
 		Aftersale:api+'/api/order/Aftersale',//申请退货订单详情
 		Create:api+'/api/order/Create',//提交退款退货（已收货）/仅退款（未签收）申请
+		express:api+'/api/order/express',//商城订单物流信息
 		
 	},
 	// 游记攻略

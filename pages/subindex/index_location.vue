@@ -7,7 +7,7 @@
 			<view class="return">
 				<view class="search">
 					<image class="search1" src="../../static/image/search1.png" mode=""></image>
-					<input type="text" value="" placeholder="武汉周黑鸭"/>
+					<input type="text" value="" placeholder=""/>
 				</view>
 				<text @click="returns">取消</text>
 			</view>

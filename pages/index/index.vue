@@ -257,7 +257,7 @@
 		},
 		onShow() {
 			// uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
-			if(uni.getStorageSync('notice') == ''){
+			if(uni.getStorageSync('notice') == ''){  //是否显示版通比例
 				this.eject_show = true
 			}else{
 				var timestamp = (new Date()).getTime()
@@ -341,7 +341,7 @@
 			},
 			search(){
 				uni.navigateTo({
-					url: '/pages/common/search?type=scenic'
+					url: '/pages/subindex/index_search'
 				})
 			}
 

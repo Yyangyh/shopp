@@ -157,6 +157,15 @@
 			}
 		},
 		{
+			"path": "pages/subindex/index_search",
+			"style": {
+				"navigationBarTitleText": "搜索",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subindex/works",
 			"style": {
 				"navigationBarTitleText": "文创产品",
@@ -503,6 +512,7 @@
 				}
 			}
 		},
+		
 		{
 			"path": "pages/subuser/threeuser/int_order_list",
 			"style": {
@@ -709,6 +719,15 @@
 			"path": "pages/threeLayers/shoppingCart",
 			"style": {
 				"navigationBarTitleText": "购物车",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/threeLayers/logistics",
+			"style": {
+				"navigationBarTitleText": "物流信息",
 				"app-plus" : {
 				    "titleNView" : false
 				}
