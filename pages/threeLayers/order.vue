@@ -370,7 +370,7 @@
 	}
 	.name{
 		width: 90%;
-		margin: 40rpx auto;
+		padding: 40rpx 0;
 		font-size: 30rpx;
 		color: #000;
 		display: flex;

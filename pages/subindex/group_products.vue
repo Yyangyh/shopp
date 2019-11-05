@@ -33,7 +33,7 @@
 				</view>
 				<view class="receive_co">
 					<text>邀请好友组团</text>
-					<image src="../../static/image/go.png" mode=""></image>
+					<!-- <image src="../../static/image/go.png" mode=""></image> -->
 				</view>
 			</view>
 		</view>

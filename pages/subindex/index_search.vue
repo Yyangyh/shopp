@@ -108,15 +108,20 @@
 				this.common.returns(this)
 			},
 			onKeyInput(){
+				this.more = 'loading'
+				this.show = 1
 				let that = this
 				setTimeout(() => { 
 					if(!that.test)return
 					that.index_all(that.test)
+					
 				}, 0)
 				
 			},
 			chiose(type){
+				if(this.show == type) return
 				this.show = type
+				this.page = 2
 				this.loadRecord = true
 				uni.pageScrollTo({
 				    scrollTop: 0,
@@ -143,6 +148,12 @@
 					},function(self,res){
 						self.data = res.data.ctripspot.data
 						self.all_data = res.data
+						if (res.data.ctripspot.data.length < 20) {
+							self.more = 'noMore'
+							self.loadRecord = false
+							return
+						}
+						self.more = 'more'
 						console.log(self.data)
 					})
 			},

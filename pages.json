@@ -157,6 +157,15 @@
 			}
 		},
 		{
+			"path": "pages/subindex/customer",
+			"style": {
+				"navigationBarTitleText": "客服",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subindex/index_search",
 			"style": {
 				"navigationBarTitleText": "搜索",

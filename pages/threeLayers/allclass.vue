@@ -80,16 +80,21 @@
 			</view>
 
 		</view>
-
+		<uni-load-more :status="more"></uni-load-more>
 	</view>
 </template>
 
 <script>
+	import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue'
 	import returns from '../common/re_search.vue'
 	export default {
+		components: {
+			uniLoadMore,
+			returns
+		},
 		data() {
 			return {
-				data: '',
+				data: [],
 				show: false,
 				city:'',
 				show_class:false,
@@ -125,11 +130,20 @@
 						name: 'sales_count',
 						order: 'asc'
 					},
-				]
+				],
+				page:1,
+				more:'',
+				loadRecord: true,
+				request_data:''
 			}
 		},
-		components: {
-			returns
+		onReachBottom() {
+			if (this.loadRecord == false) return
+			
+			if(this.type == 'works') this.works(this.request_data)
+			if(this.type == 'edition') this.edition(this.request_data)
+			if(!this.type) this.feature(this.request_data)
+			
 		},
 		methods: {
 			jump(url) {
@@ -143,9 +157,12 @@
 			},
 			choice_goods(index){
 				console.log(this.data_class_list)
+				this.page = 1
+				this.data.length = 0
 				let id = this.data_class_list[index].id
 				let data = {
 					category_id: id,
+					page:this.page
 				}
 				if (this.type == 'works') {
 					this.works(data)
@@ -157,10 +174,13 @@
 				[this.show,this.show_region,this.show_class] = [false,false,false]
 			},
 			hook(index, name, order,type) {
+				this.page = 1
+				this.data.length = 0
 				let data = {
 					category_id: this.id,
 					order_by_field:name,
-					order_by_type:order
+					order_by_type:order,
+					page:this.page
 				}
 				if (this.type == 'works') {
 					this.works(data)
@@ -184,21 +204,55 @@
 				}
 			},
 			works(data){//文创
+				let datas = data
 				this.service.entire(this, 'get', this.service.api_root.subindex.org_category_list,data, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
+					self.page ++
+					datas.page = self.page
+					self.request_data = datas
+					let data = self.data
+					data.push(...res.data.data)
+					self.data = data
+					self.more = 'more'
+					if (res.data.data.length < 20) {
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
 				})
 			},
 			edition(data){//版通
+				let datas = data
 				this.service.entire(this, 'get', this.service.api_root.subindex.Category_list,data, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
+					self.page ++
+					datas.page = self.page
+					self.request_data = datas
+					let data = self.data
+					data.push(...res.data.data)
+					self.data = data
+					self.more = 'more'
+					if (res.data.data.length < 20) {
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
 				})
 			},
 			feature(data){//特色产品
+				let datas = data
 				this.service.entire(this, 'get', this.service.api_root.threeLayers.goodsList,data, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
+					
+					self.page ++
+					datas.page = self.page
+					self.request_data = datas
+					let data = self.data
+					data.push(...res.data.data)
+					self.data = data
+					self.more = 'more'
+					if (res.data.data.length < 20) {
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
 				})
 			}
 		},
@@ -208,6 +262,7 @@
 			this.id = options.id
 			let data = {
 				category_id: this.id,
+				page:this.page
 			}
 			if (options.type == 'works') {//文创
 				this.works(data)
