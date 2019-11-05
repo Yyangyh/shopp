@@ -25,7 +25,7 @@
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
 			</view>
-			<view class="tab_list"  @click="jump('../threeLayers/setSecond')">
+			<!-- <view class="tab_list"  @click="jump('../threeLayers/setSecond')">
 				<view class="">
 					<image src="../../static/image/secondary/modifySecond.png" mode="widthFix"></image>
 					<text>二级密码</text>
@@ -38,7 +38,7 @@
 					<text>重置二级密码</text>
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
-			</view>
+			</view> -->
 			<!-- <view class="tab_list">
 				<view class="">
 					<image src="../../static/image/secondary/edition.png" mode="widthFix"></image>

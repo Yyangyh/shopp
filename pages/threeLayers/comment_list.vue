@@ -144,6 +144,8 @@
 		color: #666666;
 	}
 	.pics {
+		display: flex;
+		flex-wrap: wrap;
 		width: 100%;
 		/* height: 120rpx; */
 		padding-bottom: 28rpx;

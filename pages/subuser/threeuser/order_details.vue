@@ -35,11 +35,11 @@
 		</view>
 
 		<view class="order">
-			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' @click="detailed(item.goods_id,item.type)">
-				<view class="num_one">
+			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' >
+				<view class="num_one" @click="detailed(item.goods_id,item.type)">
 					<image :src="item.images" mode="widthFix"></image>
 				</view>
-				<view class="num_two">
+				<view class="num_two" @click="detailed(item.goods_id,item.type)">
 					<view class="">
 						{{item.title}}
 					</view>
@@ -54,13 +54,24 @@
 					<view class="">
 						数量：X{{item.buy_number}}
 					</view>
+					
+				</view>
+				
+				<view class="order_handle" v-if="data.status == 2 || data.status == 3 || data.status == 4">
+					
+					<text v-if="item.orderaftersale == null"  @click="jump('/pages/threeLayers/refund?id='+ item.id+'&oid='+item.order_id)">{{data.status == 4?'申请售后':'退款/退货'}}</text>
+					<block v-else>
+						<text v-if="item.orderaftersale.status == 3">退款完成</text>
+						<text v-else-if="item.orderaftersale.status == 4"  @click="jump('/pages/threeLayers/refund?id='+ item.id+'&oid='+item.order_id)">已拒绝</text>
+						<text v-else-if="item.orderaftersale.status == 5"  @click="jump('/pages/threeLayers/refund?id='+ item.id+'&oid='+item.order_id)">已取消</text>
+						<text v-else @click="cancel_return(item.orderaftersale.id)">退款/退货中</text>
+					</block>
+					
 				</view>
 			</view>
 
 			<!--  -->
-			<!-- <view class="order_handle" v-if="data.status == 2">
-				<text>退款</text>
-			</view> -->
+			
 
 			<!--  -->
 			<view class="order_total">
@@ -68,7 +79,7 @@
 					订单总价
 				</view>
 				<view class="total_two">
-					￥{{data.price}}
+					<!-- ￥ -->{{data.describe}}
 				</view>
 			</view>
 		</view>
@@ -168,6 +179,30 @@
 				    success: function (res) {
 				        if (res.confirm) {
 				            that.service.entire(that,'get',that.service.api_root.subuser.threeuser.Collect,{id:that.data.id},function(self,res){
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+				            	if(res.code == 0){
+									setTimeout(function(){
+										self.common.returns(self)
+									},1500)
+								}
+				            })
+				        } else if (res.cancel) {
+				           return
+				        }
+				    }
+				});
+			},
+			cancel_return(id){//取消退款申请
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '是否取消退款/退货申请？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that,'get',that.service.api_root.subuser.threeuser.AftersaleCancel,{id:id},function(self,res){
 								uni.showToast({
 									icon:'none',
 									title:res.msg
@@ -343,8 +378,15 @@
 	.order .order_num {
 		display: flex;
 		font-size: 28rpx;
+		position: relative;
 	}
-
+	.order .order_num .num_two{
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 3;
+		overflow: hidden;
+		height: 120rpx;
+	}
 	.order .order_num .num_two .specs {
 		color: #808080;
 		display: flex;
@@ -384,6 +426,9 @@
 	.order .order_handle {
 		text-align: right;
 		padding-bottom: 20rpx;
+		position: absolute;
+		right: 0;
+		bottom: 0;
 	}
 
 	.order .order_handle text {

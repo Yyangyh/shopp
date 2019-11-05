@@ -84,6 +84,9 @@
 							</view>
 							
 							<view>
+								<view class="bottom3" v-if='item.status == 4 || item.status == 5' @click="deletes(item.id,index)">
+									删除订单
+								</view>
 								<view class="bottom3" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
 									评论
 								</view>
@@ -131,9 +134,20 @@
 				});
 			},
 			jump(url) {
-				console.log(0);
+				
 				uni.navigateTo({
 					url: url
+				})
+			},
+			deletes(id,index){ //删除订单
+				this.service.entire(this, 'get', this.service.api_root.subuser.Delete_order, {
+					id:id
+				}, function(self, res) {
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0)self.data.splice(index,1)
 				})
 			},
 			chiose(status) {

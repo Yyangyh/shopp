@@ -14,6 +14,7 @@ const api_root = {
 		Auth: api+'/api/user/Auth',//授权
 		Favor: api+'/api/goods/Favor',//用户商品收藏/取消（拼团无效）
 		upload_image: api+'/api/travels/upload_image',//图片上传
+		WeatchAppLogin: api+'/api/user/WeatchAppLogin',//微信app授权登陆
 	},
 	reg:{
 		reg: api+'/api/user/Register',//注册
@@ -83,6 +84,7 @@ const api_root = {
 		add_Detail:api+'/api/Useraddress/Detail',//地址详情
 		add_SetDefault:api+'/api/Useraddress/SetDefault',//默认地址设置
 		order_Index:api+'/api/order/Index',//我的订单
+		Delete_order:api+'/api/order/Delete',//订单删除
 		grou_order:api+'/api/groupgoods/orders',//拼团订单列表
 		UserAvatar:api+'/api/User/UserAvatarUpload',//更改头像
 		UserIntegral:api+'/api/user/UserIntegral',//用户积分
@@ -102,6 +104,8 @@ const api_root = {
 		CouponList:api+'/api/coupon/CouponList',//全部优惠券列表
 		CouponUserList:api+'/api/coupon/CouponUserList',//用户优惠券列表
 		Receive:api+'/api/coupon/Receive',//领取优惠券
+		Reg_name:api+'/api/identitycard/Reg',//实名申请
+		Reg_Detail:api+'/api/identitycard/Detail',//实名认证申请状态
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
@@ -115,6 +119,7 @@ const api_root = {
 			UserBtInfo:api+'/api/User/UserBtInfo',//版通明细
 			Cancel:api+'/api/order/Cancel',//商城订单取消
 			Collect:api+'/api/order/Collect',//商城订单收货
+			AftersaleCancel:api+'/api/order/AftersaleCancel',//退货申请取消
 			cred_Cancel:api+'/api/creditshop/Cancel',//积分订单取消
 			cred_Collect:api+'/api/creditshop/Collect',//积分订单收货
 		},
@@ -133,7 +138,9 @@ const api_root = {
 		scen_Confirm_Detail:api+'/api/Ctripspot/Detail',//景点订单支付信息
 		scen_pay:api+'/api/Ctripspot/pay',//景点订单支付
 		goods_Comment:api+'/api/goods/Comments',  //商品评论
-		goood_Comment_List:api+'/api/goods/Comment'
+		goood_Comment_List:api+'/api/goods/Comment',
+		Aftersale:api+'/api/order/Aftersale',//申请退货订单详情
+		Create:api+'/api/order/Create',//提交退款退货（已收货）/仅退款（未签收）申请
 		
 	},
 	// 游记攻略

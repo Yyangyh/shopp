@@ -46,7 +46,7 @@
 		</view>
 		
 		<discuss :comments='comments'></discuss>
-		<view v-if="comments !=''" class="more">
+		<view v-if="comments !=''" class="more"  @click="jump('../threeLayers/comment_list?goods_id='+id)">
 			查看更多评论
 		</view>
 
@@ -599,10 +599,11 @@
 		margin-top: 30rpx;
 	}
 
-	.user_comment .com_content .more {
+	.more {
 		font-size: 32rpx;
 		color: #666666;
-		margin: 20rpx 0;
+		background: #fff;
+		padding: 20rpx 20rpx;
 	}
 
 	.pro_img {}

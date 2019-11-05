@@ -107,17 +107,39 @@
 				})
 			},
 			wx(){
+				let that = this
 				// #ifdef H5
 					window.location.href = this.service.api_root.common.Auth
 				// #endif
-				// // #ifdef APP-PLUS
-				// 	uni.login({
-				// 	  provider: 'weixin',
-				// 	  success: function (loginRes) {
-				// 	    console.log(loginRes.authResult);
-				// 	  }
-				// 	});
-				// // #endif
+				
+				
+				// #ifdef APP-PLUS
+					uni.login({
+					  provider: 'weixin',
+					  success: function (loginRes) {
+						uni.request({
+							url:that.service.api_root.common.WeatchAppLogin,
+							method:'get',
+							header:{'X-Requested-With':'xmlhttprequest'},
+							data:{
+								access_token:loginRes.authResult.access_token,
+								openid:loginRes.authResult.openid,
+							},
+							success(res) {
+								if(res.data.code ==0){
+									uni.setStorageSync('token',res.data.data.token)
+									uni.setStorageSync('uid',res.data.data.id)
+									uni.setStorageSync('user',res.data.data)
+									uni.switchTab({
+										url: '../index/index'
+									});
+								}
+							}
+						})
+					    
+					  }
+					});
+				// #endif
 			}
 		},
 		onShow() {

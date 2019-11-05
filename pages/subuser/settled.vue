@@ -41,7 +41,7 @@
 					请上传营业执照
 				</view>
 				<view class="upload_img"  @click="upload(1)">
-					<image v-if="license_image" :src="license_image" mode="widthFix"></image>
+					<image v-if="license_image" :src="license_imageing" mode="widthFix"></image>
 					<image v-else src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
 					
 					<image src="../../static/image/go.png" mode="widthFix"></image>
@@ -52,7 +52,7 @@
 					法人身份证正面
 				</view>
 				<view class="upload_img"  @click="upload(2)">
-					<image v-if="identity_positive_image" :src="identity_positive_image" mode="widthFix"></image>
+					<image v-if="identity_positive_image" :src="identity_positive_imageing" mode="widthFix"></image>
 					<image v-else src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
@@ -62,7 +62,7 @@
 					法人身份证反面
 				</view>
 				<view class="upload_img"  @click="upload(3)">
-					<image v-if="identity_other_image" :src="identity_other_image" mode="widthFix"></image>
+					<image v-if="identity_other_image" :src="identity_other_imageing" mode="widthFix"></image>
 					<image v-else src="../../static/image/secondary/settled_img.png" mode="widthFix"></image>
 					<image src="../../static/image/go.png" mode="widthFix"></image>
 				</view>
@@ -141,9 +141,10 @@
 				<view class="box_top">
 					入驻须知
 				</view>
-				<view class="box_conent">
+				<scroll-view scroll-y="true" class="box_conent">
 					<rich-text :nodes='treaty'></rich-text>
-				</view>
+				</scroll-view>
+				
 				<button  @click="treaty_show = false">我已阅读</button>
 			</view>
 			<button @click="submit()">立即申请入驻</button>
@@ -190,8 +191,11 @@
 				upass:'',
 				confirm_upass:'',
 				license_image:'',
+				license_imageing:'',
+				identity_positive_imageing:'',
 				identity_positive_image:'',
 				identity_other_image:'',
+				identity_other_imageing:'',
 				treaty_show:false,
 				treaty:'',
 				open_protocol:'',
@@ -205,6 +209,18 @@
 				uni.chooseImage({
 				    success: (chooseImageRes) => {
 						console.log(chooseImageRes)
+						uni.showLoading({
+							title: '上传中',
+							mask: true
+						});
+						let times = setTimeout(function() {
+							uni.hideLoading()
+							uni.showToast({
+								icon: 'none',
+								title: '网络请求错误，请稍后再试'
+							})
+							return
+						}, 10000)
 				        const tempFilePaths = chooseImageRes.tempFilePaths;
 				        uni.uploadFile({
 				            url: this.service.api_root.subuser.merchUpload,
@@ -214,6 +230,8 @@
 				                token: uni.getStorageSync('token')
 				            },
 				            success: (res) => {
+								uni.hideLoading()
+								clearTimeout(times)
 				                let data = JSON.parse(res.data)
 								console.log(data)
 								uni.showToast({
@@ -221,9 +239,18 @@
 									title:data.msg
 								})
 								if(data.code == 0){
-									if(type == 1) that.license_image = data.data.file
-									if(type == 2) that.identity_positive_image = data.data.file
-									if(type == 3) that.identity_other_image = data.data.file
+									if(type == 1){
+										that.license_image = data.data.file
+										that.license_imageing = tempFilePaths[0]
+									}
+									if(type == 2) {
+										that.identity_positive_image = data.data.file
+										that.identity_positive_imageing = tempFilePaths[0]
+									}
+									if(type == 3){
+										that.identity_other_image = data.data.file
+										that.identity_other_imageing = tempFilePaths[0]
+									}
 								}
 				            }
 				        });

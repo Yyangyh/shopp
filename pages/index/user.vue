@@ -20,9 +20,14 @@
 						<view class="left_top">
 							<view v-if="nickname">{{nickname}}</view>
 							<view v-else>未修改昵称</view>
-							<view class="user_right">
+							<view class="user_right" v-if="name_status.status != 1" @click="jump('../subuser/realname')">
 								<image src="../../static/image/id.png" mode="widthFix"></image>
 								<text>实名认证</text>
+								<image src="../../static/image/go1.png" mode="widthFix"></image>
+							</view>
+							<view class="user_right" v-else-if="name_status.status == 1">
+								<image src="../../static/image/id.png" mode="widthFix"></image>
+								<text>已实名</text>
 								<image src="../../static/image/go1.png" mode="widthFix"></image>
 							</view>
 						</view>
@@ -221,7 +226,7 @@
 						版通
 					</view>
 				</view>
-				<view class="tab_list">
+				<view class="tab_list" @click="jump('../subuser/realname')">
 					<image src="../../static/image/realName.png" mode="widthFix"></image>
 					<view class="">
 						实名认证
@@ -265,7 +270,8 @@
 				data:'',
 				nickname:'',
 				state:'',
-				order_status:''
+				order_status:'',
+				name_status:'',
 			}
 		},
 		methods:{
@@ -310,6 +316,7 @@
 					}else{
 						that.state = 1
 						that.data = res.data.data
+						that.name_status = res.data.data.UserIdentityCard
 						that.order_status = res.data.data.user_order_status
 						console.log(res.data.data)
 						that.nickname = res.data.data.nickname

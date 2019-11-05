@@ -477,6 +477,15 @@
 			}
 		},
 		{
+			"path": "pages/subuser/realname",
+			"style": {
+				"navigationBarTitleText": "实名认证",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/settled",
 			"style": {
 				"navigationBarTitleText": "商家入驻",
@@ -751,6 +760,16 @@
 				}
 			}
 		},
+		{
+			"path": "pages/threeLayers/refund",
+			"style": {
+				"navigationBarTitleText": "退款/退货申请",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
 		
 		
 		{

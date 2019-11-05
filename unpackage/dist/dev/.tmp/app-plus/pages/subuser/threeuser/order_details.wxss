@@ -70,6 +70,14 @@ page.data-v-6218558d {
 	display: -ms-flexbox;
 	display: flex;
 	font-size: 28rpx;
+	position: relative;
+}
+.order .order_num .num_two.data-v-6218558d{
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+	height: 120rpx;
 }
 .order .order_num .num_two .specs.data-v-6218558d {
 	color: #808080;
@@ -115,6 +123,9 @@ page.data-v-6218558d {
 .order .order_handle.data-v-6218558d {
 	text-align: right;
 	padding-bottom: 20rpx;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 .order .order_handle text.data-v-6218558d {
 	display: inline-block;
