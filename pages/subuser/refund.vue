@@ -51,7 +51,7 @@
 									删除订单
 								</view> -->
 								
-								<view class="bottom3" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.id)">
+								<view class="bottom3" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">
 									详情
 								</view>
 								

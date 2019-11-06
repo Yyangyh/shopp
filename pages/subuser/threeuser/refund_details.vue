@@ -4,7 +4,7 @@
 			<!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="order_top">
+	<!-- 	<view class="order_top">
 			<view class="" v-if="data.status == 2">
 				买家已付款
 			</view>
@@ -18,7 +18,7 @@
 				等待买家付款
 			</view>
 			<image src="../../../static/image/threeLayers/box.png" mode="widthFix"></image>
-		</view>
+		</view> -->
 		<view class="order_position">
 			<view class="">
 				<image src="../../../static/image/threeLayers/position.png" mode="widthFix"></image>
@@ -59,36 +59,36 @@
 		</view>
 		
 		<view class="order">
-			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' >
-				<view class="num_one" @click="detailed(item.goods_id,item.type)">
-					<image :src="item.images" mode="widthFix"></image>
+			<view class="order_num"  >
+				<view class="num_one" @click="detailed(goods.goods_id,goods.type)">
+					<image :src="goods.images" mode="widthFix"></image>
 				</view>
-				<view class="num_two" @click="detailed(item.goods_id,item.type)">
+				<view class="num_two" @click="detailed(goods.goods_id,goods.type)">
 					<view class="">
-						{{item.title}}
+						{{goods.title}}
 					</view>
 					<view class="specs">
-						<text v-for="(items,indexs) in data_list[index].spec" :key='indexs'>{{items.type}}：{{items.value}}</text>
+						
 					</view>
 				</view>
 				<view class="num_three">
 					<view class="">
-						￥{{item.price}}
+						￥{{goods.price}}
 					</view>
 					<view class="">
-						数量：X{{item.buy_number}}
+						数量：X{{goods.buy_number}}
 					</view>
 					
 				</view>
 				
-				<view class="order_handle" v-if="data.status == 2 || data.status == 3 || data.status == 4">
+				<view class="order_handle">
 					
-					<text v-if="item.orderaftersale == null"  @click="jump('/pages/threeLayers/refund?id='+ item.id+'&oid='+item.order_id)">{{data.status == 4?'申请售后':'退款/退货'}}</text>
+					<text v-if="new_aftersale_data == null"  @click="jump('/pages/threeLayers/refund?id='+ new_aftersale_data.id+'&oid='+new_aftersale_data.order_id)">{{new_aftersale_data.status == 4?'申请售后':'退款/退货'}}</text>
 					<block v-else>
-						<text v-if="item.orderaftersale.status == 3">退款完成</text>
-						<text v-else-if="item.orderaftersale.status == 4"  @click="jump('/pages/threeLayers/refund?id='+ item.id+'&oid='+item.order_id)">已拒绝</text>
-						<text v-else-if="item.orderaftersale.status == 5"  @click="jump('/pages/threeLayers/refund?id='+ item.id+'&oid='+item.order_id)">已取消</text>
-						<text v-else @click="cancel_return(item.orderaftersale.id)">退款/退货中</text>
+						<text v-if="new_aftersale_data.status == 3">退款完成</text>
+						<text v-else-if="new_aftersale_data.status == 4"  @click="jump('/pages/threeLayers/refund?id='+ new_aftersale_data.id+'&oid='+new_aftersale_data.order_id)">已拒绝</text>
+						<text v-else-if="new_aftersale_data.status == 5"  @click="jump('/pages/threeLayers/refund?id='+ new_aftersale_data.id+'&oid='+new_aftersale_data.order_id)">已取消</text>
+						<text v-else @click="cancel_return(new_aftersale_data.id)">退款/退货中</text>
 					</block>
 					
 				</view>
@@ -132,7 +132,8 @@
 				</view>
 			</view>
 		</view>
-
+		
+		
 
 		
 		
@@ -156,7 +157,8 @@
 				show: false,
 				payment_id: '',
 				payment_name: '',
-
+				goods:'',
+				new_aftersale_data:''
 			}
 		},
 		methods: {
@@ -211,14 +213,13 @@
 				oid: options.oid,
 				did: options.did
 			}, function(self, res) {
-				self.data = res.data
-				self.data_list = res.data.items
-				let data = res.data.payment_list
-				for (let s of data) {
-					s.choice = false
-				}
-				console.log(data)
-				self.pay_list = data
+				self.data = res.data.order
+				self.goods = res.data.goods
+				self.new_aftersale_data = res.data.new_aftersale_data
+				
+				
+				
+				
 			})
 		}
 	}
