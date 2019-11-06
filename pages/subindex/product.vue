@@ -69,8 +69,8 @@
 					<view class="bottom">
 						<text class="price">￥{{item.price}}</text>
 						<text class='data'>{{item.sales_count}}人购买</text>
-						<!-- <text class="info"   @click="jump('./shop')">进入店铺</text> -->
-						<text class="info"  @click="jump('./product_detailed?id='+item.id)">进入购买</text>
+						<text class="info"  @click="jump('../subindex/shop?merchid='+item.merchid)" >进入店铺</text>
+						<!-- <text class="info"  @click="jump('./product_detailed?id='+item.id)">进入购买</text>  v-if="item.merchid == 0"-->
 					</view>
 				</view>
 			</view>
@@ -104,7 +104,7 @@
 		onShow() {
 			this.city = uni.getStorageSync('city')
 			this.service.entire(this,'get',this.service.api_root.subindex.goods_Category,{},function(self,res){
-				// console.log(res)
+				console.log(res)
 				let data = res.data
 				let result = [];
 				for(let i=0;i<data.length;i+=10){

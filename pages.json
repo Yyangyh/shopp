@@ -688,6 +688,16 @@
 		    }
 		},
 		{
+			"path": "pages/threeLayers/shop_goods",
+		    "style" : {
+		        "navigationBarTitleText" : "商品列表",
+		        "app-plus" : {
+		            "bounce" : "none",
+		            "titleNView" : false
+		        }
+		    }
+		},
+		{
 			"path": "pages/threeLayers/order_pay",
 		    "style" : {
 		        "navigationBarTitleText" : "订单支付",
