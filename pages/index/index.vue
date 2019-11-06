@@ -192,7 +192,8 @@
 					<view class="bottom">
 						<text class="price">￥{{item.price}}</text>
 						<text class='data'>{{item.sales_count}}人购买</text>
-						<text class="info" @click="jump('../subindex/shop')">进入店铺</text>
+						<text class="info" @click="jump('../subindex/shop?merchid='+'2')">进入店铺</text>
+						<!-- item.merchid -->
 					</view>
 				</view>
 			</view>

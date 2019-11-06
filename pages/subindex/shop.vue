@@ -15,10 +15,10 @@
 			
 		</view>
 		<view class="img">
-			<image src="../../static/image/top.png" mode=""></image>
+			<bw-swiper :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
 		</view>
 		<view class="table">
-			<view class="tab_list">
+			<!-- <view class="tab_list">
 				<image src="../../static/image/commodity.png" mode=""></image>
 				<view class="">
 					全部商品
@@ -29,23 +29,48 @@
 				<view class="">
 					商品分类
 				</view>
-			</view>
-			<view class="tab_list">
+			</view> -->
+			<view class="tab_list"  @click="jump('/pages/threeLayers/shop_goods?merchid='+merchid+'&type=2')">
 				<image src="../../static/image/new.png" mode=""></image>
 				<view class="">
-					新品上市
+					特色产品
 				</view>
 			</view>
-			<view class="tab_list">
+			<view class="tab_list"  @click="jump('/pages/threeLayers/shop_goods?merchid='+merchid+'&type=1')">
 				<image src="../../static/image/ranking.png" mode=""></image>
 				<view class="">
-					销售排行
+					文创产品
 				</view>
 			</view>
 		</view>
 		<view class="recommend">
 			<view class="recommend_test">
-				推荐产品
+				特色产品
+			</view>
+			<view class="spot">
+				<view class="sp_list" v-for="(item,index) in goodsList" :key="index" @click="jump('/pages/subindex/product_detailed?id='+item.id)">
+					<image :src="item.images" mode=""></image>
+					<!-- <view class="ticket">
+						武汉-特色产品
+					</view> -->
+					<view class="address">
+						{{item.title}}
+					</view>
+					<view class="bottom">
+						<text class="price">￥{{item.price}}</text>
+						<text class='data'>{{item.sales_count}}人购买</text>
+					</view>
+				</view>
+				
+			</view>
+		</view>
+		
+		
+		
+		
+		<view class="recommend" v-if="originalityList != ''">
+			<view class="recommend_test">
+				文创产品
 			</view>
 			<view class="spot">
 				<view class="sp_list">
@@ -106,10 +131,16 @@
 </template>
 
 <script>
+	import bwSwiper from '../../components/wxcomponents/bw-swiper/bw-swiper.vue'
 	export default{
 		data() {
 			return {
-				
+				merchid:'', //店铺id
+				swiperList:[{}],
+				swiperType: true,
+				w_h: 2, //宽高比
+				goodsList:[],
+				originalityList:[]
 			}
 		},
 		methods:{
@@ -121,6 +152,30 @@
 					url:url
 				})
 			}
+		},
+		onLoad(e) {
+			//	e.merchid 店铺id
+			console.log(e);
+			this.merchid = e.merchid
+			this.service.entire(this, 'get', this.service.api_root.subindex.shop,{
+				merchid:this.merchid
+			}, function(self, res) {
+				console.log(res.data.advs)
+				self.goodsList = res.data.goods
+				self.originalityList = res.data.originality
+				let datas = []
+				res.data.advs.forEach((value, index) => {
+					// console.log(value)
+					let data = {
+						img: value.thumb
+					}
+					datas.push(data)
+				})
+				self.swiperList = datas
+			})
+		},
+		components:{
+			bwSwiper
 		}
 		
 	}
@@ -128,7 +183,7 @@
 
 <style scoped>
 	.content{
-		
+		padding: 0;
 	}
 	.uni-input-placeholder{
 		color: #cccccc;
@@ -174,10 +229,19 @@
 	}
 	.img{
 		width: 100%;
-		height: 410rpx;
+		/* height: 410rpx; */
 		padding: 0 20rpx;
 		box-sizing: border-box;
 		margin-top: 20rpx;
+		/*width: 100%;
+		 height: 300rpx; 
+		position: relative;
+		z-index: 1;
+		margin: 15rpx 0;*/
+	}
+	.swiper {
+		width: 100%;
+		/* height: 200rpx; */
 	}
 	.img image{
 		width: 100%;
@@ -215,7 +279,8 @@
 	}
 	.spot .sp_list{
 		width: 45%;
-		height: 400rpx;
+		height: 334rpx;
+		/* height: 400rpx; */
 		background: #fff;
 		box-shadow: 0px 0px 4px #eee;
 		margin-bottom: 30rpx;

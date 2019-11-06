@@ -258,11 +258,16 @@
 		},
 		onLoad(options) {
 			console.log(options.type)
+			console.log(options,'options')
 			this.type = options.type
 			this.id = options.id
 			let data = {
 				category_id: this.id,
+<<<<<<< HEAD
+				merchid:options.merchid || ''
+=======
 				page:this.page
+>>>>>>> 3665c33e1e8da7791b24f175f65edd88b01f2c83
 			}
 			if (options.type == 'works') {//文创
 				this.works(data)

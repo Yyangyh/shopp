@@ -59,6 +59,7 @@ const api_root = {
 		scen_Detail:api+'/api/Scenicspot/Detail',//景点详情
 		scen_ConfirmDetail:api+'/api/Ctripspot/ConfirmDetail',//景点下单确定表单+时间数据+资源详情
 		scen_Favor:api+'/api/scenicspot/Favor',//景点收藏/取消
+		shop:api+'/api/merch/shop', // 店铺页面
 		threeindex:{
 			grou_Confirm:api+'/api/groupgoods/Confirm',//确认订单-拼团商品
 			ConfirmDetail:api+'/api/groupgoods/ConfirmDetail',//拼团下订单数据确认
@@ -148,10 +149,14 @@ const api_root = {
 		Aftersale:api+'/api/order/Aftersale',//申请退货订单详情
 		Create:api+'/api/order/Create',//提交退款退货（已收货）/仅退款（未签收）申请
 		express:api+'/api/order/express',//商城订单物流信息
+<<<<<<< HEAD
 		VerifyCheck: api+'/api/user/VerifyCheck',//验证原手机号验证码
 		VerifySend: api+'/api/user/VerifySend',//验证码发送(手机修改)
 		AccountsUpdate: api+'/api/user/AccountsUpdate',//手机号修改
 		LoginPwdUpdate: api+'/api/user/LoginPwdUpdate',//登录密码修改
+=======
+		Originality:api+'/api/Originality/goodsList',// 店铺文创商品列表
+>>>>>>> bf8d41f3523bb1ce04e7554ac1b75e546e51be65
 		
 	},
 	// 游记攻略
