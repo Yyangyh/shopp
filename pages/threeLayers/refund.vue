@@ -224,7 +224,9 @@
 					})
 					if(res.code == 0){
 						setTimeout(function(){
-							self.common.returns(self)
+							uni.navigateBack({
+							    delta: 2
+							});
 						},1500)
 					}
 				})

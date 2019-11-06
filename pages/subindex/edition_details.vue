@@ -9,8 +9,8 @@
 			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image v-if="is_favor == 0" @click="collect()" class="love" src="../../static/image/love.png" mode="widthFix"></image>
-					<image  v-else  @click="collect()" class="love" src="../../static/image/collect.png" mode="widthFix"></image>
+					<!-- <image v-if="is_favor == 0" @click="collect()" class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<image  v-else  @click="collect()" class="love" src="../../static/image/collect.png" mode="widthFix"></image> -->
 					<image @click="tips()" class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -130,9 +130,9 @@
 					购物车
 				</view>
 			</view> -->
-			<view class="tab_list" @click="jump('../subuser/collect')">
-				<image src="../../static/image/collection.png" mode="widthFix"></image>
-				<!-- <image src="../../static/image/collect.png" mode="widthFix"></image> -->
+			<view class="tab_list">
+				<image v-if="is_favor == 0" @click="collect()" src="../../static/image/collection.png" mode="widthFix"></image>
+				<image   v-else  @click="collect()" src="../../static/image/collect.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>

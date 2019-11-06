@@ -199,6 +199,9 @@
 			</view>
 		</view>
 		
+		<!-- <view class="customer" @click="jump('../subindex/customer')">
+			客服
+		</view> -->
 		<view class="eject" v-show="eject_show">
 			<view class="eject_test">
 				<view class="ej_top">
@@ -264,8 +267,9 @@
 				var timestamp = (new Date()).getTime()
 				if(timestamp - uni.getStorageSync('start_notice') > 86400000){
 					this.eject_show = true
+					uni.setStorageSync('start_notice',timestamp)
 				}else{
-					console.log(timestamp - uni.getStorageSync('start_notice'))
+					
 					this.eject_show = false
 				}
 			}
@@ -804,5 +808,16 @@
 		left: 50%;
 		margin-left: -36rpx;
 		top: 597rpx;
+	}
+	.customer{
+		font-size: 30rpx;
+		height: 50rpx;
+		width: 90rpx;
+		text-align: center;
+		position: fixed;
+		right: 20rpx;
+		bottom: 200rpx;
+		background: #007AFF;
+		color: #fff;
 	}
 </style>

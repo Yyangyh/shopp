@@ -9,8 +9,8 @@
 			<view class="top_operation" :style="{background:'rgba(255,255,255,'+transparency+')'}">
 				<image src="../../static/image/returns.png" mode="widthFix" @click="returns()"></image>
 				<view class="">
-					<image v-if="is_favor == 0" @click="collect()" class="love" src="../../static/image/love.png" mode="widthFix"></image>
-					<image v-else  @click="collect()" class="love" src="../../static/image/collect.png" mode="widthFix"></image>
+					<!-- <image v-if="is_favor == 0" @click="collect()" class="love" src="../../static/image/love.png" mode="widthFix"></image>
+					<image v-else  @click="collect()" class="love" src="../../static/image/collect.png" mode="widthFix"></image> -->
 					<image @click="tips()" class="share" src="../../static/image/share.png" mode="widthFix"></image>
 				</view>
 			</view>
@@ -28,8 +28,12 @@
 					<image src="../../static/image/coupon.png" mode="widthFix"></image>
 					<text>优惠券</text>
 				</view>
-				<view class="receive_co">
+				<view class="receive_co" @click="show = true" v-if="coupon != ''">
 					<text>领券</text>
+					<image src="../../static/image/go.png" mode=""></image>
+				</view>
+				<view class="receive_co" v-else>
+					<text>暂无优惠券</text>
 					<image src="../../static/image/go.png" mode=""></image>
 				</view>
 			</view>
@@ -91,9 +95,9 @@
 					购物车
 				</view>
 			</view>
-			<view class="tab_list" @click="jump('../subuser/collect')">
-				<image src="../../static/image/collection.png" mode="widthFix"></image>
-				<!-- <image src="../../static/image/collect.png" mode="widthFix"></image> -->
+			<view class="tab_list">
+				<image v-if="is_favor == 0" @click="collect()" src="../../static/image/collection.png" mode="widthFix"></image>
+				<image  v-else  @click="collect()" src="../../static/image/collect.png" mode="widthFix"></image>
 				<view class="">
 					收藏
 				</view>
@@ -106,11 +110,39 @@
 
 
 
-		<view class="mask_black" v-show="show == 1" @click="show = 0">
+		<view class="mask_black" v-show="show == 1 || show === true" @click="show = 0">
 		
 		</view>
 		
-		
+		<view class="discount_box"  :class="show===false ? 'mask_none' : show===true ? 'mask_show' : ''">
+			<view class="box_top">
+				优惠详情
+			</view>
+			<view class="box_list">
+				<scroll-view  scroll-y="true" class="scroll-Y">
+					<view class="cou_list" v-for="(item,index) in coupon" :key='item.id'>
+						<view class="cou_test">
+							<view class="cou_left">
+								<view class="left_one">
+									￥<text>{{item.discount_value}}</text>{{item.type == 1?'折':'元'}}
+								</view>
+								<view class="left_two">
+									{{item.use_limit_type_name}}
+								</view>
+								<!-- <view class="left_two">
+									有效期：{{item.fixed_time_start}}至{{item.fixed_time_end}}
+								</view> -->
+							</view>
+							
+							<view class="cou_right" :class="{already:item.is_operable == 0}" @click="receive(index)">
+								{{item.is_operable == 0?'已领取':'领取'}}
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+			<!-- <button @click="finish()">完成</button> -->
+		</view>
 		
 		
 		<view class="mask_white" :class="show===0 ? 'mask_none' : show===1 ? 'mask_show' : ''">
@@ -204,6 +236,18 @@
 			jump(url) {
 				uni.navigateTo({
 					url: url
+				})
+			},
+			receive(index){
+				this.service.entire(this,'get',this.service.api_root.subuser.Receive,{coupon_id:this.coupon[index].id},function(self,res){
+					if(res.code == 0){
+						self.coupon[index].is_operable = 0
+					}else{
+						uni.showToast({
+							icon:'none',
+							title:res.msg
+						})
+					}
 				})
 			},
 			tips(){ //分享
@@ -348,7 +392,7 @@
 			}, function(self, res) {
 				self.data = res.data.goods
 				self.coupon = res.data.coupon
-				
+				console.log(self.coupon)
 				self.share_arr.Title = res.data.goods.title//分享
 				self.share_arr.ImageUrl = res.data.goods.images//分享
 				
@@ -765,6 +809,86 @@
 		top: 0;
 		left: 0;
 		z-index: 998;
+	}
+
+	.discount_box{
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		min-height: 860rpx;
+		background: #fff;
+		z-index: 999;
+		transition: .3s;
+		transform: translateY(100%);
+	}
+	.discount_box .box_top{
+		text-align: center;
+		font-size: 28rpx;
+		padding: 20rpx 0;
+		color: #333333;
+	}
+	.discount_box .box_list{
+		height: 660rpx;
+	}
+	.cou_list{
+		/* position: relative; */
+		background: url('../../static/image/secondary/coupon.png') no-repeat;
+		background-size: 100% 100%;
+		width: 710rpx;
+		height: 182rpx;
+		display: flex;
+		align-items: center;
+		margin: 0 auto;
+		margin-top: 30rpx;
+		color: #1D9DFF;
+	}
+	.cou_list .cou_test{
+		/* position: absolute; */
+		width: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 0 40rpx;
+		
+	}
+	.cou_list .cou_test .cou_left{
+		color: #1D9DFF;
+		font-size: 28rpx;
+	}
+	.cou_list .cou_test .cou_left text{
+		font-size:48rpx;
+		margin-right: 16rpx;
+	}
+	.cou_list .cou_test .cou_left .left_two{
+		font-size: 24rpx;
+	}
+	
+	.cou_list .cou_test .cou_right{
+		width: 142rpx;
+		height: 60rpx;
+		line-height: 60rpx;
+		border-radius: 60rpx;
+		text-align: center;
+		font-size: 30rpx;
+		color: #FFFFFF;
+		background: #1D9DFF;
+	}
+	.cou_list image{
+		width: 45rpx;
+		height: 45rpx;
+	}
+	.scroll-Y{
+		height: 660rpx;
+	}
+	.discount_box button{
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		font-size: 30rpx;
+		color: #fff;
+		background: #1D74FF;
 	}
 
 	.mask_white {

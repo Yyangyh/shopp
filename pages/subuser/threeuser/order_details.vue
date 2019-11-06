@@ -379,6 +379,7 @@
 		display: flex;
 		font-size: 28rpx;
 		position: relative;
+		height: 228rpx;
 	}
 	.order .order_num .num_two{
 		display: -webkit-box;
