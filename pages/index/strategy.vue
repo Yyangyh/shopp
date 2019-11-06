@@ -25,6 +25,13 @@
 			</view>
 		</view>
 		<view class="bottom">
+			<view class="location" @click="jump('/pages/subindex/index_location')">
+				<image src="/static/image/secondary/location.png" mode="widthFix"></image>
+				<view class="">
+					{{address != ''?address:'选择地区'}}
+				</view>
+				
+			</view>
 			<view class="bottom_list" v-for="(item,index) in data" :key='item.id' @click="jumping('/pages/global/strategy_details',item.id)">
 				<view class="list_top">
 					<view class="list_left">
@@ -121,9 +128,9 @@
 			}
 		},
 		onShow() {
+			this.address = uni.getStorageSync('city')
 			this.show = 0;
 			this.load()
-			this.address = uni.getStorageSync('city')
 		}
 
 	}
@@ -214,7 +221,18 @@
 		margin-top: 20rpx;
 
 	}
-
+	.bottom .location{
+		background: #fff;
+		padding: 20rpx;
+		font-size: 30rpx;
+		display: flex;
+		align-items: center;
+	}
+	.bottom .location image{
+		height: 30rpx;
+		width: 30rpx;
+		margin-right: 10rpx;
+	}
 	.bottom .bottom_list {
 		background: #fff;
 		padding: 0 20rpx 20rpx 20rpx;

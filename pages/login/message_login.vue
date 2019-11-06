@@ -135,6 +135,7 @@
 
 <style scoped>
 	.content{
+		padding-top: 0;
 		overflow: hidden;
 	}
 	.uni-input-placeholder{

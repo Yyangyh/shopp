@@ -28,7 +28,7 @@
 }
 .name.data-v-560a5de5{
 	width: 90%;
-	margin: 40rpx auto;
+	padding: 40rpx 0;
 	font-size: 30rpx;
 	color: #000;
 	display: -webkit-box;

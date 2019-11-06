@@ -64,6 +64,18 @@
 				})
 			},
 			login(){
+				uni.showLoading({
+					title: '登录中',
+					mask: true
+				});
+				let times = setTimeout(function() {
+					uni.hideLoading()
+					uni.showToast({
+						icon: 'none',
+						title: '网络请求错误，请稍后再试'
+					})
+					return
+				}, 10000)
 				let that = this
 				uni.request({
 					url:service.api_root.login.login,
@@ -74,6 +86,8 @@
 						pwd:that.pwd,
 					},
 					success(res) {
+						uni.hideLoading()
+						clearTimeout(times)
 						console.log(res)
 						let data = res.data 
 						uni.showToast({
@@ -84,6 +98,7 @@
 							uni.setStorageSync('token',data.data.token)
 							uni.setStorageSync('uid',data.data.id)
 							uni.setStorageSync('user',data.data)
+							uni.setStorageSync('mobile',data.data.mobile)
 							// that.$store.commit('login',data.data.token)
 							// #ifdef H5
 							// 	先判断是否在h5打开，再判断是否是在微信浏览器打开
@@ -108,12 +123,28 @@
 			},
 			wx(){
 				let that = this
+				
+				
+				
 				// #ifdef H5
+					uni.setStorageSync('wxlogin','wxlogin')
 					window.location.href = this.service.api_root.common.Auth
 				// #endif
 				
 				
 				// #ifdef APP-PLUS
+				uni.showLoading({
+					title: '登录中',
+					mask: true
+				});
+				let times = setTimeout(function() {
+					uni.hideLoading()
+					uni.showToast({
+						icon: 'none',
+						title: '网络请求错误，请稍后再试'
+					})
+					return
+				}, 10000)
 					uni.login({
 					  provider: 'weixin',
 					  success: function (loginRes) {
@@ -126,10 +157,14 @@
 								openid:loginRes.authResult.openid,
 							},
 							success(res) {
+								uni.hideLoading()
+								clearTimeout(times)
 								if(res.data.code ==0){
 									uni.setStorageSync('token',res.data.data.token)
 									uni.setStorageSync('uid',res.data.data.id)
 									uni.setStorageSync('user',res.data.data)
+									uni.setStorageSync('mobile',res.data.data.mobile)
+									uni.setStorageSync('wxlogin','wxlogin')
 									uni.switchTab({
 										url: '../index/index'
 									});
@@ -166,6 +201,7 @@
 	.bg{
 		height: 100%;
 		width: 100%;
+		overflow-y: auto;
 	}
 	.bg .back{
 		height: 100%;

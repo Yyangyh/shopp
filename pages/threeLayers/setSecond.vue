@@ -5,12 +5,13 @@
 		</view>
 		<returns :titles='title'></returns>
 		<view class="ipt">
-			<input type="text" v-model="accounts" value="" placeholder="设置密码"/>
+			<input type="text" v-model="accounts" value="" placeholder="请输入手机号"/>
 		</view>
 		<view class="ipt">
-			<input type="text" v-model="verify" value="" placeholder="确认密码"/>
+			<input type="text" v-model="verify" value="" placeholder="请输入验证码"/>
+			<text @click="obtain()">{{verification}}</text>
 		</view>
-		<button>确认</button>
+		<button @click="ascertain()">确认</button>
 	</view>
 </template>
 
@@ -23,14 +24,53 @@
 		},
 		data() {
 			return {
-				title:'二级密码',
+				title:'微信绑定手机号',
+				verification: '获取验证码',
+				disabled:false,
 				accounts:'',
 				verify:'',
 			}
 		},
 		methods:{
-			
-			
+			obtain(){ //获取验证码
+				var that = this
+				if(that.disabled == true) return
+				let data = new Object()
+				data.accounts = that.accounts
+				this.service.entire(this,'get',this.service.api_root.threeLayers.VerifySend,data,function(self,res){
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0){
+						self.verification = '60s'
+						self.disabled = true
+						self.timer = setInterval(function(){
+							let num = self.verification.split('s')[0]
+							num --
+							self.verification = num+'s'
+						},1000)
+					}
+				})	
+			},
+			ascertain(){ //确定
+				let data = new Object()
+				let url = this.service.api_root.threeLayers.AccountsUpdate //修改手机号
+				data.verify = this.verify
+				data.accounts = this.accounts
+				this.service.entire(this,'post',url,data,function(self,res){
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0){
+						
+						setTimeout(function(){
+							self.common.returns(self)
+						},1500)
+					}
+				})
+			}
 		},
 		
 		onShow() {

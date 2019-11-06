@@ -49,45 +49,30 @@
 			</view>
 
 		</view>
-
+		<uni-load-more :status="more"></uni-load-more>
 	</view>
 </template>
 
 <script>
 	// import returns from '../common/re_search.vue'
 	import returns from '../common/returns.vue'
+	import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue'
 	export default {
 		data() {
 			return {
-				data: '',
+				data: [],
 				show: false,
 				type: '',
 				id: '',
 				title:'积分产品',
-				list_test:'智能排序',
-				sort: [{
-						title: '价格最低',
-						chiose: false,
-						name: 'min_price',
-						order: 'asc'
-					},
-					{
-						title: '价格最高',
-						chiose: false,
-						name: 'min_price',
-						order: 'desc'
-					},
-					{
-						title: '销量最多',
-						chiose: false,
-						name: 'sales_count',
-						order: 'asc'
-					},
-				]
+				more: 'more',
+				page: 1,
+				loadRecord: true
 			}
 		},
 		components: {
-			returns
+			returns,
+			uniLoadMore
 		},
 		methods: {
 			jump(url) {
@@ -101,42 +86,45 @@
 				})
 				
 			},
-			hook(index, name, order) {
-				this.list_test = this.sort[index].title
-				let data = {
+			
+			loadMore(){
+				let page = this.page
+				this.more = 'loading'
+				this.service.entire(this, 'post', this.service.api_root.subindex.int_list, {
 					category_id: this.id,
-					order_by_field:name,
-					order_by_type:order
-				}
-				this.service.entire(this, 'get', this.service.api_root.subindex.int_list,data, function(self, res) {
-					console.log(res)
-					let data = res.data.data
-					for (let s of data) {
+					page:page
+				}, function(self, res) {
+					
+					let data = self.data
+					for (let s of res.data.data) {
 						let money = []
 						if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
 						if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
 						if(Number(s.price) != 0) money.push('￥'+Number(s.price))
 						s.money = money.join('+')
 					}
+					data.push(...res.data.data)
 					self.data = data
+					console.log(self.data);
+					self.page = page + 1
+					self.more = 'more'
+					if (res.data.data.length < 10) {
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
 				})
 			}
 		},
-		onLoad(options) {
-			this.service.entire(this, 'get', this.service.api_root.subindex.int_list, {
-				category_id: options.id
-			}, function(self, res) {
-				console.log(res)
-				let data = res.data.data
-				for (let s of data) {
-					let money = []
-					if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
-					if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
-					if(Number(s.price) != 0) money.push('￥'+Number(s.price))
-					s.money = money.join('+')
-				}
-				self.data = data
-			})
+		onReachBottom() {
+			if (this.loadRecord == false) return
+			this.loadMore()
+		},
+		onShow() {
+			this.loadMore()
+		},
+		onLoad(e) {
+			this.id = e.id
 		}
 	}
 </script>

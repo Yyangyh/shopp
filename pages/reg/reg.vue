@@ -34,9 +34,9 @@
 			<view class="box_top">
 				注册须知
 			</view>
-			<view class="box_conent">
+			<scroll-view scroll-y="true" class="box_conent">
 				<rich-text :nodes='treaty'></rich-text>
-			</view>
+			</scroll-view>
 			<button  @click="treaty_show = false">我已阅读</button>
 		</view>
 		

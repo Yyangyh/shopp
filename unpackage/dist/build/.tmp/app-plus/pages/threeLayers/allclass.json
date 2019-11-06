@@ -2,6 +2,7 @@
   "navigationBarTitleText": "全部分类",
   "titleNView": false,
   "usingComponents": {
+    "uni-load-more": "/components/uni-load-more/uni-load-more",
     "returns": "/pages/common/re_search"
   }
 }

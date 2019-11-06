@@ -190,6 +190,12 @@
 							<text v-if="order_status[4].count != 0">{{order_status[4].count}}</text>
 						</block> -->
 					</view>
+					<view class="tab_list" @click="jump('../subuser/refund')">
+						<image src="../../static/image/refund1.png" mode="widthFix"></image>
+						<view class="">
+							退款
+						</view>
+					</view>
 					
 				</view>
 				
@@ -313,6 +319,7 @@
 				success(res) {
 					if(res.data.code == -400){ //判断是否已经登录
 						that.state = 2	
+						that.order_status = ''
 					}else{
 						that.state = 1
 						that.data = res.data.data
@@ -576,6 +583,10 @@
 		margin-bottom: 34rpx;
 		border-bottom: 2rpx solid #F2F2F2;
 	}
+	.user_middle .middle_tab .tab_box:last-child .tab_list{
+		width: 20%;
+		position: relative;
+	}
 	 .tab_box image{
 		height: 54rpx;
 		width: 54rpx;
@@ -596,7 +607,7 @@
 		color: #fff;
 		position: absolute;
 		top: 0;
-		right: 0;
+		right: -10rpx;
 	}
 	.list_bottom{
 		background: #fff;

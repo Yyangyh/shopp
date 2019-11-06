@@ -45,19 +45,19 @@
 				<button  @click="Sign_In()">{{data.today.data != ''?'已签到':'签到'}}</button>
 			</view>
 		</view>
-		<!-- <view class="register_bottom">
+		<view class="register_bottom">
 			<view class="re_one">
 				<text class="line"></text>
 				<view class="">
-					你是今日第<text> 46938</text>名签到用户
+					签到累计共获取积分<text>{{sum_integral}}</text>
 				</view>
 				<text class="line"></text>
 			</view>
-			<view class="re_two">
+			<!-- <view class="re_two">
 				<image src="../../static/image/secondary/gold.png" mode="widthFix"></image>
 				<text>+15</text>
-			</view>
-		</view> -->
+			</view> -->
+		</view>
 		
 		<view class="register" v-show="show == 1">
 			<view class="box">
@@ -90,6 +90,8 @@
 				title:'签到',
 				show:0,
 				data:'',
+				give_integral:'',
+				sum_integral:''
 			}
 		},
 		methods:{
@@ -99,6 +101,7 @@
 					if(res.code == 0){
 						self.show = 1
 						self.data.today.data.push('1')
+						self.sum_integral = self.sum_integral + self.give_integral
 					}else{
 						uni.showToast({
 							icon:'none',
@@ -114,6 +117,8 @@
 			this.service.entire(this,'post',this.service.api_root.subuser.getSign,{},function(self,res){
 				console.log(res)
 				self.data = res.data
+				self.sum_integral = res.data.sum_integral
+				self.give_integral = res.data.give_integral
 			})
 		}
 	}

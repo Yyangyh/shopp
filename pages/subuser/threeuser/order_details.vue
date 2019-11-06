@@ -33,7 +33,31 @@
 				</view>
 			</view>
 		</view>
-
+		
+		<view class="order_news"  v-if='data.status == 3'>
+			<view class="news_one">
+				物流信息
+			</view>
+			<!--  -->
+			<view class="news_two" >
+				<text>快递公司：</text>
+				<text>{{data.express_name}}</text>
+			</view>
+			<view class="news_two">
+				<text>快递单号：</text>
+				<text>{{data.express_number}}</text>
+			</view>
+		
+			<!--  -->
+			
+			<view class="news_four" >
+				<view class="" @click="jump('/pages/threeLayers/logistics?id='+data.express_id+'&number='+data.express_number)">
+					<image src="../../../static/image/threeLayers/contact.png" mode="widthFix"></image>
+					<text>查看物流</text>
+				</view>
+			</view>
+		</view>
+		
 		<view class="order">
 			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' >
 				<view class="num_one" @click="detailed(item.goods_id,item.type)">

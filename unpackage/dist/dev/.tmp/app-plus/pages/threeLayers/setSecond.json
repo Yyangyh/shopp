@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "二级密码",
+  "navigationBarTitleText": "微信绑定手机号",
   "titleNView": false,
   "usingComponents": {
     "returns": "/pages/common/returns"

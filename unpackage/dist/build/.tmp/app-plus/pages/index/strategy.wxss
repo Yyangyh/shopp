@@ -1,9 +1,9 @@
 
-.content.data-v-61ca1f82 {
+.content.data-v-297f9bc4 {
 	background: #F4F4F4;
 	padding-top: 105rpx;
 }
-.top.data-v-61ca1f82 {
+.top.data-v-297f9bc4 {
 	text-align: center;
 	height: 105rpx;
 	font-size: 32rpx;
@@ -35,20 +35,20 @@
 	background: #fff;
 	z-index: 888;
 }
-.top text.data-v-61ca1f82:first-child {
+.top text.data-v-297f9bc4:first-child {
 	width: 82rpx;
 	display: inline-block;
 }
-.top image.data-v-61ca1f82 {
+.top image.data-v-297f9bc4 {
 	height: 82rpx;
 	width: 82rpx;
 	border-radius: 50%;
 }
-.search.data-v-61ca1f82 {
+.search.data-v-297f9bc4 {
 	padding-top: 24rpx;
 	background: #fff;
 }
-.search .search_top.data-v-61ca1f82 {
+.search .search_top.data-v-297f9bc4 {
 	background: #F1F1F1;
 	color: #CCCCCC;
 	font-size: 30rpx;
@@ -65,12 +65,12 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.search .search_top image.data-v-61ca1f82 {
+.search .search_top image.data-v-297f9bc4 {
 	height: 38rpx;
 	width: 38rpx;
 	margin: 0 16rpx 0 34rpx;
 }
-.search .search_bottom.data-v-61ca1f82 {
+.search .search_bottom.data-v-297f9bc4 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -79,24 +79,24 @@
 	color: #333333;
 	font-size: 30rpx;
 }
-.search .search_bottom view.data-v-61ca1f82 {
+.search .search_bottom view.data-v-297f9bc4 {
 	width: 50%;
 	text-align: center;
 	padding: 24rpx 0;
 }
-.show.data-v-61ca1f82 {
+.show.data-v-297f9bc4 {
 	color: #02A7F0;
 	border-bottom: 4rpx solid #1D9DFF;
 }
-.bottom.data-v-61ca1f82 {
+.bottom.data-v-297f9bc4 {
 	margin-top: 20rpx;
 }
-.bottom .bottom_list.data-v-61ca1f82 {
+.bottom .bottom_list.data-v-297f9bc4 {
 	background: #fff;
 	padding: 0 20rpx 20rpx 20rpx;
 	margin-bottom: 20rpx;
 }
-.bottom .list_top.data-v-61ca1f82 {
+.bottom .list_top.data-v-297f9bc4 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -107,13 +107,13 @@
 	        justify-content: space-between;
 	padding: 20rpx 0;
 }
-.bottom .list_top image.data-v-61ca1f82 {
+.bottom .list_top image.data-v-297f9bc4 {
 	height: 70rpx;
 	width: 70rpx;
 	margin-right: 18rpx;
 	border-radius: 50%;
 }
-.bottom .list_top .list_left.data-v-61ca1f82 {
+.bottom .list_top .list_left.data-v-297f9bc4 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -123,38 +123,38 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.bottom .list_top .list_left .top_one .one_name.data-v-61ca1f82 {
+.bottom .list_top .list_left .top_one .one_name.data-v-297f9bc4 {
 	font-size: 28rpx;
 	color: #333333;
 	font-weight: 400;
 }
-.bottom .list_top .list_left .top_one .tiem.data-v-61ca1f82 {
+.bottom .list_top .list_left .top_one .tiem.data-v-297f9bc4 {
 	font-size: 20rpx;
 	color: #666666;
 }
-.bottom .list_top .list_right.data-v-61ca1f82 {
+.bottom .list_top .list_right.data-v-297f9bc4 {
 	-webkit-align-self: flex-end;
 	    -ms-flex-item-align: end;
 	        align-self: flex-end;
 }
-.bottom .list_top .list_right image.data-v-61ca1f82 {
+.bottom .list_top .list_right image.data-v-297f9bc4 {
 	height: 26rpx;
 	width: 26rpx;
 	margin-right: 8rpx;
 }
-.bottom .list_top .list_right text.data-v-61ca1f82 {
+.bottom .list_top .list_right text.data-v-297f9bc4 {
 	color: #666666;
 	font-size: 20rpx;
 }
-.bottom .list_top .list_right text.data-v-61ca1f82:nth-of-type(1) {
+.bottom .list_top .list_right text.data-v-297f9bc4:nth-of-type(1) {
 	margin-right: 10rpx;
 }
-.bottom .list_bottom .list_one.data-v-61ca1f82 {
+.bottom .list_bottom .list_one.data-v-297f9bc4 {
 	font-size: 26rpx;
 	font-weight: bold;
 	margin-bottom: 14rpx;
 }
-.bottom .list_bottom .list_two.data-v-61ca1f82 {
+.bottom .list_bottom .list_two.data-v-297f9bc4 {
 	font-size: 26rpx;
 	color: #666666;
 	margin-bottom: 26rpx;
@@ -164,16 +164,16 @@
 	-webkit-line-clamp: 3;
 	overflow: hidden;
 }
-.bottom .list_bottom .list_three.data-v-61ca1f82 {
+.bottom .list_bottom .list_three.data-v-297f9bc4 {
 	white-space: nowrap;
 	width: 100%;
 }
-.bottom .list_bottom .list_three image.data-v-61ca1f82 {
+.bottom .list_bottom .list_three image.data-v-297f9bc4 {
 	height: 236rpx;
 	width: 236rpx;
 	border: 2rpx solid #eee;
 }
-.add_str.data-v-61ca1f82 {
+.add_str.data-v-297f9bc4 {
 	position: fixed;
 	bottom: 110rpx;
 	left: 50%;
@@ -181,7 +181,7 @@
 	    -ms-transform: translateX(-50%);
 	        transform: translateX(-50%);
 }
-.add_str image.data-v-61ca1f82 {
+.add_str image.data-v-297f9bc4 {
 	width: 96rpx;
 	height: 96rpx;
 }

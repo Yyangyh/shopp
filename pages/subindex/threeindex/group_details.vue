@@ -95,14 +95,14 @@
 </template>
 
 <script>
-	
-	// #ifdef APP-PLUS
-		// 如下为分享内容定义，可根据业务需求自行定义
-		
 		var strShareUrl = ""
 		var strShareTitle = ""
 		var strShareSummary = ""
 		var strShareImageUrl = ""
+	// #ifdef APP-PLUS
+		// 如下为分享内容定义，可根据业务需求自行定义
+		
+		
 		
 		//以下为计算菜单的nview绘制布局，为固定算法，使用者无关关心
 		var screenWidth = plus.screen.resolutionWidth
@@ -487,11 +487,13 @@
 			}
 		},
 		onLoad(options) {
+			this.id = options.id 
 			strShareUrl = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/threeindex/group_details?id='+options.id 
 			
-			this.id = options.id 
+			
 		},
 		onShow() {
+			console.log(this.id)
 			this.service.entire(this,'get',this.service.api_root.subindex.threeindex.my_group,{
 				token:uni.getStorageSync('token'),
 				teamid:this.id

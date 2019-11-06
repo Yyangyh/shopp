@@ -6,6 +6,7 @@ page.data-v-1f121aa9{
 .bg.data-v-1f121aa9{
 	height: 100%;
 	width: 100%;
+	overflow-y: auto;
 }
 .bg .back.data-v-1f121aa9{
 	height: 100%;

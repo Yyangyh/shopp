@@ -6,15 +6,15 @@
 		<returns :titles='title'></returns>
 		<view class="ipt">
 			
-			<input type="text" v-model="accounts" value="" placeholder="旧密码"/>
+			<input type="text" v-model="accounts" value="" password placeholder="旧密码"/>
 		</view>
 		<view class="ipt">
-			<input type="text" v-model="verify" value="" placeholder="设置新密码"/>
+			<input type="text" v-model="pwd" value="" password placeholder="设置新密码"/>
 		</view>
 		<view class="ipt">
-			<input type="text" v-model="verify" value="" placeholder="确认新密码"/>
+			<input type="text" v-model="asc_pwd" value="" password placeholder="确认新密码"/>
 		</view>
-		<button>确认</button>
+		<button @click="ascertain()">确认</button>
 	</view>
 </template>
 
@@ -29,11 +29,35 @@
 			return {
 				title:'修改密码',
 				accounts:'',
-				verify:'',
+				pwd:'',
+				asc_pwd:''
 			}
 		},
 		methods:{
-			
+			ascertain(){
+				if(this.pwd != this.asc_pwd){
+					uni.showToast({
+						icon:'none',
+						title:'密码不一致'
+					})
+					return
+				}
+				this.service.entire(this,'post',this.service.api_root.threeLayers.LoginPwdUpdate,{
+					my_pwd:this.accounts,
+					new_pwd:this.pwd,
+					confirm_new_pwd:this.asc_pwd
+				},function(self,res){
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0){
+						setTimeout(function(){
+							self.common.returns(self)
+						},1500)
+					}
+				})
+			}
 			
 		},
 		

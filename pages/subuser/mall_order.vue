@@ -90,9 +90,9 @@
 								<view class="bottom3" v-if='item.status == 4 && item.user_is_comments ==0' @click="jump('/pages/threeLayers/order_comment?id='+item.id)">
 									评论
 								</view>
-								<view class="bottom3" v-if='item.status == 3' @click="jump('/pages/threeLayers/logistics?id='+item.express_id+'&number='+item.express_number)">
+								<!-- <view class="bottom3" v-if='item.status == 3' @click="jump('/pages/threeLayers/logistics?id='+item.express_id+'&number='+item.express_number)">
 									查看物流
-								</view>
+								</view> -->
 								<view class="bottom3" @click="jump('threeuser/order_details?id='+item.id)">
 									详情
 								</view>
@@ -219,6 +219,8 @@
 			this.loadMore()
 		},
 		onShow() {
+			this.data.length = 0
+			this.page = 1
 			this.loadMore()
 		}
 	}

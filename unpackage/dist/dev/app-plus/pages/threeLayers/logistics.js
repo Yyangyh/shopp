@@ -1,0 +1,2 @@
+setCssToHead([".",[1],"log_box.",[1],"data-v-47af2eaa{ padding: ",[0,20],"; }\n",],undefined,{path:"./pages/threeLayers/logistics.wxss"})();
+document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/threeLayers/logistics.wxml') } }));

@@ -4,16 +4,26 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="ipt">
-			
-			<input type="text" v-model="accounts" value="" placeholder="新手机号"/>
-		</view>
-		<view class="ipt">
-			
-			<input type="text" v-model="verify" value="" placeholder="请输入验证码"/>
-			<text @click="obtain()">{{verification}}</text>
-		</view>
-		<button>确认</button>
+		<block v-if="show == 1">
+			<view class="ipt">
+				<input type="text" v-model="ori_accounts" value="" disabled placeholder="原手机号"/>
+			</view>
+			<view class="ipt">
+				<input type="text" v-model="ori_verify" value="" placeholder="请输入验证码"/>
+				<text @click="obtain()">{{ori_verification}}</text>
+			</view>
+		</block>
+		
+		<block v-else>
+			<view class="ipt">
+				<input type="text" v-model="accounts" value="" placeholder="新手机号"/>
+			</view>
+			<view class="ipt">
+				<input type="text" v-model="verify" value="" placeholder="请输入验证码"/>
+				<text @click="obtain()">{{verification}}</text>
+			</view>
+		</block>
+		<button @click="ascertain()">确认</button>
 	</view>
 </template>
 
@@ -27,49 +37,105 @@
 		data() {
 			return {
 				title:'修改手机号',
+				ori_verification: '获取验证码',
+				ori_disabled:false,
+				ori_accounts:'',
+				ori_verify:'',
 				verification: '获取验证码',
 				disabled:false,
 				accounts:'',
 				verify:'',
+				show:1
 			}
 		},
 		methods:{
 			obtain(){ //获取验证码
 				var that = this
-				
 				if(that.disabled == true) return
-				
-				uni.request({
-					url:service.api_root.reg.WlVerifySend,
-					method:'POST',
-					header:{'X-Requested-With':'xmlhttprequest'},
-					data:{
-						accounts:that.accounts,
-						type:'2'
-					},
-					success(res) {
-						console.log(that.disabled)
-						let data = res.data 
-						console.log(data)
-						uni.showToast({
-							icon:'none',
-							title:data.msg
-						})
-						if(data.code == 0){
-							that.verification = '60s'
-							that.disabled = true
-							that.timer = setInterval(function(){
-								let num = that.verification.split('s')[0]
+				let data = new Object()
+				if(this.show == 2) data.accounts = that.accounts
+				this.service.entire(this,'get',this.service.api_root.threeLayers.VerifySend,data,function(self,res){
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0){
+						if(self.show ==2){
+							
+							self.verification = '60s'
+							self.disabled = true
+							self.timer = setInterval(function(){
+								let num = self.verification.split('s')[0]
 								num --
-								that.verification = num+'s'
+								self.verification = num+'s'
+							},1000)
+						}else{
+							
+							self.ori_verification = '60s'
+							self.ori_disabled = true
+							self.ori_timer = setInterval(function(){
+								let num = self.ori_verification.split('s')[0]
+								num --
+								self.ori_verification = num+'s'
 							},1000)
 						}
 						
 					}
 				})
-				
+				// uni.request({
+				// 	url:service.api_root.threeLayers.VerifySend,
+				// 	method:'POST',
+				// 	header:{'X-Requested-With':'xmlhttprequest'},
+				// 	data:data,
+				// 	success(res) {
+				// 		console.log(that.disabled)
+				// 		let data = res.data 
+				// 		console.log(data)
+				// 		uni.showToast({
+				// 			icon:'none',
+				// 			title:data.msg
+				// 		})
+				// 		if(data.code == 0){
+				// 			that.verification = '60s'
+				// 			that.disabled = true
+				// 			that.timer = setInterval(function(){
+				// 				let num = that.verification.split('s')[0]
+				// 				num --
+				// 				that.verification = num+'s'
+				// 			},1000)
+				// 		}
 						
+				// 	}
+				// })	
 			},
+			ascertain(){ //确定
+				let data = new Object()
+				let url
+				if(this.show == 1){
+					url = this.service.api_root.threeLayers.VerifyCheck //验证原手机号
+					data.verify = this.ori_verify
+				}else{
+					url = this.service.api_root.threeLayers.AccountsUpdate //修改手机号
+					data.verify = this.verify
+					data.accounts = this.accounts
+				}
+				this.service.entire(this,'post',url,data,function(self,res){
+					uni.showToast({
+						icon:'none',
+						title:res.msg
+					})
+					if(res.code == 0){
+						
+						if(self.show == 1){
+							self.show = 2
+							return
+						}
+						setTimeout(function(){
+							self.common.returns(self)
+						},1500)
+					}
+				})
+			}
 			
 			
 		},
@@ -80,11 +146,20 @@
 					this.verification = '重新获取'
 					this.disabled = false
 				}
+			},
+			ori_verification(curval,oldval){// 监听定时器的num值
+				if(curval == '-1s'){
+					clearInterval(this.ori_timer)
+					this.ori_verification = '重新获取'
+					this.ori_disabled = false
+				}
 			}
 		},
 		
 		onShow() {
-			console.log(this)
+			
+			this.ori_accounts = uni.getStorageSync('mobile')
+			
 		}
 	}
 </script>

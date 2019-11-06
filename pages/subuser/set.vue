@@ -23,16 +23,17 @@
 					<image src="../../static/image/secondary/modifyPwd.png" mode="widthFix"></image>
 					<text>修改密码</text>
 				</view>
+				
 				<image src="../../static/image/go.png" mode=""></image>
 			</view>
-			<!-- <view class="tab_list"  @click="jump('../threeLayers/setSecond')">
+			<view class="tab_list"  @click="jump('../threeLayers/setSecond')" v-if="wxlogin != ''">
 				<view class="">
 					<image src="../../static/image/secondary/modifySecond.png" mode="widthFix"></image>
-					<text>二级密码</text>
+					<text>微信绑定手机号</text>
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
 			</view>
-			<view class="tab_list"  @click="jump('../threeLayers/resetSecond')">
+			<!-- <view class="tab_list"  @click="jump('../threeLayers/resetSecond')">
 				<view class="">
 					<image src="../../static/image/secondary/forget.png" mode="widthFix"></image>
 					<text>重置二级密码</text>
@@ -59,7 +60,7 @@
 	export default{
 		data() {
 			return {
-				
+				wxlogin:''
 			}
 		},
 		methods:{
@@ -80,6 +81,10 @@
 					url:url
 				})
 			}
+		},
+		onShow() {
+			this.wxlogin  = uni.getStorageSync('wxlogin')
+			console.log(this.wxlogin)
 		}
 	}
 </script>

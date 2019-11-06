@@ -21,11 +21,11 @@
 				<view class="top_list" :class="{show:show == 2}" @click="chiose(2)">
 					待发货
 				</view>
-				<view class="top_list" :class="{show:show == 4}" @click="chiose(4)">
-					待评论
+				<view class="top_list" :class="{show:show == 3}" @click="chiose(3)">
+					待收货
 				</view>
-				<view class="top_list" :class="{show:show == -1}" @click="show = -1">
-					退款
+				<view class="top_list" :class="{show:show == 4}" @click="chiose(4)">
+					完成
 				</view>
 			</view>
 			<view class="box_bottom">
@@ -47,6 +47,12 @@
 							{{item.statusstr}}
 						</view>
 						<view class="top2 stayGoods" v-if="item.status == 2">
+							{{item.statusstr}}
+						</view>
+						<view class="top2 stayGoods" v-if="item.status == 3">
+							{{item.statusstr}}
+						</view>
+						<view class="top2 stayGoods" v-if="item.status == 4">
 							{{item.statusstr}}
 						</view>
 					</view>
@@ -108,6 +114,7 @@
 				})
 			},
 			chiose(status){
+				this.more = 'loading'
 				this.data = ''
 				this.show = status
 				this.page = 1
@@ -122,7 +129,9 @@
 					if(res.data.data.length < 10){
 						self.more = 'noMore'
 						self.loadRecord = false
+						return
 					}
+					self.more = 'more'
 				})
 			},
 			loadMore(){
@@ -154,6 +163,8 @@
 			this.loadMore()
 		},
 		onShow() {
+			this.data.length = 0
+			this.page = 1
 			this.loadMore()
 		}
 	}

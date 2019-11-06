@@ -11,7 +11,7 @@
 			<view class="" v-else-if="data.status == -1">
 				已取消
 			</view>
-			<view class="" v-else>
+			<view class="" v-else-if="data.status == 0">
 				等待买家付款
 			</view>
 			<image src="../../../static/image/threeLayers/box.png" mode="widthFix"></image>
@@ -102,6 +102,9 @@
 			<text>取消订单</text>
 			<text class="or_pay" @click="show = !show">付款</text>
 		</view>
+		<view class="order_bottom" v-if="data.status == 2">
+			<text class="or_pay"  @click="determine()">确定收货</text>
+		</view>
 
 		<view class="mask" v-if="show" @click="show = !show">
 
@@ -161,6 +164,30 @@
 				this.pay_list = JSON.parse(JSON.stringify(this.pay_list))
 				this.payment_id = this.pay_list[index].id
 				this.payment_name = this.pay_list[index].payment
+			},
+			determine(){//确定收货
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '是否确定收货？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that,'get',that.service.api_root.subuser.threeuser.group_Collect,{id:that.data.id},function(self,res){
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+				            	if(res.code == 0){
+									setTimeout(function(){
+										self.common.returns(self)
+									},1500)
+								}
+				            })
+				        } else if (res.cancel) {
+				           return
+				        }
+				    }
+				});
 			},
 			payment() {
 				//提交

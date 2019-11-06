@@ -5,12 +5,13 @@
 </template>
 
 <script>
-	// #ifdef APP-PLUS
-		// 如下为分享内容定义，可根据业务需求自行定义
 		var strShareUrl = ""
 		var strShareTitle = ""
 		var strShareSummary = ""
 		var strShareImageUrl = ""
+	// #ifdef APP-PLUS
+		// 如下为分享内容定义，可根据业务需求自行定义
+		
 		//以下为计算菜单的nview绘制布局，为固定算法，使用者无关关心
 		var screenWidth = plus.screen.resolutionWidth
 		//以360px宽度屏幕为例，上下左右边距及2排按钮边距留25像素，图标宽度55像素，同行图标间的间距在360宽的屏幕是30px，但需要动态计算，以此原则计算4列图标分别的left位置

@@ -63,6 +63,18 @@
 				    count: 1, //默认9
 				    sourceType: ['album'], //从相册选择
 				    success: function (res) {
+						uni.showLoading({
+							title: '上传中',
+							mask: true
+						});
+						let times = setTimeout(function() {
+							uni.hideLoading()
+							uni.showToast({
+								icon: 'none',
+								title: '网络请求错误，请稍后再试'
+							})
+							return
+						}, 10000)
 						uni.uploadFile({
 						    url: that.service.api_root.common.upload_image,
 						    filePath: res.tempFilePaths[0],
@@ -71,7 +83,8 @@
 						        token: uni.getStorageSync('token')
 						    },
 						    success: (ref) => {
-								console.log(ref)
+								uni.hideLoading()
+								clearTimeout(times)
 						        if(JSON.parse(ref.data).code == 0){
 									// console.log(JSON.parse(ref.data))
 									 that.image_list.push(res.tempFilePaths[0])

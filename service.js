@@ -15,6 +15,7 @@ const api_root = {
 		Favor: api+'/api/goods/Favor',//用户商品收藏/取消（拼团无效）
 		upload_image: api+'/api/travels/upload_image',//图片上传
 		WeatchAppLogin: api+'/api/user/WeatchAppLogin',//微信app授权登陆
+		
 	},
 	reg:{
 		reg: api+'/api/user/Register',//注册
@@ -107,6 +108,7 @@ const api_root = {
 		Receive:api+'/api/coupon/Receive',//领取优惠券
 		Reg_name:api+'/api/identitycard/Reg',//实名申请
 		Reg_Detail:api+'/api/identitycard/Detail',//实名认证申请状态
+		AftersaleLists:api+'/api/order/AftersaleLists',//退货退款申请列表
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
@@ -124,6 +126,8 @@ const api_root = {
 			cred_Cancel:api+'/api/creditshop/Cancel',//积分订单取消
 			cred_Collect:api+'/api/creditshop/Collect',//积分订单收货
 			cred_Delete:api+'/api/creditshop/Delete',//积分订单删除
+			getCreditShopMsg:api+'/api/user/getCreditShopMsg',//积分说明
+			group_Collect:api+'/api/groupgoods/Collect',//拼团订单收货
 		},
 		
 		
@@ -144,6 +148,10 @@ const api_root = {
 		Aftersale:api+'/api/order/Aftersale',//申请退货订单详情
 		Create:api+'/api/order/Create',//提交退款退货（已收货）/仅退款（未签收）申请
 		express:api+'/api/order/express',//商城订单物流信息
+		VerifyCheck: api+'/api/user/VerifyCheck',//验证原手机号验证码
+		VerifySend: api+'/api/user/VerifySend',//验证码发送(手机修改)
+		AccountsUpdate: api+'/api/user/AccountsUpdate',//手机号修改
+		LoginPwdUpdate: api+'/api/user/LoginPwdUpdate',//登录密码修改
 		
 	},
 	// 游记攻略
@@ -167,6 +175,7 @@ const api_root = {
 		use_ctrip:api+'/api/Travelscard/use_ctrip',//门票使用
 		introdu:api+'/api/travels/person_desc', // 提交个人简介
 		
+
 	}
 }
 const entire = function(self,type,url,data,func){

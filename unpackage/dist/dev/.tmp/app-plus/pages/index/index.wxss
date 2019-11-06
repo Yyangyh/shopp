@@ -522,4 +522,15 @@
 	margin-left: -36rpx;
 	top: 597rpx;
 }
+.customer.data-v-4c99c1bb{
+	font-size: 30rpx;
+	height: 50rpx;
+	width: 90rpx;
+	text-align: center;
+	position: fixed;
+	right: 20rpx;
+	bottom: 200rpx;
+	background: #007AFF;
+	color: #fff;
+}
 

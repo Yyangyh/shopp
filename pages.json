@@ -422,6 +422,15 @@
 			}
 		},
 		{
+			"path": "pages/subuser/refund",
+			"style": {
+				"navigationBarTitleText": "退款",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/address",
 			"style": {
 				"navigationBarTitleText": "收货地址",
@@ -507,6 +516,15 @@
 			"path": "pages/subuser/settled",
 			"style": {
 				"navigationBarTitleText": "商家入驻",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/refund_details",
+			"style": {
+				"navigationBarTitleText": "退款详情",
 				"app-plus" : {
 				    "titleNView" : false
 				}
@@ -764,7 +782,7 @@
 		{
 			"path": "pages/threeLayers/setSecond",
 			"style": {
-				"navigationBarTitleText": "二级密码",
+				"navigationBarTitleText": "微信绑定手机号",
 				"app-plus" : {
 				    "titleNView" : false
 				}
