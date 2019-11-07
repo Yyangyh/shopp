@@ -21,7 +21,7 @@
 		</view>
 		<view class="top_img">
 			<!-- <bw-img-upload style="width:100%" ></bw-img-upload> -->
-			<bw-swiper :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
+			<bw-swiper :swiperList="swiperList"  @clickItem='clickItem' :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
 
 
 			<!-- <swiper class="swiper"  :autoplay="autoplay" :interval="interval" :duration="duration"
@@ -199,9 +199,9 @@
 			</view>
 		</view>
 		
-		<!-- <view class="customer" @click="jump('../subindex/customer')">
+		<view class="customer" @click="jump('../subindex/customer')">
 			客服
-		</view> -->
+		</view>
 		<view class="eject" v-show="eject_show">
 			<view class="eject_test">
 				<view class="ej_top">
@@ -295,7 +295,9 @@
 				res.data.forEach((value, index) => {
 					// console.log(value)
 					let data = {
-						img: value.images_url
+						img: value.images_url,
+						id:value.goodid,
+						type:value.type
 					}
 					datas.push(data)
 				})
@@ -330,6 +332,18 @@
 				var timestamp = (new Date()).getTime()
 				if(!uni.getStorageSync('start_notice'))uni.setStorageSync('start_notice',timestamp)
 				uni.setStorageSync('notice',1)
+			},
+			clickItem(e){
+				console.log(e)
+				if(e.type == 2){
+					uni.navigateTo({
+						url:'../subindex/scenery_detailed?id='+e.id
+					})
+				}else{
+					uni.navigateTo({
+						url:'../subindex/product_detailed?id='+e.id
+					})
+				}
 			},
 			jump(url) {
 				

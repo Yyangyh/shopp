@@ -23,7 +23,7 @@
 				<view class="countdown">距结束<text>{{hour}}</text>:<text>{{minute}}</text>:<text>{{second}}</text></view>
 				<text class="already">已售{{data_list.sell}}</text>
 			</view>
-			<view class="pr_bottom">
+			<!-- <view class="pr_bottom">
 				<view class="pr_coupon">
 					<image src="../../static/image/coupon.png" mode="widthFix"></image>
 					<text>优惠券</text>
@@ -32,7 +32,7 @@
 					<text>领券</text>
 					<image src="../../static/image/go.png" mode=""></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<view class="pr_shop">
 			<view class="sh_top">

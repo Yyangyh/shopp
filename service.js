@@ -1,8 +1,8 @@
 
 
 
-// const api = ''
-const api ='http://wx.huanqiutongmall.com'
+const api = ''
+// const api ='http://wx.huanqiutongmall.com'
 
 
 
@@ -110,6 +110,7 @@ const api_root = {
 		Reg_name:api+'/api/identitycard/Reg',//实名申请
 		Reg_Detail:api+'/api/identitycard/Detail',//实名认证申请状态
 		AftersaleLists:api+'/api/order/AftersaleLists',//退货退款申请列表
+		answerList:api+'/api/user/answerList',//反馈列表
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
@@ -129,6 +130,12 @@ const api_root = {
 			cred_Delete:api+'/api/creditshop/Delete',//积分订单删除
 			getCreditShopMsg:api+'/api/user/getCreditShopMsg',//积分说明
 			group_Collect:api+'/api/groupgoods/Collect',//拼团订单收货
+			getBtMsg:api+'/api/user/getBtMsg',//关于版通
+			transferBt:api+'/api/user/transferBt',//赠送版通
+			Level_lists:api+'/api/userLevel/lists',//会员等级列表
+			Level_Confirm:api+'/api/userLevel/Confirm',//会员确认订单
+			Level_pay:api+'/api/userLevel/pay',//支付会员等级
+			
 		},
 		
 		

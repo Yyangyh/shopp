@@ -188,7 +188,7 @@
 			<button class="save" @click="save()">确定</button>
 			<image class="close" src="../../static/image/secondary/close2.png" mode="widthFix" @click="show = 0"></image>
 		</view>
-
+		<Load v-if="load_show"></Load>
 
 	</view>
 </template>
@@ -219,7 +219,8 @@
 				data_guess:'',
 				transparency:0,
 				share_arr:{},
-				comments:''
+				comments:'',
+				load_show:true
 			}
 		},
 		onPageScroll(e){
@@ -406,6 +407,7 @@
 					}
 				}
 				self.choose_list = list
+				self.load_show = false
 			})
 			
 			this.service.entire(this,'post',this.service.api_root.subindex.Category_list,{is_home_recommended:1},function(self,res){ //猜你喜欢

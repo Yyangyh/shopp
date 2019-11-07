@@ -186,7 +186,7 @@
 			<image class="close" src="../../static/image/secondary/close2.png" mode="widthFix" @click="show = 0"></image>
 		</view>
 
-
+		<Load v-if="load_show"></Load>
 	</view>
 </template>
 
@@ -217,7 +217,8 @@
 				transparency:0,
 				share_arr:{},
 				comments:'',
-				coupon:''
+				coupon:'',
+				load_show:true
 			}
 		},
 		onPageScroll(e){
@@ -419,6 +420,7 @@
 					}
 				}
 				self.choose_list = list
+				self.load_show = false
 			})
 			if(options.type == 0){
 				this.service.entire(this,'get',this.service.api_root.threeLayers.goodsList,{},function(self,res){  //猜你喜欢_特色产品
@@ -873,6 +875,9 @@
 		font-size: 30rpx;
 		color: #FFFFFF;
 		background: #1D9DFF;
+	}
+	.already{
+		background: #999999 !important;
 	}
 	.cou_list image{
 		width: 45rpx;

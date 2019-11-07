@@ -22,7 +22,7 @@
 				<text>{{data.money}}</text>
 				<!-- <text>已售{{data.sales_count}}</text> -->
 			</view>
-			<view class="pr_bottom">
+			<!-- <view class="pr_bottom">
 				<view class="pr_coupon">
 					<image src="../../../static/image/coupon.png" mode="widthFix"></image>
 					<text>优惠券</text>
@@ -31,7 +31,7 @@
 					<text>领券</text>
 					<image src="../../../static/image/go.png" mode=""></image>
 				</view>
-			</view>
+			</view> -->
 		</view>
 		<!-- <view class="pr_shop">
 			<view class="sh_top">
@@ -43,7 +43,7 @@
 				<image src="../../../static/image/go.png" mode="widthFix"></image>
 			</view>
 		</view> -->
-
+<!-- 
 		<view class="user_comment">
 			<view class="user_top">
 				用户评论
@@ -74,7 +74,7 @@
 					查看更多评论
 				</view>
 			</view>
-		</view>
+		</view> -->
 
 		<view class="pro_img">
 			<view class="img_test">
@@ -176,7 +176,7 @@
 			<image class="close" src="../../../static/image/secondary/close2.png" mode="widthFix" @click="show = 0"></image>
 		</view>
 
-
+		<Load v-if="load_show"></Load>
 	</view>
 </template>
 
@@ -202,7 +202,8 @@
 				inventory:'',
 				data_list:'',
 				transparency:0,
-				share_arr:{}
+				share_arr:{},
+				load_show:true
 			}
 		},
 		onPageScroll(e){
@@ -355,7 +356,7 @@
 				
 				self.share_arr.Title = self.data.title//分享
 				self.share_arr.ImageUrl = self.data.images//分享
-				
+				self.load_show = false
 			})
 			
 			this.service.entire(this, 'get', this.service.api_root.subindex.int_list, {  //猜你喜欢

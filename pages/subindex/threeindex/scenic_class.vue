@@ -173,11 +173,12 @@
 		},
 		
 		onLoad(options) {
-			
-			this.id = options.id
-			
+				this.city = uni.getStorageSync('city')
+				this.id = options.id
+				let city_arr = this.city.split('市')
 				this.service.entire(this, 'get', this.service.api_root.subindex.scen_list, {
-					category_id: options.id
+					category_id: options.id,
+					address:city_arr[0]
 				}, function(self, res) {
 					console.log(res)
 					self.data = res.data.data

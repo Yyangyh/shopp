@@ -11,14 +11,14 @@
 			<text></text>
 		</view>
 		<view class="tab">
-			<view class="tab_list" @click="jump('../threeLayers/modify_phone')">
+			<view class="tab_list" @click="jump('../threeLayers/modify_phone')" v-if="wxlogin == ''">
 				<view class="">
 					<image src="../../static/image/secondary/modifyPhone.png" mode="widthFix"></image>
 					<text>修改手机号</text>
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
 			</view>
-			<view class="tab_list" @click="jump('../threeLayers/modifyPwd')">
+			<view class="tab_list" @click="jump('../threeLayers/modifyPwd')" v-if="wxlogin == ''">
 				<view class="">
 					<image src="../../static/image/secondary/modifyPwd.png" mode="widthFix"></image>
 					<text>修改密码</text>
@@ -68,7 +68,7 @@
 				this.service.entire(this,'post',this.service.api_root.login.logout,{},function(self,res){
 					console.log(res)
 				})
-				uni.clearStorageSync('token')
+				uni.clearStorageSync()
 				uni.switchTab({
 					url:'../index/index'
 				})

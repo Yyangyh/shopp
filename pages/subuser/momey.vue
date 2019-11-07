@@ -107,7 +107,7 @@
 		align-items: center;
 		justify-content: space-between;
 		margin: 0 32rpx;
-		margin-bottom: 58rpx;
+		margin-top: 58rpx;
 	}
 	.avatar{
 		height: 90rpx;

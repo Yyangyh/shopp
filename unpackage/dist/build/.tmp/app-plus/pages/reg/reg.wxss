@@ -1,12 +1,12 @@
 
-.content.data-v-814f7c76{
+.content.data-v-03442311{
 	overflow: hidden;
 	padding-top: 0;
 }
-.uni-input-placeholder.data-v-814f7c76{
+.uni-input-placeholder.data-v-03442311{
 	color: #C5C5C5;
 }
-.ipt.data-v-814f7c76{
+.ipt.data-v-03442311{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -15,24 +15,24 @@
 	border-bottom: 2rpx solid #EEEEEE;
 	padding: 20rpx 20rpx;
 }
-.ipt image.data-v-814f7c76{
+.ipt image.data-v-03442311{
 	margin-right: 20rpx;
 	width: 35rpx;
 	height: 45rpx;
 }
-.ipt input.data-v-814f7c76{
+.ipt input.data-v-03442311{
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
 	        flex-grow: 2;
 }
-.ipt text.data-v-814f7c76{
+.ipt text.data-v-03442311{
 	font-size: 32rpx;
 	width: 160rpx;
 	text-align: center;
 	white-space: nowrap;
 }
-.Mask.data-v-814f7c76{
+.Mask.data-v-03442311{
 	position: fixed;
 	left: 0;
 	top: 0;
@@ -41,7 +41,7 @@
 	z-index: 888;
 	background: rgba(0,0,0,.6);
 }
-.treaty.data-v-814f7c76{
+.treaty.data-v-03442311{
 	background: #fff;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -55,10 +55,10 @@
 	padding: 0 20rpx;
 	font-size: 30rpx;
 }
-.treaty text.data-v-814f7c76{
+.treaty text.data-v-03442311{
 	color: #1D74FF;
 }
-.treaty_box.data-v-814f7c76{
+.treaty_box.data-v-03442311{
 	position: fixed;
 	z-index: 999;
 	height: 780rpx;
@@ -73,15 +73,15 @@
 	    -ms-transform: translate(-50%,-50%);
 	        transform: translate(-50%,-50%);
 }
-.treaty_box .box_top.data-v-814f7c76{
+.treaty_box .box_top.data-v-03442311{
 	text-align: center;
 	font-size: 36rpx;
 }
-.treaty_box .box_conent.data-v-814f7c76{
+.treaty_box .box_conent.data-v-03442311{
 	margin: 20rpx 0;
 	height: 560rpx;
 }
-.treaty_box button.data-v-814f7c76{
+.treaty_box button.data-v-03442311{
 	position: absolute;
 	width: 90%;
 	height: 80rpx;
@@ -93,7 +93,7 @@
 	    -ms-transform: translateX(-50%);
 	        transform: translateX(-50%);
 }
-button.data-v-814f7c76{
+button.data-v-03442311{
 	background: #1D74FF;
 	color: #FFFFFF;
 	height: 90rpx;
@@ -102,7 +102,7 @@ button.data-v-814f7c76{
 	width: 84%;
 	margin:60rpx 8% 30rpx 8%;
 }
-.test.data-v-814f7c76{
+.test.data-v-03442311{
 	text-align: center;
 	font-size: 32rpx;
 	color: #1D74FF;

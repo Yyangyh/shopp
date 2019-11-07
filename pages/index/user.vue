@@ -10,7 +10,7 @@
 				<!--  #endif -->
 				
 				<image src="../../static/image/set.png" mode="widthFix" @click="jump('../subuser/set')"></image>
-				<image src="../../static/image/news.png" mode="widthFix" @click="jump('../subuser/feedback')"></image>
+				<image src="../../static/image/news.png" mode="widthFix" @click="jump('../subuser/feedback_list')"></image>
 				<image src="../../static/image/feedback.png" mode="widthFix"  @click="jump('../subuser/notice')"></image>
 			</view>
 			<view class="">
@@ -20,6 +20,9 @@
 						<view class="left_top">
 							<view v-if="nickname">{{nickname}}</view>
 							<view v-else>未修改昵称</view>
+							
+						</view>
+						<view class="left_bottom_one">
 							<view class="user_right" v-if="name_status.status != 1" @click="jump('../subuser/realname')">
 								<image src="../../static/image/id.png" mode="widthFix"></image>
 								<text>实名认证</text>
@@ -30,10 +33,16 @@
 								<text>已实名</text>
 								<image src="../../static/image/go1.png" mode="widthFix"></image>
 							</view>
+							<view class="">
+								用户id：{{uid}}
+							</view>
 						</view>
-						<view class="left_bottom">
-							<image src="../../static/image/check.png" mode="widthFix"></image>
-							<text>会员</text>
+						<view class="left_bottom_one">
+							<view class="left_bottom">
+								<image src="../../static/image/check.png" mode="widthFix"></image>
+								<text>会员</text>
+							</view>
+							
 						</view>
 					</view>
 				</view>
@@ -50,7 +59,7 @@
 				
 			</view>
 		</view>
-		<view class="user_vip"  @click="jump('../subuser/member')">
+		<view class="user_vip"  @click="jump('../subuser/threeuser/open_member')">
 			<view class="vip_one">
 				<image src="../../static/image/vip.png" mode="widthFix"></image>
 				<view class="">
@@ -71,7 +80,7 @@
 		</view>
 		<view class="user_top">
 			<view class="user_tab">
-				<view class="tab_list" @click="jump('../subuser/member')">
+				<view class="tab_list" @click="jump('../subuser/threeuser/open_member')">
 					<image src="../../static/image/member.png" mode="widthFix"></image>
 					<view class="">
 						会员中心
@@ -278,6 +287,7 @@
 				state:'',
 				order_status:'',
 				name_status:'',
+				uid:''
 			}
 		},
 		methods:{
@@ -327,6 +337,7 @@
 						that.order_status = res.data.data.user_order_status
 						console.log(res.data.data)
 						that.nickname = res.data.data.nickname
+						that.uid = uni.getStorageSync('uid')
 						uni.setStorageSync('nickname',res.data.data.nickname)
 						uni.setStorageSync('user',res.data.data)
 					}
@@ -407,6 +418,11 @@
 	.top .user .user_left .left_top{
 		display: flex;
 	}
+	.top .user .user_left .left_bottom_one{
+		display: flex;
+		align-items: center;
+		margin-top: 10rpx;
+	}
 	.top .user .user_left .left_bottom{
 		background: #007FE9;
 		display: flex;
@@ -417,11 +433,12 @@
 		line-height: 36rpx;
 		border-radius: 36rpx;
 		font-size: 24rpx;
-		margin-top: 20rpx;
+		margin-right: 20rpx;
+		/* margin-top: 20rpx; */
 	}
 	.top .user .user_right{
 		background: #007FE9;
-		margin-left: 16rpx;
+		/* margin-left: 16rpx; */
 		height: 36rpx;
 		border-radius: 36rpx;
 		width: 190rpx;
@@ -429,6 +446,7 @@
 		align-items: center;
 		justify-content: center;
 		font-size: 24rpx;
+		margin-right: 12rpx;
 	}
 	.top .user .user_right text{
 		margin: 0 6rpx;

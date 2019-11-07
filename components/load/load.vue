@@ -18,14 +18,11 @@
 		},
 		methods:{
 			load(){
-				console.log(123)
-				uni.showToast({
-					icon:'none',
-					title:'123'
-				})
+				
+				
 			},
 			show(){
-				console.log(123)
+				
 			}
 		},
 		created() {

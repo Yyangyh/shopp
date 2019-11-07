@@ -4,7 +4,7 @@
 		            <!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="top_img">
+		<!-- <view class="top_img">
 			<image src="../../static/image/secondary/user6.png" mode="widthFix"></image>
 			<view class="top_test">
 				<view class="test_top">
@@ -15,7 +15,7 @@
                     已拥有10 | 差300等级分升级成黄金贵宾
 				</view>
 			</view>
-		</view>
+		</view> -->
 		<view class="equity">
 			<view class="eq_top">
 				超级会员权益
@@ -97,7 +97,7 @@
 			</view>
 		</view>
 		<view class="bottom_img">
-			<image src="../../static/image/secondary/opening.png" mode="widthFix"></image>
+			<image src="../../static/image/secondary/opening.png" mode="widthFix" @click="jump('./threeuser/open_member')"></image>
 		</view>
 	</view>
 </template>
@@ -115,7 +115,11 @@
 			}
 		},
 		methods:{
-			
+			jump(url){
+				uni.navigateTo({
+					url:url
+				})
+			}
 			
 		},
 		
@@ -163,7 +167,7 @@
 	}
 	.equity .eq_top{
 		padding: 0 52rpx;
-		margin-bottom: 42rpx;
+		margin: 42rpx 0;
 	}
 	.equity .eq_bottom {
 		display: flex;

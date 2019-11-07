@@ -68,7 +68,7 @@
 						<image :src="item.images" mode="aspectFill"></image>
 						<view class="middle1">
 							<view class="">{{item.title}}</view>
-							<view>套装</view>
+							<!-- <view>套装</view> -->
 						</view>
 						<view class="middle2">x1</view>
 					</view>

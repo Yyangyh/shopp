@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "商品列表",
+  "bounce": "none",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

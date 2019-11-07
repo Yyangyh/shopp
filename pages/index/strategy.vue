@@ -4,7 +4,12 @@
 			<!-- 这里是状态栏 -->
 		</view>
 		<view class="top">
-			<text></text>
+			<view class="location" @click="jump('/pages/subindex/index_location')">
+				<image src="/static/image/secondary/location.png" mode="widthFix"></image>
+				<view class="">
+					{{address != ''?address:'选择地区'}}
+				</view>
+			</view>
 			<text>攻略游记</text>
 			<image v-if="user" @click="jump('../substrategy/my_travels')" :src="user.avatar" mode="widthFix"></image>
 			<image v-else class="user_head" src="../../static/image/state_user.png" mode="widthFix"></image>
@@ -25,13 +30,7 @@
 			</view>
 		</view>
 		<view class="bottom">
-			<view class="location" @click="jump('/pages/subindex/index_location')">
-				<image src="/static/image/secondary/location.png" mode="widthFix"></image>
-				<view class="">
-					{{address != ''?address:'选择地区'}}
-				</view>
-				
-			</view>
+			
 			<view class="bottom_list" v-for="(item,index) in data" :key='item.id' @click="jumping('/pages/global/strategy_details',item.id)">
 				<view class="list_top">
 					<view class="list_left">
@@ -40,9 +39,16 @@
 							<view class="one_name">
 								{{item.user.user_name_view}}
 							</view>
-							<view class="tiem">
-								{{item.create_time_date}}
+							<view class="one_box">
+								<view class="tiem">
+									{{item.create_time_date}}
+								</view>
+								<view class="box_bottom">
+									<image src="/static/image/secondary/position.png" mode="widthFix"></image>
+									<text>{{item.address}}</text>
+								</view>
 							</view>
+							
 						</view>
 					</view>
 					<view class="list_right">
@@ -70,7 +76,7 @@
 		</view>
 
 		<view class="add_str">
-			<image @click="jump('../substrategy/strategy_issue')" src="../../static/image/index/add.png" mode=""></image>
+			<image @click="add('../substrategy/strategy_issue')" src="../../static/image/index/add.png" mode=""></image>
 		</view>
 
 	</view>
@@ -91,6 +97,18 @@
 				uni.navigateTo({
 					url: url
 				})
+			},
+			add(url) {
+				if(!uni.getStorageSync('token')){
+					uni.navigateTo({
+						url: '../login/login'
+					})
+				}else{
+					uni.navigateTo({
+						url: url
+					})
+				}
+				
 			},
 			jumping(url,i) {
 				// i = 用户uid / 攻略详细id
@@ -216,23 +234,23 @@
 		color: #02A7F0;
 		border-bottom: 4rpx solid #1D9DFF;
 	}
-
-	.bottom {
-		margin-top: 20rpx;
-
-	}
-	.bottom .location{
+	.location{
 		background: #fff;
 		padding: 20rpx;
 		font-size: 30rpx;
 		display: flex;
 		align-items: center;
 	}
-	.bottom .location image{
+	.location image{
 		height: 30rpx;
 		width: 30rpx;
 		margin-right: 10rpx;
 	}
+	.bottom {
+		margin-top: 20rpx;
+
+	}
+	
 	.bottom .bottom_list {
 		background: #fff;
 		padding: 0 20rpx 20rpx 20rpx;
@@ -262,7 +280,22 @@
 		color: #333333;
 		font-weight: 400;
 	}
-
+	.bottom .list_top .list_left .top_one .one_box{
+		display: flex;
+		align-items: center;
+		font-size: 24rpx;
+		color: #333333;
+	}
+	.bottom .list_top .list_left .top_one .one_box image{
+		height: 25rpx;
+		width: 25rpx;
+		margin-right: 0;
+		margin-left: 15rpx;
+	}
+	.bottom .list_top .list_left .top_one .one_box .box_bottom{
+		display: flex;
+		align-items: center;	
+	}
 	.bottom .list_top .list_left .top_one .tiem {
 		font-size: 20rpx;
 		color: #666666;
@@ -318,8 +351,8 @@
 	.add_str {
 		position: fixed;
 		bottom: 110rpx;
-		left: 50%;
-		transform: translateX(-50%);
+		right: 20rpx;
+		
 	}
 
 	.add_str image {

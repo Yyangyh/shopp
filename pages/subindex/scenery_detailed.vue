@@ -432,10 +432,13 @@
 					for (let s of date) {
 						let Obj = {}
 						s.Date = self.common.Test(s.Date)
+						console.log(s.Date)
+						console.log(self.arr_date)
 						Obj.date = s.Date
 						Obj.info = '￥'+s.Price
 						self.buy_selected.push(Obj)
 						for (let k of self.arr_date) {
+							// console.log(s.Date == k.date)
 							if(s.Date == k.date){
 								k.Price = '￥'+s.Price
 							}

@@ -286,7 +286,7 @@
 	}
 	.more{
 		width: 28rpx;
-		height: 28rpx;
+		/* height: 28rpx; */
 		margin-right: 20rpx;
 	}
 	.more image{

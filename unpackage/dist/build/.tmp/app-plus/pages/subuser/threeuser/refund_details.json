@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "退款详情",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

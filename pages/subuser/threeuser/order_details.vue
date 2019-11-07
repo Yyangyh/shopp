@@ -125,12 +125,12 @@
 			<view class="news_three">
 				订单编号：{{data.order_no}}
 			</view>
-			<view class="news_four">
+			<!-- <view class="news_four">
 				<view class="">
 					<image src="../../../static/image/threeLayers/contact.png" mode="widthFix"></image>
 					<text>联系卖家</text>
 				</view>
-			</view>
+			</view> -->
 		</view>
 
 
@@ -500,6 +500,7 @@
 		font-size: 24rpx;
 		color: #808080;
 		margin-bottom: 30rpx;
+		padding-bottom: 20rpx;
 	}
 
 	.order_news text {

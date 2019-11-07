@@ -39,17 +39,17 @@
 					<image src="" mode="widthFix"></image>
 				</view>
 			</view>
-			<!-- <view class="profile_list">
+			<view class="profile_list">
 				<view class="list_left">
 					手机
 				</view>
 				<view class="list_right">
 					<view class="">
-						13800138000
+						{{mobile}}
 					</view>
-					<image src="../../static/image/go.png" mode="widthFix"></image>
+					<!-- <image src="../../static/image/go.png" mode="widthFix"></image> -->
 				</view>
-			</view> -->
+			</view>
 		</view>
 	</view>
 </template>
@@ -103,6 +103,7 @@
 		},
 		onShow() {
 			this.nickname = uni.getStorageSync('nickname')
+			this.mobile = uni.getStorageSync('mobile')
 		}
 	}
 </script>

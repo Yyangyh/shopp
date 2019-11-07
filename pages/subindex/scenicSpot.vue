@@ -286,6 +286,9 @@
 		},
 		onShow() {
 			this.city = uni.getStorageSync('city')
+			
+			let city_arr = this.city.split('市')
+			
 			this.service.entire(this, 'get', this.service.api_root.index.banner, {}, function(self, res) { //轮播图
 				self.img_list = res.data
 				let datas = []
@@ -297,7 +300,7 @@
 				})
 				self.swiperList = datas
 			})
-			this.service.entire(this,'get',this.service.api_root.subindex.scen_Category,{},function(self,res){ //景点分类
+			this.service.entire(this,'get',this.service.api_root.subindex.scen_Category,{address:city_arr[0]},function(self,res){ //景点分类
 				let data = res.data
 				let result = [];
 				for(let i=0;i<data.length;i+=10){

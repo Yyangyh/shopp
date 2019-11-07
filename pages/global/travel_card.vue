@@ -131,6 +131,8 @@
 			</view>
 		</view>
 		<view class="bottom"></view>
+		
+		<Load v-if="load_show"></Load>
 	</view>
 </template>
 
@@ -146,7 +148,8 @@
 				show:false,
 				pay_list:'',
 				payment_id:'',
-				payment_name:''
+				payment_name:'',
+				load_show:true
 			}
 		},
 		components: {
@@ -205,6 +208,7 @@
 				}
 				console.log(data)
 				self.pay_list = data
+				self.load_show = false
 			})
 		}
 	}

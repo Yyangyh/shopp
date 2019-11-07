@@ -431,6 +431,16 @@
 			}
 		},
 		{
+			"path": "pages/subuser/feedback_list",
+			"style": {
+				"navigationBarTitleText": "历史反馈",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
 			"path": "pages/subuser/address",
 			"style": {
 				"navigationBarTitleText": "收货地址",
@@ -516,6 +526,24 @@
 			"path": "pages/subuser/settled",
 			"style": {
 				"navigationBarTitleText": "商家入驻",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/open_member",
+			"style": {
+				"navigationBarTitleText": "开通会员",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/give_edition",
+			"style": {
+				"navigationBarTitleText": "赠送版通",
 				"app-plus" : {
 				    "titleNView" : false
 				}
