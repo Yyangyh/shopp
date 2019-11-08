@@ -7,7 +7,7 @@
 			<image @click="returns()" src="../../static/image/return.png" mode=""></image>
 			<view class="sea_one">
 				<image src="../../static/image/search1.png" mode=""></image>
-				<input type="text"  @input="onKeyInput()" v-model="test" value="" />
+				<input type="text"  @input="onKeyInput()" v-model="test" value="" placeholder="请搜索你喜欢的~" />
 			</view>
 			<!-- <view class="search">
 				搜索
@@ -268,6 +268,8 @@
 	}
 	.sea_top .sea_one input{
 		flex-grow: 2;
+		font-size: 26rpx;
+		font-weight: 200;
 	}
 	.sea_top .search{
 		margin-left: 20rpx;

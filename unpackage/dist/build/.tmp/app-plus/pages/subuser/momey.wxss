@@ -1,10 +1,10 @@
 
-.content.data-v-17a1d3e1{
+.content.data-v-2d5fe38d{
 	width: 100%;
 	height: 100%;
 	background: #FFFFFF;
 }
-.back.data-v-17a1d3e1{
+.back.data-v-2d5fe38d{
 	height: 105rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -21,15 +21,15 @@
 	z-index: 100;
 	margin: 0 32rpx;
 }
-.back.data-v-17a1d3e1{
+.back.data-v-2d5fe38d{
 	color: #FFFFFF;
 	font-size: 30rpx;
 }
-.back image.data-v-17a1d3e1{
+.back image.data-v-2d5fe38d{
 	width: 40rpx;
 	height: 40rpx;
 }
-.name.data-v-17a1d3e1{
+.name.data-v-2d5fe38d{
 	
 	width: 100%;
 	height: 290rpx;
@@ -48,7 +48,7 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 }
-.name_back.data-v-17a1d3e1{
+.name_back.data-v-2d5fe38d{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -62,9 +62,9 @@
 	    -ms-flex-pack: justify;
 	        justify-content: space-between;
 	margin: 0 32rpx;
-	margin-bottom: 58rpx;
+	margin-top: 58rpx;
 }
-.avatar.data-v-17a1d3e1{
+.avatar.data-v-2d5fe38d{
 	height: 90rpx;
 	line-height: 90rpx;
 	font-size: 30rpx;
@@ -81,16 +81,16 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.avatar image.data-v-17a1d3e1{
+.avatar image.data-v-2d5fe38d{
 	width: 90rpx;
 	height: 90rpx;
 	border-radius: 45rpx;
 }
-.myname.data-v-17a1d3e1{
+.myname.data-v-2d5fe38d{
 	margin-left: 30rpx;
 	color: #FFFFFF;
 }
-.button.data-v-17a1d3e1{
+.button.data-v-2d5fe38d{
 	width: 120rpx;
 	height: 50rpx;
 	background: #FFFFFF;
@@ -100,7 +100,7 @@
 	text-align: center;
 	line-height: 50rpx;
 }
-.wallet.data-v-17a1d3e1{
+.wallet.data-v-2d5fe38d{
 	width: 90%;
 	height: 210rpx;
 	border-radius: 10rpx;
@@ -122,10 +122,10 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.wallet view.data-v-17a1d3e1{
+.wallet view.data-v-2d5fe38d{
 	width: 30%;
 }
-.commission.data-v-17a1d3e1,.balance.data-v-17a1d3e1,.version_pass.data-v-17a1d3e1{
+.commission.data-v-2d5fe38d,.balance.data-v-2d5fe38d,.version_pass.data-v-2d5fe38d{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -144,15 +144,15 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.commission image.data-v-17a1d3e1,.balance image.data-v-17a1d3e1,.version_pass image.data-v-17a1d3e1{
+.commission image.data-v-2d5fe38d,.balance image.data-v-2d5fe38d,.version_pass image.data-v-2d5fe38d{
 	width: 70rpx;
 	height: 70rpx;
 }
-.h1.data-v-17a1d3e1{
+.h1.data-v-2d5fe38d{
 	color: #666666;
 	font-size: 30rpx;
 }
-.h2.data-v-17a1d3e1{
+.h2.data-v-2d5fe38d{
 	color: #F12229;
 	font-size: 30rpx;
 }

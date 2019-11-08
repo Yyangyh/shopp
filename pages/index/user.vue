@@ -625,7 +625,8 @@
 		color: #fff;
 		position: absolute;
 		top: 0;
-		right: -10rpx;
+		right: 16rpx;
+		transform: scale(0.7);
 	}
 	.list_bottom{
 		background: #fff;

@@ -2,8 +2,8 @@
   "navigationBarTitleText": "景点详情",
   "titleNView": false,
   "usingComponents": {
-    "uni-calendar": "/components/uni-calendar/uni-calendar",
     "load": "/components/load/load",
+    "uni-calendar": "/components/uni-calendar/uni-calendar",
     "share": "/pages/common/share"
   }
 }

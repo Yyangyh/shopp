@@ -1,8 +1,7 @@
 {
-  "navigationBarTitleText": "旅游卡",
+  "navigationBarTitleText": "开通会员",
   "titleNView": false,
   "usingComponents": {
-    "load": "/components/load/load",
     "returns": "/pages/common/returns"
   }
 }

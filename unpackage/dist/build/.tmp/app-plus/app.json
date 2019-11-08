@@ -58,6 +58,7 @@
     "pages/subuser/assemble_order",
     "pages/subuser/realname",
     "pages/subuser/settled",
+    "pages/subuser/threeuser/open_member",
     "pages/subuser/threeuser/give_edition",
     "pages/subuser/threeuser/refund_details",
     "pages/subuser/threeuser/modify_name",
@@ -155,5 +156,7 @@
   },
   "appname": "文旅世家",
   "compilerVersion": "2.3.7",
-  "usingComponents": {}
+  "usingComponents": {
+    "load": "/components/load/load"
+  }
 }

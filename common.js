@@ -1,7 +1,7 @@
 import service from './service.js'
 
 const order = function(ref,self,url,wxUrl){ //支付调用
-			console.log(self.payment_name)
+	// console.log(self.payment_name)
 	uni.showToast({
 		icon:"none",
 		title:ref.msg
@@ -126,7 +126,9 @@ const returns = function(that){
 	}  
 	return;  
 	// #endif  
+	// #ifdef APP-PLUS
 	uni.navigateBack(1)
+	// #endif
 }
 
 const collection = function(that,id){  //收藏

@@ -3,7 +3,8 @@
 		<view class="status_bar">
 		            <!-- 这里是状态栏 -->
 		  </view>
-		<view class="return">
+		  <returns :titles='title'></returns>
+		<!-- <view class="return">
 			<image class="return_img" src="../../static/image/return.png" mode="" @click="returns()"></image>
 			<view class="search">
 				<text>广州</text>
@@ -13,7 +14,7 @@
 			</view>
 			
 			
-		</view>
+		</view> -->
 		<view class="img">
 			<bw-swiper :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
 		</view>
@@ -132,9 +133,11 @@
 
 <script>
 	import bwSwiper from '../../components/wxcomponents/bw-swiper/bw-swiper.vue'
+	import returns from '../common/returns.vue'
 	export default{
 		data() {
 			return {
+				title:'商家店铺',
 				merchid:'', //店铺id
 				swiperList:[{}],
 				swiperType: true,
@@ -175,7 +178,9 @@
 			})
 		},
 		components:{
-			bwSwiper
+			bwSwiper,
+			returns
+			
 		}
 		
 	}
@@ -183,7 +188,7 @@
 
 <style scoped>
 	.content{
-		padding: 0;
+		/* padding: 0; */
 	}
 	.uni-input-placeholder{
 		color: #cccccc;

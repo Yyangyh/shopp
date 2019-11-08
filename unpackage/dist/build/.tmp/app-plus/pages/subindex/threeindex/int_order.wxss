@@ -1,16 +1,16 @@
 
-.content.data-v-c366c660{
+.content.data-v-660156f0{
 	width: 100%;
 	height: 100%;
 	background: #FFFFFF;
 	padding-bottom: 120rpx;
 }
-.void.data-v-c366c660{
+.void.data-v-660156f0{
 	width: 100%;
 	height: 10rpx;
 	background: #F2F2F2;
 }
-.top_order.data-v-c366c660{
+.top_order.data-v-660156f0{
 	width: 100%;
 	padding: 0;
 	margin: 0;
@@ -28,7 +28,7 @@
 	        align-items: center;
 	position: relative;
 }
-.name.data-v-c366c660{
+.name.data-v-660156f0{
 	width: 90%;
 	margin: 0 auto;
 	padding: 40rpx 0;
@@ -52,7 +52,7 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.info.data-v-c366c660{
+.info.data-v-660156f0{
 	width: 90%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -67,33 +67,33 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.info text.data-v-c366c660{
+.info text.data-v-660156f0{
 }
-.more.data-v-c366c660{
+.more.data-v-660156f0{
 	width: 28rpx;
-	height: 28rpx;
+	/* height: 28rpx; */
 	margin-right: 20rpx;
 }
-.more image.data-v-c366c660{
+.more image.data-v-660156f0{
 	width: 28rpx;
 	height: 28rpx;
 }
-.address.data-v-c366c660{
+.address.data-v-660156f0{
 	width: 90%;
 	margin-top: 10rpx;
 	font-size: 28rpx;
 	color: #666666;
 }
-.bg.data-v-c366c660{
+.bg.data-v-660156f0{
 	width: 100%;
 	position: absolute;
 	bottom: 0;
 }
-.bg image.data-v-c366c660{
+.bg image.data-v-660156f0{
 	width: 100%;
 	height: 10rpx;
 }
-.commodity.data-v-c366c660{
+.commodity.data-v-660156f0{
 	width: 100%;
 	height: 206rpx;
 	padding: 30rpx 0;
@@ -109,7 +109,7 @@
 	    -ms-flex-line-pack: center;
 	        align-content: center;
 }
-.left.data-v-c366c660{
+.left.data-v-660156f0{
 	width: 30%;
 	padding: 0 5%;
 	display: -webkit-box;
@@ -125,11 +125,11 @@
 	    -ms-flex-pack: center;
 	        justify-content: center;
 }
-.left image.data-v-c366c660{
+.left image.data-v-660156f0{
 	width: 206rpx;
 	height: 142rpx;
 }
-.right.data-v-c366c660{
+.right.data-v-660156f0{
 	width: 65%;
 	height: 206rpx;
 	margin-right: 5%;
@@ -155,12 +155,12 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.title.data-v-c366c660{
+.title.data-v-660156f0{
 	font-size: 32rpx;
 	color: #333333;
 	font-weight: bold;
 }
-.button.data-v-c366c660{
+.button.data-v-660156f0{
 	color: #808080;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -175,13 +175,13 @@
 	    -ms-flex-align: start;
 	        align-items: flex-start;
 }
-.button view.data-v-c366c660{
+.button view.data-v-660156f0{
 	font-size: 24rpx;
 	display: block;
 	padding: 10rpx 8rpx;
 	background: #F1F1F1;
 }
-.price.data-v-c366c660{
+.price.data-v-660156f0{
 	width: 100%;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -196,15 +196,15 @@
 	    -ms-flex-align: start;
 	        align-items: flex-start;
 }
-.momey.data-v-c366c660{
+.momey.data-v-660156f0{
 	font-size: 36rpx;
 	color: #FF431D;
 }
-.number.data-v-c366c660{
+.number.data-v-660156f0{
 	font-size: 24rpx;
 	color: #666666;
 }
-.message.data-v-c366c660{
+.message.data-v-660156f0{
 	width:100%;
 	height: 200rpx;
 	padding: 20rpx 0;
@@ -221,16 +221,16 @@
 	    -ms-flex-align: start;
 	        align-items: flex-start;
 }
-.message view.data-v-c366c660{
+.message view.data-v-660156f0{
 	margin-left: 5%;
 	font-size: 32rpx;
 	color: #333333;
 }
-.message textarea.data-v-c366c660{
+.message textarea.data-v-660156f0{
 	height: 150rpx;
 	margin-top: 6rpx;
 }
-.recording.data-v-c366c660{
+.recording.data-v-660156f0{
 	/* width: 100%; */
 	font-size: 32rpx;
 	color: #333333;
@@ -253,7 +253,7 @@
 	    -ms-flex-direction: column;
 	        flex-direction: column;
 }
-.list.data-v-c366c660{
+.list.data-v-660156f0{
 	width: 100%;
 	height: 100rpx;
 	display: -webkit-box;
@@ -270,7 +270,7 @@
 	        align-items: center;
 	border-bottom: 2rpx solid #F2F2F2;
 }
-.pay.data-v-c366c660{
+.pay.data-v-660156f0{
 	width: 100%;
 	height: 120rpx;
 	border-top: 1rpx solid #F1F1F1;
@@ -290,44 +290,44 @@
 	position: fixed;
 	bottom: 0;
 }
-.paying.data-v-c366c660{
+.paying.data-v-660156f0{
 	margin-left: 5%;
 	color: #666666;
 	font-size: 32rpx;
 }
-.paying text.data-v-c366c660{
+.paying text.data-v-660156f0{
 	color: #FF431D;
 }
-.btn.data-v-c366c660{
+.btn.data-v-660156f0{
 	width: 224rpx;
 	height: 90rpx;
 	font-size: 36rpx;
 	margin-right: 5%;
 }
-.btn button.data-v-c366c660{
+.btn button.data-v-660156f0{
 	border-radius: 45rpx;
 }
-.payment.data-v-c366c660{
+.payment.data-v-660156f0{
 	font-size: 30rpx;
 	padding: 20rpx;
 }
-.payment image.data-v-c366c660{
+.payment image.data-v-660156f0{
 	height: 52rpx;
 	width: 52rpx;
 }
-.payment .pa_test.data-v-c366c660{
+.payment .pa_test.data-v-660156f0{
 	padding: 18rpx 0;
 }
-.payment .pa_box.data-v-c366c660{
+.payment .pa_box.data-v-660156f0{
 }
-.payment .pa_box .box_list.data-v-c366c660{
+.payment .pa_box .box_list.data-v-660156f0{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
 	position: relative;
 }
-.payment .pa_box .box_list .list_top.data-v-c366c660{
+.payment .pa_box .box_list .list_top.data-v-660156f0{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -340,10 +340,10 @@
 	width: 100%;
 	height: 100rpx;
 }
-.payment .pa_box .box_list .list_top image.data-v-c366c660{
+.payment .pa_box .box_list .list_top image.data-v-660156f0{
 	margin-right: 38rpx;
 }
-.payment .pa_box .box_list .list_top view.data-v-c366c660{
+.payment .pa_box .box_list .list_top view.data-v-660156f0{
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
@@ -352,7 +352,7 @@
 	line-height: 100rpx;
 	border-bottom: 2rpx solid #F1F1F1;
 }
-.choice.data-v-c366c660{
+.choice.data-v-660156f0{
 	position: absolute;
 	right: 20rpx;
 	top: 30rpx;

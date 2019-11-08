@@ -1,5 +1,5 @@
 
-.load.data-v-07b5ee50{
+.load.data-v-cad9d45e{
 	height: 100%;
 	width: 100%;
 	position: fixed;
@@ -9,7 +9,7 @@
 	background:#FFFFFF;
 	/* position: relative; */
 }
-.load .load_box.data-v-07b5ee50{
+.load .load_box.data-v-cad9d45e{
 	font-size: 30rpx;
 	color: #333333;
 	text-align: center;
@@ -20,7 +20,7 @@
 	    -ms-transform: translate(-50%,-50%);
 	        transform: translate(-50%,-50%);
 }
-.load image.data-v-07b5ee50{
+.load image.data-v-cad9d45e{
 	width: 320rpx;
 	height: 180rpx;
 	

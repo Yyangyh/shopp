@@ -82,6 +82,9 @@
 						<view class="bottom3" v-if="item.status == 4 || item.status == 5" @click="deletes(item.id,index)">
 							删除订单
 						</view>
+						<view class="bottom3" v-if="item.status == 4">
+							评论
+						</view>
 						<view class="bottom3"  @click="jump('./int_order_detailed?id='+item.id)">
 							详情
 						</view>
@@ -213,6 +216,8 @@
 			this.loadMore()
 		},
 		onShow() {
+			this.page = 1
+			this.data.length = 0
 			this.loadMore()
 		}
 	}

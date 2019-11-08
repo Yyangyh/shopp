@@ -1,2 +1,2 @@
-setCssToHead([".",[1],"log_box.",[1],"data-v-eb3d8150{ padding: ",[0,20],"; }\n",],undefined,{path:"./pages/threeLayers/logistics.wxss"})();
+setCssToHead([".",[1],"log_box.",[1],"data-v-45552afe{ padding: ",[0,20],"; }\n",],undefined,{path:"./pages/threeLayers/logistics.wxss"})();
 document.dispatchEvent(new CustomEvent("generateFuncReady", { detail: { generateFunc: $gwx('./pages/threeLayers/logistics.wxml') } }));
