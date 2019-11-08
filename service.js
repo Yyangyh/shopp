@@ -21,6 +21,7 @@ const api_root = {
 		reg: api+'/api/user/Register',//注册
 		WlVerifySend: api+'/api/user/WlVerifySend',//获取注册验证码
 		RegisterAgreement: api+'/api/user/RegisterAgreement',//注册协议
+		ForgetPwd: api+'/api/user/ForgetPwd',//忘记密码
 	},
 	login:{
 		login: api+'/api/user/Login',//账号密码登录
@@ -135,6 +136,7 @@ const api_root = {
 			Level_lists:api+'/api/userLevel/lists',//会员等级列表
 			Level_Confirm:api+'/api/userLevel/Confirm',//会员确认订单
 			Level_pay:api+'/api/userLevel/pay',//支付会员等级
+			group_AftersaleCancel:api+'/api/groupgoods/AftersaleCancel',//拼团订单退货取消
 			
 		},
 		
@@ -161,6 +163,8 @@ const api_root = {
 		AccountsUpdate: api+'/api/user/AccountsUpdate',//手机号修改
 		LoginPwdUpdate: api+'/api/user/LoginPwdUpdate',//登录密码修改
 		Originality:api+'/api/Originality/goodsList',// 店铺文创商品列表
+		group_Aftersale:api+'/api/groupgoods/Aftersale',// 拼团申请售后订单详情
+		group_Create:api+'/api/groupgoods/Create',// 拼团申请售后创建退货
 		
 	},
 	// 游记攻略

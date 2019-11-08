@@ -30,14 +30,39 @@
 				</view>
 			</view>
 		</view>
+		
+		
+		<view class="order_news"  v-if='data.status == 2'>
+			<view class="news_one">
+				物流信息
+			</view>
+			<!--  -->
+			<view class="news_two" >
+				<text>快递公司：</text>
+				<text>{{data.express_name}}</text>
+			</view>
+			<view class="news_two">
+				<text>快递单号：</text>
+				<text>{{data.express_number}}</text>
+			</view>
+		
+			<!--  -->
+			
+			<view class="news_four" >
+				<view class="" @click="jump('/pages/threeLayers/logistics?id='+data.express_id+'&number='+data.express_number)">
+					<image src="../../../static/image/threeLayers/contact.png" mode="widthFix"></image>
+					<text>查看物流</text>
+				</view>
+			</view>
+		</view>
 
 		<view class="order">
-			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' @click="jump('../../subindex/group_products?id='+item.id)">
-				<view class="num_one">
-					<image :src="item.thumb" mode="widthFix"></image>
+			<view class="order_num" v-for="(item,index) in data_list" :key='item.id' >
+				<view class="num_one" @click="jump('../../subindex/group_products?id='+item.id)">
+					<image :src="item.thumb" mode="aspectFill"></image>
 				</view>
 				<view class="num_two">
-					<view class="">
+					<view class="" @click="jump('../../subindex/group_products?id='+item.id)">
 						{{item.title}}
 					</view>
 					<view class="specs">
@@ -52,6 +77,19 @@
 						数量：X{{item.goodsnum}}
 					</view>
 				</view>
+				
+				<view class="order_handle" v-if="data.status == 1 || data.status == 2 || data.status == 3">
+					
+					<text v-if="data.orderaftersale == null"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">{{data.status == 4?'申请售后':'退款/退货'}}</text>
+					<block v-else>
+						<text v-if="data.orderaftersale.status == 3">退款完成</text>
+						<text v-else-if="data.orderaftersale.status == 4"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">已拒绝</text>
+						<text v-else-if="data.orderaftersale.status == 5"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">已取消</text>
+						<text v-else @click="cancel_return(data.orderaftersale.id)">退款/退货中</text>
+					</block>
+					
+				</view>
+				
 			</view>
 
 			<!--  -->
@@ -164,6 +202,30 @@
 				this.pay_list = JSON.parse(JSON.stringify(this.pay_list))
 				this.payment_id = this.pay_list[index].id
 				this.payment_name = this.pay_list[index].payment
+			},
+			cancel_return(id){//取消退款申请
+				let that = this
+				uni.showModal({
+				    title: '提示',
+				    content: '是否取消退款/退货申请？',
+				    success: function (res) {
+				        if (res.confirm) {
+				            that.service.entire(that,'get',that.service.api_root.subuser.threeuser.group_AftersaleCancel,{id:id},function(self,res){
+								uni.showToast({
+									icon:'none',
+									title:res.msg
+								})
+				            	if(res.code == 0){
+									setTimeout(function(){
+										self.common.returns(self)
+									},1500)
+								}
+				            })
+				        } else if (res.cancel) {
+				           return
+				        }
+				    }
+				});
 			},
 			determine(){//确定收货
 				let that = this
@@ -300,7 +362,9 @@
 
 	.order .order_num {
 		display: flex;
+		position: relative;
 		font-size: 28rpx;
+		height: 228rpx
 	}
 
 	.order .order_num .num_two .specs {
@@ -342,8 +406,11 @@
 	.order .order_handle {
 		text-align: right;
 		padding-bottom: 20rpx;
+		position: absolute;
+		right: 0;
+		bottom: 0;
 	}
-
+	
 	.order .order_handle text {
 		display: inline-block;
 		text-align: center;

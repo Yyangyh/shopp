@@ -7,7 +7,7 @@
 		<view class="order">
 			<view class="order_num">
 				<view class="num_one">
-					<image :src="goods_data.images" mode="widthFix"></image>
+					<image :src="type == 1?goods_data.images:goods_data.thumb" mode="aspectFill"></image>
 				</view>
 				<view class="num_two">
 					<view class="">
@@ -22,7 +22,7 @@
 						￥{{goods_data.price}}
 					</view>
 					<view class="">
-						数量：X{{goods_data.buy_number}}
+						数量：X{{type == 1?goods_data.buy_number:goods_data.groupnum}}
 					</view>
 					
 				</view>
@@ -41,7 +41,7 @@
 					订单总价
 				</view>
 				<view class="total_two">
-					<!-- ￥ -->{{order_data.pay_price}}
+					<!-- ￥ -->{{type == 1?order_data.pay_price:order_data.price}}
 				</view>
 			</view>
 		</view>
@@ -130,6 +130,7 @@
 				title:'退款/退货申请',
 				show:0,
 				add_show:1,
+				type:1,
 				data:'',
 				goods_data:'',
 				order_data:'',
@@ -154,6 +155,7 @@
 				this.index = 0
 			},
 			change_num(type){
+				if(this.type == 2) return
 				if(type == 1){
 					this.num == 1? this.num = 1 : this.num --
 					
@@ -217,7 +219,9 @@
 				}
 				data.order_id = this.oid
 				data.order_detail_id = this.id
-				this.service.entire(this,'post',this.service.api_root.threeLayers.Create,data,function(self,res){
+				let url
+				this.type == 1? url = this.service.api_root.threeLayers.Create :url = this.service.api_root.threeLayers.group_Create
+				this.service.entire(this,'post',url,data,function(self,res){
 					uni.showToast({
 						icon:'none',
 						title:res.msg
@@ -235,20 +239,40 @@
 		},
 		
 		onLoad(e) {
-			this.oid = e.oid
-			this.id = e.id
-			this.service.entire(this,'get',this.service.api_root.threeLayers.Aftersale,{
-				oid:e.oid,
-				did:e.id
-			},function(self,res){
-				self.data = res.data
-				self.goods_data = res.data.goods
-				self.num = res.data.goods.buy_number
-				self.order_data = res.data.order
-				self.price = res.data.order.pay_price
-				self.return_only.push(...res.data.return_only_money_reason)
-				self.return_money.push(...res.data.return_money_goods_reason_list)
-			})
+			console.log(e)
+			if(e.id){  //商城订单
+				this.oid = e.oid
+				this.id = e.id
+				this.service.entire(this,'get',this.service.api_root.threeLayers.Aftersale,{
+					oid:e.oid,
+					did:e.id
+				},function(self,res){
+					self.data = res.data
+					self.goods_data = res.data.goods
+					self.num = res.data.goods.buy_number
+					self.order_data = res.data.order
+					self.price = res.data.order.pay_price
+					self.return_only.push(...res.data.return_only_money_reason)
+					self.return_money.push(...res.data.return_money_goods_reason_list)
+				})
+			}else{//拼团订单
+				this.type = 2
+				this.oid = e.oid
+				this.service.entire(this,'get',this.service.api_root.threeLayers.group_Aftersale,{
+					oid:e.oid,
+				},function(self,res){
+					self.data = res.data
+					
+					self.goods_data = res.data.goods[0]
+					self.num = 1
+					self.order_data = res.data.order.order
+					console.log(self.order_data)
+					self.price = res.data.order.order.price
+					self.return_only.push(...res.data.return_only_money_reason)
+					self.return_money.push(...res.data.return_money_goods_reason_list)
+				})
+			}
+			
 		}
 	}
 </script>

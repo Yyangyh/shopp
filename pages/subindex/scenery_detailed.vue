@@ -358,13 +358,21 @@
 			},
 			confirm(e) {  //日历表选择日期时间
 				console.log(e);
+				let date
+				let month
+				e.date<10?date = '0'+e.date:date = e.date
+				e.month<10?month = '0'+e.month:month = e.month
+				
+				let fulldate = e.year+'-'+month+'-'+date
+				// console.log(fulldate)
 				let Arr_data = []
 				for (let s of this.sure_date) {
 					Arr_data.push(s.Date)
 				}
-				if(Arr_data.indexOf(e.fulldate) != -1){
-					this.other_time = e.month+'月'+e.date+'日'
-					this.chiose_time = 	e.fulldate
+				// console.log(Arr_data)
+				if(Arr_data.indexOf(fulldate) != -1){
+					this.other_time = month+'月'+date+'日'
+					this.chiose_time = 	fulldate
 					this.buy_show = 3
 				}else{
 					uni.showToast({
@@ -432,8 +440,8 @@
 					for (let s of date) {
 						let Obj = {}
 						s.Date = self.common.Test(s.Date)
-						console.log(s.Date)
-						console.log(self.arr_date)
+						// console.log(s.Date)
+						// console.log(self.arr_date)
 						Obj.date = s.Date
 						Obj.info = '￥'+s.Price
 						self.buy_selected.push(Obj)

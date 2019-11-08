@@ -3,22 +3,22 @@
 		
 		<view class="ipt">
 			<image src="../../static/image/user.png" mode=""></image>
-			<input type="text" value="" placeholder="输入手机号"/>
+			<input type="text" value="" v-model="accounts" placeholder="输入手机号"/>
 		</view>
 		<view class="ipt">
 			
-			<input type="text" value="" placeholder="请输入验证码"/>
+			<input type="text" value="" v-model="verify" placeholder="请输入验证码"/>
 			<text @click="obtain()">{{verification}}</text>
 		</view>
 		<view class="ipt">
-			<image src="../../static/image/pwd.png" mode=""></image>
+			<image src="../../static/image/pwd.png" v-model="pwd" mode=""></image>
 			<input type="text" value="" placeholder="设置新密码"/>
 		</view>
 		<view class="ipt">
-			<image src="../../static/image/pwd.png" mode=""></image>
+			<image src="../../static/image/pwd.png" v-model="as_pwd" mode=""></image>
 			<input type="text" value="" placeholder="确认密码"/>
 		</view>
-		<button>完成</button>
+		<button @click="accomplish()">完成</button>
 	</view>
 </template>
 
@@ -27,22 +27,84 @@
 		data() {
 			return {
 				verification: '获取验证码',
-				disabled:false
+				disabled:false,
+				accounts:'',
+				verify:'',
+				pwd:'',
+				as_pwd:''
+				
 			}
 		},
 		methods:{
 			obtain(){ //获取验证码
 				var that = this
 				if(that.disabled == true) return
-				that.verification = '60s'
-				that.disabled = true
-				that.timer = setInterval(function(){
-					let num = that.verification.split('s')[0]
-					num --
-					that.verification = num+'s'
-				},1000)
+				uni.request({
+					url:service.api_root.reg.WlVerifySend,
+					method:'POST',
+					header:{'X-Requested-With':'xmlhttprequest'},
+					data:{
+						accounts:that.accounts,
+						type:'3'
+					},
+					success(res) {
+						console.log(that.disabled)
+						let data = res.data 
+						console.log(data)
+						uni.showToast({
+							icon:'none',
+							title:data.msg
+						})
+						if(data.code == 0){
+							that.verification = '60s'
+							that.disabled = true
+							that.timer = setInterval(function(){
+								let num = that.verification.split('s')[0]
+								num --
+								that.verification = num+'s'
+							},1000)
+						}
+						
+					}
+				})
 						
 			},
+			accomplish(){
+				var that = this
+				if(that.pwd != that.as_pwd){
+					uni.showToast({
+						icon:'none',
+						title:'密码不一致'
+					})
+					return
+				}
+				
+				uni.request({
+					url:service.api_root.reg.ForgetPwd,
+					method:'POST',
+					header:{'X-Requested-With':'xmlhttprequest'},
+					data:{
+						accounts:that.accounts,
+						pwd:that.pwd,
+						verify:that.verify
+					},
+					success(res) {
+						
+						let data = res.data 
+						console.log(data)
+						uni.showToast({
+							icon:'none',
+							title:data.msg
+						})
+						if(data.code == 0){
+							setTimeout(function(self,res){
+								that.common.returns(that)
+							},1500)
+						}
+						
+					}
+				})
+			}
 		},
 		watch:{
 			verification(curval,oldval){// 监听定时器的num值

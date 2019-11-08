@@ -14,11 +14,11 @@
 		<view class="test" @click="jump('./login')">
 			<text>密码登录</text>
 		</view>
-		<view class="other">
+		<!-- <view class="other">
 			<text class="line"></text>
 			<text class="other_test">其他登录方式</text>
 			<text class="line"></text>
-		</view>
+		</view> -->
 		<!-- <view class="mode">
 			<image src="../../static/image/wx.png" mode="widthFix"></image>
 		</view> -->
@@ -97,7 +97,10 @@
 						})
 						if(data.code == 0){
 							uni.setStorageSync('token',data.data.token)
-							
+							uni.setStorageSync('token',data.data.token)
+							uni.setStorageSync('uid',data.data.id)
+							uni.setStorageSync('user',data.data)
+							uni.setStorageSync('mobile',data.data.mobile)
 							// #ifdef H5
 							// 	先判断是否在h5打开，再判断是否是在微信浏览器打开
 								let ua = navigator.userAgent.toLowerCase();
