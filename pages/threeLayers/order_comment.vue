@@ -87,6 +87,7 @@
 				content: [], //textarea
 				image_list: [], // 上传的图片
 				images: [],
+				type:'', // 判断是商品订单评论还是积分订单评论  1 商品  2积分
 				// imgList:[
 				// 	{src:'../../static/image/star1.png'},
 				// 	{src:'../../static/image/star1.png'},
@@ -135,8 +136,17 @@
 			submit() { // 提交评论
 				console.log(this.images);
 				// 评论的内容转化为数组
-				// 
-				this.service.entire(this, 'post', this.service.api_root.threeLayers.goods_Comment, {
+				if(this.type == 1){
+					this.submits({url:this.service.api_root.threeLayers.goods_Comment})
+				}else{
+					this.submits({url:this.service.api_root.subindex.threeindex.comments})
+				}
+				
+			},
+			submits(e){
+				// 封装提交评论clog
+				// console.log(e.url);
+				this.service.entire(this, 'post',e.url, {
 					goods_id: this.goodsId, //商品id
 					id: this.id, // 订单id
 					rating: this.rating, // 星级
@@ -150,11 +160,11 @@
 						});
 						setTimeout(() => {
 							uni.navigateTo({
-								url:'/pages/threeLayers/comment_success?id='+self.id
+								url: '/pages/threeLayers/comment_success?id=' + self.id+'&type='+self.type
 							})
 						}, 2000)
 					}
-				})
+					})
 			},
 			add_image(i) { // 上传图片
 				console.log(i);
@@ -203,20 +213,39 @@
 			}
 		},
 		onLoad(options) {
-			this.id = options.id // 订单id
-			this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
-				id: options.id,
-				token: uni.getStorageSync('token')
-			}, function(self, res) {
-				console.log(res.data.items);
-				self.data = res.data.items;
-				for (var i = 0; i < self.data.length; i++) {
-					self.goodsId.push(self.data[i].goods_id); // 获取商品id
-				}
-				console.log(self.goodsId);
+			// type:1商品评论 type:2 积分评论    积分订单里面没有的goods_id
+			this.type = options.type
+			if (options.type == 1) {
+				this.id = options.id // 订单id
+				this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
+					id: options.id,
+					token: uni.getStorageSync('token')
+				}, function(self, res) {
+					console.log(res.data.items);
+					self.data = res.data.items;
+					for (var i = 0; i < self.data.length; i++) {
+						self.goodsId.push(self.data[i].goods_id); // 获取商品id 
+					}
+					console.log(self.goodsId);
 
-				// console.log(self.data,self.id,self.goodsId);
-			})
+					// console.log(self.data,self.id,self.goodsId);
+				})
+			}else{
+				this.id = options.id // 订单id
+				this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.int_OrderDetail, {
+					orderid: options.id,
+					token: uni.getStorageSync('token')
+				}, function(self, res) {
+					console.log(res);
+					self.data.push(res.data.order) 
+					self.goodsId.push(self.data[0].goods_id); // 获取商品id 
+					// for (var i = 0; i < self.data.length; i++) {
+					// 	self.goodsId.push(self.data[i].goods_id); // 获取商品id .data.items
+					// }
+					console.log(self.goodsId);
+				})
+			}
+
 		},
 		components: {
 			returns,

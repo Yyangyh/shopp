@@ -42,7 +42,8 @@
 			return {
 				title: '评论成功',
 				id: '',
-				list: []
+				list: [],
+				type:'', //判断商品类型 1 是正常的商品订单  2是积分订单
 			}
 		},
 		methods: {
@@ -52,22 +53,36 @@
 				});
 			},
 			toDetail(goods_id){
-				uni.navigateTo({
-					url:'/pages/threeLayers/comment_list'+'?goods_id='+goods_id
-				})
+					uni.navigateTo({
+						url:'/pages/threeLayers/comment_list'+'?goods_id='+goods_id+'&type='+this.type
+					})
+				
 			}
 		},
 		components: {
 			returns
 		},
 		onLoad(options) {
-			this.id = options.id // 订单id
-			this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
-				id: options.id
-			}, function(self, res) {
-				console.log(res.data.items);
-				self.list = res.data.items
-			})
+			this.id = options.id  //订单id
+			this.type = options.type
+			if(options.type ==1){
+				// type =1 商品评论   为2是积分订单评论
+				this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.Order_detail, {
+					id: options.id
+				}, function(self, res) {
+					console.log(res.data.items);
+					self.list = res.data.items
+				})
+			}else{
+				this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.int_OrderDetail, {
+					orderid: options.id,
+					token: uni.getStorageSync('token')
+				}, function(self, res) {
+					console.log(res);
+					self.list.push(res.data.order) 
+					
+				})
+			}
 		}
 	}
 </script>

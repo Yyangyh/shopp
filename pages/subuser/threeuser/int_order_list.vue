@@ -82,7 +82,7 @@
 						<view class="bottom3" v-if="item.status == 4 || item.status == 5" @click="deletes(item.id,index)">
 							删除订单
 						</view>
-						<view class="bottom3" v-if="item.status == 4">
+						<view class="bottom3" v-if="item.status == 4 && item.user_is_comments==0" @click="jump('/pages/threeLayers/order_comment?id='+item.id+'&type=2')">
 							评论
 						</view>
 						<view class="bottom3"  @click="jump('./int_order_detailed?id='+item.id)">

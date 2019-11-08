@@ -71,6 +71,8 @@ const api_root = {
 			int_order:api+'/api/creditshop/ConfirmDetail',//积分商品下单数据确认
 			int_Confirm:api+'/api/creditshop/Confirm',//积分商品订单确认(生成订单号)
 			int_pay:api+'/api/creditshop/pay',//积分商品订单支付
+			comment:api+'/api/creditshop/Comment', // 积分订单评论列表
+			comments:api+'/api/creditshop/Comments' // 积分订单评论
 			
 		},
 		Category:api+'/api/editionpass/Category',//版通商品分类

@@ -76,14 +76,25 @@
 		},
 		onLoad(e) {
 			const {goods_id} = e
-			this.service.entire(this, 'get', this.service.api_root.threeLayers.goood_Comment_List, {
-				goods_id:goods_id, //商品id
-				page:1
-			}, function(self, res) {
-				console.log(res);
-					console.log(res.data.data);
-					self.list = res.data.data
-			})
+			if(e.type == 1){
+				this.service.entire(this, 'get', this.service.api_root.threeLayers.goood_Comment_List, {
+					goods_id:goods_id, //商品id
+					page:1
+				}, function(self, res) {
+					console.log(res);
+						console.log(res.data.data);
+						self.list = res.data.data
+				})
+			}else{
+				this.service.entire(this, 'get', this.service.api_root.subindex.threeindex.comment, {
+					goods_id:goods_id, //商品id
+					page:1
+				}, function(self, res) {
+					console.log(res);
+						console.log(res.data.data);
+						self.list = res.data.data
+				})
+			}
 		}
 	}
 </script>
