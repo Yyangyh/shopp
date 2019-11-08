@@ -118,8 +118,8 @@
 				            	orderid: that.orderid,
 				            	payment_id: that.payment_id
 				            }, function(self, ref) {
-								self.show = false
-				            	self.common.order(ref,self,'/pages/subuser/threeuser/open_member','pages/subuser/threeuser/open_member')
+								
+				            	self.common.order(ref,self,'/pages/index/user','pages/index/user')
 				            })
 				        } else if (res.cancel) {
 				           return
@@ -145,6 +145,7 @@
 		},
 		
 		onShow() {
+			
 			this.service.entire(this,'get',this.service.api_root.subuser.threeuser.Level_lists,{},function(self,res){
 				console.log(res)
 				for (let s of res.data) {

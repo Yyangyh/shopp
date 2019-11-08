@@ -81,32 +81,7 @@
 						}
 						
 					}
-				})
-				// uni.request({
-				// 	url:service.api_root.threeLayers.VerifySend,
-				// 	method:'POST',
-				// 	header:{'X-Requested-With':'xmlhttprequest'},
-				// 	data:data,
-				// 	success(res) {
-				// 		console.log(that.disabled)
-				// 		let data = res.data 
-				// 		console.log(data)
-				// 		uni.showToast({
-				// 			icon:'none',
-				// 			title:data.msg
-				// 		})
-				// 		if(data.code == 0){
-				// 			that.verification = '60s'
-				// 			that.disabled = true
-				// 			that.timer = setInterval(function(){
-				// 				let num = that.verification.split('s')[0]
-				// 				num --
-				// 				that.verification = num+'s'
-				// 			},1000)
-				// 		}
-						
-				// 	}
-				// })	
+				})	
 			},
 			ascertain(){ //确定
 				let data = new Object()
@@ -125,11 +100,11 @@
 						title:res.msg
 					})
 					if(res.code == 0){
-						
 						if(self.show == 1){
 							self.show = 2
 							return
 						}
+						uni.setStorageSync('mobile',self.accounts)
 						setTimeout(function(){
 							self.common.returns(self)
 						},1500)

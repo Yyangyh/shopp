@@ -19,7 +19,13 @@
 							<text>店铺名字</text>
 							<image src="../../static/image/go.png" mode="widthFix"></image>
 						</view>
+						<view class="top2">
+							{{item.status_text}}
+						</view>
 					</view>
+					
+					
+					
 					<view  >
 						<!-- 加多一个盒子套住评论 -->
 						<view class="list_middle" @click="jump('threeuser/order_details?id='+item.id)">
@@ -47,18 +53,15 @@
 							</view>
 							
 							<view>
-								<!-- <view class="bottom3" v-if='item.status == 4 || item.status == 5' @click="deletes(item.id,index)">
-									删除订单
-								</view> -->
 								
+								<!-- <view class="bottom3" v-if="" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">
+									填写退货信息
+								</view> -->
 								<view class="bottom3" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">
 									详情
 								</view>
-								
 							</view>
-							
 						</view>
-
 					</view>
 				</view>
 
@@ -84,7 +87,6 @@
 				more: 'more',
 				page: 1,
 				loadRecord: true
-
 			}
 		},
 		methods: {
@@ -276,6 +278,7 @@
 	.mall_box .box_bottom .bottom_list .list_top .top2 {
 		/* color: #999999; */
 		font-size: 28rpx;
+		color: #D9011C;
 		/* font-weight: bold; */
 	}
 

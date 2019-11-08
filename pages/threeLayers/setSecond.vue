@@ -64,7 +64,7 @@
 						title:res.msg
 					})
 					if(res.code == 0){
-						
+						uni.setStorageSync('mobile',self.accounts)
 						setTimeout(function(){
 							self.common.returns(self)
 						},1500)

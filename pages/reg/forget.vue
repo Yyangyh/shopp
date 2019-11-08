@@ -11,12 +11,12 @@
 			<text @click="obtain()">{{verification}}</text>
 		</view>
 		<view class="ipt">
-			<image src="../../static/image/pwd.png" v-model="pwd" mode=""></image>
-			<input type="text" value="" placeholder="设置新密码"/>
+			<image src="../../static/image/pwd.png" mode=""></image>
+			<input type="text" value="" v-model="pwd" password placeholder="设置新密码"/>
 		</view>
 		<view class="ipt">
-			<image src="../../static/image/pwd.png" v-model="as_pwd" mode=""></image>
-			<input type="text" value="" placeholder="确认密码"/>
+			<image src="../../static/image/pwd.png" mode=""></image>
+			<input type="text" value="" v-model="as_pwd" password placeholder="确认密码"/>
 		</view>
 		<button @click="accomplish()">完成</button>
 	</view>
@@ -40,7 +40,7 @@
 				var that = this
 				if(that.disabled == true) return
 				uni.request({
-					url:service.api_root.reg.WlVerifySend,
+					url:this.service.api_root.reg.WlVerifySend,
 					method:'POST',
 					header:{'X-Requested-With':'xmlhttprequest'},
 					data:{
@@ -80,7 +80,7 @@
 				}
 				
 				uni.request({
-					url:service.api_root.reg.ForgetPwd,
+					url:this.service.api_root.reg.ForgetPwd,
 					method:'POST',
 					header:{'X-Requested-With':'xmlhttprequest'},
 					data:{

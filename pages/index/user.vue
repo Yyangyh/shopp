@@ -37,10 +37,10 @@
 								用户id：{{uid}}
 							</view>
 						</view>
-						<view class="left_bottom_one">
+						<view class="left_bottom_one" v-if="data.level != ''">
 							<view class="left_bottom">
-								<image src="../../static/image/check.png" mode="widthFix"></image>
-								<text>会员</text>
+								<image :src="data.level.images_url" mode="widthFix"></image>
+								<text>{{data.level.name}}</text>
 							</view>
 							
 						</view>
@@ -59,7 +59,7 @@
 				
 			</view>
 		</view>
-		<view class="user_vip"  @click="jump('../subuser/threeuser/open_member')">
+		<view class="user_vip"  @click="jump('../subuser/threeuser/open_member')" v-if="data.level == ''">
 			<view class="vip_one">
 				<image src="../../static/image/vip.png" mode="widthFix"></image>
 				<view class="">
@@ -424,7 +424,7 @@
 		margin-top: 10rpx;
 	}
 	.top .user .user_left .left_bottom{
-		background: #007FE9;
+		/* background: #007FE9; */
 		display: flex;
 		align-items: center;
 		justify-content: center;
@@ -435,6 +435,10 @@
 		font-size: 24rpx;
 		margin-right: 20rpx;
 		/* margin-top: 20rpx; */
+	}
+	.top .user .user_left .left_bottom_one image{
+		height: 35rpx !important;
+		width: 35rpx !important;
 	}
 	.top .user .user_right{
 		background: #007FE9;

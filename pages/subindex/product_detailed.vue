@@ -17,7 +17,7 @@
 		</view>
 		<view class="product_price">
 			<view class="pr_top">
-				{{data.title}}
+				<text v-if="data.merchid == 0">自营</text>{{data.title}}
 			</view>
 			<view class="price">
 				<text>￥{{data.price}}</text>
@@ -38,10 +38,11 @@
 				</view>
 			</view>
 		</view>
-		<view class="pr_shop">
+		
+		<view class="pr_shop"  v-if="data.merchid != 0" @click="jump('./shop?merchid='+data.merchid)">
 			<view class="sh_top">
-				<image src="../../static/image/portrait1.png" mode="widthFix"></image>
-				<text>文旅特色产品</text>
+				<image :src="data.merchlogo" mode="widthFix"></image>
+				<text>{{data.merchname}}</text>
 			</view>
 			<view class="sh_bottom">
 				<text>进店逛逛</text>
@@ -50,7 +51,7 @@
 		</view>
 		
 		<discuss :comments='comments'></discuss>
-		<view v-if="comments !=''" class="more"  @click="jump('../threeLayers/comment_list?goods_id='+id)">
+		<view v-if="comments !=''" class="more"  @click="jump('../threeLayers/comment_list?goods_id='+id+'&type=1')">
 			查看更多评论
 		</view>
 
@@ -83,7 +84,7 @@
 		</view>
 
 		<view class="bottom_tab">
-			<view class="tab_list">
+			<view class="tab_list"  v-if="data.merchid != 0">
 				<image src="../../static/image/shops.png" mode="widthFix"></image>
 				<view class="">
 					店铺
@@ -508,7 +509,14 @@
 		padding: 20rpx;
 
 	}
-
+	.product_price .pr_top text{
+		color: #fff;
+		background: #FF431D;
+		font-size: 24rpx;
+		border-radius: 5rpx;
+		padding: 0 5rpx;
+		margin-right: 10rpx;
+	}
 	.product_price .price {
 		display: flex;
 		justify-content: space-between;

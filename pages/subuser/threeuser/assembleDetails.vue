@@ -78,7 +78,7 @@
 					</view>
 				</view>
 				
-				<view class="order_handle" v-if="data.status == 1 || data.status == 2 || data.status == 3">
+				<view class="order_handle" v-if="data.status == 2 || data.status == 3">
 					
 					<text v-if="data.orderaftersale == null"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">{{data.status == 4?'申请售后':'退款/退货'}}</text>
 					<block v-else>
@@ -86,6 +86,19 @@
 						<text v-else-if="data.orderaftersale.status == 4"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">已拒绝</text>
 						<text v-else-if="data.orderaftersale.status == 5"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">已取消</text>
 						<text v-else @click="cancel_return(data.orderaftersale.id)">退款/退货中</text>
+					</block>
+					
+				</view>
+				
+				<view class="order_handle" v-else-if="data.status == 1">
+					<block v-if="data.success == 1">
+						<text v-if="data.orderaftersale == null"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">{{data.status == 4?'申请售后':'退款/退货'}}</text>
+						<block v-else>
+							<text v-if="data.orderaftersale.status == 3">退款完成</text>
+							<text v-else-if="data.orderaftersale.status == 4"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">已拒绝</text>
+							<text v-else-if="data.orderaftersale.status == 5"  @click="jump('/pages/threeLayers/refund?oid='+ data.id)">已取消</text>
+							<text v-else @click="cancel_return(data.orderaftersale.id)">退款/退货中</text>
+						</block>
 					</block>
 					
 				</view>

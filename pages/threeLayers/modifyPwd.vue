@@ -53,7 +53,9 @@
 					})
 					if(res.code == 0){
 						setTimeout(function(){
-							self.common.returns(self)
+							uni.reLaunch({
+								url:'../login/login'
+							})
 						},1500)
 					}
 				})

@@ -46,9 +46,16 @@ const order = function(ref, self, url, wxUrl) { //支付调用
 					},
 					function(res) {
 						if (res.err_msg == "get_brand_wcpay_request:ok") {
-							uni.redirectTo({
-								url: url
-							})
+							if(url.split('/index/').length == 2){
+								uni.switchTab({
+								    url: url
+								});
+							}else{
+								uni.redirectTo({
+									url: url
+								})
+							}
+							
 							// 使用以上方式判断前端返回,微信团队郑重提示：
 							//res.err_msg将在用户支付成功后返回ok，但并不保证它绝对可靠。
 						}
@@ -76,9 +83,15 @@ const order = function(ref, self, url, wxUrl) { //支付调用
 			provider: 'wxpay',
 			orderInfo: ref.data.data, //微信、支付宝订单数据
 			success: function(ref) {
-				uni.redirectTo({
-					url: url
-				})
+				if(url.split('/index/').length == 2){
+					uni.switchTab({
+					    url: url
+					});
+				}else{
+					uni.redirectTo({
+						url: url
+					})
+				}
 			},
 			fail: function(err) {
 				console.log('fail:' + JSON.stringify(err));
@@ -87,23 +100,41 @@ const order = function(ref, self, url, wxUrl) { //支付调用
 		// #endif
 	} else if (self.payment_name == 'WalletPay') { //选择钱包支付时
 		setTimeout(function() {
-			uni.redirectTo({
-				url: url
-			})
+			if(url.split('/index/').length == 2){
+				uni.switchTab({
+				    url: url
+				});
+			}else{
+				uni.redirectTo({
+					url: url
+				})
+			}
 		}, 1500)
 	} else if (self.payment_name == 'BtPay') { //选择版通支付时
 
 		setTimeout(function() {
-			uni.redirectTo({
-				url: url
-			})
+			if(url.split('/index/').length == 2){
+				uni.switchTab({
+				    url: url
+				});
+			}else{
+				uni.redirectTo({
+					url: url
+				})
+			}
 		}, 1500)
 
 	} else if (self.payment_name == '') { //积分支付时
 		setTimeout(function() {
-			uni.redirectTo({
-				url: url
-			})
+			if(url.split('/index/').length == 2){
+				uni.switchTab({
+				    url: url
+				});
+			}else{
+				uni.redirectTo({
+					url: url
+				})
+			}
 		}, 1500)
 
 	}

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "店铺",
   "titleNView": false,
   "usingComponents": {
-    "bw-swiper": "/components/wxcomponents/bw-swiper/bw-swiper"
+    "bw-swiper": "/components/wxcomponents/bw-swiper/bw-swiper",
+    "returns": "/pages/common/returns"
   }
 }
