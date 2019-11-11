@@ -7,7 +7,7 @@
 			<view class="return">
 				<view class="search">
 					<image class="search1" src="../../static/image/search1.png" mode=""></image>
-					<input type="text" value="" placeholder=""/>
+					<input type="text" value=""/>
 				</view>
 				<text @click="returns">取消</text>
 			</view>
@@ -113,6 +113,21 @@
 		// 	console.log(e)
 		// },
 		onShow() {
+			uni.getLocation({
+			    type: 'wgs84',
+				geocode:true,
+			    success: function (res) {
+					console.log(res)
+			        console.log('当前位置的经度：' + res.longitude);
+			        console.log('当前位置的纬度：' + res.latitude); 
+			    },
+				fail:function(res){
+					console.log('失败'+res)
+				},
+				complete:function(res){
+					console.log('所有'+res)
+				},
+			});
 			this.service.entire(this,'get',this.service.api_root.index.Region_lists,{},function(self,res){
 				console.log(res)
 				self.list = res.data

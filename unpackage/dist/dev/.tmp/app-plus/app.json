@@ -46,6 +46,8 @@
     "pages/subuser/coupon",
     "pages/subuser/scen_order",
     "pages/subuser/mall_order",
+    "pages/subuser/refund",
+    "pages/subuser/feedback_list",
     "pages/subuser/address",
     "pages/subuser/addto",
     "pages/subuser/momey",
@@ -56,6 +58,12 @@
     "pages/subuser/assemble_order",
     "pages/subuser/realname",
     "pages/subuser/settled",
+    "pages/subuser/assemble_refund",
+    "pages/subuser/threeuser/ass_refund_details",
+    "pages/subuser/threeuser/return_goods",
+    "pages/subuser/threeuser/open_member",
+    "pages/subuser/threeuser/give_edition",
+    "pages/subuser/threeuser/refund_details",
     "pages/subuser/threeuser/modify_name",
     "pages/subuser/threeuser/int_order_list",
     "pages/subuser/threeuser/int_detailed",
@@ -76,6 +84,7 @@
     "pages/threeLayers/order",
     "pages/threeLayers/fill_in",
     "pages/threeLayers/comment_success",
+    "pages/threeLayers/shop_goods",
     "pages/threeLayers/order_pay",
     "pages/threeLayers/policy_facilities",
     "pages/threeLayers/allclass",
@@ -150,5 +159,7 @@
   },
   "appname": "文旅世家",
   "compilerVersion": "2.3.7",
-  "usingComponents": {}
+  "usingComponents": {
+    "load": "/components/load/load"
+  }
 }

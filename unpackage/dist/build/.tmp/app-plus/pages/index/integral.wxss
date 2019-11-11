@@ -1,8 +1,8 @@
 
-.content.data-v-6436b2a8{
+.content.data-v-248ff095{
 	padding-top: 105rpx;
 }
-.top.data-v-6436b2a8{
+.top.data-v-248ff095{
 	height: 105rpx;
 	line-height: 105rpx;
 	text-align: center;
@@ -18,7 +18,7 @@
 	background: #fff;
 	z-index: 888;
 }
-.table.data-v-6436b2a8 {
+.table.data-v-248ff095 {
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -33,49 +33,49 @@
 	padding-bottom: 40rpx;
 	border-bottom: 6rpx solid #F5F5F5;
 }
-.table .tab_list.data-v-6436b2a8 {
+.table .tab_list.data-v-248ff095 {
 	width: 20%;
 	text-align: center;
 	margin-top: 30rpx;
 	font-size: 28rpx;
 	color: #333;
 }
-.table .tab_list image.data-v-6436b2a8 {
+.table .tab_list image.data-v-248ff095 {
 	width: 56rpx;
 	height: 56rpx;
 }
-.guess.data-v-6436b2a8{
+.guess.data-v-248ff095{
 	
 	padding: 20rpx 20rpx;
 }
-.guess .guess_test.data-v-6436b2a8{
+.guess .guess_test.data-v-248ff095{
 	font-size: 32rpx;
 	font-weight: bold;
 	margin-bottom: 20rpx;
 }
-.guess .guess_box.data-v-6436b2a8{
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+.guess .guess_box.data-v-248ff095{
+	/* display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; */
 }
-.guess .guess_box .box_list.data-v-6436b2a8{
-	width: 49%;
+.guess .guess_box .guess_box_left.data-v-248ff095,.guess_box_right.data-v-248ff095{
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;  
+	padding: 0rpx 4rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.guess .guess_box .box_list.data-v-248ff095{
+	/* width: 49%; */
 	font-size: 28rpx;
 	margin-bottom: 20rpx;
 }
-.guess .guess_box .box_list .list_one.data-v-6436b2a8{
+.guess .guess_box .box_list .list_one.data-v-248ff095{
 	font-weight: bold;
 	clolr: #333;
-	margin-bottom: 20rpx;
-	height: 76rpx;
+	margin-bottom: 10rpx;
+	/* height: 76rpx; */
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;
@@ -83,15 +83,15 @@
 	-webkit-box-orient:vertical; 
 	-webkit-line-clamp:2;
 }
-.guess .guess_box .box_list .list_two.data-v-6436b2a8{
+.guess .guess_box .box_list .list_two.data-v-248ff095{
 	color: #FF431D;
 }
-.guess .guess_box .box_list .list_three.data-v-6436b2a8{
+.guess .guess_box .box_list .list_three.data-v-248ff095{
 	color: #999999;
 	font-size: 24rpx;
 	text-decoration:line-through;
 }
-.guess .guess_box image.data-v-6436b2a8{
+.guess .guess_box image.data-v-248ff095{
 	width: 100%;
 	height: 224rpx;
 	margin-bottom: 20rpx;

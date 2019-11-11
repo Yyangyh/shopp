@@ -54,28 +54,28 @@
 	margin-bottom: 20rpx;
 }
 .guess .guess_box.data-v-6036a553{
-	display: -webkit-box;
-	display: -webkit-flex;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-flex-wrap: wrap;
-	    -ms-flex-wrap: wrap;
-	        flex-wrap: wrap;
-	-webkit-box-pack: justify;
-	-webkit-justify-content: space-between;
-	    -ms-flex-pack: justify;
-	        justify-content: space-between;
+	/* display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between; */
+}
+.guess .guess_box .guess_box_left.data-v-6036a553,.guess_box_right.data-v-6036a553{
+	display: inline-block;
+	width: 50%;
+	vertical-align: top;  
+	padding: 0rpx 4rpx;
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
 }
 .guess .guess_box .box_list.data-v-6036a553{
-	width: 49%;
+	/* width: 49%; */
 	font-size: 28rpx;
 	margin-bottom: 20rpx;
 }
 .guess .guess_box .box_list .list_one.data-v-6036a553{
 	font-weight: bold;
 	clolr: #333;
-	margin-bottom: 20rpx;
-	height: 76rpx;
+	margin-bottom: 10rpx;
+	/* height: 76rpx; */
 	overflow: hidden;
 	-o-text-overflow: ellipsis;
 	   text-overflow: ellipsis;

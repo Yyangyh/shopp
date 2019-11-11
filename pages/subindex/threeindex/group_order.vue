@@ -178,7 +178,7 @@
 				           			orderid:res.data.orderid,
 				           			payment_id:self.payment_id
 				           		},function(selfs,ref){
-				           			self.common.order(ref,self,'../../subuser/assemble_order','pages/subuser/assemble_order')
+				           			self.common.order(ref,self,'../../subuser/assemble_order?status=0','pages/subuser/assemble_order?status=1')
 				           		})	
 				           	}else{
 				           		uni.showToast({

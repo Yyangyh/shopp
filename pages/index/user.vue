@@ -173,7 +173,7 @@
 						</block>
 					</view>
 					<view class="tab_list" @click="jump('../subuser/mall_order?status=2')">
-						<image src="../../static/image/refund2.png" mode="widthFix"></image>
+						<image src="../../static/image/wait_goods.png" mode="widthFix"></image>
 						<view class="">
 							待发货
 						</view>
@@ -200,7 +200,63 @@
 						</block> -->
 					</view>
 					<view class="tab_list" @click="jump('../subuser/refund')">
-						<image src="../../static/image/refund1.png" mode="widthFix"></image>
+						<image src="../../static/image/refund2.png" mode="widthFix"></image>
+						<view class="">
+							退款
+						</view>
+					</view>
+					
+				</view>
+				
+				
+				
+				<view class="tab_top_box">
+					<view class="tab_top">
+						拼团订单
+					</view>
+					<view class="more"  @click="jump('../subuser/assemble_order?status=0')">
+						查看更多
+					</view>
+				</view>
+				<view class="tab_box">
+					<view class="tab_list"  @click="jump('../subuser/assemble_order?status=1')">
+						<image src="../../static/image/group_img1.png" mode="widthFix"></image>
+						<view class="">
+							待付款
+						</view>
+						<!-- <block v-if="order_status[1]">
+							<text v-if="order_status[1].count != 0">{{order_status[1].count}}</text>
+						</block> -->
+					</view>
+					<view class="tab_list" @click="jump('../subuser/assemble_order?status=2')">
+						<image src="../../static/image/group_img2.png" mode="widthFix"></image>
+						<view class="">
+							待发货
+						</view>
+						<!-- <block v-if="order_status[2]">
+							<text v-if="order_status[2].count != 0">{{order_status[2].count}}</text>
+						</block> -->
+					</view>
+					<view class="tab_list" @click="jump('../subuser/assemble_order?status=3')">
+						<image src="../../static/image/group_img3.png" mode="widthFix"></image>
+						<view class="">
+							待收货
+						</view>
+						<!-- <block v-if="order_status[3]">
+							<text v-if="order_status[3].count != 0">{{order_status[3].count}}</text>
+						</block> -->
+					</view>
+					<view class="tab_list" @click="jump('../subuser/assemble_order?status=4')">
+						<image src="../../static/image/group_img4.png" mode="widthFix"></image>
+						<view class="">
+							已完成
+						</view>
+						<!-- <block v-if="order_status[4]">
+							<text v-if="order_status[4].count != 0">{{order_status[4].count}}</text>
+						</block> -->
+					</view>
+					<view class="tab_list" @click="jump('../subuser/assemble_refund')">
+						<image src="../../static/image/group_img5.png" mode="widthFix"></image>
 						<view class="">
 							退款
 						</view>
@@ -259,12 +315,12 @@
 						收货地址
 					</view>
 				</view>
-				<view class="tab_list" @click="jump('../subuser/assemble_order')">
+				<!-- <view class="tab_list" @click="jump('../subuser/assemble_order')">
 					<image src="../../static/image/assemble_1.png" mode="widthFix"></image>
 					<view class="">
 						拼团订单
 					</view>
-				</view>
+				</view> -->
 				<view class="tab_list" @click="jump('../subuser/settled')">
 					<image src="../../static/image/settled.png" mode="widthFix"></image>
 					<view class="">
@@ -605,9 +661,12 @@
 		margin-bottom: 34rpx;
 		border-bottom: 2rpx solid #F2F2F2;
 	}
-	.user_middle .middle_tab .tab_box:last-child .tab_list{
-		width: 20%;
+	.user_middle .middle_tab .tab_box:nth-of-type(2) .tab_list{
+		width: 25%;
 		position: relative;
+	}
+	.user_middle .middle_tab .tab_top_box:nth-of-type(5){
+		padding-top: 50rpx; 
 	}
 	 .tab_box image{
 		height: 54rpx;
@@ -615,7 +674,7 @@
 		margin-bottom: 13rpx;
 	}
 	.tab_box .tab_list{
-		width: 25%;
+		width: 20%;
 		position: relative;
 	}
 	.tab_box .tab_list text{
@@ -647,6 +706,7 @@
 		border-bottom: 2rpx solid #F2F2F2;
 	}
 	.list_bottom  .tab_list{
+		width: 25%;
 		margin-bottom: 20rpx;
 		display: flex;
 		flex-direction: column;

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "旅游卡",
   "titleNView": false,
   "usingComponents": {
+    "load": "/components/load/load",
     "returns": "/pages/common/returns"
   }
 }

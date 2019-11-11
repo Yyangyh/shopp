@@ -2,6 +2,7 @@
   "navigationBarTitleText": "积分商品分类",
   "titleNView": false,
   "usingComponents": {
+    "load": "/components/load/load",
     "share": "/pages/common/share"
   }
 }

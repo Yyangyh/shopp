@@ -7,7 +7,7 @@
 			积分商城
 		</view>
 		<view class="table">
-			<view class="tab_list" v-for="(item,index) in data" @click="jump('../subindex/integral_list?id='+item.id)">
+			<view class="tab_list" v-for="(item,index) in data" @click="jump('../subindex/integral_list?id='+item.id)" :key='item.id'>
 				<image :src="item.icon" mode="widthFix"></image>
 				<view class="">
 					{{item.name}}
@@ -21,55 +21,111 @@
 				猜你喜欢
 			</view>
 			<view class="guess_box">
-				<view class="box_list" v-for="(item,index) in data_list" :key='item.id' @click="jump('../subindex/threeindex/integral_details?id='+item.id)">
-					<image :src="item.images" mode=""></image>
-					<view class="list_one">
-						{{item.title}}
-					</view>
-					<view class="list_two">
-						{{item.money}}兑换
-					</view>
-					<view class="list_three">
-						￥{{item.original_price}}
+				
+				<view class="guess_box_left">
+					<view class="box_list" v-for="(item,index) in data_list" :key='item.id' @click="jump('../subindex/threeindex/integral_details?id='+item.id)" v-if="index%2 == 0">
+						<image :src="item.images" mode="widthFix"></image>
+						<view class="list_one">
+							{{item.title}}
+						</view>
+						<view class="list_two">
+							{{item.money}}兑换
+						</view>
+						<view class="list_three">
+							￥{{item.original_price}}
+						</view>
 					</view>
 				</view>
+				<view class="guess_box_right">
+					<view class="box_list" v-for="(item,index) in data_list" :key='item.id' @click="jump('../subindex/threeindex/integral_details?id='+item.id)" v-if="index%2 == 1">
+						<image :src="item.images" mode="widthFix"></image>
+						<view class="list_one">
+							{{item.title}}
+						</view>
+						<view class="list_two">
+							{{item.money}}兑换
+						</view>
+						<view class="list_three">
+							￥{{item.original_price}}
+						</view>
+					</view>
+				</view>
+				
 			</view>
 		</view>
+		
+		<uni-load-more :status="more"></uni-load-more>
+		
+		
 	</view>
 </template>
 
 <script>
+	import uniLoadMore from '../../components/uni-load-more/uni-load-more.vue'
 	export default{
+		components: {
+			uniLoadMore
+		},
 		data() {
 			return {
 				data:'',
-				data_list:''
+				data_list:[],
+				more: 'more',
+				page: 1,
+				loadRecord: true
 			}
+		},
+		
+		onReachBottom() {
+			if (this.loadRecord == false) return
+			this.loadMore()
 		},
 		onShow() {
 			this.service.entire(this,'post',this.service.api_root.index.int_category,{},function(self,res){  //分类列表
 				console.log(res)
 				self.data = res.data
 			})
-			this.service.entire(this, 'get', this.service.api_root.subindex.int_list, {  //猜你喜欢
-				is_home_recommended: 1
-			}, function(self, res) {
-				// console.log(res)
-				let data = res.data.data
-				for (let s of data) {
-					let money = []
-					if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
-					if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
-					if(Number(s.price) != 0) money.push('￥'+Number(s.price))
-					s.money = money.join('+')
-				}
-				self.data_list = data
-			})
+			this.data_list.length = 0
+			this.page = 1
+			this.loadMore()
+			
 		},
 		methods:{
 			jump(url){
 				uni.navigateTo({
 					url:url
+				})
+			},
+			loadMore(){
+				let page = this.page
+				this.more = 'loading'
+				this.service.entire(this, 'post', this.service.api_root.subindex.int_list, {  //猜你喜欢
+					is_home_recommended: 1,
+					page:page
+				}, function(self, res) {
+					// console.log(res)
+					
+					let data = self.data_list
+					for (let s of res.data.data) {
+						let money = []
+						if(Number(s.bt) != 0) money.push(Number(s.bt)+'版通')
+						if(Number(s.credit) != 0) money.push(Number(s.credit)+'积分')
+						if(Number(s.price) != 0) money.push('￥'+Number(s.price))
+						s.money = money.join('+')
+					}
+					data.push(...res.data.data)
+					self.data_list = data
+					console.log(self.data);
+					self.page = page + 1
+					self.more = 'more'
+					if (res.data.data.length < 10) {
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+					
+					
+					
 				})
 			}
 		}
@@ -125,20 +181,27 @@
 		margin-bottom: 20rpx;
 	}
 	.guess .guess_box{
-		display: flex;
+		/* display: flex;
 		flex-wrap: wrap;
-		justify-content: space-between;
+		justify-content: space-between; */
+	}
+	.guess .guess_box .guess_box_left,.guess_box_right{
+		display: inline-block;
+		width: 50%;
+		vertical-align: top;  
+		padding: 0rpx 4rpx;
+		box-sizing: border-box;
 	}
 	.guess .guess_box .box_list{
-		width: 49%;
+		/* width: 49%; */
 		font-size: 28rpx;
 		margin-bottom: 20rpx;
 	}
 	.guess .guess_box .box_list .list_one{
 		font-weight: bold;
 		clolr: #333;
-		margin-bottom: 20rpx;
-		height: 76rpx;
+		margin-bottom: 10rpx;
+		/* height: 76rpx; */
 		overflow: hidden;
 		text-overflow: ellipsis;
 		display:-webkit-box; 

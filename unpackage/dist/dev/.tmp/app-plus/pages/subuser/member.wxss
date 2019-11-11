@@ -42,7 +42,7 @@
 }
 .equity .eq_top.data-v-1e6fe7a8{
 	padding: 0 52rpx;
-	margin-bottom: 42rpx;
+	margin: 42rpx 0;
 }
 .equity .eq_bottom.data-v-1e6fe7a8 {
 	display: -webkit-box;

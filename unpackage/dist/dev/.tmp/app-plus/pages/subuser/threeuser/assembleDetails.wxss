@@ -69,7 +69,9 @@ page.data-v-07fba268 {
 	display: -webkit-flex;
 	display: -ms-flexbox;
 	display: flex;
+	position: relative;
 	font-size: 28rpx;
+	height: 228rpx
 }
 .order .order_num .num_two .specs.data-v-07fba268 {
 	color: #808080;
@@ -115,6 +117,9 @@ page.data-v-07fba268 {
 .order .order_handle.data-v-07fba268 {
 	text-align: right;
 	padding-bottom: 20rpx;
+	position: absolute;
+	right: 0;
+	bottom: 0;
 }
 .order .order_handle text.data-v-07fba268 {
 	display: inline-block;
@@ -160,6 +165,7 @@ page.data-v-07fba268 {
 	font-size: 24rpx;
 	color: #808080;
 	margin-bottom: 30rpx;
+	padding-bottom: 20rpx;
 }
 .order_news text.data-v-07fba268 {
 	font-size: 24rpx;

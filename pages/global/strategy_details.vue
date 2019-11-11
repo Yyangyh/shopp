@@ -13,7 +13,17 @@
 				{{is_follow?'已关注':'关注'}}
 			</view>
 		</view>
-		<bw-swiper :videoAutoplay='videoAutoplay' :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
+		<bw-swiper :videoAutoplay='videoAutoplay' :interval='3000'  @clickItem='clickItem' :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
+		
+		<!-- <swiper class="swiper" v-if="">
+			<swiper-item v-for="(item,index) in swiper_img">
+				<view class="swiper_box">
+					<image  class="swiper_box_img" :src="swiper_img[index]" mode="aspectFill"></image>
+				</view>
+				<image class="swiper_img" :src="swiper_img[index]" mode="widthFix"></image>
+			</swiper-item>
+			
+		</swiper> -->
 		
 		
 		<rich-text :nodes="richtext"></rich-text>
@@ -80,7 +90,8 @@
 				say:'',
 				is_follow:'',
 				is_star:false,
-				star_count:'' // 点赞数
+				star_count:'' ,// 点赞数
+				swiper_img:[]
 			}
 		},
 		methods:{
@@ -101,6 +112,15 @@
 			},
 			follow(){
 				this.common.concern(this,this.data.uid)
+			},
+			clickItem(e){ //预览图片
+				console.log(e)
+				 uni.previewImage({
+				            urls: [e.img],
+				            // longPressActions: {
+				               
+				            // }
+				        });
 			},
 			// 发表评论
 			submitComment(){
@@ -149,6 +169,7 @@
 						datas.push(data)
 					})
 					self.swiperList = datas
+					self.swiper_img = res.data[0].images
 					self.data = res.data[0]
 					self.is_follow = res.data[0].is_follow
 					self.star_count = res.data[0].star_count
@@ -217,6 +238,21 @@
 		text-align: center;
 		background: #02A7F0;
 		color: #FFFEFE;
+	}
+	.swiper {
+		width: 100%;
+	}
+	.swiper .swiper_img,.swiper_box_img{
+		width: 100%;
+		height: 200rpx;
+	}
+	.swiper .swiper_img{
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.swiper .swiper_box{
+		position: relative;
 	}
 	.bottom{
 		position: fixed;

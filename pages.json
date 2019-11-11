@@ -532,6 +532,34 @@
 			}
 		},
 		{
+			"path": "pages/subuser/assemble_refund",
+			"style": {
+				"navigationBarTitleText": "拼团退款",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		
+		{
+			"path": "pages/subuser/threeuser/ass_refund_details",
+			"style": {
+				"navigationBarTitleText": "退款订单详情",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
+			"path": "pages/subuser/threeuser/return_goods",
+			"style": {
+				"navigationBarTitleText": "填写退货信息",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/threeuser/open_member",
 			"style": {
 				"navigationBarTitleText": "开通会员",

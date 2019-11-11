@@ -58,6 +58,8 @@
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
 	        flex-grow: 2;
+	font-size: 26rpx;
+	font-weight: 200;
 }
 .sea_top .search.data-v-5e4c0678{
 	margin-left: 20rpx;

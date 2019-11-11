@@ -97,7 +97,7 @@
 			},
 			search(){
 				uni.navigateTo({
-					url: '/pages/common/search?type=scenic'
+					url: '/pages/common/search?type=feature'
 				})
 			}
 		},

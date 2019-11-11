@@ -250,7 +250,7 @@
 		
 		onLoad() {
 			this.service.entire(this,'get',this.service.api_root.subindex.scen_list,{is_home_recommended:1},function(self,res){ //景点-猜你喜欢
-				console.log(res)
+				// console.log(res)
 				console.log()
 				self.data_guess_one.push(res.data.data[4]) 
 				self.data_guess_one.push(res.data.data[8]) 

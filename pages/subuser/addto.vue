@@ -138,6 +138,7 @@
 					self.county.push(res.data.province_name)
 					self.county.push(res.data.city_name)
 					self.county.push(res.data.county_name)
+					self.city_id = [res.data.province,res.data.city,res.data.address]
 				})
 			}
 			this.service.entire(this,'get',this.service.api_root.common.Region,{},function(self,res){
@@ -152,6 +153,7 @@
 					this.service.entire(this,'get',this.service.api_root.common.Region,{},function(self,res){
 						console.log(res)
 						self.city_id = []
+						console.log()
 						self.city = res.data
 					})
 				}

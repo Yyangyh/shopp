@@ -64,6 +64,14 @@
 	font-size: 30rpx;
 	padding: 20rpx;
 }
+.product_price .pr_top text.data-v-3477307a{
+	color: #fff;
+	background: #FF431D;
+	font-size: 24rpx;
+	border-radius: 5rpx;
+	padding: 0 5rpx;
+	margin-right: 10rpx;
+}
 .product_price .price.data-v-3477307a {
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -470,6 +478,9 @@
 	font-size: 30rpx;
 	color: #FFFFFF;
 	background: #1D9DFF;
+}
+.already.data-v-3477307a{
+	background: #999999 !important;
 }
 .cou_list image.data-v-3477307a{
 	width: 45rpx;

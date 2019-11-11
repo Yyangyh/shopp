@@ -162,6 +162,9 @@
 			if(this.loadRecord == false) return
 			this.loadMore()
 		},
+		onLoad(e) {
+			this.show = e.status
+		},
 		onShow() {
 			this.data.length = 0
 			this.page = 1

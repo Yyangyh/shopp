@@ -45,7 +45,7 @@
 				</view>
 				<view class="list_right">
 					<view class="">
-						{{mobile}}
+						{{mobile == ''?'未绑定手机号':mobile}}
 					</view>
 					<!-- <image src="../../static/image/go.png" mode="widthFix"></image> -->
 				</view>
@@ -65,6 +65,7 @@
 				title: '个人资料',
 				portrait:uni.getStorageSync('user').avatar,
 				nickname:'',
+				mobile:''
 			}
 		},
 		methods:{
@@ -103,7 +104,8 @@
 		},
 		onShow() {
 			this.nickname = uni.getStorageSync('nickname')
-			this.mobile = uni.getStorageSync('mobile')
+			if(uni.getStorageSync('mobile'))this.mobile = uni.getStorageSync('mobile')
+			
 		}
 	}
 </script>

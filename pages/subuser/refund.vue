@@ -54,9 +54,9 @@
 							
 							<view>
 								
-								<!-- <view class="bottom3" v-if="" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">
+								<view class="bottom4" v-if="item.type == 1 && item.status == 1" @click="jump('threeuser/return_goods?id='+item.id)">
 									填写退货信息
-								</view> -->
+								</view>
 								<view class="bottom3" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">
 									详情
 								</view>
@@ -346,6 +346,17 @@
 	.bottom3 {
 		display: inline-block;
 		width: 154rpx;
+		height: 52rpx;
+		line-height: 52rpx;
+		border-radius: 52rpx;
+		background: #1D9DFF;
+		color: #fff;
+		text-align: center;
+		margin-left: 20rpx;
+	}
+	.bottom4 {
+		display: inline-block;
+		width: 184rpx;
 		height: 52rpx;
 		line-height: 52rpx;
 		border-radius: 52rpx;

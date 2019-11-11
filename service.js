@@ -114,6 +114,7 @@ const api_root = {
 		Reg_Detail:api+'/api/identitycard/Detail',//实名认证申请状态
 		AftersaleLists:api+'/api/order/AftersaleLists',//退货退款申请列表
 		answerList:api+'/api/user/answerList',//反馈列表
+		group_AftersaleLists:api+'/api/groupgoods/AftersaleLists',//拼团退货退款申请列表
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称
@@ -127,7 +128,8 @@ const api_root = {
 			UserBtInfo:api+'/api/User/UserBtInfo',//版通明细
 			Cancel:api+'/api/order/Cancel',//商城订单取消
 			Collect:api+'/api/order/Collect',//商城订单收货
-			AftersaleCancel:api+'/api/order/AftersaleCancel',//退货申请取消
+			AftersaleCancel:api+'/api/order/AftersaleCancel',//商城退货申请取消
+			Delivery:api+'/api/order/Delivery',//商城用户退货（申请退款退货通过后）
 			cred_Cancel:api+'/api/creditshop/Cancel',//积分订单取消
 			cred_Collect:api+'/api/creditshop/Collect',//积分订单收货
 			cred_Delete:api+'/api/creditshop/Delete',//积分订单删除
@@ -139,6 +141,7 @@ const api_root = {
 			Level_Confirm:api+'/api/userLevel/Confirm',//会员确认订单
 			Level_pay:api+'/api/userLevel/pay',//支付会员等级
 			group_AftersaleCancel:api+'/api/groupgoods/AftersaleCancel',//拼团订单退货取消
+			group_Aftersale:api+'/api/groupgoods/Aftersale',//拼团申请售后订单详情
 			
 		},
 		

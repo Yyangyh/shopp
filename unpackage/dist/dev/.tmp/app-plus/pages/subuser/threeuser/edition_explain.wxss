@@ -54,6 +54,7 @@ page.data-v-4aad5332{
 	background: #fff;
 	border-radius: 10rpx;
 	color: #333333;
+	min-height: 800rpx;
 }
 .integral view.data-v-4aad5332{
 	margin-bottom: 24rpx;

@@ -160,6 +160,7 @@ page.data-v-0a520c7a {
 	font-size: 24rpx;
 	color: #808080;
 	margin-bottom: 30rpx;
+	padding-bottom: 20rpx;
 }
 .order_news text.data-v-0a520c7a {
 	font-size: 24rpx;

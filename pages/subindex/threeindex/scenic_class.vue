@@ -83,16 +83,17 @@
 			</view>
 
 		</view>
-
+		<uni-load-more :status="more"></uni-load-more>
 	</view>
 </template>
 
 <script>
 	import returns from '../../common/re_search.vue'
+	import uniLoadMore from '../../../components/uni-load-more/uni-load-more.vue'
 	export default {
 		data() {
 			return {
-				data: '',
+				data: [],
 				show: false,
 				show_class:false,
 				city:'',
@@ -103,29 +104,14 @@
 				type: '',
 				id: '',
 				list_test:'智能排序',
-				sort: [{
-						title: '价格最低',
-						chiose: false,
-						name: 'min_price',
-						order: 'asc'
-					},
-					{
-						title: '价格最高',
-						chiose: false,
-						name: 'min_price',
-						order: 'desc'
-					},
-					{
-						title: '销量最多',
-						chiose: false,
-						name: 'sales_count',
-						order: 'asc'
-					},
-				]
+				more: 'more',
+				page: 1,
+				loadRecord: true
 			}
 		},
 		components: {
-			returns
+			returns,
+			uniLoadMore
 		},
 		methods: {
 			jump(url) {
@@ -147,50 +133,54 @@
 				}
 			},
 			detailed(url) {
-				// function formatDate(dt) {
-				//     var year = dt.getFullYear();
-				//     var month = dt.getMonth() + 1;
-				//     var date = dt.getDate();
-				//     var hour = dt.getHours();
-				//     var minute = dt.getMinutes();
-				//     var second = dt.getSeconds();
-				//     return year + "-" + month + "-" + date + " " + hour + ":" + minute + ":" + second;
-				// }
-				// function Test(time) {
-				//     var t= time.slice(6, 19)
-					
-				//     var NewDtime = new Date(parseInt(t));
-				//     return formatDate(NewDtime);
-				// }
-				// let aa = Test("/Date(1528953453022+0800)/");
-				
 				uni.navigateTo({
 					url:url
 				})
-				
-				
+			},
+			loadMore(){
+				this.city = uni.getStorageSync('city')
+				let city_arr = this.city.split('市')
+				let page = this.page
+				this.more = 'loading'
+				this.service.entire(this, 'get', this.service.api_root.subindex.scen_list, {
+					category_id: this.id,
+					address:city_arr[0],
+					page:page
+				}, function(self, res) {
+					
+					let data = self.data
+					
+					data.push(...res.data.data)
+					self.data = data
+					console.log(self.data);
+					self.page = page + 1
+					self.more = 'more'
+					if (res.data.data.length < 20) {
+						self.more = 'noMore'
+						self.loadRecord = false
+						return
+					}
+					
+					
+				})
 			}
 		},
 		
-		onLoad(options) {
-				this.city = uni.getStorageSync('city')
-				this.id = options.id
-				let city_arr = this.city.split('市')
-				this.service.entire(this, 'get', this.service.api_root.subindex.scen_list, {
-					category_id: options.id,
-					address:city_arr[0]
-				}, function(self, res) {
-					console.log(res)
-					self.data = res.data.data
-				})
-			
-
+		onLoad(e) {
+			this.id = e.id
+		},
+		onReachBottom() {
+			if (this.loadRecord == false) return
+			this.loadMore()
 		},
 		onShow() {
-			
 			this.city = uni.getStorageSync('city')
-			console.log(this.city)
-		},
+			this.data.length = 0
+			this.page = 1
+			this.loadMore()
+			
+		}
+		
 	}
 </script>
 

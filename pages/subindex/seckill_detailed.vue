@@ -16,7 +16,7 @@
 		</view>
 		<view class="product_price">
 			<view class="pr_top">
-				{{data.title}}
+				<text v-if="data.merchid == 0">自营</text>{{data.title}}
 			</view>
 			<view class="price">
 				<text class="price_test">￥{{data_list.price}}<text>{{data_list.goods_price}}</text></text>
@@ -34,10 +34,10 @@
 				</view>
 			</view> -->
 		</view>
-		<view class="pr_shop">
+		<view class="pr_shop"  v-if="data.merchid != 0" @click="jump('./shop?merchid='+data.merchid)">
 			<view class="sh_top">
-				<image src="../../static/image/portrait1.png" mode="widthFix"></image>
-				<text>文旅特色产品</text>
+				<image :src="data.merchlogo" mode="widthFix"></image>
+				<text>{{data.merchname}}</text>
 			</view>
 			<view class="sh_bottom">
 				<text>进店逛逛</text>
@@ -427,6 +427,14 @@
 		/* font-weight: bold; */
 		font-size: 32rpx;
 		padding: 20rpx;
+	}
+	.product_price .pr_top text{
+		color: #fff;
+		background: #FF431D;
+		font-size: 24rpx;
+		border-radius: 5rpx;
+		padding: 0 5rpx;
+		margin-right: 10rpx;
 	}
 	.product_price .price{
 		display: flex;
