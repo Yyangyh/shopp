@@ -69,6 +69,9 @@
 						<view class="bottom2">
 							订单金额<text>￥{{item.price}}</text>
 						</view>
+						<view class="bottom3" v-if="item.status == 1">
+							评论
+						</view>
 						<view class="bottom3">
 							详情
 						</view>
@@ -305,6 +308,7 @@
 		/* border: 2rpx solid #1D74FF; */
 		background: #1D9DFF;
 		color: #fff;
+		margin-left: 20rpx;
 		text-align: center;
 	}
 </style>
