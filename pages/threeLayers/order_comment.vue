@@ -134,13 +134,45 @@
 				console.log(this.rating);
 			},
 			submit() { // 提交评论
-				console.log(this.images);
+				// console.log(this.images);
 				// 评论的内容转化为数组
-				if(this.type == 1){
-					this.submits({url:this.service.api_root.threeLayers.goods_Comment})
-				}else{
-					this.submits({url:this.service.api_root.subindex.threeindex.comments})
+				
+				if(this.rating.length==0){
+					console.log(33);
+					uni.showToast({
+						icon:'none',
+						title:'请选择评分'
+					})
+					return
 				}
+				if(this.content.length == 0){
+					console.log('哦');
+					uni.showToast({
+						icon:'none',
+						title:'请输入详细评论'
+					})
+					return
+				}
+				var temp = this.content.every((val,ind)=>{
+					return val !=''
+				})
+				console.log(temp);
+				if(!temp){
+					uni.showToast({
+						icon:'none',
+						title:'请输入详细评论'
+					})
+					return
+				}else{
+					if(this.type == 1){
+						this.submits({url:this.service.api_root.threeLayers.goods_Comment})
+					}else if(this.type == 2){
+						this.submits({url:this.service.api_root.subindex.threeindex.comments})
+					}else if(this.type == 3){
+						this.submits({url:this.service.api_root.subuser.Ctripspot_comment})
+					}
+				}
+				console.log('可以吗');
 				
 			},
 			submits(e){
@@ -213,7 +245,7 @@
 			}
 		},
 		onLoad(options) {
-			// type:1商品评论 type:2 积分评论    积分订单里面没有的goods_id
+			// type:1商品评论 type:2 积分评论  type3 景点评论  积分订单里面没有的goods_id
 			this.type = options.type
 			if (options.type == 1) {
 				this.id = options.id // 订单id
@@ -230,7 +262,7 @@
 
 					// console.log(self.data,self.id,self.goodsId);
 				})
-			}else{
+			}else if (options.type == 1){
 				this.id = options.id // 订单id
 				this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.int_OrderDetail, {
 					orderid: options.id,
@@ -244,7 +276,23 @@
 					// }
 					console.log(self.goodsId);
 				})
+			}else if (options.type == 3){  // 景点门票评论
+				this.id = options.id // 订单id
+				this.service.entire(this, 'get', this.service.api_root.subuser.threeuser.scen_orders_Detail, {
+					orderid: options.id,
+					token: uni.getStorageSync('token')
+				}, function(self, res) {
+					self.goodsId.push(res.data.resouce_id); // 景点门票商品id
+					let msg = {
+						images:res.data.thumb,
+						title:res.data.ctrip_date_info.ResourceList[0].Name,
+						buy_number:res.data.total
+					}
+					self.data.push(msg)
+					
+				})
 			}
+				
 
 		},
 		components: {

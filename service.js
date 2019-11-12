@@ -115,6 +115,8 @@ const api_root = {
 		AftersaleLists:api+'/api/order/AftersaleLists',//退货退款申请列表
 		answerList:api+'/api/user/answerList',//反馈列表
 		group_AftersaleLists:api+'/api/groupgoods/AftersaleLists',//拼团退货退款申请列表
+		Ctripspot_comment:api+'/api/Ctripspot/Comments', // 景点订单评论
+		Ctripspot_comment_list:api+'/api/Ctripspot/Comment', // 景点评论列表
 		
 		threeuser:{
 			UserSave:api+'/api/User/Save',//更改昵称

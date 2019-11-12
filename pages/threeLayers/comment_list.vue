@@ -85,7 +85,7 @@
 						console.log(res.data.data);
 						self.list = res.data.data
 				})
-			}else{
+			}else if(e.type ==2){
 				this.service.entire(this, 'get', this.service.api_root.subindex.threeindex.comment, {
 					goods_id:goods_id, //商品id
 					page:1
@@ -94,6 +94,16 @@
 						console.log(res.data.data);
 						self.list = res.data.data
 				})
+			}else if(e.type == 3){
+				this.service.entire(this, 'get', this.service.api_root.subuser.Ctripspot_comment_list, {
+					goods_id:goods_id, //商品id
+					page:1
+				}, function(self, res) {
+					console.log(res);
+						console.log(res.data.data);
+						self.list = res.data.data
+				})
+				
 			}
 		}
 	}

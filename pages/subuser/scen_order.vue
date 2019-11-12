@@ -69,7 +69,7 @@
 						<view class="bottom2">
 							订单金额<text>￥{{item.price}}</text>
 						</view>
-						<view class="bottom3" v-if="item.status == 1">
+						<view class="bottom3" v-if="item.status == 1 && item.user_is_comments == 0" @click.stop="jump('/pages/threeLayers/order_comment?id='+item.id+'&type=3')">
 							评论
 						</view>
 						<view class="bottom3">

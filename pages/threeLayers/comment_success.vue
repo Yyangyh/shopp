@@ -73,7 +73,7 @@
 					console.log(res.data.items);
 					self.list = res.data.items
 				})
-			}else{
+			}else if(options.type == 2){
 				this.service.entire(this, 'post', this.service.api_root.subuser.threeuser.int_OrderDetail, {
 					orderid: options.id,
 					token: uni.getStorageSync('token')
@@ -82,6 +82,20 @@
 					self.list.push(res.data.order) 
 					
 				})
+			}else if(options.type == 3){
+					this.service.entire(this, 'get', this.service.api_root.subuser.threeuser.scen_orders_Detail, {
+						orderid: options.id,
+						token: uni.getStorageSync('token')
+					}, function(self, res) {
+						self.goods_id = res.data.resouce_id; // 景点门票商品id
+						let msg = {
+							images:res.data.thumb,
+							title:res.data.ctrip_date_info.ResourceList[0].Name,
+							goods_id:res.data.resouce_id // 景点门票商品id
+						}
+						self.list.push(msg)
+						
+					})
 			}
 		}
 	}
