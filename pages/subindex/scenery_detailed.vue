@@ -93,6 +93,7 @@
 					</view>sc_details
 				</view> -->
 			</view>
+			<!-- <view class="coordinate" @tap="open_map()"> -->
 			<view class="coordinate">
 				<view class="co_top">
 					<image src="../../static/image/coordinate.png" mode="widthFix"></image>
@@ -355,6 +356,17 @@
 		methods: {
 			open(){
 				this.$refs.calendar.open();
+			},
+			open_map(){
+				console.log(this.data.Latitude,this.data.Longitude)
+				uni.openLocation({
+					latitude: this.data.Latitude,
+					longitude: this.data.Longitude,
+					name: this.data.Address,
+					success: function () {
+						console.log('success');
+					}
+				});
 			},
 			confirm(e) {  //日历表选择日期时间
 				console.log(e);

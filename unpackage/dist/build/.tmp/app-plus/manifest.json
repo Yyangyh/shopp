@@ -21,6 +21,9 @@
     "Payment": {},
     "Share": {},
     "OAuth": {},
+    "Maps": {
+      "coordType": "gcj02"
+    },
     "UniNView": {
       "description": "UniNView原生渲染"
     }
@@ -129,6 +132,12 @@
             "appid": "wxf16e136b7fcc8d00",
             "appsecret": "b715d41e5458ef2c64560e2013134450",
             "UniversalLinks": ""
+          }
+        },
+        "maps": {
+          "baidu": {
+            "appkey_ios": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O",
+            "appkey_android": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O"
           }
         },
         "audio": {

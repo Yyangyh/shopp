@@ -173,6 +173,7 @@
 	/* border: 2rpx solid #1D74FF; */
 	background: #1D9DFF;
 	color: #fff;
+	margin-left: 20rpx;
 	text-align: center;
 }
 

@@ -2,6 +2,7 @@
   "navigationBarTitleText": "景点分类",
   "titleNView": false,
   "usingComponents": {
-    "returns": "/pages/common/re_search"
+    "returns": "/pages/common/re_search",
+    "uni-load-more": "/components/uni-load-more/uni-load-more"
   }
 }
