@@ -15,7 +15,7 @@ const api_root = {
 		Favor: api+'/api/goods/Favor',//用户商品收藏/取消（拼团无效）
 		upload_image: api+'/api/travels/upload_image',//图片上传
 		WeatchAppLogin: api+'/api/user/WeatchAppLogin',//微信app授权登陆
-		
+		jssdk_sign: api+'/api/user/jssdk_sign',//微信h5_SDK
 	},
 	reg:{
 		reg: api+'/api/user/Register',//注册
