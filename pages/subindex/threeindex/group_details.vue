@@ -503,7 +503,16 @@
 				self.goods = res.data.goods
 				strShareTitle = res.data.goods.title
 				strShareImageUrl = res.data.goods.thumb
+				// #ifdef H5
 				
+				let share_arr = {
+					Title:strShareTitle,
+					ImageUrl:strShareImageUrl
+				}
+				if (self.$wechat && self.$wechat.isWechat()) {  //H5微信公众号分享
+					 self.$wechat.share(share_arr);
+				}
+				// #endif
 				self.order = res.data.order
 				let user = JSON.stringify(res.data.order.users)
 					user = JSON.parse(user)

@@ -93,8 +93,8 @@
 					</view>sc_details
 				</view> -->
 			</view>
-			<!-- <view class="coordinate" @tap="open_map()"> -->
-			<view class="coordinate">
+			<view class="coordinate" @tap="open_map()">
+			<!-- <view class="coordinate"> -->
 				<view class="co_top">
 					<image src="../../static/image/coordinate.png" mode="widthFix"></image>
 					<text>{{data.Address}}</text>

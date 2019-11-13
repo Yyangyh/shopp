@@ -158,6 +158,7 @@ const returns = function(that) {
 	// 	})
 	// }
 	// return;
+	
 	history.back()
 	// #endif  
 	// #ifdef APP-PLUS

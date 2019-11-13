@@ -3,6 +3,7 @@
   "titleNView": false,
   "usingComponents": {
     "bw-swiper": "/components/wxcomponents/bw-swiper/bw-swiper",
-    "load": "/components/load/load"
+    "load": "/components/load/load",
+    "maps": "/pages/common/map"
   }
 }

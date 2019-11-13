@@ -136,8 +136,8 @@
         },
         "maps": {
           "baidu": {
-            "appkey_ios": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O",
-            "appkey_android": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O"
+            "appkey_ios": "",
+            "appkey_android": ""
           }
         },
         "audio": {

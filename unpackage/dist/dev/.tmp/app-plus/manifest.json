@@ -134,12 +134,7 @@
             "UniversalLinks": ""
           }
         },
-        "maps": {
-          "baidu": {
-            "appkey_ios": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O",
-            "appkey_android": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O"
-          }
-        },
+        "maps": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"

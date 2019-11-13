@@ -224,6 +224,7 @@
 			},
 			tips(){ //分享
 				// #ifdef H5
+				
 				uni.showModal({
 				    title: '提示',
 				    content: '请点击右上角选择分享！',
@@ -232,6 +233,7 @@
 				       
 				    }
 				});
+				
 				// #endif
 				// #ifdef APP-PLUS
 				this.$refs.share.share();
@@ -251,6 +253,7 @@
 			}
 		},
 		onLoad(options) {
+			
 			this.share_arr.Url = 'http://wx.huanqiutongmall.com/h5/#/pages/subindex/group_products?id='+options.id
 			this.id = options.id
 			
@@ -260,6 +263,12 @@
 				
 				self.share_arr.Title = self.data.title//分享
 				self.share_arr.ImageUrl = self.data.thumb//分享
+				
+				// #ifdef H5
+				if (self.$wechat && self.$wechat.isWechat()) {  //H5微信公众号分享
+					 self.$wechat.share(self.share_arr);
+				}
+				// #endif
 				
 			})
 		}

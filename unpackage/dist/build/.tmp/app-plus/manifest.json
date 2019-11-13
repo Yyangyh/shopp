@@ -127,17 +127,11 @@
             "UniversalLinks": ""
           }
         },
-        "oauth": {
-          "weixin": {
-            "appid": "wxf16e136b7fcc8d00",
-            "appsecret": "b715d41e5458ef2c64560e2013134450",
-            "UniversalLinks": ""
-          }
-        },
+        "oauth": {},
         "maps": {
           "baidu": {
-            "appkey_ios": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O",
-            "appkey_android": "AkVBxk0LoT46d7XA6DLzM0DIQEooWG2O"
+            "appkey_ios": "dgOUCkzpICNA7hISIn1UKGPxFeCNedh0",
+            "appkey_android": "dgOUCkzpICNA7hISIn1UKGPxFeCNedh0"
           }
         },
         "audio": {

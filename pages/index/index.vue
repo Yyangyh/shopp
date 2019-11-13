@@ -213,20 +213,21 @@
 			</view>
 			<image src="../../static/image/index/close.png" mode="widthFix" @click="close()"></image>
 		</view>
-		
+		<!-- <maps></maps> -->
 		<!-- <Load v-show = 'show'></Load> -->
 	</view>
 </template>
 
 <script>
-	
+	import maps from '../common/map.vue'
 	import service from '../../service.js'
 	import Load from '../../components/load/load.vue'
 	import bwSwiper from '../../components/wxcomponents/bw-swiper/bw-swiper.vue'
 	export default {
 		components: {
 			bwSwiper,
-			Load
+			Load,
+			maps
 		},
 		data() {
 			return {
@@ -249,6 +250,16 @@
 		},
 		
 		onLoad() {
+			// console.log(this.$wechat && this.$wechat.isWechat())
+			// // #ifdef H5
+			// //获取定位经纬度
+			// if (this.$wechat && this.$wechat.isWechat()) {
+			// 	 this.$wechat.initJssdkShare(function (res) {
+					 
+			// 		  });
+			// }
+			// // #endif
+			
 			this.service.entire(this,'get',this.service.api_root.subindex.scen_list,{is_home_recommended:1},function(self,res){ //景点-猜你喜欢
 				// console.log(res)
 				console.log()

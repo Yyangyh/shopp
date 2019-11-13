@@ -4,6 +4,14 @@ import service from './service.js'
 import common from './common.js'
 import store from './store/index.js'
 
+// #ifdef H5  
+import wechat from './common/wechat'
+if(wechat.isWechat()){
+    Vue.prototype.$wechat =wechat;
+}
+// #endif
+
+
 import Load from './components/load/load.vue'
 
 Vue.component('Load',Load)
