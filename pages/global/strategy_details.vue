@@ -115,12 +115,9 @@
 			},
 			clickItem(e){ //预览图片
 				console.log(e)
-				 uni.previewImage({
-				            urls: [e.img],
-				            // longPressActions: {
-				               
-				            // }
-				        });
+				uni.previewImage({
+					urls: [e.img],
+				});
 			},
 			// 发表评论
 			submitComment(){

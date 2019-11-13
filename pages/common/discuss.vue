@@ -11,7 +11,7 @@
 					<text>{{comments.add_time_date}}</text>
 				</view>
 				<view class="user_star">
-					<image v-for="(item,index) in comments.rating_num" src="../../static/image/star.png" mode="widthFix"></image>
+					<image v-for="(item,index) in comments.rating_num" src="/static/image/star.png" mode="widthFix"></image>
 					<!-- {{comments.rating_text}} -->
 				</view>
 			</view>
@@ -101,6 +101,10 @@
 	.user_comment .com_content .content_test view {
 		font-size: 24rpx;
 		color: #666666;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		overflow: hidden;
 	}
 	
 	.user_comment .com_content .content_img image {

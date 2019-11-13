@@ -10,7 +10,7 @@
 		</view>
 		<view class="top_img">
 			
-			<bw-swiper :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
+			<bw-swiper :swiperList="swiperList"  @clickItem='clickItem' :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
 			<!-- <swiper class="swiper"  :autoplay="autoplay" :interval="interval" :duration="duration"
 			 :circular='circular'>
 				<swiper-item v-for="(item,index) in img_list" :key='index'>
@@ -66,12 +66,14 @@
 		},
 		onShow() {
 			
-			this.service.entire(this,'get',this.service.api_root.index.banner,{},function(self,res){ //轮播图
+			this.service.entire(this,'get',this.service.api_root.index.Traveslcard_list,{is_home_recommended:1},function(self,res){ //轮播图
+			
 				self.img_list = res.data
 				let datas = []
 				res.data.forEach((value,index) => {
 					let data = {
-						img:value.images_url
+						img:value.images,
+						id:value.id
 					}
 					datas.push(data)
 				})
@@ -91,7 +93,15 @@
 				uni.navigateTo({
 					url:url
 				})
-			}
+			},
+			clickItem(e){
+				console.log(e)
+			
+				uni.navigateTo({
+					url:'/pages/global/travel_card?id='+e.id
+				})
+				
+			},
 		}
 	}
 </script>

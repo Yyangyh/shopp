@@ -28,7 +28,7 @@
 					
 					<view  >
 						<!-- 加多一个盒子套住评论 -->
-						<view class="list_middle" @click="jump('threeuser/order_details?id='+item.id)">
+						<view class="list_middle" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">
 							<view class="">
 								<image :src="item.order_data.items.images" mode="aspectFill"></image>
 							</view>
@@ -54,7 +54,7 @@
 							
 							<view>
 								
-								<view class="bottom4" v-if="item.type == 1 && item.status == 1" @click="jump('threeuser/return_goods?id='+item.id)">
+								<view class="bottom4" v-if="item.type == 1  && item.status == 1" @click="jump('threeuser/return_goods?id='+item.id)">
 									填写退货信息
 								</view>
 								<view class="bottom3" @click="jump('threeuser/refund_details?oid='+item.order_id+'&did='+item.order_data.items.id)">

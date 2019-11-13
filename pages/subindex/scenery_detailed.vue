@@ -185,35 +185,12 @@
 
 		</view>
 
-		<view class="user_comment">
-			<view class="user_top">
-				用户评论
-			</view>
-			<view class="user">
-				<image class="user_img" src="../../static/image/portrait.png" mode="widthFix"></image>
-				<view class="user_test">
-					<view>小小纹~</view>
-					<text>2019-05-01</text>
-				</view>
-				<view class="user_star">
-					<image src="../../static/image/star.png" mode="widthFix"></image>
-				</view>
-			</view>
-			<view class="com_content">
-				<view class="content_test">
-					<view class="">
-						这个评论插件叫AntSay，简单三步即可在自己的网站里嵌入，超轻。
-					</view>
-				</view>
-				<view class="content_img">
-					<image src="../../static/image/greenImg.png" mode=""></image>
-					<image src="../../static/image/greenImg.png" mode=""></image>
-					<image src="../../static/image/greenImg.png" mode=""></image>
-				</view>
-				<view class="more">
-					查看更多评论
-				</view>
-			</view>
+
+		<view class="" @click="jump('../threeLayers/comment_list?goods_id='+data.ID+'&type=3')">
+			<discuss :comments='comments'></discuss>
+		</view>
+		<view v-if="comments !=''" class="more"  @click="jump('../threeLayers/comment_list?goods_id='+data.ID+'&type=3')">
+			查看更多评论
 		</view>
 
 
@@ -298,11 +275,13 @@
 	import uniCalendar from "../../components/uni-calendar/uni-calendar.vue"
 	import Load from '../../components/load/load.vue'
 	import share from'../common/share.vue'
+	import discuss from '../common/discuss.vue'
 	export default {
 		components:{
 		    uniCalendar,
 			Load,
-			share
+			share,
+			discuss
 		},
 		data() {
 			return {
@@ -337,7 +316,8 @@
 				buy_selected:[],
 				transparency:0,
 				windowHeight:'',
-				share_arr:{}
+				share_arr:{},
+				comments:''
 			}
 		},
 		onPageScroll(e){
@@ -437,7 +417,9 @@
 				this.common.returns(this)
 			},
 			jump(url) {
-				
+				uni.navigateTo({
+					url:url
+				})
 			},
 			chiose_date(){ //选择日期
 				this.box = false
@@ -637,6 +619,18 @@
 				
 				self.share_arr.Title = self.data.Name//分享
 				self.share_arr.ImageUrl = self.data.ImageURL//分享
+				// #ifdef H5
+				if (self.$wechat && self.$wechat.isWechat()) {  //H5微信公众号分享
+					 self.$wechat.share(self.share_arr);
+				}
+				// #endif
+				
+				if(res.data.comments != ''){
+					console.log(res.data.comments)
+					self.comments = res.data.comments[0]  //评论
+					let rating_num = new Array(Number(self.comments.rating)) //评论
+					self.comments.rating_num = rating_num  //评论
+				}
 				
 				let data = res.data.goods.ScenicSpotInfoList[0].ProductInfo.ResourceList
 
@@ -1145,7 +1139,12 @@
 		color: #666666;
 		margin: 20rpx 0;
 	}
-
+	.more {
+		font-size: 32rpx;
+		color: #666666;
+		background: #fff;
+		padding: 20rpx 20rpx;
+	}
 	.purchase {
 		position: fixed;
 		background: rgba(0, 0, 0, .3);

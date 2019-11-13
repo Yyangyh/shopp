@@ -33,7 +33,7 @@
 								<text>已实名</text>
 								<image src="../../static/image/go1.png" mode="widthFix"></image>
 							</view>
-							<view class="">
+							<view class="" v-if="uid">
 								用户id：{{uid}}
 							</view>
 						</view>

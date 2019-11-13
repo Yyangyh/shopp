@@ -4,7 +4,13 @@
 			<!-- 这里是状态栏 -->
 		</view>
 		<returns :titles='title'></returns>
-		<view class="all">
+		<view class="empty"  v-if="list == ''">
+			<image src="../../static/image/empty.png" mode="widthFix"></image>
+			<view class="">
+				暂无评论
+			</view>
+		</view>
+		<view class="all" v-else-if="list != ''">
 			<view class="user_comment">
 				用户评论
 			</view>
@@ -50,7 +56,7 @@
 				</view>
 				<block>
 					<view class="pics">
-						<view v-for="(value,ins) in item.images" :key="ins">
+						<view v-for="(value,ins) in item.images" :key="ins" @click="see(index,ins)">
 							<image :src="value" mode=""></image>
 						</view>
 					</view>
@@ -58,7 +64,7 @@
 			</view>
 			
 		</view>
-
+		
 	</view>
 </template>
 
@@ -73,6 +79,13 @@
 		},
 		components: {
 			returns
+		},
+		methods:{
+			see(index,ins){ //预览图片
+				uni.previewImage({
+					urls: [this.list[index].images[ins]],
+				});
+			}
 		},
 		onLoad(e) {
 			const {goods_id} = e
@@ -96,7 +109,7 @@
 				})
 			}else if(e.type == 3){
 				this.service.entire(this, 'get', this.service.api_root.subuser.Ctripspot_comment_list, {
-					goods_id:goods_id, //商品id
+					goods_id:goods_id, 
 					page:1
 				}, function(self, res) {
 					console.log(res);
@@ -111,7 +124,17 @@
 
 <style>
 	page {
-		background: #F1F1F1;
+		background: #fff;
+	}
+	.empty{
+		padding-top: 120rpx;
+		text-align: center;
+		color: #999999;
+		font-size: 24rpx;
+	}
+	.empty image{
+		height: 293rpx;
+		width: 309rpx;
 	}
 	.all{
 		padding: 0 44rpx;

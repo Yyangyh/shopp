@@ -50,7 +50,9 @@
 			</view>
 		</view>
 		
-		<discuss :comments='comments'></discuss>
+		<view class="" @click="jump('../threeLayers/comment_list?goods_id='+id+'&type=1')">
+			<discuss :comments='comments'></discuss>
+		</view>
 		<view v-if="comments !=''" class="more"  @click="jump('../threeLayers/comment_list?goods_id='+id+'&type=1')">
 			查看更多评论
 		</view>
@@ -397,6 +399,11 @@
 				console.log(self.coupon)
 				self.share_arr.Title = res.data.goods.title//分享
 				self.share_arr.ImageUrl = res.data.goods.images//分享
+				// #ifdef H5
+				if (self.$wechat && self.$wechat.isWechat()) {  //H5微信公众号分享
+					 self.$wechat.share(self.share_arr);
+				}
+				// #endif
 				
 				if(self.data.comments != ''){
 					self.comments = self.data.comments[0]  //评论

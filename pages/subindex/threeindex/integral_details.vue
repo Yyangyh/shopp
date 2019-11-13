@@ -43,38 +43,13 @@
 				<image src="../../../static/image/go.png" mode="widthFix"></image>
 			</view>
 		</view> -->
-<!-- 
-		<view class="user_comment">
-			<view class="user_top">
-				用户评论
-			</view>
-			<view class="user">
-				<image class="user_img" src="../../../static/image/portrait.png" mode="widthFix"></image>
-				<view class="user_test">
-					<view>小小纹~</view>
-					<text>2019-05-01</text>
-				</view>
-				<view class="user_star">
-					<image src="../../../static/image/star.png" mode="widthFix"></image>
-				</view>
-			</view>
-			<view class="com_content">
-				<view class="content_test">
-					<view class="">
-						这个评论插件叫AntSay，简单三步即可在自己的网站里嵌入，超轻。
-					</view>
-					
-				</view>
-				<view class="content_img">
-					<image src="../../../static/image/greenImg.png" mode=""></image>
-					<image src="../../../static/image/greenImg.png" mode=""></image>
-					<image src="../../../static/image/greenImg.png" mode=""></image>
-				</view>
-				<view class="more">
-					查看更多评论
-				</view>
-			</view>
-		</view> -->
+		<view class="" @click="jump('../../threeLayers/comment_list?goods_id='+id+'&type=2')">
+			<discuss :comments='comments'></discuss>
+		</view>
+		
+		<view v-if="comments !=''" class="more"  @click="jump('../../threeLayers/comment_list?goods_id='+id+'&type=2')">
+			查看更多评论
+		</view>
 
 		<view class="pro_img">
 			<view class="img_test">
@@ -182,9 +157,11 @@
 
 <script>
 	import share from'../../common/share.vue'
+	import discuss from '../../common/discuss.vue'
 	export default {
 		components:{
-			share
+			share,
+			discuss
 		},
 		data() {
 			return {
@@ -203,7 +180,8 @@
 				data_list:'',
 				transparency:0,
 				share_arr:{},
-				load_show:true
+				load_show:true,
+				comments:'',
 			}
 		},
 		onPageScroll(e){
@@ -356,6 +334,18 @@
 				
 				self.share_arr.Title = self.data.title//分享
 				self.share_arr.ImageUrl = self.data.images//分享
+				// #ifdef H5
+				if (self.$wechat && self.$wechat.isWechat()) {  //H5微信公众号分享
+					 self.$wechat.share(self.share_arr);
+				}
+				// #endif
+				
+				if(self.data.comments != ''){
+					self.comments = self.data.comments[0]  //评论
+					let rating_num = new Array(Number(self.comments.rating)) //评论
+					self.comments.rating_num = rating_num  //评论
+				}
+				
 				self.load_show = false
 			})
 			
@@ -500,7 +490,12 @@
 		color: #999;
 		font-size: 24rpx;
 	}
-	
+	.more {
+		font-size: 32rpx;
+		color: #666666;
+		background: #fff;
+		padding: 20rpx 20rpx;
+	}
 	.pr_shop {
 		background: #fff;
 		display: flex;

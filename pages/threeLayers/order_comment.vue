@@ -282,7 +282,7 @@
 					orderid: options.id,
 					token: uni.getStorageSync('token')
 				}, function(self, res) {
-					self.goodsId.push(res.data.resouce_id); // 景点门票商品id
+					self.goodsId.push(res.data.scenic_spot_id); // 景点门票商品id
 					let msg = {
 						images:res.data.thumb,
 						title:res.data.ctrip_date_info.ResourceList[0].Name,
