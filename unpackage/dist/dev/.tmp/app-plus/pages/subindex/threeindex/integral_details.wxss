@@ -133,6 +133,12 @@
 		color: #999;
 		font-size: 24rpx;
 }
+.more.data-v-28ce0af7 {
+		font-size: 32rpx;
+		color: #666666;
+		background: #fff;
+		padding: 20rpx 20rpx;
+}
 .pr_shop.data-v-28ce0af7 {
 		background: #fff;
 		display: -webkit-box;

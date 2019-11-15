@@ -3,6 +3,7 @@
   "titleNView": false,
   "usingComponents": {
     "load": "/components/load/load",
-    "share": "/pages/common/share"
+    "share": "/pages/common/share",
+    "discuss": "/pages/common/discuss"
   }
 }

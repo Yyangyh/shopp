@@ -87,16 +87,16 @@
 			<view class="news_three">
 				订单编号：{{data.orderno}}
 			</view>
-			<!-- <view class="news_four">
+			<view class="news_four" v-if="data.status == 0 && mss < 0">
 				<view class="">
 					<image src="../../../static/image/threeLayers/contact.png" mode="widthFix"></image>
-					<text>联系卖家</text>
+					<text>{{hours}}时{{minutes}}分{{seconds}}秒后自动取消订单</text>
 				</view>
-			</view> -->
+			</view>
 		</view>
 
 
-		<view class="order_bottom" v-if="data.status == 0">
+		<view class="order_bottom" v-if="data.status == 0 && mss > 0">
 			<!-- <text>修改地址</text> -->
 			<text>取消订单</text>
 			<text class="or_pay" @click="show = !show">付款</text>
@@ -142,7 +142,10 @@
 				show: false,
 				payment_id: '',
 				payment_name: '',
-
+				hours:'',
+				minutes :'',
+				seconds :'',
+				mss:''
 			}
 		},
 		methods: {
@@ -198,10 +201,12 @@
 			}
 		},
 		onLoad(options) {
-			this.orderid = options.id
+			this.id = options.id
+			
+		},
+		onShow() {
 			this.service.entire(this, 'get', this.service.api_root.subuser.threeuser.scen_orders_Detail, {
-				orderid: options.id,
-				token: uni.getStorageSync('token')
+				orderid: this.id,
 			}, function(self, res) {
 				self.data = res.data
 				self.data_list = res.data.ctrip_date_info.ResourceList[0]
@@ -209,10 +214,43 @@
 				for (let s of data) {
 					s.choice = false
 				}
-				console.log(data)
 				self.pay_list = data
+				
+				let time = Date.parse(new Date())/1000
+				self.mss = res.data.end_time -(time - res.data.createtime)
+				if(self.mss> 0){
+					self.times = setInterval(function(){
+						self.mss --
+					},1000)
+					console.log(self.hours)
+					self.hours = parseInt((self.mss % (60 * 60 * 24)) / ( 60 * 60));
+				    self.minutes = parseInt((self.mss % ( 1000 *60 * 60)) / 60);
+				    self.seconds =self.mss % 60;
+				}
 			})
-		}
+			this.service.entire(this, 'get', this.service.api_root.subuser.threeuser.chargebackinfo, {  //景点退单检查
+				orderid: this.id,
+			}, function(self, res) {
+				
+				
+			})
+		},
+		watch:{
+			mss(news,old){
+				
+				if(news == 0){
+					clearInterval(this.times)
+					this.data.status = 1
+				}else{
+					this.hours = parseInt((this.mss % (60 * 60 * 24)) / ( 60 * 60));
+				    this.minutes = parseInt((this.mss % ( 1000 *60 * 60)) / 60);
+				    this.seconds = this.mss % 60;
+				}
+			},
+		},
+		onHide(){
+			clearInterval(this.times)
+		},
 	}
 </script>
 
@@ -381,6 +419,7 @@
 		justify-content: flex-end;
 		padding: 32rpx 0;
 		border-top: 2rpx solid #F1F1F1;
+		color: #FF431D;
 	}
 
 	.order_bottom {

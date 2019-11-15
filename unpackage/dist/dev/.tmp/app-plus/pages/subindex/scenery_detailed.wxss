@@ -519,6 +519,12 @@
 	color: #666666;
 	margin: 20rpx 0;
 }
+.more.data-v-c69f5942 {
+	font-size: 32rpx;
+	color: #666666;
+	background: #fff;
+	padding: 20rpx 20rpx;
+}
 .purchase.data-v-c69f5942 {
 	position: fixed;
 	background: rgba(0, 0, 0, .3);

@@ -28,17 +28,14 @@ export default {
 				console.log(res.data.data.sign)
 				if (res.data) {
 				    jweixin.config({
-				        debug: true,
+				        // debug: true,
 				        appId: res.data.data.app_id,
 				        timestamp: res.data.data.timestamp,
 				        nonceStr: res.data.data.noncestr,
 				        signature: res.data.data.sign,
 				        jsApiList: [
-				            'checkJsApi',
-				            'onMenuShareTimeline',
-				            'onMenuShareAppMessage',
-				            'getLocation',
-							'updateTimelineShareData'
+				            'updateAppMessageShareData',
+				            'updateTimelineShareData'
 				        ]
 				    });
 				    //配置完成后，再执行分享等功能  
@@ -103,15 +100,13 @@ export default {
                     cancel: function(res) {}
                 };
                 //分享给朋友接口  
-				jweixin.onMenuShareAppMessage(shareData);  
-				console.log(data)
-				console.log(shareData)
+				jweixin.updateAppMessageShareData(shareData);  
 				
                 
 				
                 //分享到朋友圈接口  
 				
-                jweixin.onMenuShareTimeline(shareData);
+                jweixin.updateTimelineShareData(shareData);
             });
         }, url);
     },

@@ -1,6 +1,16 @@
 
 page {
-	background: #F1F1F1;
+	background: #fff;
+}
+.empty{
+	padding-top: 120rpx;
+	text-align: center;
+	color: #999999;
+	font-size: 24rpx;
+}
+.empty image{
+	height: 293rpx;
+	width: 309rpx;
 }
 .all{
 	padding: 0 44rpx;

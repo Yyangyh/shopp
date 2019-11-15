@@ -51,6 +51,10 @@
 .user_comment .com_content .content_test view.data-v-80d90d74 {
 	font-size: 24rpx;
 	color: #666666;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
 }
 .user_comment .com_content .content_img image.data-v-80d90d74 {
 	height: 120rpx;

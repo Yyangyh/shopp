@@ -14,9 +14,14 @@
 			<view class="box_bottom">
 				<view class="bottom_list" v-for="(item,index) in data" :key='item.id'>
 					<view class="list_top">
-						<view class="top1">
+						<view class="top1" v-if="item.merchid == 0">
 							<image src="../../static/image/secondary/shop.png" mode="widthFix"></image>
-							<text>店铺名字</text>
+							<text class="own">自营</text>
+							<!-- <image src="../../static/image/go.png" mode="widthFix"></image> -->
+						</view>
+						<view class="top1" v-else>
+							<image src="../../static/image/secondary/shop.png" mode="widthFix"></image>
+							<text>{{item.merchname}}</text>
 							<image src="../../static/image/go.png" mode="widthFix"></image>
 						</view>
 						<view class="top2">
@@ -269,7 +274,9 @@
 		font-weight: 400;
 		color: #999999;
 	}
-
+	.mall_box .box_bottom .bottom_list .list_top .top1 .own{
+		color: #D9011C;
+	}
 	.mall_box .box_bottom .bottom_list .list_top .top1 image {
 		height: 30rpx;
 		width: 30rpx;

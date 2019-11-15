@@ -1,7 +1,53 @@
 <script>
 	export default {
 		onLaunch: function() {
-			console.log('App Launch')
+			// #ifdef APP-PLUS  
+			this.service.entire(this,'get',this.service.api_root.common.version,{},function(self,res){
+				console.log(res)
+				let current_version = plus.runtime.version
+				uni.showToast({
+					icon:'none',
+					title:plus.runtime.version
+				})
+				if(current_version != res.data.version){
+					console.log(self.service.api_root.common.version_wgt)
+					  uni.downloadFile({  
+						url: self.service.api_root.common.version_wgt,  
+						success: (downloadResult) => {  
+							console.log(downloadResult)
+							if (downloadResult.statusCode === 200) {  
+								plus.runtime.install(downloadResult.tempFilePath, {  
+									force: true  
+								}, function() {  
+									console.log('install success...');
+									setTimeout(function(){
+										uni.showToast({
+											icon:'none',
+											title:'install success...'
+										})
+									},3000) 
+									plus.runtime.restart();  
+								}, function(e) {
+									console.log(e)
+									console.error('install fail...');  
+									setTimeout(function(){
+										uni.showToast({
+											icon:'none',
+											title:'install fail...'
+										})
+									},3000)
+								});  
+							}  
+						}  
+					});  
+				}
+			})
+			// #endif
+		},
+		onLoad:function(){
+			
+
+			
 		},
 		onShow: function() {
 			console.log('App Show')

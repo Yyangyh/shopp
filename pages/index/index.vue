@@ -271,6 +271,11 @@
 			})
 		},
 		onShow() {
+			
+			// #ifdef APP-PLUS  
+			
+			
+			// #endif  
 			// uni.getStorageSync('notice') == '' ? this.eject_show = true : this.eject_show = false
 			if(uni.getStorageSync('notice') == ''){  //是否显示版通比例
 				this.eject_show = true

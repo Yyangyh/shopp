@@ -16,6 +16,8 @@ const api_root = {
 		upload_image: api+'/api/travels/upload_image',//图片上传
 		WeatchAppLogin: api+'/api/user/WeatchAppLogin',//微信app授权登陆
 		jssdk_sign: api+'/api/user/jssdk_sign',//微信h5_SDK
+		version: api+'/api/user/version',//版本检查
+		version_wgt: api+'/static/__UNI__B01F932.wgt',//wgt热更新下载地址
 	},
 	reg:{
 		reg: api+'/api/user/Register',//注册
@@ -124,6 +126,7 @@ const api_root = {
 			int_orders:api+'/api/creditshop/orders',//积分订单列表
 			int_OrderDetail:api+'/api/creditshop/OrderDetail',//积分订单详情
 			scen_orders_Detail:api+'/api/Ctripspot/Detail',//景点订单详情
+			chargebackinfo:api+'/api/Ctripspot/chargebackinfo',//景点退单检查
 			dis_team:api+'/api/Distribution/team',//分销团队
 			dis_profit:api+'/api/Distribution/profit',//分销佣金
 			dis_order:api+'/api/Distribution/order',//分销订单

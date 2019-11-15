@@ -114,7 +114,7 @@
 			</view>
 		</view>
 
-		<view class="offer">
+		<!-- <view class="offer">
 			<view class="offer_name">
 				<image src="../../static/image/coupon.png" mode="widthFix"></image>
 				<text>优惠券</text>
@@ -122,7 +122,7 @@
 			<view class="icon">
 				<image src="../../static/image/go.png" mode="widthFix"></image>
 			</view>
-		</view>
+		</view> -->
 
 		<view class="button">
 			<view class="button_name">

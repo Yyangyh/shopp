@@ -114,6 +114,9 @@
 	font-weight: 400;
 	color: #999999;
 }
+.mall_box .box_bottom .bottom_list .list_top .top1 .own.data-v-08639d86{
+	color: #D9011C;
+}
 .mall_box .box_bottom .bottom_list .list_top .top1 image.data-v-08639d86 {
 	height: 30rpx;
 	width: 30rpx;

@@ -7,8 +7,8 @@
   "id": "__UNI__B01F932",
   "name": "文旅世家",
   "version": {
-    "name": "1.0.0",
-    "code": "100"
+    "name": "1.0.1",
+    "code": 101
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -129,9 +129,9 @@
         },
         "oauth": {},
         "maps": {
-          "baidu": {
-            "appkey_ios": "dgOUCkzpICNA7hISIn1UKGPxFeCNedh0",
-            "appkey_android": "dgOUCkzpICNA7hISIn1UKGPxFeCNedh0"
+          "amap": {
+            "appkey_ios": "4d71271d2b3f125d818aea78d8695736",
+            "appkey_android": "4d71271d2b3f125d818aea78d8695736"
           }
         },
         "audio": {

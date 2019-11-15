@@ -4,6 +4,7 @@
   "usingComponents": {
     "load": "/components/load/load",
     "uni-calendar": "/components/uni-calendar/uni-calendar",
-    "share": "/pages/common/share"
+    "share": "/pages/common/share",
+    "discuss": "/pages/common/discuss"
   }
 }

@@ -7,8 +7,8 @@
   "id": "__UNI__B01F932",
   "name": "文旅世家",
   "version": {
-    "name": "1.0.0",
-    "code": "100"
+    "name": "1.0.1",
+    "code": 101
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -127,14 +127,13 @@
             "UniversalLinks": ""
           }
         },
-        "oauth": {
-          "weixin": {
-            "appid": "wxf16e136b7fcc8d00",
-            "appsecret": "b715d41e5458ef2c64560e2013134450",
-            "UniversalLinks": ""
+        "oauth": {},
+        "maps": {
+          "amap": {
+            "appkey_ios": "4d71271d2b3f125d818aea78d8695736",
+            "appkey_android": "4d71271d2b3f125d818aea78d8695736"
           }
         },
-        "maps": {},
         "audio": {
           "mp3": {
             "description": "Android平台录音支持MP3格式文件"

@@ -99,7 +99,7 @@
 					<image src="../../static/image/coordinate.png" mode="widthFix"></image>
 					<text>{{data.Address}}</text>
 				</view>
-				<!-- <image src="../../static/image/go.png" mode="widthFix"></image> -->
+				<image src="../../static/image/go.png" mode="widthFix"></image>
 			</view>
 			<!-- <view class="coordinate">
 				<view class="co_top">

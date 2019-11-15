@@ -34,7 +34,7 @@
 			<!-- <scroll-view  scroll-y :scroll-top='top'> -->
 				
 				<view class="hot_bottom">
-					<view class="bottom_test">
+					<view class="bottom_test" id="id">
 						热门城市
 					</view>
 					<view class="tab">
@@ -44,7 +44,7 @@
 					</view>
 				</view>
 				<view class="city_box" v-for="(item,index) in list" :key='index'>
-					<view class="city_first">
+					<view class="city_first" :class="{first:index == 0}">
 						{{item.letters}}
 					</view>
 					<view class="city_son" v-for="(items,indexs) in item.data" :key='indexs' @click="choice(index,indexs)">
@@ -90,18 +90,25 @@
 				this.common.returns(this)
 			},
 			chiose_first(index){
-				// console.log(this.list[index].data.length)
-				// console.log(index)
 				
+				let that = this
+				if(!that.pro){ //获取每个view的高度
+					const query = uni.createSelectorQuery()
+	                query.select('.first').boundingClientRect()
+	                query.exec(function(res){
+		//              console.log('打印高度',res[0].height);
+						that.pro = res[0].height
+	                 })
+				}
 				let top = 0
 				for(let i = 0; i < index; i++){
-					top += Number(this.list[i].data.length)
+					top += Number(that.list[i].data.length)
 				}
-				top = top*40+120+index*40
-				console.log(this.top)
+				
+				top = top*that.pro+3*that.pro+index*that.pro
 				uni.pageScrollTo({
-				    scrollTop: top,
-				    duration: 100
+					scrollTop: top,
+					duration: 0 //建议设置为0，否则容易出问题
 				});
 			},
 			chiose_hot(index){

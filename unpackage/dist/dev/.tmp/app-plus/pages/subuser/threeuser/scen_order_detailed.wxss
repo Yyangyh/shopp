@@ -185,6 +185,7 @@ page.data-v-0a520c7a {
 	        justify-content: flex-end;
 	padding: 32rpx 0;
 	border-top: 2rpx solid #F1F1F1;
+	color: #FF431D;
 }
 .order_bottom.data-v-0a520c7a {
 	display: -webkit-box;
