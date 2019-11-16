@@ -2,52 +2,59 @@
 	export default {
 		onLaunch: function() {
 			// #ifdef APP-PLUS  
-			this.service.entire(this,'get',this.service.api_root.common.version,{},function(self,res){
-				console.log(res)
-				let current_version = plus.runtime.version
-				uni.showToast({
-					icon:'none',
-					title:plus.runtime.version
-				})
-				if(current_version != res.data.version){
-					console.log(self.service.api_root.common.version_wgt)
-					  uni.downloadFile({  
-						url: self.service.api_root.common.version_wgt,  
-						success: (downloadResult) => {  
-							console.log(downloadResult)
-							if (downloadResult.statusCode === 200) {  
-								plus.runtime.install(downloadResult.tempFilePath, {  
-									force: true  
-								}, function() {  
-									console.log('install success...');
-									setTimeout(function(){
-										uni.showToast({
-											icon:'none',
-											title:'install success...'
-										})
-									},3000) 
-									plus.runtime.restart();  
-								}, function(e) {
-									console.log(e)
-									console.error('install fail...');  
-									setTimeout(function(){
-										uni.showToast({
-											icon:'none',
-											title:'install fail...'
-										})
-									},3000)
-								});  
-							}  
-						}  
-					});  
-				}
+			this.service.entire(this, 'get', this.service.api_root.common.version, {}, function(self, res) {  //APP 热更新
+				
+				plus.runtime.getProperty(plus.runtime.appid, function(widgetInfo) {   //这里用 plus.runtime.getProperty() 来获取相关信息。
+				    if (widgetInfo.version != res.data.version) {
+				    	uni.showModal({
+				    	    title: '提示',
+				    	    content: '检测到新版本，是否确定更新？',
+				    	    success: function (res) {
+				    	        if (res.confirm) {
+				    				uni.showLoading({
+				    				    title: '下载中',
+										mask:true
+				    				});
+				    	           uni.downloadFile({
+				    	           	url: self.service.api_root.common.version_wgt,
+				    	           	success: (downloadResult) => {
+				    	           		uni.showLoading({
+				    	           		    title: '安装中',
+											mask:true
+				    	           		});
+				    	           		if (downloadResult.statusCode === 200) {
+				    	           			plus.runtime.install(downloadResult.tempFilePath, {
+				    	           				force: true //强制安装
+				    	           			}, function() {
+				    							uni.hideLoading();
+				    	           				plus.runtime.restart();
+				    	           			}, function(e) {
+				    							uni.hideLoading();
+				    	           				console.log(e)
+				    	           
+				    	           			});
+				    	           		}
+				    	           	}
+				    	           });
+				    	        } else if (res.cancel) {
+				    	            console.log('用户点击取消');
+				    				
+				    	        }
+				    	    }
+				    	});
+				    }
+				});
+				
+				
+				
+				
 			})
 			// #endif
 		},
-		onLoad:function(){
-			
+		onLoad: function() {
 
-			
+
+
 		},
 		onShow: function() {
 			console.log('App Show')
@@ -66,9 +73,11 @@
 		padding-top: var(--status-bar-height);
 		background: #fff;
 	}
-	.content{
+
+	.content {
 		padding-top: 105rpx;
 	}
+
 	.status_bar {
 		height: var(--status-bar-height);
 		width: 100%;
@@ -78,6 +87,7 @@
 		background: #1D9DFF;
 		position: fixed;
 	}
+
 	.mask_black {
 		position: fixed;
 		height: 100%;
@@ -88,7 +98,8 @@
 		left: 0;
 		z-index: 998;
 	}
-	.top_enlarge{
+
+	.top_enlarge {
 		display: flex;
 		align-items: center;
 		height: 100%;

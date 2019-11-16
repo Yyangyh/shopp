@@ -40,13 +40,15 @@
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
 			</view> -->
-			<!-- <view class="tab_list">
+			<!-- #ifdef APP-PLUS -->
+			<view class="tab_list" @click="testing()">
 				<view class="">
 					<image src="../../static/image/secondary/edition.png" mode="widthFix"></image>
-					<text>版本</text>
+					<text>版本{{current_version}}</text>
 				</view>
 				<image src="../../static/image/go.png" mode=""></image>
-			</view> -->
+			</view>
+			<!-- #endif -->
 		</view>
 		<button  @click="signOut()">退出登录</button>
 		
@@ -60,7 +62,8 @@
 	export default{
 		data() {
 			return {
-				wxlogin:''
+				wxlogin:'',
+				current_version:''
 			}
 		},
 		methods:{
@@ -80,10 +83,65 @@
 				uni.navigateTo({
 					url:url
 				})
+			},
+			// #ifdef APP-PLUS
+			testing(){
+				this.service.entire(this, 'get', this.service.api_root.common.version, {}, function(self, res) {  //APP 热更新
+					plus.runtime.getProperty(plus.runtime.appid, function(widgetInfo) { //这里用 plus.runtime.getProperty() 来获取相关信息。
+						if (widgetInfo.version != res.data.version) {
+							uni.showModal({
+							    title: '提示',
+							    content: '检测到新版本，是否确定更新？',
+							    success: function (res) {
+							        if (res.confirm) {
+										uni.showLoading({
+										    title: '下载中',
+											mask:true
+										});
+							           uni.downloadFile({
+							           	url: self.service.api_root.common.version_wgt,
+							           	success: (downloadResult) => {
+							           		uni.showLoading({
+							           		    title: '安装中',
+												mask:true
+							           		});
+							           		if (downloadResult.statusCode === 200) {
+							           			plus.runtime.install(downloadResult.tempFilePath, {
+							           				force: true //强制安装
+							           			}, function() {
+													uni.hideLoading();
+							           				plus.runtime.restart();
+							           			}, function(e) {
+													uni.hideLoading();
+							           				console.log(e)
+							           
+							           			});
+							           		}
+							           	}
+							           });
+							        } else if (res.cancel) {
+							            console.log('用户点击取消');
+										
+							        }
+							    }
+							});
+						}else{
+							uni.showToast({
+								icon:'none',
+								title:'当前版本已是最新版本'
+							})
+						}
+					});
+					
+				})
 			}
+			// #endif
 		},
 		onShow() {
 			this.wxlogin  = uni.getStorageSync('wxlogin')
+			// #ifdef APP-PLUS
+			this.current_version = plus.runtime.version
+			// #endif
 			console.log(this.wxlogin)
 		}
 	}

@@ -102,10 +102,7 @@ export default {
                 //分享给朋友接口  
 				jweixin.updateAppMessageShareData(shareData);  
 				
-                
-				
                 //分享到朋友圈接口  
-				
                 jweixin.updateTimelineShareData(shareData);
             });
         }, url);

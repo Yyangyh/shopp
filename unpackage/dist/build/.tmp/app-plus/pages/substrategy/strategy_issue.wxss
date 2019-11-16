@@ -1,10 +1,10 @@
 
-.content.data-v-fe897d7a{
+.content.data-v-56804926{
 	/* padding: 0 20rpx; */
 	padding-left: 20rpx;
 	padding-right: 20rpx;
 }
-.iss_title.data-v-fe897d7a{
+.iss_title.data-v-56804926{
 	height: 100rpx;
 	display: -webkit-box;
 	display: -webkit-flex;
@@ -16,25 +16,25 @@
 	        align-items: center;
 	border-bottom: 2rpx solid #F1F1F1;
 }
-.iss_title view.data-v-fe897d7a{
+.iss_title view.data-v-56804926{
 	font-size: 32rpx;
 	color: #333333;
 	margin-right: 35rpx;
 }
-.iss_title input.data-v-fe897d7a{
+.iss_title input.data-v-56804926{
 	-webkit-box-flex: 2;
 	-webkit-flex-grow: 2;
 	    -ms-flex-positive: 2;
 	        flex-grow: 2;
 	font-size: 30rpx;
 }
-.textarea.data-v-fe897d7a{
+.textarea.data-v-56804926{
 	padding: 35rpx 0rpx;
 }
-.textarea textarea.data-v-fe897d7a{
+.textarea textarea.data-v-56804926{
 	font-size: 30rpx;
 }
-.image_list.data-v-fe897d7a{
+.image_list.data-v-56804926{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -47,7 +47,7 @@
 	    -ms-flex-wrap: wrap;
 	        flex-wrap: wrap;
 }
-.image_list .add.data-v-fe897d7a{
+.image_list .add.data-v-56804926{
 	background: #F1F1F1;
 	color: #CCCCCC;
 	font-size: 120rpx;
@@ -56,21 +56,21 @@
 	line-height: 230rpx;
 	text-align: center;
 }
-.image_list .image_box.data-v-fe897d7a{
+.image_list .image_box.data-v-56804926{
 	position: relative;
 }
-.image_list .img.data-v-fe897d7a{
+.image_list .img.data-v-56804926{
 	height: 230rpx;
 	width: 230rpx;
 }
-.image_list .close.data-v-fe897d7a{
+.image_list .close.data-v-56804926{
 	height: 40rpx;
 	width: 40rpx;
 	position: absolute;
 	top: 5rpx;
 	right: 5rpx;
 }
-.iss_bottom.data-v-fe897d7a{
+.iss_bottom.data-v-56804926{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -89,7 +89,7 @@
 	border-top: 2rpx solid #F1F1F1;
 	margin-top: 40rpx;
 }
-.iss_bottom .iss_left.data-v-fe897d7a{
+.iss_bottom .iss_left.data-v-56804926{
 	display: -webkit-box;
 	display: -webkit-flex;
 	display: -ms-flexbox;
@@ -99,16 +99,16 @@
 	    -ms-flex-align: center;
 	        align-items: center;
 }
-.iss_bottom .iss_left image.data-v-fe897d7a{
+.iss_bottom .iss_left image.data-v-56804926{
 	height: 34rpx;
 	width: 34rpx;
 	margin-right: 10rpx;
 }
-.iss_bottom .iss_right image.data-v-fe897d7a{
+.iss_bottom .iss_right image.data-v-56804926{
 	height: 27rpx;
 	width: 27rpx;
 }
-button.data-v-fe897d7a{
+button.data-v-56804926{
 	margin-top: 40rpx;
 	height: 80rpx;
 	line-height: 80rpx;

@@ -78,7 +78,7 @@
 						uni.uploadFile({
 						    url: that.service.api_root.common.upload_image,
 						    filePath: res.tempFilePaths[0],
-						    name: 'file',
+						    name: 'upfile',
 						    formData: {
 						        token: uni.getStorageSync('token')
 						    },
@@ -88,7 +88,8 @@
 						        if(JSON.parse(ref.data).code == 0){
 									// console.log(JSON.parse(ref.data))
 									 that.image_list.push(res.tempFilePaths[0])
-									 that.images.push(JSON.parse(ref.data).data.file)
+									 that.images.push(JSON.parse(ref.data).data.url)
+									 console.log(that.images)
 								}
 						    }
 						});
@@ -105,6 +106,13 @@
 				})
 			},
 			release(){
+				if(this.images.length == 0){
+					uni.showToast({
+						icon:'none',
+						title:'请上传景点照片'
+					})
+					return
+				}
 				if(!this.iss_title){
 					uni.showToast({
 						icon:'none',
@@ -119,6 +127,7 @@
 					})
 					return
 				}
+				
 				this.service.entire(this,'post',this.service.api_root.substrategy.add_travels,{
 					title:this.iss_title,
 					content:this.content,

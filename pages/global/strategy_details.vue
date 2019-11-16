@@ -13,17 +13,20 @@
 				{{is_follow?'已关注':'关注'}}
 			</view>
 		</view>
-		<bw-swiper :videoAutoplay='videoAutoplay' :interval='3000'  @clickItem='clickItem' :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper>
+		<!-- <bw-swiper :videoAutoplay='videoAutoplay' :interval='3000'  @clickItem='clickItem' :swiperList="swiperList" :swiperType='swiperType' :w_h='w_h' style="width:100%"></bw-swiper> -->
 		
-		<!-- <swiper class="swiper" v-if="">
-			<swiper-item v-for="(item,index) in swiper_img">
+		<swiper class="swiper" v-if="">
+			<swiper-item v-for="(item,index) in swiper_img" @click="clickItem(index)">
 				<view class="swiper_box">
 					<image  class="swiper_box_img" :src="swiper_img[index]" mode="aspectFill"></image>
 				</view>
-				<image class="swiper_img" :src="swiper_img[index]" mode="widthFix"></image>
+				<image class="swiper_img" :src="swiper_img[index]" mode="aspectFit"></image>
+				<view class="image_mask">
+					
+				</view>
 			</swiper-item>
 			
-		</swiper> -->
+		</swiper>
 		
 		
 		<rich-text :nodes="richtext"></rich-text>
@@ -113,10 +116,9 @@
 			follow(){
 				this.common.concern(this,this.data.uid)
 			},
-			clickItem(e){ //预览图片
-				console.log(e)
+			clickItem(index){ //预览图片
 				uni.previewImage({
-					urls: [e.img],
+					urls: [this.swiper_img[index]],
 				});
 			},
 			// 发表评论
@@ -238,18 +240,31 @@
 	}
 	.swiper {
 		width: 100%;
+		height: 400rpx;
 	}
 	.swiper .swiper_img,.swiper_box_img{
 		width: 100%;
-		height: 200rpx;
+		
 	}
 	.swiper .swiper_img{
 		position: absolute;
-		left: 0;
-		top: 0;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		width: 100%;
+		z-index: 910;
 	}
 	.swiper .swiper_box{
 		position: relative;
+	}
+	.image_mask{
+		z-index: 900;
+		background: rgba(255,255,255,0.9);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 400rpx;
 	}
 	.bottom{
 		position: fixed;
