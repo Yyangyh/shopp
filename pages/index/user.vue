@@ -141,10 +141,10 @@
 							已付款
 						</view>
 					</view>
-					<view class="tab_list" @click="jump('../subuser/scen_order?status=-1')">
+					<view class="tab_list" @click="jump('../subuser/scen_order?status=3')">
 						<image src="../../static/image/stay_comment1.png" mode="widthFix"></image>
 						<view class="">
-							已取消
+							已使用
 						</view>
 					</view>
 					<view class="tab_list" @click="jump('../subuser/scen_order?status=2')">

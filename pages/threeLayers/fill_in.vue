@@ -160,6 +160,12 @@
 		},
 		methods: {
 			emption() {//结算
+			
+				uni.showLoading({
+					title: '结算中',
+					mask:true
+				});
+				
 				if(this.taker_name == '' ||this.taker_pho == ''){
 					uni.showToast({
 						icon:'none',
@@ -272,10 +278,9 @@
 					data.ItemAddInfo = []
 				}
 				
-				console.log(data)
 				
 				this.service.entire(this,'post',this.service.api_root.threeLayers.scen_Confirm,data,function(self,res){
-					console.log(res)
+					uni.hideLoading();
 					if(res.code == 0){
 						uni.navigateTo({
 							url:'/pages/threeLayers/order_pay?id='+res.data.orderid+'&name='+self.data.Name

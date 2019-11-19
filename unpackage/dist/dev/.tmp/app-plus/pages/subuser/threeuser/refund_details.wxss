@@ -79,6 +79,10 @@ page.data-v-b13d3e22 {
 	-webkit-line-clamp: 3;
 	overflow: hidden;
 	height: 120rpx;
+	-webkit-box-flex: 2;
+	-webkit-flex-grow: 2;
+	    -ms-flex-positive: 2;
+	        flex-grow: 2;
 }
 .order .order_num .num_two .specs.data-v-b13d3e22 {
 	color: #808080;

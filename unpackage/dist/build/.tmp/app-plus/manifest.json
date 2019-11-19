@@ -7,8 +7,8 @@
   "id": "__UNI__B01F932",
   "name": "文旅世家",
   "version": {
-    "name": "1.0.7",
-    "code": 107
+    "name": "1.0.9",
+    "code": 109
   },
   "description": "",
   "launch_path": "__uniappview.html",
@@ -149,10 +149,13 @@
       }
     },
     "uni-app": {
-      "compilerVersion": "2.3.7",
+      "compilerVersion": "2.4.2",
       "control": "v8",
-      "nvueCompiler": "weex",
-      "renderer": "auto"
+      "nvueCompiler": "uni-app",
+      "renderer": "auto",
+      "nvue": {
+        "flex-direction": "column"
+      }
     },
     "tabBar": {
       "color": "#999999",

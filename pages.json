@@ -551,6 +551,15 @@
 			}
 		},
 		{
+			"path": "pages/subuser/threeuser/scen_refund",
+			"style": {
+				"navigationBarTitleText": "景点退款",
+				"app-plus" : {
+				    "titleNView" : false
+				}
+			}
+		},
+		{
 			"path": "pages/subuser/threeuser/return_goods",
 			"style": {
 				"navigationBarTitleText": "填写退货信息",

@@ -127,6 +127,7 @@ const api_root = {
 			int_OrderDetail:api+'/api/creditshop/OrderDetail',//积分订单详情
 			scen_orders_Detail:api+'/api/Ctripspot/Detail',//景点订单详情
 			chargebackinfo:api+'/api/Ctripspot/chargebackinfo',//景点退单检查
+			chargeback:api+'/api/Ctripspot/chargeback',//景点退单
 			dis_team:api+'/api/Distribution/team',//分销团队
 			dis_profit:api+'/api/Distribution/profit',//分销佣金
 			dis_order:api+'/api/Distribution/order',//分销订单

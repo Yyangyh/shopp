@@ -138,9 +138,12 @@
 			// #endif
 		},
 		onShow() {
+			let that = this
 			this.wxlogin  = uni.getStorageSync('wxlogin')
 			// #ifdef APP-PLUS
-			this.current_version = plus.runtime.version
+			plus.runtime.getProperty(plus.runtime.appid, function(widgetInfo) {
+				that.current_version = widgetInfo.version
+			})
 			// #endif
 			console.log(this.wxlogin)
 		}

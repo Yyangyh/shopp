@@ -60,6 +60,7 @@
     "pages/subuser/settled",
     "pages/subuser/assemble_refund",
     "pages/subuser/threeuser/ass_refund_details",
+    "pages/subuser/threeuser/scen_refund",
     "pages/subuser/threeuser/return_goods",
     "pages/subuser/threeuser/open_member",
     "pages/subuser/threeuser/give_edition",
@@ -151,14 +152,14 @@
       }
     ]
   },
-  "nvueCompiler": "weex",
+  "nvueCompiler": "uni-app",
   "renderer": "auto",
   "splashscreen": {
     "alwaysShowBeforeRender": true,
     "autoclose": false
   },
   "appname": "文旅世家",
-  "compilerVersion": "2.3.7",
+  "compilerVersion": "2.4.2",
   "usingComponents": {
     "load": "/components/load/load"
   }

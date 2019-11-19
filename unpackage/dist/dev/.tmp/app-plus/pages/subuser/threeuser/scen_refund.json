@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "景点退款",
+  "titleNView": false,
+  "usingComponents": {
+    "returns": "/pages/common/returns"
+  }
+}

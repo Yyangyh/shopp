@@ -58,9 +58,9 @@
 			</view>
 
 			<!--  -->
-			<!-- <view class="order_handle" v-if="data.status == 2">
+			<view class="order_handle" v-if="data.status == 1" @click="jump('./scen_refund?id='+id)">
 				<text>退款</text>
-			</view> -->
+			</view>
 
 			<!--  -->
 			<view class="order_total">
@@ -145,7 +145,8 @@
 				hours:'',
 				minutes :'',
 				seconds :'',
-				mss:''
+				mss:'',
+				id:''
 			}
 		},
 		methods: {
@@ -185,7 +186,7 @@
 				        if (res.confirm) {
 				            that.service.entire(that, 'get', that.service.api_root.threeLayers.scen_pay, {
 				            	token: uni.getStorageSync('token'),
-				            	orderid: that.orderid,
+				            	orderid: that.id,
 				            	payment_id: that.payment_id
 				            }, function(self, ref) {
 				            	self.common.order(ref,self,'../scen_order?status=-2','pages/subuser/scen_order?status=-2')
@@ -228,12 +229,7 @@
 				    self.seconds =self.mss % 60;
 				}
 			})
-			this.service.entire(this, 'get', this.service.api_root.subuser.threeuser.chargebackinfo, {  //景点退单检查
-				orderid: this.id,
-			}, function(self, res) {
-				
-				
-			})
+			
 		},
 		watch:{
 			mss(news,old){

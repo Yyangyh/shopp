@@ -21,8 +21,8 @@
 				<view class="top_list" :class="{show:show == 1}" @click="chiose(1)">
 					已付款
 				</view>
-				<view class="top_list" :class="{show:show == -1}" @click="chiose(-1)">
-					已取消
+				<view class="top_list" :class="{show:show == 3}" @click="chiose(3)">
+					已使用
 				</view>
 				<view class="top_list" :class="{show:show == 2}" @click="chiose(2)">
 					退款
@@ -37,7 +37,7 @@
 							<image src="../../static/image/go.png" mode="widthFix"></image>
 						</view> -->
 						
-						<view class="top2 refund" v-if="item.status == 7">
+						<view class="top2 refund" v-if="item.status == -1">
 							{{item.statusstr}}
 						</view>
 						<view class="top2 obligation" v-if="item.status == 0">
@@ -47,6 +47,9 @@
 							{{item.statusstr}}
 						</view>
 						<view class="top2 stayComment" v-if="item.status == 2">
+							{{item.statusstr}}
+						</view>
+						<view class="top2 stayComment" v-if="item.status == 3">
 							{{item.statusstr}}
 						</view>
 						<view class="top2 stayComment" v-if="item.status == 4">
@@ -69,7 +72,7 @@
 						<view class="bottom2">
 							订单金额<text>￥{{item.price}}</text>
 						</view>
-						<view class="bottom3" v-if="item.status == 1 && item.user_is_comments == 0" @click.stop="jump('/pages/threeLayers/order_comment?id='+item.id+'&type=3')">
+						<view class="bottom3" v-if="item.status == 3 && item.user_is_comments == 0" @click.stop="jump('/pages/threeLayers/order_comment?id='+item.id+'&type=3')">
 							评论
 						</view>
 						<view class="bottom3">

@@ -411,6 +411,7 @@
 		-webkit-line-clamp: 3;
 		overflow: hidden;
 		height: 120rpx;
+		flex-grow: 2;
 	}
 	.order .order_num .num_two .specs {
 		color: #808080;
