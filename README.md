@@ -1,6 +1,6 @@
 # uni-app注意事项总结
 ## 书写注意事项
-1.onload()传参，参数必须是data内的参数，否则APP内无效
+1.onLoad()传参，参数必须是data内的参数，否则APP内无效
 
 
 ## APP的热更新
